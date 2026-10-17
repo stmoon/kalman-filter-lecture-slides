@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ko"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>자율주행 위치인식 - Kalman Filter 강의 슬라이드</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%231d4ed8%27/%3E%3Ctext x=%2716%27 y=%2723%27 font-size=%2720%27 text-anchor=%27middle%27 fill=%27white%27 font-family=%27sans-serif%27 font-weight=%27bold%27%3EK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Atkinson+Hyperlegible:wght@400;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sky: #3b82f6; --sky-deep: #1d4ed8; --sky-soft: #dbeafe;
+  --leaf-deep: #16a34a; --leaf-soft: #dcfce7;
+  --ink: #0f172a; --ink-muted: #475569; --ink-subtle: #94a3b8;
+  --outline: #e2e8f0; --surface: #f8fafc;
+  --font-display: 'Nunito', 'Noto Sans KR', sans-serif;
+  --font-body: 'Atkinson Hyperlegible', 'Noto Sans KR', sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: #fff; color: var(--ink); font-family: var(--font-body); line-height: 1.6; }
+.wrap { max-width: 960px; margin: 0 auto; padding: 72px 24px 96px; }
+.kicker { font-family: var(--font-display); font-weight: 700; color: var(--sky); letter-spacing: 0.06em; font-size: 15px; }
+h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(34px, 6vw, 52px); line-height: 1.15; margin: 14px 0 0; letter-spacing: -0.02em; }
+.rule { width: 72px; height: 7px; border-radius: 999px; background: var(--sky); margin: 22px 0 0; }
+.sub { color: var(--ink-muted); font-size: 18px; margin: 22px 0 0; }
+h2 { font-family: var(--font-display); font-weight: 700; font-size: 22px; margin: 56px 0 18px; }
+.deck-list { display: grid; gap: 16px; }
+.deck { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; border: 1px solid var(--outline); border-radius: 18px; background: var(--surface); padding: 22px 26px; }
+.deck-no { font-family: var(--font-display); font-weight: 800; font-size: 15px; color: var(--sky-deep); background: var(--sky-soft); border-radius: 999px; padding: 6px 14px; white-space: nowrap; }
+.deck-main { flex: 1 1 320px; min-width: 0; }
+.deck-title { font-family: var(--font-display); font-weight: 700; font-size: 21px; margin: 0; }
+.deck-meta { color: var(--ink-muted); font-size: 15px; margin: 6px 0 0; }
+.deck-links { display: flex; gap: 10px; }
+a.btn { font-family: var(--font-display); font-weight: 700; font-size: 15px; text-decoration: none; border-radius: 999px; padding: 10px 20px; white-space: nowrap; color: #fff; background: var(--sky-deep); border: 2px solid var(--sky-deep); }
+a.btn.ghost { color: var(--sky-deep); background: #fff; }
+a.btn:hover { background: var(--sky); border-color: var(--sky); color: #fff; }
+.tips { border: 1px solid var(--outline); border-left: 5px solid var(--leaf-deep); border-radius: 14px; background: var(--leaf-soft); padding: 20px 26px; }
+.tips ul { margin: 0; padding-left: 20px; }
+.tips li { margin: 8px 0; }
+kbd { font-family: ui-monospace, 'JetBrains Mono', monospace; font-size: 0.86em; background: #fff; border: 1px solid var(--outline); border-bottom-width: 2px; border-radius: 6px; padding: 2px 7px; }
+.masthead { display: flex; align-items: flex-start; justify-content: space-between; gap: 28px; flex-wrap: wrap; margin-bottom: 8px; }
+.masthead-logos { display: flex; align-items: center; gap: 22px; padding-top: 4px; }
+.masthead-logos img { height: 54px; width: auto; display: block; }
+.badge { display: inline-block; font-family: var(--font-display); font-weight: 800; font-size: 13px; letter-spacing: 0.08em; color: var(--sky-deep); background: var(--sky-soft); border-radius: 999px; padding: 7px 16px; }
+.course { font-family: var(--font-display); font-weight: 700; color: var(--ink-muted); font-size: 15px; margin: 14px 0 0; }
+@media (max-width: 620px) { .masthead-logos img { height: 36px; } .wrap { padding: 48px 16px 72px; } }
+footer { margin-top: 64px; color: var(--ink-subtle); font-size: 14px; border-top: 1px solid var(--outline); padding-top: 20px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="masthead">
+    <div>
+      <span class="badge">자율주행 위치인식</span>
+      <p class="course">충북대학교 지능로봇공학과</p>
+    </div>
+    <div class="masthead-logos">
+      <img src="./cbnu_logo.png" alt="충북대학교">
+      <img src="./suvlab_logo.png" alt="SUV Lab">
+    </div>
+  </div>
+
+  <p class="kicker">PART 2. KALMAN FILTER</p>
+  <h1>Kalman Filter 강의 슬라이드</h1>
+  <div class="rule"></div>
+  <p class="sub">g-h 필터에서 출발해 Bayes 필터, 1 차원과 다변량 Kalman filter, 비선형 필터링과 Unscented Kalman Filter 까지 다루는 5&nbsp;일 과정.<br>
+  하루 3&nbsp;시간, 이론과 실습을 같은 슬라이드에서 진행. 슬라이드의 코드는 브라우저에서 바로 실행.</p>
+
+  <h2>Day 1</h2>
+  <div class="deck-list">
+    <div class="deck">
+      <span class="deck-no">Chapter 1</span>
+      <div class="deck-main">
+        <p class="deck-title">The g-h Filter</p>
+        <p class="deck-meta">예측과 측정의 결합, g 와 h 의 선택, 필터 성능 비교</p>
+      </div>
+      <div class="deck-links">
+        <a class="btn" href="./ch1-gh-filter/">열기</a>
+        <a class="btn ghost" href="./ch1-gh-filter/chapter1_The_g-h_Filter.pdf" download>PDF</a>
+      </div>
+    </div>
+    <div class="deck">
+      <span class="deck-no">Chapter 2</span>
+      <div class="deck-main">
+        <p class="deck-title">Discrete Bayes Filter</p>
+        <p class="deck-meta">이산 확률 분포, predict 와 update, 복도에서 개의 위치 추적</p>
+      </div>
+      <div class="deck-links">
+        <a class="btn" href="./ch2-discrete-bayes/">열기</a>
+        <a class="btn ghost" href="./ch2-discrete-bayes/chapter2_Discrete_Bayes_Filter.pdf" download>PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <h2>Day 2</h2>
+  <div class="deck-list">
+    <div class="deck">
+      <span class="deck-no">Chapter 3</span>
+      <div class="deck-main">
+        <p class="deck-title">Probabilities, Gaussians, and Bayes Theorem</p>
+        <p class="deck-meta">확률 변수, 평균과 분산, Gaussian 분포, Bayes 정리</p>
+      </div>
+      <div class="deck-links">
+        <a class="btn" href="./ch3-gaussians/">열기</a>
+        <a class="btn ghost" href="./ch3-gaussians/chapter3_Probabilities_Gaussians_and_Bayes_Theorem.pdf" download>PDF</a>
+      </div>
+    </div>
+    <div class="deck">
+      <span class="deck-no">Chapter 4</span>
+      <div class="deck-main">
+        <p class="deck-title">One Dimensional Kalman Filters</p>
+        <p class="deck-meta">Gaussian 의 합과 곱, Kalman gain, 1 차원 Kalman filter 설계</p>
+      </div>
+      <div class="deck-links">
+        <a class="btn" href="./ch4-1d-kalman/">열기</a>
+        <a class="btn ghost" href="./ch4-1d-kalman/chapter4_One_Dimensional_Kalman_Filters.pdf" download>PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <h2>Day 3</h2>
+  <div class="deck-list">
+    <div class="deck">
+      <span class="deck-no">Chapter 5</span>
+      <div class="deck-main">
+        <p class="deck-title">Multivariate Gaussians</p>
+        <p class="deck-meta">공분산 행렬과 타원, 다변량 Gaussian 곱, hidden variable</p>
+      </div>
+      <div class="deck-links">
+        <a class="btn" href="./ch5-multivariate-gaussians/">열기</a>
+        <a class="btn ghost" href="./ch5-multivariate-gaussians/chapter5_Multivariate_Gaussians.pdf" download>PDF</a>
+      </div>
+    </div>
+    <div class="deck">
+      <span class="deck-no">Chapter 6</span>
+      <div class="deck-main">
+        <p class="deck-title">Multivariate Kalman Filters</p>
+        <p class="deck-meta">x, P, F, Q, H, R 설계, 공분산 해석, batch, RTS smoothing</p>
+      </div>
+      <div class="deck-links">
+        <a class="btn" href="./ch6-multivariate-kalman/">열기</a>
+        <a class="btn ghost" href="./ch6-multivariate-kalman/chapter6_Multivariate_Kalman_Filters.pdf" download>PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <h2>Day 4</h2>
+  <div class="deck-list">
+    <div class="deck">
+      <span class="deck-no">Chapter 7</span>
+      <div class="deck-main">
+        <p class="deck-title">Kalman Filter Math</p>
+        <p class="deck-meta">상태공간 모델, 이산화, process noise 행렬, Kalman gain 유도, 수치 적분</p>
+      </div>
+      <div class="deck-links">
+        <a class="btn" href="./ch7-kalman-math/">열기</a>
+        <a class="btn ghost" href="./ch7-kalman-math/chapter7_Kalman_Filter_Math.pdf" download>PDF</a>
+      </div>
+    </div>
+    <div class="deck">
+      <span class="deck-no">Chapter 8</span>
+      <div class="deck-main">
+        <p class="deck-title">Designing Kalman Filters</p>
+        <p class="deck-meta">상태 변수와 필터 차수, gating, NEES, sensor fusion, 공 추적</p>
+      </div>
+      <div class="deck-links">
+        <a class="btn" href="./ch8-designing-kf/">열기</a>
+        <a class="btn ghost" href="./ch8-designing-kf/chapter8_Designing_Kalman_Filters.pdf" download>PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <h2>Day 5</h2>
+  <div class="deck-list">
+    <div class="deck">
+      <span class="deck-no">Chapter 9</span>
+      <div class="deck-main">
+        <p class="deck-title">Nonlinear Filtering</p>
+        <p class="deck-meta">비선형 함수와 Gaussian, 선형화, EKF, UKF, particle filter 비교</p>
+      </div>
+      <div class="deck-links">
+        <a class="btn" href="./ch9-nonlinear/">열기</a>
+        <a class="btn ghost" href="./ch9-nonlinear/chapter9_Nonlinear_Filtering.pdf" download>PDF</a>
+      </div>
+    </div>
+    <div class="deck">
+      <span class="deck-no">Chapter 10</span>
+      <div class="deck-main">
+        <p class="deck-title">The Unscented Kalman Filter</p>
+        <p class="deck-meta">sigma point, unscented transform, 항공기 추적, 로봇 위치추정</p>
+      </div>
+      <div class="deck-links">
+        <a class="btn" href="./ch10-ukf/">열기</a>
+        <a class="btn ghost" href="./ch10-ukf/chapter10_The_Unscented_Kalman_Filter.pdf" download>PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <h2>보는 방법</h2>
+  <div class="tips">
+    <ul>
+      <li><b>발표 모드</b>: 오른쪽 아래 "전체 화면" 버튼 또는 <kbd>F</kbd>. 다음 장은 <kbd>Space</kbd> 또는 방향키, 종료는 <kbd>Esc</kbd></li>
+      <li><b>코드 실행</b>: 코드 블록의 "실행" 버튼 또는 <kbd>Ctrl</kbd>+<kbd>Enter</kbd>. 코드는 직접 고쳐서 다시 실행 가능</li>
+      <li><b>슬라이더</b>: 파라미터 슬라이더가 있는 예제는 슬라이더를 놓는 순간 다시 실행</li>
+      <li><b>주석 토글</b>: 선택한 줄에 <kbd>Ctrl</kbd>+<kbd>/</kbd>. 결과 창은 <kbd>Esc</kbd> 로 닫음</li>
+      <li><b>첫 실행</b>: 파이썬 런타임을 내려받느라 20 초 안팎 소요, 이후는 즉시 실행. 인터넷 연결 필요</li>
+      <li><b>권장 브라우저</b>: Chrome, Edge 등 최신 브라우저</li>
+    </ul>
+  </div>
+
+  <footer>자율주행 위치인식 · 충북대학교 지능로봇공학과 문성태 교수 &nbsp;·&nbsp; 강의 슬라이드 전용 페이지</footer>
+</div>
+</body></html>

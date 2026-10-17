@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 350" width="1696" height="424" font-family="Atkinson Hyperlegible, Noto Sans KR, sans-serif">
+<defs><marker id="ac" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/></marker><marker id="as" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2563eb"/></marker><marker id="am" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker></defs>
+<rect x="20" y="10" width="960" height="236" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+<text x="40" y="44" font-size="24" fill="#475569" font-weight="700">hallway</text>
+<line x1="60" y1="300" x2="900" y2="300" stroke="#475569" stroke-width="3"/>
+<line x1="60" y1="293" x2="60" y2="307" stroke="#475569" stroke-width="2"/>
+<text x="60" y="338" font-size="22" text-anchor="middle" fill="#475569">0</text>
+<line x1="144" y1="293" x2="144" y2="307" stroke="#475569" stroke-width="2"/>
+<text x="144" y="338" font-size="22" text-anchor="middle" fill="#475569">1</text>
+<line x1="228" y1="293" x2="228" y2="307" stroke="#475569" stroke-width="2"/>
+<text x="228" y="338" font-size="22" text-anchor="middle" fill="#475569">2</text>
+<line x1="312" y1="293" x2="312" y2="307" stroke="#475569" stroke-width="2"/>
+<text x="312" y="338" font-size="22" text-anchor="middle" fill="#475569">3</text>
+<line x1="396" y1="293" x2="396" y2="307" stroke="#475569" stroke-width="2"/>
+<text x="396" y="338" font-size="22" text-anchor="middle" fill="#475569">4</text>
+<line x1="480" y1="293" x2="480" y2="307" stroke="#475569" stroke-width="2"/>
+<text x="480" y="338" font-size="22" text-anchor="middle" fill="#475569">5</text>
+<line x1="564" y1="293" x2="564" y2="307" stroke="#475569" stroke-width="2"/>
+<text x="564" y="338" font-size="22" text-anchor="middle" fill="#475569">6</text>
+<line x1="648" y1="293" x2="648" y2="307" stroke="#475569" stroke-width="2"/>
+<text x="648" y="338" font-size="22" text-anchor="middle" fill="#475569">7</text>
+<line x1="732" y1="293" x2="732" y2="307" stroke="#475569" stroke-width="2"/>
+<text x="732" y="338" font-size="22" text-anchor="middle" fill="#475569">8</text>
+<line x1="816" y1="293" x2="816" y2="307" stroke="#475569" stroke-width="2"/>
+<text x="816" y="338" font-size="22" text-anchor="middle" fill="#475569">9</text>
+<line x1="900" y1="293" x2="900" y2="307" stroke="#475569" stroke-width="2"/>
+<text x="900" y="338" font-size="22" text-anchor="middle" fill="#475569">10</text>
+<text x="920" y="308" font-size="22" fill="#475569">position (m)</text>
+<circle cx="144" cy="300" r="7" fill="#0f172a"/>
+<circle cx="172" cy="276" r="10" fill="none" stroke="#dc2626" stroke-width="3"/>
+<circle cx="228" cy="300" r="7" fill="#0f172a"/>
+<circle cx="204" cy="276" r="10" fill="none" stroke="#dc2626" stroke-width="3"/>
+<circle cx="312" cy="300" r="7" fill="#0f172a"/>
+<circle cx="330" cy="276" r="10" fill="none" stroke="#dc2626" stroke-width="3"/>
+<circle cx="396" cy="300" r="7" fill="#0f172a"/>
+<circle cx="364" cy="276" r="10" fill="none" stroke="#dc2626" stroke-width="3"/>
+<circle cx="480" cy="300" r="7" fill="#0f172a"/>
+<circle cx="504" cy="276" r="10" fill="none" stroke="#dc2626" stroke-width="3"/>
+<circle cx="564" cy="300" r="7" fill="#0f172a"/>
+<circle cx="550" cy="276" r="10" fill="none" stroke="#dc2626" stroke-width="3"/>
+<circle cx="52" cy="84" r="7" fill="#0f172a"/>
+<text x="70" y="92" font-size="24" fill="#0f172a">true position x</text>
+<circle cx="52" cy="124" r="10" fill="none" stroke="#dc2626" stroke-width="3"/>
+<text x="70" y="132" font-size="24" fill="#0f172a">measurement z = x + noise</text>
+<path d="M522,200 Q500,186 504,168" fill="none" stroke="#d97706" stroke-width="7" stroke-linecap="round"/>
+<line x1="532" y1="212" x2="532" y2="232" stroke="#d97706" stroke-width="8" stroke-linecap="round"/>
+<line x1="548" y1="212" x2="548" y2="232" stroke="#d97706" stroke-width="8" stroke-linecap="round"/>
+<line x1="582" y1="212" x2="582" y2="232" stroke="#d97706" stroke-width="8" stroke-linecap="round"/>
+<line x1="596" y1="212" x2="596" y2="232" stroke="#d97706" stroke-width="8" stroke-linecap="round"/>
+<ellipse cx="564" cy="204" rx="46" ry="20" fill="#d97706"/>
+<circle cx="610" cy="178" r="18" fill="#d97706"/>
+<ellipse cx="628" cy="184" rx="12" ry="8" fill="#d97706"/>
+<path d="M600,164 L594,188 L608,178 z" fill="#b45309"/>
+<circle cx="616" cy="174" r="3" fill="#0f172a"/>
+<rect x="590" y="182" width="9" height="20" rx="3" fill="#dc2626"/>
+<line x1="312" y1="230" x2="392" y2="230" stroke="#475569" stroke-width="3" marker-end="url(#am)"/>
+<text x="354.0" y="218" font-size="22" text-anchor="middle" fill="#475569">1 m / step</text>
+<line x1="660" y1="206" x2="824" y2="206" stroke="#d97706" stroke-width="4" stroke-dasharray="10 7" marker-end="url(#ac)"/>
+<text x="660" y="192" font-size="22" fill="#b45309" font-weight="700">velocity (hidden)</text>
+<line x1="600" y1="136" x2="1034" y2="136" stroke="#2563eb" stroke-width="3" stroke-dasharray="12 8" marker-end="url(#as)"/>
+<text x="829.0" y="124" font-size="22" text-anchor="middle" fill="#2563eb" font-weight="700">z every 1 s</text>
+<rect x="1040" y="40" width="350" height="190" rx="14" fill="#fff" stroke="#0f172a" stroke-width="3"/>
+<text x="1215" y="92" font-size="30" text-anchor="middle" fill="#0f172a" font-weight="700">Kalman filter</text>
+<text x="1215" y="146" font-size="24" text-anchor="middle" fill="#16a34a">position: observed</text>
+<text x="1215" y="192" font-size="24" text-anchor="middle" fill="#dc2626">velocity: hidden</text>
+</svg>

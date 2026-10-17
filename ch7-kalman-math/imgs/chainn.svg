@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1476 300" width="1476" height="300" font-family="Atkinson Hyperlegible, Noto Sans KR, sans-serif"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#0f172a"/></marker></defs><text x="30" y="140" font-size="32" text-anchor="start" fill="#0f172a" font-weight="700">u</text>
+<line x1="60" y1="130" x2="108" y2="130" stroke="#0f172a" stroke-width="3" marker-end="url(#a)"/>
+<rect x="110" y="98" width="120" height="64" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="3"/>
+<text x="170" y="141" font-size="28" text-anchor="middle" fill="#0f172a" font-weight="700">1/a<tspan baseline-shift="sub" font-size="75%">n</tspan></text>
+<line x1="230" y1="130" x2="300" y2="130" stroke="#0f172a" stroke-width="3" marker-end="url(#a)"/>
+<circle cx="334" cy="130" r="32" fill="#fff" stroke="#0f172a" stroke-width="3"/>
+<text x="334" y="142" font-size="36" text-anchor="middle" fill="#0f172a" font-weight="700">+</text>
+<text x="441" y="112" font-size="24" text-anchor="middle" fill="#475569" font-weight="400">dx<tspan baseline-shift="sub" font-size="75%">n</tspan>/dt</text>
+<line x1="366" y1="130" x2="514" y2="130" stroke="#0f172a" stroke-width="3" marker-end="url(#a)"/>
+<rect x="516" y="98" width="90" height="64" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="3"/>
+<text x="561" y="145" font-size="36" text-anchor="middle" fill="#0f172a" font-weight="700">&#8747;</text>
+<line x1="606" y1="130" x2="716" y2="130" stroke="#0f172a" stroke-width="3"/>
+<text x="666" y="112" font-size="30" text-anchor="middle" fill="#0f172a" font-weight="700">x<tspan baseline-shift="sub" font-size="75%">n</tspan></text>
+<circle cx="706" cy="130" r="6" fill="#0f172a"/>
+<line x1="706" y1="130" x2="706" y2="200" stroke="#0f172a" stroke-width="3"/>
+<rect x="631" y="200" width="150" height="52" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+<text x="706" y="236" font-size="24" text-anchor="middle" fill="#0f172a" font-weight="700">-a<tspan baseline-shift="sub" font-size="75%">n-1</tspan>/a<tspan baseline-shift="sub" font-size="75%">n</tspan></text>
+<line x1="706" y1="252" x2="706" y2="290" stroke="#0f172a" stroke-width="3"/>
+<line x1="716" y1="130" x2="774" y2="130" stroke="#0f172a" stroke-width="3" marker-end="url(#a)"/>
+<rect x="776" y="98" width="90" height="64" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="3"/>
+<text x="821" y="145" font-size="36" text-anchor="middle" fill="#0f172a" font-weight="700">&#8747;</text>
+<line x1="866" y1="130" x2="976" y2="130" stroke="#0f172a" stroke-width="3"/>
+<text x="926" y="112" font-size="30" text-anchor="middle" fill="#0f172a" font-weight="700">x<tspan baseline-shift="sub" font-size="75%">n-1</tspan></text>
+<circle cx="966" cy="130" r="6" fill="#0f172a"/>
+<line x1="966" y1="130" x2="966" y2="200" stroke="#0f172a" stroke-width="3"/>
+<rect x="891" y="200" width="150" height="52" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+<text x="966" y="236" font-size="24" text-anchor="middle" fill="#0f172a" font-weight="700">-a<tspan baseline-shift="sub" font-size="75%">n-2</tspan>/a<tspan baseline-shift="sub" font-size="75%">n</tspan></text>
+<line x1="966" y1="252" x2="966" y2="290" stroke="#0f172a" stroke-width="3"/>
+<text x="1036" y="140" font-size="40" text-anchor="middle" fill="#0f172a" font-weight="700">...</text>
+<line x1="1076" y1="130" x2="1126" y2="130" stroke="#0f172a" stroke-width="3" marker-end="url(#a)"/>
+<line x1="1126" y1="130" x2="1184" y2="130" stroke="#0f172a" stroke-width="3" marker-end="url(#a)"/>
+<rect x="1186" y="98" width="90" height="64" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="3"/>
+<text x="1231" y="145" font-size="36" text-anchor="middle" fill="#0f172a" font-weight="700">&#8747;</text>
+<line x1="1276" y1="130" x2="1386" y2="130" stroke="#0f172a" stroke-width="3"/>
+<text x="1336" y="112" font-size="30" text-anchor="middle" fill="#0f172a" font-weight="700">x<tspan baseline-shift="sub" font-size="75%">1</tspan></text>
+<circle cx="1376" cy="130" r="6" fill="#0f172a"/>
+<line x1="1376" y1="130" x2="1376" y2="200" stroke="#0f172a" stroke-width="3"/>
+<rect x="1301" y="200" width="150" height="52" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+<text x="1376" y="236" font-size="24" text-anchor="middle" fill="#0f172a" font-weight="700">-a<tspan baseline-shift="sub" font-size="75%">0</tspan>/a<tspan baseline-shift="sub" font-size="75%">n</tspan></text>
+<line x1="1376" y1="252" x2="1376" y2="290" stroke="#0f172a" stroke-width="3"/>
+<line x1="1386" y1="130" x2="1456" y2="130" stroke="#0f172a" stroke-width="3" marker-end="url(#a)"/>
+<polyline points="1376,290 334,290 334,164" fill="none" stroke="#0f172a" stroke-width="3" marker-end="url(#a)"/></svg>

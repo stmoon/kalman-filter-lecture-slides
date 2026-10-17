@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 84 1186 216" width="1186" height="216" font-family="Atkinson Hyperlegible, Noto Sans KR, sans-serif"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#0f172a"/></marker></defs><text x="30" y="140" font-size="32" text-anchor="start" fill="#0f172a" font-weight="700">u</text>
+<line x1="60" y1="130" x2="300" y2="130" stroke="#0f172a" stroke-width="3" marker-end="url(#a)"/>
+<circle cx="334" cy="130" r="32" fill="#fff" stroke="#0f172a" stroke-width="3"/>
+<text x="334" y="142" font-size="36" text-anchor="middle" fill="#0f172a" font-weight="700">+</text>
+<text x="441" y="112" font-size="24" text-anchor="middle" fill="#475569" font-weight="400">dx<tspan baseline-shift="sub" font-size="75%">2</tspan>/dt</text>
+<line x1="366" y1="130" x2="514" y2="130" stroke="#0f172a" stroke-width="3" marker-end="url(#a)"/>
+<rect x="516" y="98" width="90" height="64" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="3"/>
+<text x="561" y="145" font-size="36" text-anchor="middle" fill="#0f172a" font-weight="700">&#8747;</text>
+<line x1="606" y1="130" x2="776" y2="130" stroke="#0f172a" stroke-width="3"/>
+<text x="726" y="112" font-size="30" text-anchor="middle" fill="#0f172a" font-weight="700">x<tspan baseline-shift="sub" font-size="75%">2</tspan></text>
+<circle cx="766" cy="130" r="6" fill="#0f172a"/>
+<line x1="766" y1="130" x2="766" y2="200" stroke="#0f172a" stroke-width="3"/>
+<rect x="691" y="200" width="150" height="52" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+<text x="766" y="236" font-size="24" text-anchor="middle" fill="#0f172a" font-weight="700">6</text>
+<line x1="766" y1="252" x2="766" y2="290" stroke="#0f172a" stroke-width="3"/>
+<line x1="776" y1="130" x2="834" y2="130" stroke="#0f172a" stroke-width="3" marker-end="url(#a)"/>
+<rect x="836" y="98" width="90" height="64" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="3"/>
+<text x="881" y="145" font-size="36" text-anchor="middle" fill="#0f172a" font-weight="700">&#8747;</text>
+<line x1="926" y1="130" x2="1096" y2="130" stroke="#0f172a" stroke-width="3"/>
+<text x="1046" y="112" font-size="30" text-anchor="middle" fill="#0f172a" font-weight="700">x<tspan baseline-shift="sub" font-size="75%">1</tspan></text>
+<circle cx="1086" cy="130" r="6" fill="#0f172a"/>
+<line x1="1086" y1="130" x2="1086" y2="200" stroke="#0f172a" stroke-width="3"/>
+<rect x="1011" y="200" width="150" height="52" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+<text x="1086" y="236" font-size="24" text-anchor="middle" fill="#0f172a" font-weight="700">-9</text>
+<line x1="1086" y1="252" x2="1086" y2="290" stroke="#0f172a" stroke-width="3"/>
+<line x1="1096" y1="130" x2="1166" y2="130" stroke="#0f172a" stroke-width="3" marker-end="url(#a)"/>
+<polyline points="1086,290 334,290 334,164" fill="none" stroke="#0f172a" stroke-width="3" marker-end="url(#a)"/></svg>

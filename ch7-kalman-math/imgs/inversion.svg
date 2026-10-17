@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1696 300" width="1696" height="300" font-family="Atkinson Hyperlegible, Noto Sans KR, sans-serif"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#0f172a"/></marker><marker id="s" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2563eb"/></marker><marker id="c" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/></marker></defs><text x="20" y="92" font-size="28" text-anchor="start" fill="#475569" font-weight="700">states</text>
+<text x="20" y="262" font-size="28" text-anchor="start" fill="#475569" font-weight="700">measurements</text>
+<rect x="240" y="50" width="140" height="64" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="3"/>
+<text x="310" y="94" font-size="32" text-anchor="middle" fill="#0f172a" font-weight="700">x<tspan baseline-shift="sub" font-size="75%">0</tspan></text>
+<line x1="310" y1="118" x2="310" y2="210" stroke="#2563eb" stroke-width="3" marker-end="url(#s)"/>
+<rect x="240" y="220" width="140" height="64" rx="12" fill="#fff" stroke="#0f172a" stroke-width="3"/>
+<text x="310" y="264" font-size="32" text-anchor="middle" fill="#0f172a" font-weight="700">z<tspan baseline-shift="sub" font-size="75%">0</tspan></text>
+<rect x="450" y="50" width="140" height="64" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="3"/>
+<text x="520" y="94" font-size="32" text-anchor="middle" fill="#0f172a" font-weight="700">x<tspan baseline-shift="sub" font-size="75%">1</tspan></text>
+<line x1="520" y1="118" x2="520" y2="210" stroke="#2563eb" stroke-width="3" marker-end="url(#s)"/>
+<rect x="450" y="220" width="140" height="64" rx="12" fill="#fff" stroke="#0f172a" stroke-width="3"/>
+<text x="520" y="264" font-size="32" text-anchor="middle" fill="#0f172a" font-weight="700">z<tspan baseline-shift="sub" font-size="75%">1</tspan></text>
+<rect x="660" y="50" width="140" height="64" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="3"/>
+<text x="730" y="94" font-size="32" text-anchor="middle" fill="#0f172a" font-weight="700">x<tspan baseline-shift="sub" font-size="75%">2</tspan></text>
+<line x1="730" y1="118" x2="730" y2="210" stroke="#2563eb" stroke-width="3" marker-end="url(#s)"/>
+<rect x="660" y="220" width="140" height="64" rx="12" fill="#fff" stroke="#0f172a" stroke-width="3"/>
+<text x="730" y="264" font-size="32" text-anchor="middle" fill="#0f172a" font-weight="700">z<tspan baseline-shift="sub" font-size="75%">2</tspan></text>
+<text x="940" y="92" font-size="40" text-anchor="middle" fill="#0f172a" font-weight="700">...</text>
+<text x="940" y="262" font-size="40" text-anchor="middle" fill="#0f172a" font-weight="700">...</text>
+<rect x="1080" y="50" width="140" height="64" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="3"/>
+<text x="1150" y="94" font-size="32" text-anchor="middle" fill="#0f172a" font-weight="700">x<tspan baseline-shift="sub" font-size="75%">t</tspan></text>
+<line x1="1150" y1="118" x2="1150" y2="210" stroke="#2563eb" stroke-width="3" marker-end="url(#s)"/>
+<rect x="1080" y="220" width="140" height="64" rx="12" fill="#fff" stroke="#0f172a" stroke-width="3"/>
+<text x="1150" y="264" font-size="32" text-anchor="middle" fill="#0f172a" font-weight="700">z<tspan baseline-shift="sub" font-size="75%">t</tspan></text>
+<text x="1290" y="80" font-size="24" text-anchor="start" fill="#2563eb" font-weight="700">model: one state set</text>
+<text x="1290" y="110" font-size="24" text-anchor="start" fill="#2563eb" font-weight="700">gives one measurement set</text>
+<path d="M1240,250 C1330,250 1330,160 1270,140" fill="none" stroke="#dc2626" stroke-width="5" marker-end="url(#c)"/>
+<text x="1340" y="210" font-size="24" text-anchor="start" fill="#dc2626" font-weight="700">inversion: many possible</text>
+<text x="1340" y="240" font-size="24" text-anchor="start" fill="#dc2626" font-weight="700">state sets</text></svg>

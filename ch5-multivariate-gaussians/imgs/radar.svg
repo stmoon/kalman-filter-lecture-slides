@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 580" width="860" height="580" font-family="Atkinson Hyperlegible, Noto Sans KR, sans-serif">
+<circle cx="430" cy="250" r="165" fill="#fde68a" fill-opacity="0.45" stroke="#d97706" stroke-width="3" stroke-dasharray="10 8"/>
+<text x="550" y="110" font-size="30" fill="#d97706" font-weight="700">prior</text>
+<line x1="110" y1="460" x2="430" y2="250" stroke="#16a34a" stroke-width="3" stroke-dasharray="10 8"/>
+<line x1="750" y1="460" x2="430" y2="250" stroke="#2563eb" stroke-width="3" stroke-dasharray="10 8"/>
+<ellipse cx="430" cy="250" rx="150" ry="24" transform="rotate(-34.5 430 250)" fill="#16a34a" fill-opacity="0.35" stroke="#16a34a" stroke-width="3"/>
+<ellipse cx="430" cy="250" rx="150" ry="24" transform="rotate(-145.5 430 250)" fill="#2563eb" fill-opacity="0.3" stroke="#2563eb" stroke-width="3"/>
+<ellipse cx="430" cy="250" rx="30" ry="24" transform="rotate(0.0 430 250)" fill="#dc2626" fill-opacity="0.55" stroke="#dc2626" stroke-width="3"/>
+<g transform="translate(430,250) rotate(45)" fill="#0f172a"><rect x="-5" y="-30" width="10" height="56" rx="5"/><path d="M-34,2 L0,-12 L34,2 L34,8 L0,0 L-34,8 z"/><path d="M-14,24 L0,18 L14,24 L14,28 L-14,28 z"/></g>
+<path d="M76,466 A36,22 0 0 0 144,466 z" fill="#475569"/><line x1="110" y1="474" x2="110" y2="504" stroke="#475569" stroke-width="6"/><rect x="84" y="502" width="52" height="10" rx="3" fill="#475569"/><text x="124" y="552" font-size="30" text-anchor="middle" fill="#0f172a" font-weight="700">Radar 1</text>
+<path d="M716,466 A36,22 0 0 0 784,466 z" fill="#475569"/><line x1="750" y1="474" x2="750" y2="504" stroke="#475569" stroke-width="6"/><rect x="724" y="502" width="52" height="10" rx="3" fill="#475569"/><text x="736" y="552" font-size="30" text-anchor="middle" fill="#0f172a" font-weight="700">Radar 2</text>
+<text x="40" y="320" font-size="28" fill="#16a34a" font-weight="700">range: long</text>
+<text x="40" y="356" font-size="28" fill="#16a34a" font-weight="700">bearing: thin</text>
+<line x1="452" y1="236" x2="626" y2="180" stroke="#dc2626" stroke-width="3"/>
+<text x="634" y="188" font-size="28" fill="#dc2626" font-weight="700">posterior</text>
+</svg>

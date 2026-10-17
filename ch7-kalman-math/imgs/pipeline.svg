@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1696 210" width="1696" height="210" font-family="Atkinson Hyperlegible, Noto Sans KR, sans-serif"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#0f172a"/></marker></defs><rect x="10" y="10" width="370" height="190" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="3"/>
+<text x="195.0" y="76" font-size="32" text-anchor="middle" fill="#0f172a" font-weight="700">n-th order ODE</text>
+<text x="195.0" y="144" font-size="30" text-anchor="middle" fill="#0f172a" font-weight="400">a<tspan baseline-shift="sub" font-size="75%">n</tspan> y<tspan baseline-shift="super" font-size="75%">(n)</tspan> + ... + a<tspan baseline-shift="sub" font-size="75%">0</tspan> y = u</text>
+<line x1="388" y1="105" x2="444" y2="105" stroke="#0f172a" stroke-width="3" marker-end="url(#a)"/>
+<rect x="452" y="10" width="370" height="190" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="3"/>
+<text x="637.0" y="76" font-size="32" text-anchor="middle" fill="#0f172a" font-weight="700">First-order ODEs</text>
+<text x="637.0" y="144" font-size="30" text-anchor="middle" fill="#0f172a" font-weight="400">dx<tspan baseline-shift="sub" font-size="75%">1</tspan>/dt = x<tspan baseline-shift="sub" font-size="75%">2</tspan>, ...</text>
+<line x1="830" y1="105" x2="886" y2="105" stroke="#0f172a" stroke-width="3" marker-end="url(#a)"/>
+<rect x="894" y="10" width="370" height="190" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="3"/>
+<text x="1079.0" y="76" font-size="32" text-anchor="middle" fill="#0f172a" font-weight="700">Vector-matrix form</text>
+<text x="1079.0" y="144" font-size="30" text-anchor="middle" fill="#0f172a" font-weight="400">dx/dt = Ax + Bu</text>
+<line x1="1272" y1="105" x2="1328" y2="105" stroke="#0f172a" stroke-width="3" marker-end="url(#a)"/>
+<rect x="1336" y="10" width="370" height="190" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="3"/>
+<text x="1521.0" y="76" font-size="32" text-anchor="middle" fill="#0f172a" font-weight="700">Recursive form</text>
+<text x="1521.0" y="144" font-size="30" text-anchor="middle" fill="#0f172a" font-weight="400">x<tspan baseline-shift="sub" font-size="75%">k</tspan> = F x<tspan baseline-shift="sub" font-size="75%">k-1</tspan> + B u<tspan baseline-shift="sub" font-size="75%">k</tspan></text></svg>

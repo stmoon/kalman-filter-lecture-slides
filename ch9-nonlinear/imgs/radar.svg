@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 320" width="800" height="320" font-family="Atkinson Hyperlegible, Noto Sans KR, sans-serif">
+<defs><marker id="rm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0f172a"/></marker></defs>
+<line x1="30" y1="250" x2="780" y2="250" stroke="#475569" stroke-width="3"/>
+<path d="M90,250 L120,216 L150,250 z" fill="#16a34a"/>
+<path d="M86,198 Q120,230 154,198" fill="none" stroke="#16a34a" stroke-width="6"/>
+<text x="120" y="184" font-size="26" fill="#16a34a" text-anchor="middle" font-weight="700">radar</text>
+<line x1="120" y1="216" x2="626" y2="78" stroke="#2563eb" stroke-width="5"/>
+<text x="350" y="138" font-size="26" fill="#2563eb" text-anchor="middle" font-weight="700" transform="rotate(-20 350 138)">slant range</text>
+<line x1="640" y1="86" x2="640" y2="250" stroke="#dc2626" stroke-width="4" stroke-dasharray="10 8"/>
+<text x="656" y="170" font-size="26" fill="#dc2626" font-weight="700">altitude</text>
+<path d="M618,250 L618,228 L640,228" fill="none" stroke="#475569" stroke-width="2"/>
+<line x1="120" y1="280" x2="640" y2="280" stroke="#0f172a" stroke-width="3" marker-start="url(#rm)" marker-end="url(#rm)"/>
+<text x="380.0" y="314" font-size="26" fill="#0f172a" text-anchor="middle" font-weight="700">x over the ground</text>
+<path d="M590,70 L686,70 Q700,76 686,82 L590,82 z" fill="#0f172a"/>
+<path d="M634,74 L610,40 L626,40 L656,74 z" fill="#0f172a"/>
+<path d="M590,70 L578,48 L592,48 L606,70 z" fill="#0f172a"/>
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 400" width="1040" height="400" font-family="Atkinson Hyperlegible, Noto Sans KR, sans-serif">
+<defs><marker id="ba" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#0f172a"/></marker></defs>
+<line x1="70" y1="330" x2="760" y2="330" stroke="#0f172a" stroke-width="3"/>
+<line x1="70" y1="330" x2="751.5049550106451" y2="222.0602191222407" stroke="#0f172a" stroke-width="3"/>
+<path d="M330,330 A260,260 0 0 0 326.79896855473584,289.32703908954" fill="none" stroke="#dc2626" stroke-width="4"/>
+<text x="350" y="318" font-size="30" fill="#dc2626" font-weight="700">beta</text>
+<circle cx="70" cy="330" r="7" fill="#0f172a"/>
+<text x="60" y="374" font-size="32" fill="#0f172a" font-weight="700">C</text>
+<text x="475.0" y="374" font-size="32" fill="#0f172a" font-weight="700">R</text>
+<line x1="760" y1="330" x2="760" y2="100" stroke="#475569" stroke-width="4"/>
+<rect x="750" y="300" width="20" height="60" rx="4" fill="#fff" stroke="#0f172a" stroke-width="3"/>
+<text x="800" y="219.0" font-size="28" fill="#475569">w (wheelbase)</text>
+<g transform="translate(751.5049550106451,222.0602191222407) rotate(-9)"><rect x="-10" y="-30" width="20" height="60" rx="4" fill="#2563eb" opacity="0.6"/></g>
+<g transform="translate(760,100) rotate(-25)"><rect x="-10" y="-30" width="20" height="60" rx="4" fill="#fff" stroke="#0f172a" stroke-width="3"/><line x1="0" y1="-30" x2="0" y2="-80" stroke="#16a34a" stroke-width="4" marker-end="url(#ba)"/></g>
+<line x1="760" y1="70" x2="760" y2="10" stroke="#475569" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="690" y="30" font-size="30" fill="#16a34a" font-weight="700">alpha</text>
+<line x1="820" y1="350" x2="820" y2="250" stroke="#0f172a" stroke-width="3" marker-end="url(#ba)"/>
+<text x="836" y="306" font-size="30" fill="#0f172a" font-weight="700">d</text>
+</svg>

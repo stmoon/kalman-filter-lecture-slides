@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1696 190" width="1696" height="190" font-family="Atkinson Hyperlegible, Noto Sans KR, sans-serif"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#0f172a"/></marker></defs><rect x="20" y="20" width="400" height="150" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="3"/>
+<text x="220.0" y="86" font-size="34" text-anchor="middle" fill="#0f172a" font-weight="700">dx/dt = A x</text>
+<text x="220.0" y="136" font-size="24" text-anchor="middle" fill="#475569" font-weight="400">time domain</text>
+<rect x="648" y="20" width="400" height="150" rx="12" fill="#d9770622" stroke="#d97706" stroke-width="3"/>
+<text x="848.0" y="86" font-size="34" text-anchor="middle" fill="#0f172a" font-weight="700">(sI - A)<tspan baseline-shift="super" font-size="75%">-1</tspan></text>
+<text x="848.0" y="136" font-size="24" text-anchor="middle" fill="#475569" font-weight="400">s domain, no time</text>
+<rect x="1276" y="20" width="400" height="150" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="3"/>
+<text x="1476.0" y="86" font-size="34" text-anchor="middle" fill="#0f172a" font-weight="700">&#934;(t)</text>
+<text x="1476.0" y="136" font-size="24" text-anchor="middle" fill="#475569" font-weight="400">state transition</text>
+<line x1="430" y1="95" x2="638" y2="95" stroke="#0f172a" stroke-width="3" marker-end="url(#a)"/>
+<text x="534.0" y="78" font-size="22" text-anchor="middle" fill="#475569" font-weight="700">Laplace</text>
+<line x1="1058" y1="95" x2="1266" y2="95" stroke="#0f172a" stroke-width="3" marker-end="url(#a)"/>
+<text x="1162.0" y="78" font-size="22" text-anchor="middle" fill="#475569" font-weight="700">inverse Laplace</text></svg>

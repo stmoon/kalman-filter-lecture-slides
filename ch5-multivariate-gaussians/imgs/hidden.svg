@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1696 250" width="1696" height="250" font-family="Atkinson Hyperlegible, Noto Sans KR, sans-serif">
+<defs><marker id="hk" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#0f172a"/></marker><marker id="hl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/></marker><marker id="hs" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M10,0 L0,5 L10,10 z" fill="#16a34a"/></marker></defs>
+<rect x="10" y="70" width="220" height="120" rx="16" fill="#f1f5f9" stroke="#475569" stroke-width="3"/><text x="120.0" y="120" font-size="32" text-anchor="middle" fill="#0f172a" font-weight="700">Radar</text><text x="120.0" y="160" font-size="26" text-anchor="middle" fill="#475569" font-weight="700">sensor</text>
+<line x1="232" y1="130" x2="402" y2="130" stroke="#0f172a" stroke-width="4" marker-end="url(#hk)"/>
+<text x="317" y="114" font-size="26" text-anchor="middle" fill="#0f172a">measures</text>
+<rect x="410" y="70" width="300" height="120" rx="16" fill="#dbeafe" stroke="#2563eb" stroke-width="3"/><text x="560.0" y="120" font-size="32" text-anchor="middle" fill="#0f172a" font-weight="700">Position</text><text x="560.0" y="160" font-size="26" text-anchor="middle" fill="#2563eb" font-weight="700">observed</text>
+<line x1="722" y1="130" x2="958" y2="130" stroke="#16a34a" stroke-width="4" stroke-dasharray="12 8" marker-start="url(#hs)" marker-end="url(#hl)"/>
+<text x="840" y="114" font-size="26" text-anchor="middle" fill="#16a34a" font-weight="700">correlation</text>
+<rect x="966" y="70" width="300" height="120" rx="16" fill="#dcfce7" stroke="#16a34a" stroke-width="3"/><text x="1116.0" y="120" font-size="32" text-anchor="middle" fill="#0f172a" font-weight="700">Velocity</text><text x="1116.0" y="160" font-size="26" text-anchor="middle" fill="#16a34a" font-weight="700">hidden</text>
+<rect x="1306" y="70" width="380" height="120" rx="16" fill="#fff" stroke="#475569" stroke-width="3" stroke-dasharray="10 8"/><text x="1496.0" y="120" font-size="32" text-anchor="middle" fill="#0f172a" font-weight="700">Color, pilot name</text><text x="1496.0" y="160" font-size="26" text-anchor="middle" fill="#475569" font-weight="700">unobserved</text>
+<path d="M120,68 C120,8 1496,8 1496,64" fill="none" stroke="#dc2626" stroke-width="3" stroke-dasharray="8 8"/>
+<line x1="1478" y1="22" x2="1514" y2="58" stroke="#dc2626" stroke-width="5"/>
+<line x1="1514" y1="22" x2="1478" y2="58" stroke="#dc2626" stroke-width="5"/>
+<text x="808" y="246" font-size="26" text-anchor="middle" fill="#475569">velocity is inferred, not measured</text>
+</svg>

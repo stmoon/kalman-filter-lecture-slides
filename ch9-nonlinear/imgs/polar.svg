@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 560" width="840" height="560" font-family="Atkinson Hyperlegible, Noto Sans KR, sans-serif">
+<defs><marker id="pm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker></defs>
+<line x1="20" y1="520" x2="820" y2="520" stroke="#475569" stroke-width="2" marker-end="url(#pm)"/>
+<text x="806" y="506" font-size="24" fill="#475569">x</text>
+<line x1="420" y1="520" x2="648.4" y2="155.7" stroke="#d97706" stroke-width="3" stroke-dasharray="10 8"/>
+<line x1="420" y1="520" x2="191.6" y2="155.7" stroke="#d97706" stroke-width="3" stroke-dasharray="10 8"/>
+<path d="M193.7,159.1 A426,426 0 0 1 646.3,159.1 L618.7,203.1 A374,374 0 0 0 221.3,203.1 z" fill="#dbeafe" stroke="#2563eb" stroke-width="3"/>
+<line x1="420" y1="520" x2="420" y2="120" stroke="#0f172a" stroke-width="4"/>
+<text x="434" y="310" font-size="28" fill="#0f172a" font-weight="700">r = 50 km</text>
+<path d="M372.2,443.7 A90,90 0 0 1 467.8,443.7" fill="none" stroke="#d97706" stroke-width="4"/>
+<text x="308" y="370" font-size="24" fill="#d97706" text-anchor="end" font-weight="700">bearing error</text>
+<path d="M540,520 A120,120 0 0 0 420,400" fill="none" stroke="#475569" stroke-width="2"/>
+<text x="524" y="420" font-size="24" fill="#475569">90 deg</text>
+<circle cx="420" cy="120" r="12" fill="#0f172a"/>
+<text x="420" y="80" font-size="26" fill="#0f172a" text-anchor="middle" font-weight="700">target (0, 50)</text>
+<text x="620" y="86" font-size="24" fill="#2563eb" font-weight="700">range error</text>
+<path d="M394,520 L420,486 L446,520 z" fill="#16a34a"/>
+<text x="380" y="512" font-size="26" fill="#16a34a" text-anchor="end" font-weight="700">radar</text>
+</svg>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1760 190" width="1760" height="190" font-family="Atkinson Hyperlegible, Noto Sans KR, sans-serif">
+<defs><marker id="fa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker></defs>
+<rect x="20" y="30" width="206" height="86" rx="14" fill="#dbeafe" stroke="#2563eb" stroke-width="3"/>
+<text x="123.0" y="83" font-size="27" text-anchor="middle" fill="#0f172a" font-weight="700">x, P</text>
+<rect x="272" y="30" width="206" height="86" rx="14" fill="#dbeafe" stroke="#2563eb" stroke-width="3"/>
+<text x="375.0" y="83" font-size="27" text-anchor="middle" fill="#0f172a" font-weight="700">sigma points</text>
+<line x1="230" y1="73" x2="266" y2="73" stroke="#475569" stroke-width="3" marker-end="url(#fa)"/>
+<rect x="524" y="30" width="206" height="86" rx="14" fill="#fee2e2" stroke="#dc2626" stroke-width="3"/>
+<text x="627.0" y="83" font-size="27" text-anchor="middle" fill="#0f172a" font-weight="700">f(x)</text>
+<line x1="482" y1="73" x2="518" y2="73" stroke="#475569" stroke-width="3" marker-end="url(#fa)"/>
+<rect x="776" y="30" width="206" height="86" rx="14" fill="#fee2e2" stroke="#dc2626" stroke-width="3"/>
+<text x="879.0" y="83" font-size="27" text-anchor="middle" fill="#0f172a" font-weight="700">UT + Q</text>
+<line x1="734" y1="73" x2="770" y2="73" stroke="#475569" stroke-width="3" marker-end="url(#fa)"/>
+<rect x="1028" y="30" width="206" height="86" rx="14" fill="#dcfce7" stroke="#16a34a" stroke-width="3"/>
+<text x="1131.0" y="83" font-size="27" text-anchor="middle" fill="#0f172a" font-weight="700">h(x)</text>
+<line x1="986" y1="73" x2="1022" y2="73" stroke="#475569" stroke-width="3" marker-end="url(#fa)"/>
+<rect x="1280" y="30" width="206" height="86" rx="14" fill="#dcfce7" stroke="#16a34a" stroke-width="3"/>
+<text x="1383.0" y="83" font-size="27" text-anchor="middle" fill="#0f172a" font-weight="700">UT + R</text>
+<line x1="1238" y1="73" x2="1274" y2="73" stroke="#475569" stroke-width="3" marker-end="url(#fa)"/>
+<rect x="1532" y="30" width="206" height="86" rx="14" fill="#f1f5f9" stroke="#0f172a" stroke-width="3"/>
+<text x="1635.0" y="83" font-size="27" text-anchor="middle" fill="#0f172a" font-weight="700">K, x, P</text>
+<line x1="1490" y1="73" x2="1526" y2="73" stroke="#475569" stroke-width="3" marker-end="url(#fa)"/>
+<text x="753.0" y="164" font-size="28" text-anchor="middle" fill="#dc2626" font-weight="700">predict: prior</text>
+<text x="1257.0" y="164" font-size="28" text-anchor="middle" fill="#16a34a" font-weight="700">update: posterior</text>
+</svg>

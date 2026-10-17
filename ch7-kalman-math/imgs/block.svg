@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 310" width="1040" height="310" font-family="Atkinson Hyperlegible, Noto Sans KR, sans-serif"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#0f172a"/></marker><marker id="c" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/></marker></defs><text x="40" y="160" font-size="34" text-anchor="middle" fill="#0f172a" font-weight="700">u</text>
+<text x="40" y="200" font-size="22" text-anchor="middle" fill="#475569" font-weight="400">control</text>
+<line x1="70" y1="150" x2="158" y2="150" stroke="#0f172a" stroke-width="3" marker-end="url(#a)"/>
+<rect x="160" y="110" width="110" height="80" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="3"/>
+<text x="215" y="162" font-size="34" text-anchor="middle" fill="#0f172a" font-weight="700">B</text>
+<line x1="270" y1="150" x2="386" y2="150" stroke="#0f172a" stroke-width="3" marker-end="url(#a)"/>
+<circle cx="420" cy="150" r="32" fill="#fff" stroke="#0f172a" stroke-width="3"/>
+<text x="420" y="162" font-size="36" text-anchor="middle" fill="#0f172a" font-weight="700">+</text>
+<text x="420" y="34" font-size="34" text-anchor="middle" fill="#dc2626" font-weight="700">w</text>
+<text x="470" y="34" font-size="22" text-anchor="start" fill="#dc2626" font-weight="400">process noise</text>
+<line x1="420" y1="48" x2="420" y2="116" stroke="#dc2626" stroke-width="3" marker-end="url(#c)"/>
+<line x1="452" y1="150" x2="598" y2="150" stroke="#0f172a" stroke-width="3" marker-end="url(#a)"/>
+<text x="525" y="134" font-size="24" text-anchor="middle" fill="#475569" font-weight="400">dx/dt</text>
+<rect x="600" y="110" width="110" height="80" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="3"/>
+<text x="655" y="164" font-size="38" text-anchor="middle" fill="#0f172a" font-weight="700">&#8747;</text>
+<line x1="710" y1="150" x2="918" y2="150" stroke="#0f172a" stroke-width="3" marker-end="url(#a)"/>
+<text x="930" y="160" font-size="34" text-anchor="start" fill="#0f172a" font-weight="700">x</text>
+<text x="930" y="200" font-size="22" text-anchor="start" fill="#475569" font-weight="400">state</text>
+<circle cx="820" cy="150" r="6" fill="#0f172a"/>
+<polyline points="820,150 820,262 710,262" fill="none" stroke="#0f172a" stroke-width="3" marker-end="url(#a)"/>
+<rect x="600" y="226" width="110" height="72" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="3"/>
+<text x="655" y="274" font-size="34" text-anchor="middle" fill="#0f172a" font-weight="700">A</text>
+<text x="790" y="300" font-size="22" text-anchor="middle" fill="#475569" font-weight="400">dynamics</text>
+<polyline points="600,262 420,262 420,186" fill="none" stroke="#0f172a" stroke-width="3" marker-end="url(#a)"/></svg>

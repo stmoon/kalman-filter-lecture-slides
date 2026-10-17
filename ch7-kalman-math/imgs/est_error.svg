@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1696 270" width="1696" height="270" font-family="Atkinson Hyperlegible, Noto Sans KR, sans-serif"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#0f172a"/></marker><marker id="s" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2563eb"/></marker></defs><line x1="60" y1="120" x2="1640" y2="120" stroke="#475569" stroke-width="3"/>
+<path d="M244,106 L276,106 L260,134 z" fill="#d97706"/>
+<text x="260" y="180" font-size="28" text-anchor="middle" fill="#d97706" font-weight="700">prior</text>
+<circle cx="780" cy="120" r="15" fill="#2563eb"/>
+<text x="780" y="180" font-size="28" text-anchor="middle" fill="#2563eb" font-weight="700">posterior</text>
+<circle cx="1010" cy="120" r="15" fill="#16a34a"/>
+<text x="1010" y="180" font-size="28" text-anchor="middle" fill="#16a34a" font-weight="700">true state x</text>
+<rect x="1406" y="106" width="28" height="28" fill="#fff" stroke="#0f172a" stroke-width="4"/>
+<text x="1420" y="180" font-size="28" text-anchor="middle" fill="#0f172a" font-weight="700">measurement z</text>
+<line x1="276" y1="60" x2="764" y2="60" stroke="#2563eb" stroke-width="4" marker-end="url(#s)"/>
+<text x="520" y="44" font-size="26" text-anchor="middle" fill="#2563eb" font-weight="700">K (z - H prior)</text>
+<path d="M780,202 L780,220 L1010,220 L1010,202" fill="none" stroke="#dc2626" stroke-width="3"/>
+<text x="895" y="256" font-size="28" text-anchor="middle" fill="#dc2626" font-weight="700">error e</text></svg>

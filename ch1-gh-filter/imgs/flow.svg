@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1696 124" width="1696" height="124" font-family="Atkinson Hyperlegible, Noto Sans KR, sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker></defs>
+<rect x="1" y="6" width="266" height="112" rx="20" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+<text x="134.0" y="52" font-size="32" font-weight="700" text-anchor="middle" fill="#0f172a">System</text>
+<text x="134.0" y="92" font-size="26" text-anchor="middle" fill="#475569">hidden state</text>
+<line x1="278" y1="62.0" x2="347" y2="62.0" stroke="#475569" stroke-width="3" marker-end="url(#a)"/>
+<rect x="358" y="6" width="266" height="112" rx="20" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+<text x="491.0" y="52" font-size="32" font-weight="700" text-anchor="middle" fill="#0f172a">Sensor</text>
+<text x="491.0" y="92" font-size="26" text-anchor="middle" fill="#475569">adds noise</text>
+<line x1="635" y1="62.0" x2="704" y2="62.0" stroke="#475569" stroke-width="3" marker-end="url(#a)"/>
+<rect x="715" y="6" width="266" height="112" rx="20" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+<text x="848.0" y="52" font-size="32" font-weight="700" text-anchor="middle" fill="#0f172a">Measurement</text>
+<text x="848.0" y="92" font-size="26" text-anchor="middle" fill="#475569">observable z</text>
+<line x1="992" y1="62.0" x2="1061" y2="62.0" stroke="#475569" stroke-width="3" marker-end="url(#a)"/>
+<rect x="1072" y="6" width="266" height="112" rx="20" fill="#dbeafe" stroke="#94a3b8" stroke-width="2"/>
+<text x="1205.0" y="52" font-size="32" font-weight="700" text-anchor="middle" fill="#0f172a">Filter</text>
+<text x="1205.0" y="92" font-size="26" text-anchor="middle" fill="#475569">predict + update</text>
+<line x1="1349" y1="62.0" x2="1418" y2="62.0" stroke="#475569" stroke-width="3" marker-end="url(#a)"/>
+<rect x="1429" y="6" width="266" height="112" rx="20" fill="#dcfce7" stroke="#94a3b8" stroke-width="2"/>
+<text x="1562.0" y="52" font-size="32" font-weight="700" text-anchor="middle" fill="#0f172a">Estimate</text>
+<text x="1562.0" y="92" font-size="26" text-anchor="middle" fill="#475569">state estimate</text>
+</svg>

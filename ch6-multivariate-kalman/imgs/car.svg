@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 828 500" width="828" height="500" font-family="Atkinson Hyperlegible, Noto Sans KR, sans-serif">
+<defs><marker id="aw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2563eb"/></marker>
+<marker id="ac" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/></marker></defs>
+<path d="M10,250 L500,250 Q610,250 680,200 L818,130" fill="none" stroke="#475569" stroke-width="5"/>
+<path d="M150,236 L150,200 Q155,184 175,182 L215,182 L245,150 L330,150 L365,182 L392,186 Q402,190 402,206 L402,236 z" fill="#2563eb"/>
+<path d="M256,160 L322,160 L345,182 L240,182 z" fill="#dbeafe"/>
+<circle cx="200" cy="238" r="20" fill="#0f172a"/><circle cx="352" cy="238" r="20" fill="#0f172a"/>
+<circle cx="200" cy="238" r="8" fill="#cbd5e1"/><circle cx="352" cy="238" r="8" fill="#cbd5e1"/>
+<text x="276" y="126" font-size="26" text-anchor="middle" fill="#0f172a" font-weight="700">cruise control</text>
+<line x1="414" y1="206" x2="500" y2="206" stroke="#dc2626" stroke-width="4" marker-end="url(#ac)"/>
+<text x="458" y="192" font-size="24" text-anchor="middle" fill="#dc2626" font-weight="700">v</text>
+<line x1="620" y1="60" x2="500" y2="100" stroke="#2563eb" stroke-width="4" marker-end="url(#aw)"/>
+<line x1="640" y1="100" x2="520" y2="140" stroke="#2563eb" stroke-width="4" marker-end="url(#aw)"/>
+<text x="640" y="50" font-size="26" fill="#2563eb" font-weight="700">wind</text>
+<ellipse cx="560" cy="254" rx="30" ry="8" fill="#0f172a"/>
+<text x="560" y="296" font-size="26" text-anchor="middle" fill="#475569" font-weight="700">pothole</text>
+<text x="760" y="226" font-size="26" text-anchor="middle" fill="#475569" font-weight="700">hill</text>
+<text x="20" y="50" font-size="26" fill="#dc2626" font-weight="700">process noise w</text>
+<text x="20" y="84" font-size="22" fill="#475569">unmodeled, zero mean</text>
+<line x1="60" y1="480" x2="800" y2="480" stroke="#475569" stroke-width="2"/>
+<line x1="60" y1="330" x2="60" y2="480" stroke="#475569" stroke-width="2"/>
+<text x="796" y="470" font-size="22" text-anchor="end" fill="#475569">time</text>
+<text x="74" y="346" font-size="22" fill="#475569">speed</text>
+<line x1="60" y1="410" x2="800" y2="410" stroke="#0f172a" stroke-width="3" stroke-dasharray="12 8"/>
+<text x="796" y="366" font-size="22" text-anchor="end" fill="#0f172a">model: constant v</text>
+<path d="M60,410 L72,425.4 L84,413.7 L96,419.8 L108,406.5 L120,391.3 L132,408.3 L144,407.1 L156,416.0 L168,429.3 L180,408.2 L192,405.8 L204,403.2 L216,392.9 L228,416.1 L240,420.1 L252,415.3 L264,422.6 L276,400.1 L288,396.0 L300,408.2 L312,403.2 L324,422.4 L336,425.4 L348,406.8 L360,410.7 L372,397.3 L384,395.8 L396,418.8 L408,414.6 L420,420.6 L432,420.9 L444,396.2 L456,402.0 L468,403.9 L480,403.6 L492,427.2 L504,419.2 L516,409.9 L528,411.7 L540,391.9 L552,401.8 L564,416.9 L576,412.1 L588,426.3 L600,415.4 L612,396.8 L624,405.8 L636,398.1 L648,408.3 L660,427.8 L672,414.3 L684,415.6 L696,408.1 L708,390.1 L720,407.6 L732,411.7 L744,414.3 L756,429.2 L768,409.0 L780,401.5 L792,405.1" fill="none" stroke="#dc2626" stroke-width="3"/>
+<text x="300" y="466" font-size="22" fill="#dc2626">actual: v + w</text>
+</svg>

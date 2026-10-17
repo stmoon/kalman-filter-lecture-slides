@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400" width="900" height="400" font-family="Atkinson Hyperlegible, Noto Sans KR, sans-serif">
+<defs><marker id="ma" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/></marker></defs>
+<line x1="160" y1="320" x2="560" y2="320" stroke="#475569" stroke-width="2" stroke-dasharray="8 6"/>
+<line x1="160" y1="320" x2="498.28934348292705" y2="196.87274840275927" stroke="#dc2626" stroke-width="4" marker-end="url(#ma)"/>
+<text x="508.28934348292705" y="206.87274840275927" font-size="28" fill="#dc2626" font-weight="700">heading</text>
+<line x1="160" y1="320" x2="720" y2="80" stroke="#2563eb" stroke-width="4"/>
+<text x="410.0" y="180.0" font-size="30" fill="#2563eb" font-weight="700">r</text>
+<path d="M460,320 A300,300 0 0 0 441.9077862357725,217.39395700229937" fill="none" stroke="#dc2626" stroke-width="3"/>
+<text x="470" y="290" font-size="28" fill="#dc2626" font-weight="700">theta</text>
+<path d="M347.9385241571817,251.59597133486625 A200,200 0 0 0 343.8290060036116,241.21614028416644" fill="none" stroke="#16a34a" stroke-width="4"/>
+<text x="340" y="210" font-size="28" fill="#16a34a" font-weight="700">phi</text>
+<rect x="696" y="56" width="48" height="48" rx="6" fill="#d97706"/>
+<text x="760" y="90" font-size="28" fill="#d97706" font-weight="700">landmark p</text>
+<g transform="translate(160,320) rotate(-20)"><rect x="-56" y="-28" width="112" height="56" rx="12" fill="#dbeafe" stroke="#0f172a" stroke-width="3"/></g>
+<circle cx="160" cy="320" r="6" fill="#0f172a"/>
+<text x="160" y="386" font-size="28" text-anchor="middle" fill="#0f172a" font-weight="700">robot (x, y)</text>
+</svg>
