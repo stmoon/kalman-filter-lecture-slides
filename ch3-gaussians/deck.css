@@ -196,3 +196,6 @@ figure.fig img { flex: none; align-self: start; }
 .tbl thead th { font-family: var(--font-display); font-weight: 700; color: var(--sky-deep); border-bottom: 2px solid var(--sky); }
 .tbl tbody tr:last-child td { border-bottom: 0; }
 .tbl td strong { color: var(--ink); font-weight: 700; }
+
+/* Keep build-time results off screen until deck.js has taken them over (no flash on load). */
+@media screen { [data-run-out]:not([data-ready]) { visibility: hidden; } }

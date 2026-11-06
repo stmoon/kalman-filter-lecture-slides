@@ -149,6 +149,9 @@
     '}',
     '@media print {',
     '  .run-btn, .run-panel:not(.inline), .run-close, .present-btn { display: none !important; }',
+    // the PDF keeps the build-time result that the screen hides until a run
+    '  .run-panel.inline.baked { display: block; }',
+    '  .run-slot > .run-panel.inline.baked { display: flex; }',
     '  body.presenting { background: #fff; overflow: visible; }',
     '  body.presenting .slide { display: flex !important; position: static !important; transform: none !important; }',
     '}'
@@ -245,7 +248,7 @@
     }
     close.addEventListener('click', function () {
       clear(inline);
-      inline.classList.remove('has-output');
+      inline.classList.remove('has-output', 'baked');
     });
     if (!inline.querySelector('.run-text')) inline.appendChild(textNode());
   }
@@ -701,7 +704,12 @@
     Array.prototype.forEach.call(code, addLineNumbers);
     var runnable = document.querySelectorAll('pre[data-run]');
     Array.prototype.forEach.call(runnable, addRunner);
-    Array.prototype.forEach.call(document.querySelectorAll('[data-run-out].has-output'), initSlot);
+    // On screen a result appears only after its block is run; print still shows the baked one.
+    Array.prototype.forEach.call(document.querySelectorAll('[data-run-out].has-output'), function (p) {
+      initSlot(p);
+      p.classList.add('baked');
+      p.classList.remove('has-output');
+    });
     setupPresenting();
   }
 
