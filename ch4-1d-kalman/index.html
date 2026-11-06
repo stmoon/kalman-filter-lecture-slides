@@ -5,7 +5,7 @@
 <title>Chapter 4 One Dimensional Kalman Filters</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin">
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&amp;family=Atkinson+Hyperlegible:wght@400;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Noto+Sans+KR:wght@400;500;700;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&amp;family=Atkinson+Hyperlegible:wght@400;700&amp;family=Carlito:wght@400;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Noto+Sans+KR:wght@400;500;700;900&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./deck.css">
 <script src="./pylib.js"></script>
 <script defer="" src="./deck.js"></script>
@@ -151,11 +151,12 @@ figure.fig { align-items: center; }
 <body>
 <deck-stage>
 <section class="slide cover" data-label="Cover" data-screen-label="Cover">
-  <img class="cover-logo" src="./cbnu_logo.png" alt="충북대학교">
-  <span class="cover-kicker">자율주행 위치인식 · PART 2. KALMAN FILTER · CHAPTER 4</span>
-  <h1 class="cover-title">One Dimensional Kalman Filters</h1>
+  <img class="cover-coss" src="./coss_logo.png" alt="COSS">
+  <img class="cover-cbnu" src="./cbnu_cover.png" alt="CBNU">
+  <p class="cover-course">Localization for Autonomous Navigation</p>
+  <h1 class="cover-title">Chapter 4. One Dimensional Kalman Filters</h1>
   <div class="cover-rule"></div>
-  <p class="cover-by">충북대학교 지능로봇공학과 <b>문성태 교수</b></p>
+  <p class="cover-by">Dept. Intelligent Systems &amp; Robots<b>Prof. SungTae Moon</b></p>
 </section>
 <section class="slide" data-label="01 Contents" data-screen-label="01 Contents">
 <header class="head"><span class="kicker">Chapter 4 One Dimensional Kalman Filters</span><span class="folio">01</span></header>
@@ -1073,9 +1074,9 @@ def update(prior, likelihood):
 </script>
 <footer class="foot"><span class="foot-sec">Day 2 · Chapter 4 One Dimensional Kalman Filters</span><div class="bar"><i style="width:48%"></i></div><span class="foot-num">19 / 40</span></footer>
 </section>
-<section class="slide" data-label="20 Exercise: Modify Variance Values" data-screen-label="20 Exercise: Modify Variance Values">
+<section class="slide" data-label="20 Modify Variance Values" data-screen-label="20 Modify Variance Values">
 <header class="head"><span class="kicker">4.7.1 Exercise: Modify Variance Values</span><span class="folio">20</span></header>
-<h2 class="title">Exercise: Modify Variance Values</h2>
+<h2 class="title">Modify Variance Values</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>process_var 와 sensor_var 를 바꿔 가며 수렴 분산이 어느 쪽에 더 좌우되는지 비교</li><li>측정값과 무관하게 분산만 계산, sensor_var = 2 쪽이 더 작은 값으로 수렴</li><li><strong>조건</strong>: (process_var, sensor_var) = (40, 2), (2, 40), 50 단계</li></ul><div style="display:grid;grid-template-columns:1004px 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxs denser"><span class="k">def</span> <span class="fn">converged_variance</span>(process_var, sensor_var, N=<span class="no">50</span>):
     x = gaussian(<span class="no">0.</span>, <span class="no">400.</span>)
@@ -1905,9 +1906,9 @@ def update(prior, likelihood):
 </script>
 <footer class="foot"><span class="foot-sec">Day 2 · Chapter 4 One Dimensional Kalman Filters</span><div class="bar"><i style="width:85%"></i></div><span class="foot-num">34 / 40</span></footer>
 </section>
-<section class="slide" data-label="35 Exercise: Interactive Plots" data-screen-label="35 Exercise: Interactive Plots">
+<section class="slide" data-label="35 Interactive Plots" data-screen-label="35 Interactive Plots">
 <header class="head"><span class="kicker">4.16 Exercise: Interactive Plots</span><span class="folio">35</span></header>
-<h2 class="title">Exercise: Interactive Plots</h2>
+<h2 class="title">Interactive Plots</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>시작 위치, 센서 잡음, 속도, process 잡음을 인자로 받아 필터를 실행하고 그리는 함수</li><li>seed(303) 로 매번 같은 난수를 써서 파라미터만 바꾼 결과를 서로 비교 가능</li><li><strong>조건</strong>: 20 단계, 초기 믿음 N(0, 1000), 호출 예 (0, 5, 1, 0.1)</li></ul><div style="display:grid;grid-template-columns:971px 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxxs tightest"><span class="k">def</span> <span class="fn">plot_kalman_filter</span>(start_pos, sensor_noise,
                        velocity, process_noise):
@@ -1944,9 +1945,9 @@ from numpy.random import seed
 </script>
 <footer class="foot"><span class="foot-sec">Day 2 · Chapter 4 One Dimensional Kalman Filters</span><div class="bar"><i style="width:88%"></i></div><span class="foot-num">35 / 40</span></footer>
 </section>
-<section class="slide" data-label="36 Exercise: Interactive Plots" data-screen-label="36 Exercise: Interactive Plots">
+<section class="slide" data-label="36 Interactive Plots" data-screen-label="36 Interactive Plots">
 <header class="head"><span class="kicker">4.16 Exercise: Interactive Plots</span><span class="folio">36</span></header>
-<h2 class="title">Exercise: Interactive Plots</h2>
+<h2 class="title">Interactive Plots</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>슬라이더로 시작 위치, 센서 잡음, 속도, process 잡음을 바꾸며 출력 변화 관찰</li><li>process 잡음은 개가 매 단계 경로를 벗어나는 정도로 개 위치에 더해짐</li><li><strong>조건</strong>: seed 고정, start_pos -10 ~ 10, sensor_noise 0 ~ 100, process_noise 0 ~ 40</li></ul><div style="display:grid;grid-template-columns:898px 1fr;gap:28px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxs denser"><span class="k">from</span> ipywidgets <span class="k">import</span> interact, FloatSlider
 
@@ -1989,9 +1990,9 @@ def plot_kalman_filter(start_pos, sensor_noise,
 </script>
 <footer class="foot"><span class="foot-sec">Day 2 · Chapter 4 One Dimensional Kalman Filters</span><div class="bar"><i style="width:90%"></i></div><span class="foot-num">36 / 40</span></footer>
 </section>
-<section class="slide" data-label="37 Exercise - Nonlinear Systems" data-screen-label="37 Exercise - Nonlinear Systems">
+<section class="slide" data-label="37 Nonlinear Systems" data-screen-label="37 Nonlinear Systems">
 <header class="head"><span class="kicker">4.17 Exercise - Nonlinear Systems</span><span class="folio">37</span></header>
-<h2 class="title">Exercise - Nonlinear Systems</h2>
+<h2 class="title">Nonlinear Systems</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>선형 식(prior 는 두 Gaussian 의 합, posterior 는 곱)의 필터를 sin 곡선 측정에 적용</li><li>필터 출력이 sin 파형을 얼마나 따라가는지, 초기값 100 에서 어떻게 움직이는지 관찰</li><li><strong>조건</strong>: 측정 2 sin(i/3) + 잡음, 모델은 속도 1 의 등속, 초기 N(100, 500)</li></ul><div style="display:grid;grid-template-columns:815px 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxxs denser"><span class="k">import</span> math
 sensor_var = <span class="no">30.</span>

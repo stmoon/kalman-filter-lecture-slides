@@ -149,15 +149,17 @@ code {
 .bar i { display: block; height: 100%; border-radius: 999px; background: var(--leaf); }
 .foot-num { font-family: var(--font-mono); font-size: 24px; color: var(--ink-subtle); white-space: nowrap; font-variant-ligatures: none; }
 
-.cover { background: var(--sky-soft); justify-content: center; position: relative; }
-.cover .head::after { content: none; }
-.cover-logo { position: absolute; top: 76px; right: var(--pad-x); width: 400px; height: auto; }
-.cover-kicker { font-family: var(--font-display); font-weight: 700; font-size: 32px; color: var(--sky-deep); letter-spacing: 0.06em; }
-.cover-title { font-family: var(--font-display); font-weight: 800; font-size: var(--type-display); line-height: 1.1; letter-spacing: -0.02em; margin: 32px 0 0; color: var(--ink); }
-.cover-sub { font-size: var(--type-subtitle); color: var(--ink-muted); margin: 28px 0 0; }
-.cover-rule { width: 132px; height: 10px; border-radius: 999px; background: var(--sun); margin-top: 44px; }
-.cover-by { font-size: 40px; color: var(--ink-muted); margin: 40px 0 0; }
-.cover-by b { color: var(--ink); font-weight: 700; }
+/* Positions and sizes follow the earlier lecture template (pptx EMU converted to a 1920 px stage). */
+.cover { background: #ffffff; justify-content: flex-start; padding: 195px 112px 0 184px; }
+.cover::before { content: ""; position: absolute; left: 0; right: 0; top: 755px; bottom: 0; background: #c6dfef; }
+.cover > * { position: relative; }
+.cover-coss { position: absolute; left: 1761px; top: 15px; width: 144px; height: auto; }
+.cover-cbnu { position: absolute; left: 1303px; top: 513px; width: 561px; height: auto; }
+.cover-course { font-family: 'Calibri', 'Carlito', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 56px; line-height: 1.2; color: #3f3f3f; margin: 0; }
+.cover-title { font-family: 'Calibri', 'Carlito', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 88px; line-height: 1.2; color: #3f3f3f; margin: 0; text-wrap: balance; }
+.cover-rule { flex: none; width: 814px; height: 9px; margin: 8px 0 0 10px; background: #4193c9; box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4); }
+.cover-by { position: absolute; left: 185px; top: 567px; margin: 0; display: flex; flex-direction: column; font-family: 'Calibri', 'Carlito', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 48px; line-height: 1.5; color: #757070; }
+.cover-by b { font-size: 56px; font-weight: 700; }
 
 /* --- formulas ----------------------------------------------------------- */
 

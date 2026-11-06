@@ -5,7 +5,7 @@
 <title>Chapter 6 Multivariate Kalman Filters</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin">
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&amp;family=Atkinson+Hyperlegible:wght@400;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Noto+Sans+KR:wght@400;500;700;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&amp;family=Atkinson+Hyperlegible:wght@400;700&amp;family=Carlito:wght@400;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Noto+Sans+KR:wght@400;500;700;900&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./deck.css">
 <script src="./pylib.js"></script>
 <script defer="" src="./deck.js"></script>
@@ -174,11 +174,12 @@ figure.fig { align-items: center; }
 <body>
 <deck-stage>
 <section class="slide cover" data-label="Cover" data-screen-label="Cover">
-  <img class="cover-logo" src="./cbnu_logo.png" alt="충북대학교">
-  <span class="cover-kicker">자율주행 위치인식 · PART 2. KALMAN FILTER · CHAPTER 6</span>
-  <h1 class="cover-title">Multivariate Kalman Filters</h1>
+  <img class="cover-coss" src="./coss_logo.png" alt="COSS">
+  <img class="cover-cbnu" src="./cbnu_cover.png" alt="CBNU">
+  <p class="cover-course">Localization for Autonomous Navigation</p>
+  <h1 class="cover-title">Chapter 6. Multivariate Kalman Filters</h1>
   <div class="cover-rule"></div>
-  <p class="cover-by">충북대학교 지능로봇공학과 <b>문성태 교수</b></p>
+  <p class="cover-by">Dept. Intelligent Systems &amp; Robots<b>Prof. SungTae Moon</b></p>
 </section>
 <section class="slide" data-label="01 Contents" data-screen-label="01 Contents">
 <header class="head"><span class="kicker">Chapter 6 Multivariate Kalman Filters</span><span class="folio">01</span></header>
@@ -3465,9 +3466,9 @@ def pos_vel_filter(x, P, R, Q=0., dt=1.0):
 </svg></strong>: posterior, prior</li></ul></div><div class="cell"><ul class="ul"><li><strong>대입 표기</strong>: x = x + 1 은 등식이 아닌 대입, 첨자를 생략하고 단계별 대입으로 표기</li><li><strong>기호 차이</strong>: F 를 A 로 쓰는 등 문헌마다 다름, 첨자를 지우고 계산 흐름부터 파악</li></ul></div></div></div>
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:58%"></i></div><span class="foot-num">33 / 57</span></footer>
 </section>
-<section class="slide" data-label="34 Exercise: Show Effect of Hidden Variables" data-screen-label="34 Exercise: Show Effect of Hidden Variables">
+<section class="slide" data-label="34 Show Effect of Hidden Variables" data-screen-label="34 Show Effect of Hidden Variables">
 <header class="head"><span class="kicker">6.10 Exercise: Show Effect of Hidden Variables</span><span class="folio">34</span></header>
-<h2 class="title">Exercise: Show Effect of Hidden Variables</h2>
+<h2 class="title">Show Effect of Hidden Variables</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>위치만 상태로 둔 1 차원 필터와 위치, 속도를 상태로 둔 2 차원 필터를 같은 측정에 적용</li><li>빨간 점의 2 차원 필터가 훨씬 정확, 1 차원 필터는 속도를 추정할 수 없어 대상을 뒤따라감</li><li><strong>조건</strong>: x0 = 0, P = 50, R = 5, Q = 0.02, 실제 속도 1, 100 단계</li></ul><div style="display:grid;grid-template-columns:830px 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxxs tightest"><span class="k">def</span> <span class="fn">univariate_filter</span>(x0, P, R, Q):
     f = KalmanFilter(dim_x=<span class="no">1</span>, dim_z=<span class="no">1</span>, dim_u=<span class="no">1</span>)
@@ -4803,9 +4804,9 @@ Ms, Ps, _, _ = f.rts_smoother(Xs, Covs)
 </script>
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:95%"></i></div><span class="foot-num">54 / 57</span></footer>
 </section>
-<section class="slide" data-label="55 Exercise: Compare Velocities" data-screen-label="55 Exercise: Compare Velocities">
+<section class="slide" data-label="55 Compare Velocities" data-screen-label="55 Compare Velocities">
 <header class="head"><span class="kicker">6.18 Exercise: Compare Velocities</span><span class="folio">55</span></header>
-<h2 class="title">Exercise: Compare Velocities</h2>
+<h2 class="title">Compare Velocities</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>연속한 측정의 차이로 구한 raw 속도를 Kalman filter, RTS 속도와 함께 그림</li><li>잡음이 신호를 덮어 raw 속도는 쓸모가 없음, 필터는 다차원 K (예: [0.1274, 0.843]^T) 로 속도를 따로 추정</li><li>측정이 정확해도 속도, 가속도를 정확히 얻기 위해 Kalman filter 사용</li><li><strong>조건</strong>: 위 슬라이드의 측정 zs, 필터 Xs, RTS 결과 Ms</li></ul><div style="display:grid;grid-template-columns:860px 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxs denser">dx = np.diff(zs, axis=<span class="no">0</span>)
 plt.scatter(<span class="fn">range</span>(<span class="no">1</span>, <span class="fn">len</span>(dx) + <span class="no">1</span>), dx, facecolor=<span class="s">'none'</span>,

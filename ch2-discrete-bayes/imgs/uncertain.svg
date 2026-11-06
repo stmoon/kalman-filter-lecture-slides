@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 300" width="900" height="300" font-family="Atkinson Hyperlegible, Noto Sans KR, sans-serif">
+<text x="355.0" y="68" font-size="28" fill="#475569">belief</text>
+<text x="765.0" y="172" font-size="28" fill="#475569">prior</text>
+<line x1="665.0" y1="60" x2="725.0" y2="60" stroke="#475569" stroke-width="6.0"/>
+<text x="737.0" y="68" font-size="26" fill="#475569">0.8</text>
+<line x1="665.0" y1="96" x2="725.0" y2="96" stroke="#475569" stroke-width="2.5"/>
+<text x="737.0" y="104" font-size="26" fill="#475569">0.1</text>
+<text x="95.0" y="24" font-size="24" text-anchor="middle" fill="#475569">pos 2</text>
+<rect x="40.0" y="30" width="110" height="56" rx="12" fill="#fff" stroke="#2563eb" stroke-width="3"/>
+<text x="95.0" y="68" font-size="32" text-anchor="middle" fill="#2563eb" font-weight="700">0.4</text>
+<text x="245.0" y="24" font-size="24" text-anchor="middle" fill="#475569">pos 3</text>
+<rect x="190.0" y="30" width="110" height="56" rx="12" fill="#fff" stroke="#dc2626" stroke-width="3"/>
+<text x="245.0" y="68" font-size="32" text-anchor="middle" fill="#dc2626" font-weight="700">0.6</text>
+<line x1="95.0" y1="86" x2="245.0" y2="134" stroke="#2563eb" stroke-width="2.5" opacity="0.75"/>
+<line x1="95.0" y1="86" x2="395.0" y2="134" stroke="#2563eb" stroke-width="6.0" opacity="0.75"/>
+<line x1="95.0" y1="86" x2="545.0" y2="134" stroke="#2563eb" stroke-width="2.5" opacity="0.75"/>
+<line x1="245.0" y1="86" x2="395.0" y2="134" stroke="#dc2626" stroke-width="2.5" opacity="0.75"/>
+<line x1="245.0" y1="86" x2="545.0" y2="134" stroke="#dc2626" stroke-width="6.0" opacity="0.75"/>
+<line x1="245.0" y1="86" x2="695.0" y2="134" stroke="#dc2626" stroke-width="2.5" opacity="0.75"/>
+<rect x="190.0" y="134" width="110" height="56" rx="12" fill="#dbeafe" stroke="#d97706" stroke-width="3"/>
+<text x="245.0" y="172" font-size="32" text-anchor="middle" fill="#0f172a" font-weight="700">0.04</text>
+<text x="245.0" y="214" font-size="24" text-anchor="middle" fill="#475569">pos 3</text>
+<text x="245.0" y="242" font-size="24" text-anchor="middle" fill="#2563eb">0.4×0.1</text>
+<rect x="340.0" y="134" width="110" height="56" rx="12" fill="#dbeafe" stroke="#d97706" stroke-width="3"/>
+<text x="395.0" y="172" font-size="32" text-anchor="middle" fill="#0f172a" font-weight="700">0.38</text>
+<text x="395.0" y="214" font-size="24" text-anchor="middle" fill="#475569">pos 4</text>
+<text x="395.0" y="242" font-size="24" text-anchor="middle" fill="#2563eb">0.4×0.8</text>
+<text x="395.0" y="268" font-size="24" text-anchor="middle" fill="#dc2626">+ 0.6×0.1</text>
+<rect x="490.0" y="134" width="110" height="56" rx="12" fill="#dbeafe" stroke="#d97706" stroke-width="3"/>
+<text x="545.0" y="172" font-size="32" text-anchor="middle" fill="#0f172a" font-weight="700">0.52</text>
+<text x="545.0" y="214" font-size="24" text-anchor="middle" fill="#475569">pos 5</text>
+<text x="545.0" y="242" font-size="24" text-anchor="middle" fill="#2563eb">0.4×0.1</text>
+<text x="545.0" y="268" font-size="24" text-anchor="middle" fill="#dc2626">+ 0.6×0.8</text>
+<rect x="640.0" y="134" width="110" height="56" rx="12" fill="#dbeafe" stroke="#d97706" stroke-width="3"/>
+<text x="695.0" y="172" font-size="32" text-anchor="middle" fill="#0f172a" font-weight="700">0.06</text>
+<text x="695.0" y="214" font-size="24" text-anchor="middle" fill="#475569">pos 6</text>
+<text x="695.0" y="242" font-size="24" text-anchor="middle" fill="#dc2626">0.6×0.1</text>
+</svg>

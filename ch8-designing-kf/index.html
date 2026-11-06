@@ -5,7 +5,7 @@
 <title>Chapter 8 Designing Kalman Filters</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin">
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&amp;family=Atkinson+Hyperlegible:wght@400;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Noto+Sans+KR:wght@400;500;700;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&amp;family=Atkinson+Hyperlegible:wght@400;700&amp;family=Carlito:wght@400;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Noto+Sans+KR:wght@400;500;700;900&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./deck.css">
 <script src="./pylib.js"></script>
 <script defer="" src="./deck.js"></script>
@@ -372,11 +372,12 @@ figure.fig { align-items: center; }
 <body>
 <deck-stage>
 <section class="slide cover" data-label="Cover" data-screen-label="Cover">
-  <img class="cover-logo" src="./cbnu_logo.png" alt="충북대학교">
-  <span class="cover-kicker">자율주행 위치인식 · PART 2. KALMAN FILTER · CHAPTER 8</span>
-  <h1 class="cover-title">Designing Kalman Filters</h1>
+  <img class="cover-coss" src="./coss_logo.png" alt="COSS">
+  <img class="cover-cbnu" src="./cbnu_cover.png" alt="CBNU">
+  <p class="cover-course">Localization for Autonomous Navigation</p>
+  <h1 class="cover-title">Chapter 8. Designing Kalman Filters</h1>
   <div class="cover-rule"></div>
-  <p class="cover-by">충북대학교 지능로봇공학과 <b>문성태 교수</b></p>
+  <p class="cover-by">Dept. Intelligent Systems &amp; Robots<b>Prof. SungTae Moon</b></p>
 </section>
 <section class="slide" data-label="01 Contents" data-screen-label="01 Contents">
 <header class="head"><span class="kicker">Chapter 8 Designing Kalman Filters</span><span class="folio">01</span></header>
@@ -1294,9 +1295,9 @@ xs, zs = simulate_acc_system(R=R, Q=Q, count=80)
 </script>
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:39%"></i></div><span class="foot-num">19 / 49</span></footer>
 </section>
-<section class="slide" data-label="20 Exercise: State Variable Design" data-screen-label="20 Exercise: State Variable Design">
+<section class="slide" data-label="20 State Variable Design" data-screen-label="20 State Variable Design">
 <header class="head"><span class="kicker">8.5 Exercise: State Variable Design</span><span class="folio">20</span></header>
-<h2 class="title">Exercise: State Variable Design</h2>
+<h2 class="title">State Variable Design</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul"><li><strong>과제</strong>: 2D 로봇의 상태를 [x y <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.154 6.694 7.654" role="img" aria-label="\dot{x}" fill="currentColor" style="width:0.810em;height:0.926em;vertical-align:-0.060em;display:inline-block;overflow:visible">
 <defs>
@@ -1437,9 +1438,9 @@ xs, zs = simulate_acc_system(R=R, Q=Q, count=80)
 </svg></div></div></div></div><div class="point"><b>방법</b>: 상태 변수를 행렬의 행과 열에 나란히 적어 보면 각 항의 짝이 바로 보임, x 와 y 가 섞인 항은 0</div></div>
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:41%"></i></div><span class="foot-num">20 / 49</span></footer>
 </section>
-<section class="slide" data-label="21 Exercise: State Variable Design" data-screen-label="21 Exercise: State Variable Design">
+<section class="slide" data-label="21 State Variable Design" data-screen-label="21 State Variable Design">
 <header class="head"><span class="kicker">8.5.1 Solution</span><span class="folio">21</span></header>
-<h2 class="title">Exercise: State Variable Design</h2>
+<h2 class="title">State Variable Design</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>바꾼 순서에 맞춰 F, H, Q 를 다시 배치, Q 는 1 차원 q 의 항을 해당 위치로 복사</li><li>필터 출력(파란 선)이 측정을 따라 직선 궤적을 추정, 행렬 배치만 달라지고 결과는 동일</li><li><strong>조건</strong>: zs: PosSensor((0, 0), (60, 15), noise_std=10) 의 cm 측정 30 개, R_std = 10 cm, Q_std = 0.04 m, dt = 1 s</li></ul><div style="display:grid;grid-template-columns:949px 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxxs tightest">tracker = KalmanFilter(dim_x=<span class="no">4</span>, dim_z=<span class="no">2</span>)
 tracker.F = np.array([[<span class="no">1</span>, <span class="no">0</span>, dt,  <span class="no">0</span>],
@@ -2183,9 +2184,9 @@ plt.legend(loc=<span class="no">4</span>);</pre></div><div class="cell"><div cla
 <div class="body"><div style="display:grid;grid-template-columns:1fr 760px;gap:40px;min-height:0;"><div class="cell"><ul class="ul"><li><strong>상황</strong>: (100, 100) m 의 표적을 (50, 50), (150, 50) 의 두 레이더가 거리와 방위로 측정</li><li><strong>초기</strong>: x, y 불확실성이 같아 원 모양(노랑)</li><li><strong>1 번 레이더</strong>: 방위 σ = 0.5° 는 정확, 거리 σ = 3 m 는 부정확, 시선 방향으로 긴 타원(초록)</li><li><strong>2 번 레이더</strong>: 시선이 1 번과 직교, 오차 방향이 서로 바뀌어 타원(파랑)이 훨씬 작아짐</li><li><strong>의미</strong>: 공분산은 문제의 기하를 포함한 모든 정보를 반영, 위치 센서와 속도 센서의 조합에서도 같음</li></ul></div><div class="cell"><figure class="fig plain"><img src="./imgs/radar.svg" alt="radar" style="width:100%"></figure></div></div></div>
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:69%"></i></div><span class="foot-num">34 / 49</span></footer>
 </section>
-<section class="slide" data-label="35 Exercise: Can you Filter GPS outputs?" data-screen-label="35 Exercise: Can you Filter GPS outputs?">
+<section class="slide" data-label="35 Can you Filter GPS outputs?" data-screen-label="35 Can you Filter GPS outputs?">
 <header class="head"><span class="kicker">8.9.1 Exercise: Can you Filter GPS outputs?</span><span class="folio">35</span></header>
-<h2 class="title">Exercise: Can you Filter GPS outputs?</h2>
+<h2 class="title">Can you Filter GPS outputs?</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>상용 GPS 출력은 내부 Kalman filter 의 추정, 그 출력을 다시 필터의 측정으로 넣으면 좋아지는지 확인</li><li>그래프는 실제 궤적 대비 오차, 반복할수록 매끄러워지지만 궤적에서 벗어나고 지연이 생김</li><li>필터 출력은 시간 상관이라 Markov 가정 위반, 최적 해를 다시 필터링해 더 최적이 될 수 없음</li><li><strong>조건</strong>: R = 5, Q = 0.02, 30 단계, seed 124, 이전 필터의 위치 추정을 다음 필터의 측정으로 사용</li></ul><div style="display:grid;grid-template-columns:841px 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxxs tightest">np.random.seed(<span class="no">124</span>)
 R, Q = <span class="no">5.</span>, <span class="no">0.02</span>
@@ -2205,9 +2206,9 @@ plots.plot_measurements(zs - xs[:, <span class="no">0</span>], label=<span class
 plt.ylabel(<span class="s">'error from track (m)'</span>); plt.legend(loc=<span class="no">3</span>, ncol=<span class="no">2</span>);</pre></div><div class="cell"><div class="run-slot" data-key="09cf03ff7712"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text"></span><img src="./imgs/run/09cf03ff7712_0.png" alt="result"></div></div></div></div></div>
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:71%"></i></div><span class="foot-num">35 / 49</span></footer>
 </section>
-<section class="slide" data-label="36 Exercise: Prove that the Position Sensor Improves the Filter" data-screen-label="36 Exercise: Prove that the Position Sensor Improves the Filter">
+<section class="slide" data-label="36 Prove that the Position Sensor Improves the Filter" data-screen-label="36 Prove that the Position Sensor Improves the Filter">
 <header class="head"><span class="kicker">8.9.2 Exercise: Prove that the position sensor improves the filter</span><span class="folio">36</span></header>
-<h2 class="title">Exercise: Prove that the Position Sensor Improves the Filter</h2>
+<h2 class="title">Prove that the Position Sensor Improves the Filter</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>같은 융합 필터를 fusion_test(wheel_sigma, ps_sigma) 로 묶고 position 센서 잡음을 1e40 으로 키워 사실상 무시</li><li>참값 대비 오차의 표준편차가 융합한 경우 더 작음, 부정확한 센서도 정보를 더함</li><li><strong>조건</strong>: wheel σ = 1.5 m, position σ = 3 m 또는 1e40, 같은 seed 의 측정, 참값 위치 = 단계 번호</li></ul><div style="display:grid;grid-template-columns:970px 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxs denser">nom = np.arange(<span class="no">1</span>, <span class="no">100</span>)
 <span class="k">for</span> ps_sigma, name <span class="k">in</span> ((<span class="no">1.e40</span>, <span class="s">'wheel only'</span>), (<span class="no">3.0</span>, <span class="s">'fusion'</span>)):

@@ -5,7 +5,7 @@
 <title>Chapter 3 Probabilities, Gaussians, and Bayes Theorem</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin">
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&amp;family=Atkinson+Hyperlegible:wght@400;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Noto+Sans+KR:wght@400;500;700;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&amp;family=Atkinson+Hyperlegible:wght@400;700&amp;family=Carlito:wght@400;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Noto+Sans+KR:wght@400;500;700;900&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./deck.css">
 <script src="./pylib.js"></script>
 <script defer="" src="./deck.js"></script>
@@ -121,11 +121,12 @@ figure.fig { align-items: center; }
 <body>
 <deck-stage>
 <section class="slide cover" data-label="Cover" data-screen-label="Cover">
-  <img class="cover-logo" src="./cbnu_logo.png" alt="충북대학교">
-  <span class="cover-kicker">자율주행 위치인식 · PART 2. KALMAN FILTER · CHAPTER 3</span>
-  <h1 class="cover-title">Probabilities, Gaussians, and Bayes&#x27; Theorem</h1>
+  <img class="cover-coss" src="./coss_logo.png" alt="COSS">
+  <img class="cover-cbnu" src="./cbnu_cover.png" alt="CBNU">
+  <p class="cover-course">Localization for Autonomous Navigation</p>
+  <h1 class="cover-title">Chapter 3. Probabilities, Gaussians, and Bayes&#x27; Theorem</h1>
   <div class="cover-rule"></div>
-  <p class="cover-by">충북대학교 지능로봇공학과 <b>문성태 교수</b></p>
+  <p class="cover-by">Dept. Intelligent Systems &amp; Robots<b>Prof. SungTae Moon</b></p>
 </section>
 <section class="slide" data-label="01 Contents" data-screen-label="01 Contents">
 <header class="head"><span class="kicker">Chapter 3 Probabilities, Gaussians, and Bayes Theorem</span><span class="folio">01</span></header>
@@ -464,9 +465,9 @@ plt.axhline(<span class="no">1.5</span>, ls=<span class="s">'--'</span>, color=<
 </span><img src="./imgs/run/81674e5be7d2_0.png" alt="result"></div></div></div></div></div>
 <footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:17%"></i></div><span class="foot-num">06 / 35</span></footer>
 </section>
-<section class="slide" data-label="07 Exercise" data-screen-label="07 Exercise">
+<section class="slide" data-label="07 Expected Value of Die and Uniform" data-screen-label="07 Expected Value of Die and Uniform">
 <header class="head"><span class="kicker">3.4.1 Exercise</span><span class="folio">07</span></header>
-<h2 class="title">Exercise</h2>
+<h2 class="title">Expected Value of Die and Uniform</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>기댓값 정의를 이산 분포(주사위)와 연속 분포(구간 [0, 20] 균등 분포)에 적용</li><li>각 1000 개 표본의 평균이 해석값 3.5 와 10 에 가까운지 확인</li><li><strong>조건</strong>: 주사위 1 ~ 6 각 1/6, 균등 분포 f(x) = 1/20, 각 1000 샘플</li></ul><div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;min-height:0;"><div class="cell"><div class="card soft"><h3 class="card-h sky">Die roll</h3><div class="formula"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -8.917 167.677 12.852" role="img" aria-label="E[X] = \frac{1}{6}(1 + 2 + 3 + 4 + 5 + 6) = 3.5" fill="currentColor" style="width:20.289em;height:1.555em;vertical-align:-0.476em;display:inline-block;overflow:visible">
 <defs>

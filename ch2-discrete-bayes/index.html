@@ -5,7 +5,7 @@
 <title>Chapter 2 Discrete Bayes Filter</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin">
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&amp;family=Atkinson+Hyperlegible:wght@400;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Noto+Sans+KR:wght@400;500;700;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&amp;family=Atkinson+Hyperlegible:wght@400;700&amp;family=Carlito:wght@400;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Noto+Sans+KR:wght@400;500;700;900&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./deck.css">
 <script src="./pylib.js"></script>
 <script defer="" src="./deck.js"></script>
@@ -114,32 +114,33 @@ figure.fig { align-items: center; }
 <body>
 <deck-stage>
 <section class="slide cover" data-label="Cover" data-screen-label="Cover">
-  <img class="cover-logo" src="./cbnu_logo.png" alt="충북대학교">
-  <span class="cover-kicker">자율주행 위치인식 · PART 2. KALMAN FILTER · CHAPTER 2</span>
-  <h1 class="cover-title">Discrete Bayes Filter</h1>
+  <img class="cover-coss" src="./coss_logo.png" alt="COSS">
+  <img class="cover-cbnu" src="./cbnu_cover.png" alt="CBNU">
+  <p class="cover-course">Localization for Autonomous Navigation</p>
+  <h1 class="cover-title">Chapter 2. Discrete Bayes Filter</h1>
   <div class="cover-rule"></div>
-  <p class="cover-by">충북대학교 지능로봇공학과 <b>문성태 교수</b></p>
+  <p class="cover-by">Dept. Intelligent Systems &amp; Robots<b>Prof. SungTae Moon</b></p>
 </section>
 <section class="slide" data-label="01 Contents" data-screen-label="01 Contents">
 <header class="head"><span class="kicker">Chapter 2 Discrete Bayes Filter</span><span class="folio">01</span></header>
 <h2 class="title">Contents</h2>
 <div class="rule"></div>
-<div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;min-height:0;"><div class="cell"><ul class="ul contents"><li>Tracking a Dog</li><li>Extracting Information from Sensor Readings</li><li>Noisy Sensors</li><li>Incorporating Movement</li><li>Terminology</li><li>Adding Uncertainty to the Prediction</li><li>Generalizing with Convolution</li></ul></div><div class="cell"><ul class="ul contents"><li>Integrating Measurements and Movement Updates</li><li>The Discrete Bayes Algorithm</li><li>The Effect of Bad Sensor Data</li><li>Drawbacks and Limitations</li><li>Tracking and Control</li><li>Bayes Theorem and the Total Probability Theorem</li><li>Summary</li></ul></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:3%"></i></div><span class="foot-num">01 / 37</span></footer>
+<div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;min-height:0;"><div class="cell"><ul class="ul contents"><li>Tracking a Dog</li><li>Extracting Information from Sensor Readings</li><li>Noisy Sensors</li><li>Incorporating Movement</li><li>Adding Uncertainty to the Prediction</li><li>Generalizing with Convolution</li></ul></div><div class="cell"><ul class="ul contents"><li>Integrating Measurements and Movement Updates</li><li>The Discrete Bayes Algorithm</li><li>The Effect of Bad Sensor Data</li><li>Drawbacks and Limitations</li><li>Bayes Theorem and the Total Probability Theorem</li><li>Summary</li></ul></div></div></div>
+<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:3%"></i></div><span class="foot-num">01 / 30</span></footer>
 </section>
 <section class="slide" data-label="02 Bayesian Filters" data-screen-label="02 Bayesian Filters">
 <header class="head"><span class="kicker">Discrete Bayes Filter</span><span class="folio">02</span></header>
 <h2 class="title">Bayesian Filters</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul"><li><strong>계열</strong>: Kalman filter 는 Bayesian filter 라는 필터 계열의 한 종류</li><li><strong>기존 설명</strong>: Bayesian 공식에서 Kalman filter 식을 유도하는 추상적 방식, 여러 수학 분야의 지식 필요</li><li><strong>직관적 접근</strong>: 복도를 움직이는 대상을 추적하며 Bayesian 통계가 동작하는 방식을 직관으로 이해</li><li><strong>추적 대상</strong>: robot 대신 개, 움직임을 예측하기 어려워 필터링에 흥미로운 문제 제공</li><li><strong>사고 실험</strong>: g-h filter 처럼 간단한 상황에서 확률을 이용한 추적 방법을 추론</li></ul><div class="point"><b>핵심</b>: 위치를 하나의 값이 아닌 <b>칸마다의 확률</b>(belief)로 표현하고 측정과 이동으로 갱신</div><figure class="fig plain"><img src="./imgs/belief_concept.svg" alt="belief_concept" style="width:1600px"></figure></div>
-<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:5%"></i></div><span class="foot-num">02 / 37</span></footer>
+<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:7%"></i></div><span class="foot-num">02 / 30</span></footer>
 </section>
 <section class="slide" data-label="03 Tracking a Dog" data-screen-label="03 Tracking a Dog">
 <header class="head"><span class="kicker">2.1 Tracking a Dog</span><span class="folio">03</span></header>
 <h2 class="title">Tracking a Dog</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul"><li><strong>상황</strong>: 개를 데려오는 사무실, 사무실 밖 복도를 돌아다니는 개의 위치 추적</li><li><strong>센서</strong>: 목걸이의 sonar 가 신호를 쏘고 돌아오는 echo 로 앞이 문(door)인지 벽(wall)인지 판단</li><li><strong>이동</strong>: 개가 걸으면 이동 방향(왼쪽, 오른쪽)도 감지, wifi 로 1 초마다 컴퓨터에 전송</li><li><strong>복도</strong>: 위치 0 ~ 9 의 10 칸, 문은 0, 1, 8 위치, 원형이라 9 에서 오른쪽으로 가면 0</li><li><strong>문제</strong>: door, wall, wall 처럼 들어오는 측정과 이동 정보만으로 개의 위치를 알아내는 방법</li></ul><figure class="fig plain"><img src="./imgs/hallway.svg" alt="hallway" style="width:100%"></figure></div>
-<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:8%"></i></div><span class="foot-num">03 / 37</span></footer>
+<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:10%"></i></div><span class="foot-num">03 / 30</span></footer>
 </section>
 <section class="slide" data-label="04 Uniform Prior" data-screen-label="04 Uniform Prior">
 <header class="head"><span class="kicker">2.1 Tracking a Dog</span><span class="folio">04</span></header>
@@ -150,14 +151,14 @@ belief = np.array([<span class="no">1</span>/<span class="no">10</span>]*<span c
 <span class="fn">print</span>(belief)
 plots.bar_plot(belief, ylim=(<span class="no">0</span>, <span class="no">.3</span>))</pre></div><div class="cell"><div class="run-slot" data-key="243ac8d1fed4"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text">[0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1]
 </span><img src="./imgs/run/243ac8d1fed4_0.png" alt="result"></div></div></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:11%"></i></div><span class="foot-num">04 / 37</span></footer>
+<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:13%"></i></div><span class="foot-num">04 / 30</span></footer>
 </section>
 <section class="slide" data-label="05 Frequentist and Bayesian" data-screen-label="05 Frequentist and Bayesian">
 <header class="head"><span class="kicker">2.1 Tracking a Dog</span><span class="folio">05</span></header>
 <h2 class="title">Frequentist and Bayesian</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;min-height:0;"><div class="cell"><div class="card"><h3 class="card-h sky">Frequentist</h3><ul class="ul"><li><strong>동전</strong>: 무한히 던지면 앞면 50%, 사건의 빈도로 계산</li><li><strong>한계</strong>: 이미 던진 동전 하나의 상태에 대해서는 말할 수 없음</li><li><strong>예</strong>: 100 일 중 4 일 비 → 내일 비 확률 1/25</li></ul></div></div><div class="cell"><div class="card soft"><h3 class="card-h sky">Bayesian</h3><ul class="ul"><li><strong>동전</strong>: 이번 한 번이 앞면이라는 믿음의 강도 50%</li><li><strong>사전 정보</strong>: 과거 정보(prior)를 계산에 반영</li><li><strong>예</strong>: 오늘 비가 오고 전선이 정체 → 내일도 비 가능성 높음</li></ul></div></div></div><div class="point"><b>belief</b>: 근거 없이 믿는다는 뜻이 아닌, 현재 가진 지식의 강도를 나타내는 척도</div><div class="point"><b>일기 예보</b>: 현재 상태와 과거 정보를 함께 쓰는 Bayesian 방식</div></div>
-<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:14%"></i></div><span class="foot-num">05 / 37</span></footer>
+<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:17%"></i></div><span class="foot-num">05 / 30</span></footer>
 </section>
 <section class="slide" data-label="06 Sensing a Door" data-screen-label="06 Sensing a Door">
 <header class="head"><span class="kicker">2.1 Tracking a Dog</span><span class="folio">06</span></header>
@@ -169,14 +170,14 @@ belief = hallway * (<span class="no">1</span>/<span class="no">3</span>)
 <span class="fn">print</span>(belief)
 plots.bar_plot(belief)</pre></div><div class="cell"><div class="run-slot" data-key="aa82452a1db3"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text">[0.333 0.333 0.    0.    0.    0.    0.    0.    0.333 0.   ]
 </span><img src="./imgs/run/aa82452a1db3_0.png" alt="result"></div></div></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:16%"></i></div><span class="foot-num">06 / 37</span></footer>
+<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:20%"></i></div><span class="foot-num">06 / 30</span></footer>
 </section>
 <section class="slide" data-label="07 Door, Move Right, Door" data-screen-label="07 Door, Move Right, Door">
 <header class="head"><span class="kicker">2.2 Extracting Information from Sensor Readings</span><span class="folio">07</span></header>
 <h2 class="title">Door, Move Right, Door</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;min-height:0;"><div class="cell"><ul class="ul"><li><strong>측정 순서</strong>: door → 오른쪽으로 이동 → door</li><li><strong>추론</strong>: 이 순서가 가능한 출발점은 왼쪽 끝 하나, 지금은 두 번째 문 앞</li></ul></div><div class="cell"><ul class="ul"><li><strong>다른 출발점</strong>: 두 번째, 세 번째 문에서 출발했다면 이동 후 wall 이 측정되어야 함</li><li><strong>확장</strong>: 긴 복도와 많은 문, 측정이 쌓일수록 후보가 좁혀짐</li></ul></div></div><div class="point"><b>핵심</b>: 측정 하나는 낮은 확률(0.333)만 주지만, 이동과 측정이 쌓이면 위치를 확정할 수 있음</div><div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:32px;min-height:0;"><div class="cell"><figure class="fig plain"><img src="./imgs/extract_1.svg" alt="extract_1" style="width:100%"></figure></div><div class="cell"><figure class="fig plain"><img src="./imgs/extract_2.svg" alt="extract_2" style="width:100%"></figure></div><div class="cell"><figure class="fig plain"><img src="./imgs/extract_3.svg" alt="extract_3" style="width:100%"></figure></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:19%"></i></div><span class="foot-num">07 / 37</span></footer>
+<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:23%"></i></div><span class="foot-num">07 / 30</span></footer>
 </section>
 <section class="slide" data-label="08 Scaling by Sensor Accuracy" data-screen-label="08 Scaling by Sensor Accuracy">
 <header class="head"><span class="kicker">2.3 Noisy Sensors</span><span class="folio">08</span></header>
@@ -195,71 +196,132 @@ update_belief(hallway, belief, z=reading, correct_scale=<span class="no">3.</spa
 plots.bar_plot(belief)</pre></div><div class="cell"><div class="run-slot" data-key="c49ef73d9554"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text">belief: [0.3 0.3 0.1 0.1 0.1 0.1 0.1 0.1 0.3 0.1]
 sum = 1.6000000000000003
 </span><img src="./imgs/run/c49ef73d9554_0.png" alt="result"></div></div></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:22%"></i></div><span class="foot-num">08 / 37</span></footer>
+<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:27%"></i></div><span class="foot-num">08 / 30</span></footer>
 </section>
 <section class="slide" data-label="09 Normalization" data-screen-label="09 Normalization">
 <header class="head"><span class="kicker">2.3 Noisy Sensors</span><span class="folio">09</span></header>
 <h2 class="title">Normalization</h2>
 <div class="rule"></div>
-<div class="body"><ul class="ul brief"><li>각 값을 전체 합으로 나누는 정규화로 합을 1 로 맞추고, 센서 정확도에서 scale 계산</li><li><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.972 156.805 10.963" role="img" aria-label="\text{scale} = \text{prob}_{\text{correct}} \,/\, (1 - \text{prob}_{\text{correct}})" fill="currentColor" style="width:18.973em;height:1.327em;vertical-align:-0.362em;display:inline-block;overflow:visible">
+<div class="body"><div style="display:grid;grid-template-columns:1fr max-content;gap:32px;min-height:0;align-items:center"><div class="cell"><ul class="ul brief"><li>정규화: 각 값을 전체 합으로 나눠 합을 1 로 맞춤</li><li><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -14.158 98.756 23.927" role="img" aria-label="\text{scale} = \dfrac{\text{prob}_{\text{correct}}}{1 - \text{prob}_{\text{correct}}}" fill="currentColor" style="width:11.949em;height:2.895em;vertical-align:-1.182em;display:inline-block;overflow:visible">
 <defs>
-<path id='ta5a8616ed905-g0-0' d='M6.565-2.291C6.735-2.291 6.914-2.291 6.914-2.491S6.735-2.69 6.565-2.69H1.176C1.006-2.69 .827-2.69 .827-2.491S1.006-2.291 1.176-2.291H6.565Z'/>
-<path id='ta5a8616ed905-g1-61' d='M4.374-7.093C4.423-7.223 4.423-7.263 4.423-7.273C4.423-7.382 4.334-7.472 4.224-7.472C4.154-7.472 4.085-7.442 4.055-7.382L.598 2.112C.548 2.242 .548 2.281 .548 2.291C.548 2.401 .638 2.491 .747 2.491C.877 2.491 .907 2.421 .966 2.252L4.374-7.093Z'/>
-<path id='ta5a8616ed905-g3-99' d='M2.713-2.783C2.587-2.727 2.518-2.615 2.518-2.476C2.518-2.287 2.65-2.148 2.845-2.148C3.034-2.148 3.18-2.267 3.18-2.49C3.18-3.11 2.211-3.11 2.015-3.11C.969-3.11 .321-2.308 .321-1.506C.321-.628 1.067 .07 1.981 .07C3.02 .07 3.264-.753 3.264-.837S3.173-.921 3.145-.921C3.055-.921 3.048-.9 3.013-.802C2.859-.37 2.49-.153 2.064-.153C1.583-.153 .955-.509 .955-1.513C.955-2.399 1.388-2.887 2.036-2.887C2.127-2.887 2.462-2.887 2.713-2.783Z'/>
-<path id='ta5a8616ed905-g3-101' d='M3.068-1.59C3.215-1.59 3.264-1.59 3.264-1.743C3.264-2.357 2.922-3.11 1.883-3.11C.969-3.11 .272-2.385 .272-1.527C.272-.642 1.046 .07 1.974 .07C2.915 .07 3.264-.683 3.264-.837C3.264-.865 3.25-.934 3.145-.934C3.055-.934 3.041-.893 3.02-.823C2.803-.258 2.273-.153 2.022-.153C1.695-.153 1.381-.3 1.172-.565C.914-.893 .907-1.318 .907-1.59H3.068ZM.914-1.771C.99-2.755 1.618-2.915 1.883-2.915C2.741-2.915 2.769-1.946 2.776-1.771H.914Z'/>
-<path id='ta5a8616ed905-g3-111' d='M3.689-1.485C3.689-2.357 2.943-3.11 1.981-3.11S.272-2.357 .272-1.485C.272-.621 1.039 .07 1.981 .07S3.689-.621 3.689-1.485ZM1.981-.153C1.723-.153 1.346-.237 1.116-.579C.928-.865 .907-1.227 .907-1.548C.907-1.848 .914-2.26 1.158-2.559C1.332-2.762 1.625-2.915 1.981-2.915C2.392-2.915 2.685-2.72 2.838-2.504C3.034-2.232 3.055-1.883 3.055-1.548S3.034-.844 2.831-.558C2.643-.293 2.322-.153 1.981-.153Z'/>
-<path id='ta5a8616ed905-g3-114' d='M1.388-1.59C1.388-2.176 1.66-2.88 2.322-2.88C2.26-2.831 2.204-2.741 2.204-2.629C2.204-2.399 2.385-2.308 2.518-2.308C2.685-2.308 2.838-2.42 2.838-2.629C2.838-2.866 2.615-3.075 2.287-3.075C1.939-3.075 1.555-2.859 1.346-2.329H1.339V-3.075L.342-2.999V-2.748C.809-2.748 .865-2.699 .865-2.357V-.551C.865-.251 .795-.251 .342-.251V0C.377 0 .851-.028 1.137-.028C1.437-.028 1.743-.014 2.043 0V-.251H1.904C1.388-.251 1.388-.328 1.388-.565V-1.59Z'/>
-<path id='ta5a8616ed905-g3-116' d='M1.402-2.755H2.49V-3.006H1.402V-4.289H1.165C1.158-3.661 .872-2.971 .202-2.95V-2.755H.851V-.872C.851-.091 1.437 .07 1.827 .07C2.294 .07 2.615-.328 2.615-.879V-1.262H2.378V-.886C2.378-.411 2.155-.153 1.883-.153C1.402-.153 1.402-.739 1.402-.865V-2.755Z'/>
-<path id='ta5a8616ed905-g2-40' d='M3.298 2.391C3.298 2.361 3.298 2.341 3.128 2.172C1.883 .917 1.564-.966 1.564-2.491C1.564-4.224 1.943-5.958 3.168-7.203C3.298-7.323 3.298-7.342 3.298-7.372C3.298-7.442 3.258-7.472 3.198-7.472C3.098-7.472 2.202-6.795 1.614-5.529C1.106-4.433 .986-3.328 .986-2.491C.986-1.714 1.096-.508 1.644 .618C2.242 1.843 3.098 2.491 3.198 2.491C3.258 2.491 3.298 2.461 3.298 2.391Z'/>
-<path id='ta5a8616ed905-g2-41' d='M2.879-2.491C2.879-3.268 2.77-4.473 2.222-5.599C1.624-6.824 .767-7.472 .667-7.472C.608-7.472 .568-7.432 .568-7.372C.568-7.342 .568-7.323 .757-7.143C1.733-6.157 2.301-4.573 2.301-2.491C2.301-.787 1.933 .966 .697 2.222C.568 2.341 .568 2.361 .568 2.391C.568 2.451 .608 2.491 .667 2.491C.767 2.491 1.664 1.813 2.252 .548C2.76-.548 2.879-1.654 2.879-2.491Z'/>
-<path id='ta5a8616ed905-g2-49' d='M2.929-6.376C2.929-6.615 2.929-6.635 2.7-6.635C2.082-5.998 1.205-5.998 .887-5.998V-5.689C1.086-5.689 1.674-5.689 2.192-5.948V-.787C2.192-.428 2.162-.309 1.265-.309H.946V0C1.295-.03 2.162-.03 2.56-.03S3.826-.03 4.174 0V-.309H3.856C2.959-.309 2.929-.418 2.929-.787V-6.376Z'/>
-<path id='ta5a8616ed905-g2-61' d='M6.844-3.258C6.994-3.258 7.183-3.258 7.183-3.457S6.994-3.656 6.854-3.656H.887C.747-3.656 .558-3.656 .558-3.457S.747-3.258 .897-3.258H6.844ZM6.854-1.325C6.994-1.325 7.183-1.325 7.183-1.524S6.994-1.724 6.844-1.724H.897C.747-1.724 .558-1.724 .558-1.524S.747-1.325 .887-1.325H6.854Z'/>
-<path id='ta5a8616ed905-g2-97' d='M3.318-.757C3.357-.359 3.626 .06 4.095 .06C4.304 .06 4.912-.08 4.912-.887V-1.445H4.663V-.887C4.663-.309 4.413-.249 4.304-.249C3.975-.249 3.935-.697 3.935-.747V-2.74C3.935-3.158 3.935-3.547 3.577-3.915C3.188-4.304 2.69-4.463 2.212-4.463C1.395-4.463 .707-3.995 .707-3.337C.707-3.039 .907-2.869 1.166-2.869C1.445-2.869 1.624-3.068 1.624-3.328C1.624-3.447 1.574-3.776 1.116-3.786C1.385-4.134 1.873-4.244 2.192-4.244C2.68-4.244 3.248-3.856 3.248-2.969V-2.6C2.74-2.57 2.042-2.54 1.415-2.242C.667-1.903 .418-1.385 .418-.946C.418-.139 1.385 .11 2.012 .11C2.67 .11 3.128-.289 3.318-.757ZM3.248-2.391V-1.395C3.248-.448 2.531-.11 2.082-.11C1.594-.11 1.186-.458 1.186-.956C1.186-1.504 1.604-2.331 3.248-2.391Z'/>
-<path id='ta5a8616ed905-g2-98' d='M1.714-3.756V-6.914L.279-6.804V-6.496C.976-6.496 1.056-6.426 1.056-5.938V0H1.305C1.315-.01 1.395-.149 1.664-.618C1.813-.389 2.232 .11 2.969 .11C4.154 .11 5.191-.867 5.191-2.152C5.191-3.417 4.214-4.403 3.078-4.403C2.301-4.403 1.873-3.935 1.714-3.756ZM1.743-1.136V-3.188C1.743-3.377 1.743-3.387 1.853-3.547C2.242-4.105 2.79-4.184 3.029-4.184C3.477-4.184 3.836-3.925 4.075-3.547C4.334-3.138 4.364-2.57 4.364-2.162C4.364-1.793 4.344-1.196 4.055-.747C3.846-.438 3.467-.11 2.929-.11C2.481-.11 2.122-.349 1.883-.717C1.743-.927 1.743-.956 1.743-1.136Z'/>
-<path id='ta5a8616ed905-g2-99' d='M1.166-2.172C1.166-3.796 1.983-4.214 2.511-4.214C2.6-4.214 3.228-4.204 3.577-3.846C3.168-3.816 3.108-3.517 3.108-3.387C3.108-3.128 3.288-2.929 3.567-2.929C3.826-2.929 4.025-3.098 4.025-3.397C4.025-4.075 3.268-4.463 2.501-4.463C1.255-4.463 .339-3.387 .339-2.152C.339-.877 1.325 .11 2.481 .11C3.816 .11 4.134-1.086 4.134-1.186S4.035-1.285 4.005-1.285C3.915-1.285 3.895-1.245 3.875-1.186C3.587-.259 2.939-.139 2.57-.139C2.042-.139 1.166-.568 1.166-2.172Z'/>
-<path id='ta5a8616ed905-g2-101' d='M1.116-2.511C1.176-3.995 2.012-4.244 2.351-4.244C3.377-4.244 3.477-2.899 3.477-2.511H1.116ZM1.106-2.301H3.885C4.105-2.301 4.134-2.301 4.134-2.511C4.134-3.497 3.597-4.463 2.351-4.463C1.196-4.463 .279-3.437 .279-2.192C.279-.857 1.325 .11 2.471 .11C3.686 .11 4.134-.996 4.134-1.186C4.134-1.285 4.055-1.305 4.005-1.305C3.915-1.305 3.895-1.245 3.875-1.166C3.527-.139 2.63-.139 2.531-.139C2.032-.139 1.634-.438 1.405-.807C1.106-1.285 1.106-1.943 1.106-2.301Z'/>
-<path id='ta5a8616ed905-g2-108' d='M1.763-6.914L.329-6.804V-6.496C1.026-6.496 1.106-6.426 1.106-5.938V-.757C1.106-.309 .996-.309 .329-.309V0C.658-.01 1.186-.03 1.435-.03S2.172-.01 2.54 0V-.309C1.873-.309 1.763-.309 1.763-.757V-6.914Z'/>
-<path id='ta5a8616ed905-g2-111' d='M4.692-2.132C4.692-3.407 3.696-4.463 2.491-4.463C1.245-4.463 .279-3.377 .279-2.132C.279-.847 1.315 .11 2.481 .11C3.686 .11 4.692-.867 4.692-2.132ZM2.491-.139C2.062-.139 1.624-.349 1.355-.807C1.106-1.245 1.106-1.853 1.106-2.212C1.106-2.6 1.106-3.138 1.345-3.577C1.614-4.035 2.082-4.244 2.481-4.244C2.919-4.244 3.347-4.025 3.606-3.597S3.866-2.59 3.866-2.212C3.866-1.853 3.866-1.315 3.646-.877C3.427-.428 2.989-.139 2.491-.139Z'/>
-<path id='ta5a8616ed905-g2-112' d='M1.714-3.746V-4.403L.279-4.294V-3.985C.986-3.985 1.056-3.925 1.056-3.487V1.176C1.056 1.624 .946 1.624 .279 1.624V1.933C.618 1.923 1.136 1.903 1.395 1.903C1.664 1.903 2.172 1.923 2.521 1.933V1.624C1.853 1.624 1.743 1.624 1.743 1.176V-.498V-.588C1.793-.428 2.212 .11 2.969 .11C4.154 .11 5.191-.867 5.191-2.152C5.191-3.417 4.224-4.403 3.108-4.403C2.331-4.403 1.913-3.965 1.714-3.746ZM1.743-1.136V-3.357C2.032-3.866 2.521-4.154 3.029-4.154C3.756-4.154 4.364-3.278 4.364-2.152C4.364-.946 3.666-.11 2.929-.11C2.531-.11 2.152-.309 1.883-.717C1.743-.927 1.743-.936 1.743-1.136Z'/>
-<path id='ta5a8616ed905-g2-114' d='M1.664-3.308V-4.403L.279-4.294V-3.985C.976-3.985 1.056-3.915 1.056-3.427V-.757C1.056-.309 .946-.309 .279-.309V0C.667-.01 1.136-.03 1.415-.03C1.813-.03 2.281-.03 2.68 0V-.309H2.471C1.733-.309 1.714-.418 1.714-.777V-2.311C1.714-3.298 2.132-4.184 2.889-4.184C2.959-4.184 2.979-4.184 2.999-4.174C2.969-4.164 2.77-4.045 2.77-3.786C2.77-3.507 2.979-3.357 3.198-3.357C3.377-3.357 3.626-3.477 3.626-3.796S3.318-4.403 2.889-4.403C2.162-4.403 1.803-3.736 1.664-3.308Z'/>
-<path id='ta5a8616ed905-g2-115' d='M2.072-1.933C2.291-1.893 3.108-1.733 3.108-1.016C3.108-.508 2.76-.11 1.983-.11C1.146-.11 .787-.677 .598-1.524C.568-1.654 .558-1.694 .458-1.694C.329-1.694 .329-1.624 .329-1.445V-.13C.329 .04 .329 .11 .438 .11C.488 .11 .498 .1 .687-.09C.707-.11 .707-.13 .887-.319C1.325 .1 1.773 .11 1.983 .11C3.128 .11 3.587-.558 3.587-1.275C3.587-1.803 3.288-2.102 3.168-2.222C2.839-2.54 2.451-2.62 2.032-2.7C1.474-2.809 .807-2.939 .807-3.517C.807-3.866 1.066-4.274 1.923-4.274C3.019-4.274 3.068-3.377 3.088-3.068C3.098-2.979 3.188-2.979 3.208-2.979C3.337-2.979 3.337-3.029 3.337-3.218V-4.224C3.337-4.394 3.337-4.463 3.228-4.463C3.178-4.463 3.158-4.463 3.029-4.344C2.999-4.304 2.899-4.214 2.859-4.184C2.481-4.463 2.072-4.463 1.923-4.463C.707-4.463 .329-3.796 .329-3.238C.329-2.889 .488-2.61 .757-2.391C1.076-2.132 1.355-2.072 2.072-1.933Z'/>
+<path id='tda26c2cd1803-g0-0' d='M6.565-2.291C6.735-2.291 6.914-2.291 6.914-2.491S6.735-2.69 6.565-2.69H1.176C1.006-2.69 .827-2.69 .827-2.491S1.006-2.291 1.176-2.291H6.565Z'/>
+<path id='tda26c2cd1803-g2-99' d='M2.713-2.783C2.587-2.727 2.518-2.615 2.518-2.476C2.518-2.287 2.65-2.148 2.845-2.148C3.034-2.148 3.18-2.267 3.18-2.49C3.18-3.11 2.211-3.11 2.015-3.11C.969-3.11 .321-2.308 .321-1.506C.321-.628 1.067 .07 1.981 .07C3.02 .07 3.264-.753 3.264-.837S3.173-.921 3.145-.921C3.055-.921 3.048-.9 3.013-.802C2.859-.37 2.49-.153 2.064-.153C1.583-.153 .955-.509 .955-1.513C.955-2.399 1.388-2.887 2.036-2.887C2.127-2.887 2.462-2.887 2.713-2.783Z'/>
+<path id='tda26c2cd1803-g2-101' d='M3.068-1.59C3.215-1.59 3.264-1.59 3.264-1.743C3.264-2.357 2.922-3.11 1.883-3.11C.969-3.11 .272-2.385 .272-1.527C.272-.642 1.046 .07 1.974 .07C2.915 .07 3.264-.683 3.264-.837C3.264-.865 3.25-.934 3.145-.934C3.055-.934 3.041-.893 3.02-.823C2.803-.258 2.273-.153 2.022-.153C1.695-.153 1.381-.3 1.172-.565C.914-.893 .907-1.318 .907-1.59H3.068ZM.914-1.771C.99-2.755 1.618-2.915 1.883-2.915C2.741-2.915 2.769-1.946 2.776-1.771H.914Z'/>
+<path id='tda26c2cd1803-g2-111' d='M3.689-1.485C3.689-2.357 2.943-3.11 1.981-3.11S.272-2.357 .272-1.485C.272-.621 1.039 .07 1.981 .07S3.689-.621 3.689-1.485ZM1.981-.153C1.723-.153 1.346-.237 1.116-.579C.928-.865 .907-1.227 .907-1.548C.907-1.848 .914-2.26 1.158-2.559C1.332-2.762 1.625-2.915 1.981-2.915C2.392-2.915 2.685-2.72 2.838-2.504C3.034-2.232 3.055-1.883 3.055-1.548S3.034-.844 2.831-.558C2.643-.293 2.322-.153 1.981-.153Z'/>
+<path id='tda26c2cd1803-g2-114' d='M1.388-1.59C1.388-2.176 1.66-2.88 2.322-2.88C2.26-2.831 2.204-2.741 2.204-2.629C2.204-2.399 2.385-2.308 2.518-2.308C2.685-2.308 2.838-2.42 2.838-2.629C2.838-2.866 2.615-3.075 2.287-3.075C1.939-3.075 1.555-2.859 1.346-2.329H1.339V-3.075L.342-2.999V-2.748C.809-2.748 .865-2.699 .865-2.357V-.551C.865-.251 .795-.251 .342-.251V0C.377 0 .851-.028 1.137-.028C1.437-.028 1.743-.014 2.043 0V-.251H1.904C1.388-.251 1.388-.328 1.388-.565V-1.59Z'/>
+<path id='tda26c2cd1803-g2-116' d='M1.402-2.755H2.49V-3.006H1.402V-4.289H1.165C1.158-3.661 .872-2.971 .202-2.95V-2.755H.851V-.872C.851-.091 1.437 .07 1.827 .07C2.294 .07 2.615-.328 2.615-.879V-1.262H2.378V-.886C2.378-.411 2.155-.153 1.883-.153C1.402-.153 1.402-.739 1.402-.865V-2.755Z'/>
+<path id='tda26c2cd1803-g1-49' d='M2.929-6.376C2.929-6.615 2.929-6.635 2.7-6.635C2.082-5.998 1.205-5.998 .887-5.998V-5.689C1.086-5.689 1.674-5.689 2.192-5.948V-.787C2.192-.428 2.162-.309 1.265-.309H.946V0C1.295-.03 2.162-.03 2.56-.03S3.826-.03 4.174 0V-.309H3.856C2.959-.309 2.929-.418 2.929-.787V-6.376Z'/>
+<path id='tda26c2cd1803-g1-61' d='M6.844-3.258C6.994-3.258 7.183-3.258 7.183-3.457S6.994-3.656 6.854-3.656H.887C.747-3.656 .558-3.656 .558-3.457S.747-3.258 .897-3.258H6.844ZM6.854-1.325C6.994-1.325 7.183-1.325 7.183-1.524S6.994-1.724 6.844-1.724H.897C.747-1.724 .558-1.724 .558-1.524S.747-1.325 .887-1.325H6.854Z'/>
+<path id='tda26c2cd1803-g1-97' d='M3.318-.757C3.357-.359 3.626 .06 4.095 .06C4.304 .06 4.912-.08 4.912-.887V-1.445H4.663V-.887C4.663-.309 4.413-.249 4.304-.249C3.975-.249 3.935-.697 3.935-.747V-2.74C3.935-3.158 3.935-3.547 3.577-3.915C3.188-4.304 2.69-4.463 2.212-4.463C1.395-4.463 .707-3.995 .707-3.337C.707-3.039 .907-2.869 1.166-2.869C1.445-2.869 1.624-3.068 1.624-3.328C1.624-3.447 1.574-3.776 1.116-3.786C1.385-4.134 1.873-4.244 2.192-4.244C2.68-4.244 3.248-3.856 3.248-2.969V-2.6C2.74-2.57 2.042-2.54 1.415-2.242C.667-1.903 .418-1.385 .418-.946C.418-.139 1.385 .11 2.012 .11C2.67 .11 3.128-.289 3.318-.757ZM3.248-2.391V-1.395C3.248-.448 2.531-.11 2.082-.11C1.594-.11 1.186-.458 1.186-.956C1.186-1.504 1.604-2.331 3.248-2.391Z'/>
+<path id='tda26c2cd1803-g1-98' d='M1.714-3.756V-6.914L.279-6.804V-6.496C.976-6.496 1.056-6.426 1.056-5.938V0H1.305C1.315-.01 1.395-.149 1.664-.618C1.813-.389 2.232 .11 2.969 .11C4.154 .11 5.191-.867 5.191-2.152C5.191-3.417 4.214-4.403 3.078-4.403C2.301-4.403 1.873-3.935 1.714-3.756ZM1.743-1.136V-3.188C1.743-3.377 1.743-3.387 1.853-3.547C2.242-4.105 2.79-4.184 3.029-4.184C3.477-4.184 3.836-3.925 4.075-3.547C4.334-3.138 4.364-2.57 4.364-2.162C4.364-1.793 4.344-1.196 4.055-.747C3.846-.438 3.467-.11 2.929-.11C2.481-.11 2.122-.349 1.883-.717C1.743-.927 1.743-.956 1.743-1.136Z'/>
+<path id='tda26c2cd1803-g1-99' d='M1.166-2.172C1.166-3.796 1.983-4.214 2.511-4.214C2.6-4.214 3.228-4.204 3.577-3.846C3.168-3.816 3.108-3.517 3.108-3.387C3.108-3.128 3.288-2.929 3.567-2.929C3.826-2.929 4.025-3.098 4.025-3.397C4.025-4.075 3.268-4.463 2.501-4.463C1.255-4.463 .339-3.387 .339-2.152C.339-.877 1.325 .11 2.481 .11C3.816 .11 4.134-1.086 4.134-1.186S4.035-1.285 4.005-1.285C3.915-1.285 3.895-1.245 3.875-1.186C3.587-.259 2.939-.139 2.57-.139C2.042-.139 1.166-.568 1.166-2.172Z'/>
+<path id='tda26c2cd1803-g1-101' d='M1.116-2.511C1.176-3.995 2.012-4.244 2.351-4.244C3.377-4.244 3.477-2.899 3.477-2.511H1.116ZM1.106-2.301H3.885C4.105-2.301 4.134-2.301 4.134-2.511C4.134-3.497 3.597-4.463 2.351-4.463C1.196-4.463 .279-3.437 .279-2.192C.279-.857 1.325 .11 2.471 .11C3.686 .11 4.134-.996 4.134-1.186C4.134-1.285 4.055-1.305 4.005-1.305C3.915-1.305 3.895-1.245 3.875-1.166C3.527-.139 2.63-.139 2.531-.139C2.032-.139 1.634-.438 1.405-.807C1.106-1.285 1.106-1.943 1.106-2.301Z'/>
+<path id='tda26c2cd1803-g1-108' d='M1.763-6.914L.329-6.804V-6.496C1.026-6.496 1.106-6.426 1.106-5.938V-.757C1.106-.309 .996-.309 .329-.309V0C.658-.01 1.186-.03 1.435-.03S2.172-.01 2.54 0V-.309C1.873-.309 1.763-.309 1.763-.757V-6.914Z'/>
+<path id='tda26c2cd1803-g1-111' d='M4.692-2.132C4.692-3.407 3.696-4.463 2.491-4.463C1.245-4.463 .279-3.377 .279-2.132C.279-.847 1.315 .11 2.481 .11C3.686 .11 4.692-.867 4.692-2.132ZM2.491-.139C2.062-.139 1.624-.349 1.355-.807C1.106-1.245 1.106-1.853 1.106-2.212C1.106-2.6 1.106-3.138 1.345-3.577C1.614-4.035 2.082-4.244 2.481-4.244C2.919-4.244 3.347-4.025 3.606-3.597S3.866-2.59 3.866-2.212C3.866-1.853 3.866-1.315 3.646-.877C3.427-.428 2.989-.139 2.491-.139Z'/>
+<path id='tda26c2cd1803-g1-112' d='M1.714-3.746V-4.403L.279-4.294V-3.985C.986-3.985 1.056-3.925 1.056-3.487V1.176C1.056 1.624 .946 1.624 .279 1.624V1.933C.618 1.923 1.136 1.903 1.395 1.903C1.664 1.903 2.172 1.923 2.521 1.933V1.624C1.853 1.624 1.743 1.624 1.743 1.176V-.498V-.588C1.793-.428 2.212 .11 2.969 .11C4.154 .11 5.191-.867 5.191-2.152C5.191-3.417 4.224-4.403 3.108-4.403C2.331-4.403 1.913-3.965 1.714-3.746ZM1.743-1.136V-3.357C2.032-3.866 2.521-4.154 3.029-4.154C3.756-4.154 4.364-3.278 4.364-2.152C4.364-.946 3.666-.11 2.929-.11C2.531-.11 2.152-.309 1.883-.717C1.743-.927 1.743-.936 1.743-1.136Z'/>
+<path id='tda26c2cd1803-g1-114' d='M1.664-3.308V-4.403L.279-4.294V-3.985C.976-3.985 1.056-3.915 1.056-3.427V-.757C1.056-.309 .946-.309 .279-.309V0C.667-.01 1.136-.03 1.415-.03C1.813-.03 2.281-.03 2.68 0V-.309H2.471C1.733-.309 1.714-.418 1.714-.777V-2.311C1.714-3.298 2.132-4.184 2.889-4.184C2.959-4.184 2.979-4.184 2.999-4.174C2.969-4.164 2.77-4.045 2.77-3.786C2.77-3.507 2.979-3.357 3.198-3.357C3.377-3.357 3.626-3.477 3.626-3.796S3.318-4.403 2.889-4.403C2.162-4.403 1.803-3.736 1.664-3.308Z'/>
+<path id='tda26c2cd1803-g1-115' d='M2.072-1.933C2.291-1.893 3.108-1.733 3.108-1.016C3.108-.508 2.76-.11 1.983-.11C1.146-.11 .787-.677 .598-1.524C.568-1.654 .558-1.694 .458-1.694C.329-1.694 .329-1.624 .329-1.445V-.13C.329 .04 .329 .11 .438 .11C.488 .11 .498 .1 .687-.09C.707-.11 .707-.13 .887-.319C1.325 .1 1.773 .11 1.983 .11C3.128 .11 3.587-.558 3.587-1.275C3.587-1.803 3.288-2.102 3.168-2.222C2.839-2.54 2.451-2.62 2.032-2.7C1.474-2.809 .807-2.939 .807-3.517C.807-3.866 1.066-4.274 1.923-4.274C3.019-4.274 3.068-3.377 3.088-3.068C3.098-2.979 3.188-2.979 3.208-2.979C3.337-2.979 3.337-3.029 3.337-3.218V-4.224C3.337-4.394 3.337-4.463 3.228-4.463C3.178-4.463 3.158-4.463 3.029-4.344C2.999-4.304 2.899-4.214 2.859-4.184C2.481-4.463 2.072-4.463 1.923-4.463C.707-4.463 .329-3.796 .329-3.238C.329-2.889 .488-2.61 .757-2.391C1.076-2.132 1.355-2.072 2.072-1.933Z'/>
 </defs>
-<g id='ta5a8616ed905-page1'>
-<use x='0' y='0' xlink:href='#ta5a8616ed905-g2-115'/>
-<use x='3.93' y='0' xlink:href='#ta5a8616ed905-g2-99'/>
-<use x='8.358' y='0' xlink:href='#ta5a8616ed905-g2-97'/>
-<use x='13.339' y='0' xlink:href='#ta5a8616ed905-g2-108'/>
-<use x='16.106' y='0' xlink:href='#ta5a8616ed905-g2-101'/>
-<use x='23.301' y='0' xlink:href='#ta5a8616ed905-g2-61'/>
-<use x='33.818' y='0' xlink:href='#ta5a8616ed905-g2-112'/>
-<use x='39.352' y='0' xlink:href='#ta5a8616ed905-g2-114'/>
-<use x='43.254' y='0' xlink:href='#ta5a8616ed905-g2-111'/>
-<use x='48.236' y='0' xlink:href='#ta5a8616ed905-g2-98'/>
-<use x='53.771' y='2.435' xlink:href='#ta5a8616ed905-g3-99'/>
-<use x='57.313' y='2.435' xlink:href='#ta5a8616ed905-g3-111'/>
-<use x='61.284' y='2.435' xlink:href='#ta5a8616ed905-g3-114'/>
-<use x='64.397' y='2.435' xlink:href='#ta5a8616ed905-g3-114'/>
-<use x='67.511' y='2.435' xlink:href='#ta5a8616ed905-g3-101'/>
-<use x='71.053' y='2.435' xlink:href='#ta5a8616ed905-g3-99'/>
-<use x='74.595' y='2.435' xlink:href='#ta5a8616ed905-g3-116'/>
-<use x='79.867' y='0' xlink:href='#ta5a8616ed905-g1-61'/>
-<use x='86.509' y='0' xlink:href='#ta5a8616ed905-g2-40'/>
-<use x='90.383' y='0' xlink:href='#ta5a8616ed905-g2-49'/>
-<use x='97.579' y='0' xlink:href='#ta5a8616ed905-g0-0'/>
-<use x='107.541' y='0' xlink:href='#ta5a8616ed905-g2-112'/>
-<use x='113.076' y='0' xlink:href='#ta5a8616ed905-g2-114'/>
-<use x='116.978' y='0' xlink:href='#ta5a8616ed905-g2-111'/>
-<use x='121.959' y='0' xlink:href='#ta5a8616ed905-g2-98'/>
-<use x='127.494' y='2.435' xlink:href='#ta5a8616ed905-g3-99'/>
-<use x='131.036' y='2.435' xlink:href='#ta5a8616ed905-g3-111'/>
-<use x='135.008' y='2.435' xlink:href='#ta5a8616ed905-g3-114'/>
-<use x='138.121' y='2.435' xlink:href='#ta5a8616ed905-g3-114'/>
-<use x='141.234' y='2.435' xlink:href='#ta5a8616ed905-g3-101'/>
-<use x='144.777' y='2.435' xlink:href='#ta5a8616ed905-g3-99'/>
-<use x='148.319' y='2.435' xlink:href='#ta5a8616ed905-g3-116'/>
-<use x='151.93' y='0' xlink:href='#ta5a8616ed905-g2-41'/>
+<g id='tda26c2cd1803-page1'>
+<use x='0' y='0' xlink:href='#tda26c2cd1803-g1-115'/>
+<use x='3.93' y='0' xlink:href='#tda26c2cd1803-g1-99'/>
+<use x='8.358' y='0' xlink:href='#tda26c2cd1803-g1-97'/>
+<use x='13.339' y='0' xlink:href='#tda26c2cd1803-g1-108'/>
+<use x='16.106' y='0' xlink:href='#tda26c2cd1803-g1-101'/>
+<use x='23.301' y='0' xlink:href='#tda26c2cd1803-g1-61'/>
+<use x='43.592' y='-6.74' xlink:href='#tda26c2cd1803-g1-112'/>
+<use x='49.127' y='-6.74' xlink:href='#tda26c2cd1803-g1-114'/>
+<use x='53.029' y='-6.74' xlink:href='#tda26c2cd1803-g1-111'/>
+<use x='58.01' y='-6.74' xlink:href='#tda26c2cd1803-g1-98'/>
+<use x='63.545' y='-4.305' xlink:href='#tda26c2cd1803-g2-99'/>
+<use x='67.087' y='-4.305' xlink:href='#tda26c2cd1803-g2-111'/>
+<use x='71.059' y='-4.305' xlink:href='#tda26c2cd1803-g2-114'/>
+<use x='74.172' y='-4.305' xlink:href='#tda26c2cd1803-g2-114'/>
+<use x='77.285' y='-4.305' xlink:href='#tda26c2cd1803-g2-101'/>
+<use x='80.827' y='-4.305' xlink:href='#tda26c2cd1803-g2-99'/>
+<use x='84.37' y='-4.305' xlink:href='#tda26c2cd1803-g2-116'/>
+<rect x='35.013' y='-2.69' height='.398' width='61.547'/>
+<use x='35.013' y='6.834' xlink:href='#tda26c2cd1803-g1-49'/>
+<use x='42.208' y='6.834' xlink:href='#tda26c2cd1803-g0-0'/>
+<use x='52.171' y='6.834' xlink:href='#tda26c2cd1803-g1-112'/>
+<use x='57.706' y='6.834' xlink:href='#tda26c2cd1803-g1-114'/>
+<use x='61.608' y='6.834' xlink:href='#tda26c2cd1803-g1-111'/>
+<use x='66.589' y='6.834' xlink:href='#tda26c2cd1803-g1-98'/>
+<use x='72.124' y='9.269' xlink:href='#tda26c2cd1803-g2-99'/>
+<use x='75.666' y='9.269' xlink:href='#tda26c2cd1803-g2-111'/>
+<use x='79.637' y='9.269' xlink:href='#tda26c2cd1803-g2-114'/>
+<use x='82.751' y='9.269' xlink:href='#tda26c2cd1803-g2-114'/>
+<use x='85.864' y='9.269' xlink:href='#tda26c2cd1803-g2-101'/>
+<use x='89.406' y='9.269' xlink:href='#tda26c2cd1803-g2-99'/>
+<use x='92.949' y='9.269' xlink:href='#tda26c2cd1803-g2-116'/>
 </g>
-</svg>, for 문 대신 <code>belief[hall==z] *= scale</code> 로 한 번에 곱함</li><li>문은 0.1875, 벽은 0.0625 로 3 배 차이 유지, 문끼리, 벽끼리는 아직 구분 불가</li><li><strong>조건</strong>: 균등 prior, door 측정, z_prob = 0.75 → scale = 3</li></ul><div style="display:grid;grid-template-columns:max-content 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" style=";padding-right:112px" class="code xxs denser">hallway = np.array([<span class="no">1</span>, <span class="no">1</span>, <span class="no">0</span>, <span class="no">0</span>, <span class="no">0</span>, <span class="no">0</span>, <span class="no">0</span>, <span class="no">0</span>, <span class="no">1</span>, <span class="no">0</span>])
+</svg> 을 문 위치에 한 번에 곱함</li><li>문 0.1875, 벽 0.0625 로 3 배 차이, 문끼리와 벽끼리는 아직 구분 불가</li><li><strong>조건</strong>: 균등 prior, door 측정, z_prob = 0.75 → scale = 3</li></ul></div><div class="cell"><div class="card soft" style="padding:14px 32px"><div class="formula" style="font-size:30px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -14.158 151.226 23.983" role="img" aria-label="\text{new belief} = \dfrac{\text{scale} \times \text{old belief}}{\sum (\text{scale} \times \text{old belief})}" fill="currentColor" style="width:18.298em;height:2.902em;vertical-align:-1.189em;display:inline-block;overflow:visible">
+<defs>
+<path id='tce66bba2bb86-g2-80' d='M4.194 5.32L.658 9.694C.578 9.793 .568 9.813 .568 9.853C.568 9.963 .658 9.963 .837 9.963H9.096L9.953 7.482H9.704C9.455 8.229 8.787 8.837 7.94 9.126C7.781 9.176 7.093 9.415 5.629 9.415H1.395L4.852 5.141C4.922 5.051 4.941 5.021 4.941 4.981S4.932 4.932 4.872 4.842L1.634 .399H5.579C6.715 .399 9.006 .468 9.704 2.331H9.953L9.096 0H.837C.568 0 .558 .01 .558 .319L4.194 5.32Z'/>
+<path id='tce66bba2bb86-g0-2' d='M3.875-2.77L1.883-4.752C1.763-4.872 1.743-4.892 1.664-4.892C1.564-4.892 1.465-4.802 1.465-4.692C1.465-4.623 1.484-4.603 1.594-4.493L3.587-2.491L1.594-.488C1.484-.379 1.465-.359 1.465-.289C1.465-.179 1.564-.09 1.664-.09C1.743-.09 1.763-.11 1.883-.229L3.866-2.212L5.928-.149C5.948-.139 6.017-.09 6.077-.09C6.197-.09 6.276-.179 6.276-.289C6.276-.309 6.276-.349 6.247-.399C6.237-.418 4.653-1.983 4.154-2.491L5.978-4.314C6.027-4.374 6.177-4.503 6.227-4.563C6.237-4.583 6.276-4.623 6.276-4.692C6.276-4.802 6.197-4.892 6.077-4.892C5.998-4.892 5.958-4.852 5.848-4.742L3.875-2.77Z'/>
+<path id='tce66bba2bb86-g1-40' d='M3.298 2.391C3.298 2.361 3.298 2.341 3.128 2.172C1.883 .917 1.564-.966 1.564-2.491C1.564-4.224 1.943-5.958 3.168-7.203C3.298-7.323 3.298-7.342 3.298-7.372C3.298-7.442 3.258-7.472 3.198-7.472C3.098-7.472 2.202-6.795 1.614-5.529C1.106-4.433 .986-3.328 .986-2.491C.986-1.714 1.096-.508 1.644 .618C2.242 1.843 3.098 2.491 3.198 2.491C3.258 2.491 3.298 2.461 3.298 2.391Z'/>
+<path id='tce66bba2bb86-g1-41' d='M2.879-2.491C2.879-3.268 2.77-4.473 2.222-5.599C1.624-6.824 .767-7.472 .667-7.472C.608-7.472 .568-7.432 .568-7.372C.568-7.342 .568-7.323 .757-7.143C1.733-6.157 2.301-4.573 2.301-2.491C2.301-.787 1.933 .966 .697 2.222C.568 2.341 .568 2.361 .568 2.391C.568 2.451 .608 2.491 .667 2.491C.767 2.491 1.664 1.813 2.252 .548C2.76-.548 2.879-1.654 2.879-2.491Z'/>
+<path id='tce66bba2bb86-g1-61' d='M6.844-3.258C6.994-3.258 7.183-3.258 7.183-3.457S6.994-3.656 6.854-3.656H.887C.747-3.656 .558-3.656 .558-3.457S.747-3.258 .897-3.258H6.844ZM6.854-1.325C6.994-1.325 7.183-1.325 7.183-1.524S6.994-1.724 6.844-1.724H.897C.747-1.724 .558-1.724 .558-1.524S.747-1.325 .887-1.325H6.854Z'/>
+<path id='tce66bba2bb86-g1-97' d='M3.318-.757C3.357-.359 3.626 .06 4.095 .06C4.304 .06 4.912-.08 4.912-.887V-1.445H4.663V-.887C4.663-.309 4.413-.249 4.304-.249C3.975-.249 3.935-.697 3.935-.747V-2.74C3.935-3.158 3.935-3.547 3.577-3.915C3.188-4.304 2.69-4.463 2.212-4.463C1.395-4.463 .707-3.995 .707-3.337C.707-3.039 .907-2.869 1.166-2.869C1.445-2.869 1.624-3.068 1.624-3.328C1.624-3.447 1.574-3.776 1.116-3.786C1.385-4.134 1.873-4.244 2.192-4.244C2.68-4.244 3.248-3.856 3.248-2.969V-2.6C2.74-2.57 2.042-2.54 1.415-2.242C.667-1.903 .418-1.385 .418-.946C.418-.139 1.385 .11 2.012 .11C2.67 .11 3.128-.289 3.318-.757ZM3.248-2.391V-1.395C3.248-.448 2.531-.11 2.082-.11C1.594-.11 1.186-.458 1.186-.956C1.186-1.504 1.604-2.331 3.248-2.391Z'/>
+<path id='tce66bba2bb86-g1-98' d='M1.714-3.756V-6.914L.279-6.804V-6.496C.976-6.496 1.056-6.426 1.056-5.938V0H1.305C1.315-.01 1.395-.149 1.664-.618C1.813-.389 2.232 .11 2.969 .11C4.154 .11 5.191-.867 5.191-2.152C5.191-3.417 4.214-4.403 3.078-4.403C2.301-4.403 1.873-3.935 1.714-3.756ZM1.743-1.136V-3.188C1.743-3.377 1.743-3.387 1.853-3.547C2.242-4.105 2.79-4.184 3.029-4.184C3.477-4.184 3.836-3.925 4.075-3.547C4.334-3.138 4.364-2.57 4.364-2.162C4.364-1.793 4.344-1.196 4.055-.747C3.846-.438 3.467-.11 2.929-.11C2.481-.11 2.122-.349 1.883-.717C1.743-.927 1.743-.956 1.743-1.136Z'/>
+<path id='tce66bba2bb86-g1-99' d='M1.166-2.172C1.166-3.796 1.983-4.214 2.511-4.214C2.6-4.214 3.228-4.204 3.577-3.846C3.168-3.816 3.108-3.517 3.108-3.387C3.108-3.128 3.288-2.929 3.567-2.929C3.826-2.929 4.025-3.098 4.025-3.397C4.025-4.075 3.268-4.463 2.501-4.463C1.255-4.463 .339-3.387 .339-2.152C.339-.877 1.325 .11 2.481 .11C3.816 .11 4.134-1.086 4.134-1.186S4.035-1.285 4.005-1.285C3.915-1.285 3.895-1.245 3.875-1.186C3.587-.259 2.939-.139 2.57-.139C2.042-.139 1.166-.568 1.166-2.172Z'/>
+<path id='tce66bba2bb86-g1-100' d='M3.786-.548V.11L5.25 0V-.309C4.553-.309 4.473-.379 4.473-.867V-6.914L3.039-6.804V-6.496C3.736-6.496 3.816-6.426 3.816-5.938V-3.786C3.527-4.144 3.098-4.403 2.56-4.403C1.385-4.403 .339-3.427 .339-2.142C.339-.877 1.315 .11 2.451 .11C3.088 .11 3.537-.229 3.786-.548ZM3.786-3.218V-1.176C3.786-.996 3.786-.976 3.676-.807C3.377-.329 2.929-.11 2.501-.11C2.052-.11 1.694-.369 1.455-.747C1.196-1.156 1.166-1.724 1.166-2.132C1.166-2.501 1.186-3.098 1.474-3.547C1.684-3.856 2.062-4.184 2.6-4.184C2.949-4.184 3.367-4.035 3.676-3.587C3.786-3.417 3.786-3.397 3.786-3.218Z'/>
+<path id='tce66bba2bb86-g1-101' d='M1.116-2.511C1.176-3.995 2.012-4.244 2.351-4.244C3.377-4.244 3.477-2.899 3.477-2.511H1.116ZM1.106-2.301H3.885C4.105-2.301 4.134-2.301 4.134-2.511C4.134-3.497 3.597-4.463 2.351-4.463C1.196-4.463 .279-3.437 .279-2.192C.279-.857 1.325 .11 2.471 .11C3.686 .11 4.134-.996 4.134-1.186C4.134-1.285 4.055-1.305 4.005-1.305C3.915-1.305 3.895-1.245 3.875-1.166C3.527-.139 2.63-.139 2.531-.139C2.032-.139 1.634-.438 1.405-.807C1.106-1.285 1.106-1.943 1.106-2.301Z'/>
+<path id='tce66bba2bb86-g1-102' d='M1.743-4.294V-5.45C1.743-6.326 2.222-6.804 2.66-6.804C2.69-6.804 2.839-6.804 2.989-6.735C2.869-6.695 2.69-6.565 2.69-6.316C2.69-6.087 2.849-5.888 3.118-5.888C3.407-5.888 3.557-6.087 3.557-6.326C3.557-6.695 3.188-7.024 2.66-7.024C1.963-7.024 1.116-6.496 1.116-5.44V-4.294H.329V-3.985H1.116V-.757C1.116-.309 1.006-.309 .339-.309V0C.727-.01 1.196-.03 1.474-.03C1.873-.03 2.341-.03 2.74 0V-.309H2.531C1.793-.309 1.773-.418 1.773-.777V-3.985H2.909V-4.294H1.743Z'/>
+<path id='tce66bba2bb86-g1-105' d='M1.763-4.403L.369-4.294V-3.985C1.016-3.985 1.106-3.925 1.106-3.437V-.757C1.106-.309 .996-.309 .329-.309V0C.648-.01 1.186-.03 1.425-.03C1.773-.03 2.122-.01 2.461 0V-.309C1.803-.309 1.763-.359 1.763-.747V-4.403ZM1.803-6.137C1.803-6.456 1.554-6.665 1.275-6.665C.966-6.665 .747-6.396 .747-6.137C.747-5.868 .966-5.609 1.275-5.609C1.554-5.609 1.803-5.818 1.803-6.137Z'/>
+<path id='tce66bba2bb86-g1-108' d='M1.763-6.914L.329-6.804V-6.496C1.026-6.496 1.106-6.426 1.106-5.938V-.757C1.106-.309 .996-.309 .329-.309V0C.658-.01 1.186-.03 1.435-.03S2.172-.01 2.54 0V-.309C1.873-.309 1.763-.309 1.763-.757V-6.914Z'/>
+<path id='tce66bba2bb86-g1-110' d='M1.096-3.427V-.757C1.096-.309 .986-.309 .319-.309V0C.667-.01 1.176-.03 1.445-.03C1.704-.03 2.222-.01 2.56 0V-.309C1.893-.309 1.783-.309 1.783-.757V-2.59C1.783-3.626 2.491-4.184 3.128-4.184C3.756-4.184 3.866-3.646 3.866-3.078V-.757C3.866-.309 3.756-.309 3.088-.309V0C3.437-.01 3.945-.03 4.214-.03C4.473-.03 4.991-.01 5.33 0V-.309C4.812-.309 4.563-.309 4.553-.608V-2.511C4.553-3.367 4.553-3.676 4.244-4.035C4.105-4.204 3.776-4.403 3.198-4.403C2.471-4.403 2.002-3.975 1.724-3.357V-4.403L.319-4.294V-3.985C1.016-3.985 1.096-3.915 1.096-3.427Z'/>
+<path id='tce66bba2bb86-g1-111' d='M4.692-2.132C4.692-3.407 3.696-4.463 2.491-4.463C1.245-4.463 .279-3.377 .279-2.132C.279-.847 1.315 .11 2.481 .11C3.686 .11 4.692-.867 4.692-2.132ZM2.491-.139C2.062-.139 1.624-.349 1.355-.807C1.106-1.245 1.106-1.853 1.106-2.212C1.106-2.6 1.106-3.138 1.345-3.577C1.614-4.035 2.082-4.244 2.481-4.244C2.919-4.244 3.347-4.025 3.606-3.597S3.866-2.59 3.866-2.212C3.866-1.853 3.866-1.315 3.646-.877C3.427-.428 2.989-.139 2.491-.139Z'/>
+<path id='tce66bba2bb86-g1-115' d='M2.072-1.933C2.291-1.893 3.108-1.733 3.108-1.016C3.108-.508 2.76-.11 1.983-.11C1.146-.11 .787-.677 .598-1.524C.568-1.654 .558-1.694 .458-1.694C.329-1.694 .329-1.624 .329-1.445V-.13C.329 .04 .329 .11 .438 .11C.488 .11 .498 .1 .687-.09C.707-.11 .707-.13 .887-.319C1.325 .1 1.773 .11 1.983 .11C3.128 .11 3.587-.558 3.587-1.275C3.587-1.803 3.288-2.102 3.168-2.222C2.839-2.54 2.451-2.62 2.032-2.7C1.474-2.809 .807-2.939 .807-3.517C.807-3.866 1.066-4.274 1.923-4.274C3.019-4.274 3.068-3.377 3.088-3.068C3.098-2.979 3.188-2.979 3.208-2.979C3.337-2.979 3.337-3.029 3.337-3.218V-4.224C3.337-4.394 3.337-4.463 3.228-4.463C3.178-4.463 3.158-4.463 3.029-4.344C2.999-4.304 2.899-4.214 2.859-4.184C2.481-4.463 2.072-4.463 1.923-4.463C.707-4.463 .329-3.796 .329-3.238C.329-2.889 .488-2.61 .757-2.391C1.076-2.132 1.355-2.072 2.072-1.933Z'/>
+<path id='tce66bba2bb86-g1-119' d='M6.167-3.347C6.346-3.846 6.655-3.975 7.004-3.985V-4.294C6.785-4.274 6.496-4.264 6.276-4.264C5.988-4.264 5.539-4.284 5.35-4.294V-3.985C5.709-3.975 5.928-3.796 5.928-3.507C5.928-3.447 5.928-3.427 5.878-3.298L4.971-.747L3.985-3.527C3.945-3.646 3.935-3.666 3.935-3.716C3.935-3.985 4.324-3.985 4.523-3.985V-4.294C4.234-4.284 3.726-4.264 3.487-4.264C3.188-4.264 2.899-4.274 2.6-4.294V-3.985C2.969-3.985 3.128-3.965 3.228-3.836C3.278-3.776 3.387-3.477 3.457-3.288L2.6-.877L1.654-3.537C1.604-3.656 1.604-3.676 1.604-3.716C1.604-3.985 1.993-3.985 2.192-3.985V-4.294C1.893-4.284 1.335-4.264 1.106-4.264C1.066-4.264 .538-4.274 .179-4.294V-3.985C.677-3.985 .797-3.955 .917-3.636L2.172-.11C2.222 .03 2.252 .11 2.381 .11S2.531 .05 2.58-.09L3.587-2.909L4.603-.08C4.643 .03 4.672 .11 4.802 .11S4.961 .02 5.001-.08L6.167-3.347Z'/>
+</defs>
+<g id='tce66bba2bb86-page1'>
+<use x='0' y='0' xlink:href='#tce66bba2bb86-g1-110'/>
+<use x='5.535' y='0' xlink:href='#tce66bba2bb86-g1-101'/>
+<use x='9.963' y='0' xlink:href='#tce66bba2bb86-g1-119'/>
+<use x='20.479' y='0' xlink:href='#tce66bba2bb86-g1-98'/>
+<use x='26.29' y='0' xlink:href='#tce66bba2bb86-g1-101'/>
+<use x='30.718' y='0' xlink:href='#tce66bba2bb86-g1-108'/>
+<use x='33.486' y='0' xlink:href='#tce66bba2bb86-g1-105'/>
+<use x='36.253' y='0' xlink:href='#tce66bba2bb86-g1-101'/>
+<use x='40.681' y='0' xlink:href='#tce66bba2bb86-g1-102'/>
+<use x='46.492' y='0' xlink:href='#tce66bba2bb86-g1-61'/>
+<use x='67.336' y='-6.74' xlink:href='#tce66bba2bb86-g1-115'/>
+<use x='71.266' y='-6.74' xlink:href='#tce66bba2bb86-g1-99'/>
+<use x='75.694' y='-6.74' xlink:href='#tce66bba2bb86-g1-97'/>
+<use x='80.675' y='-6.74' xlink:href='#tce66bba2bb86-g1-108'/>
+<use x='83.443' y='-6.74' xlink:href='#tce66bba2bb86-g1-101'/>
+<use x='90.084' y='-6.74' xlink:href='#tce66bba2bb86-g0-2'/>
+<use x='100.047' y='-6.74' xlink:href='#tce66bba2bb86-g1-111'/>
+<use x='105.028' y='-6.74' xlink:href='#tce66bba2bb86-g1-108'/>
+<use x='107.796' y='-6.74' xlink:href='#tce66bba2bb86-g1-100'/>
+<use x='116.651' y='-6.74' xlink:href='#tce66bba2bb86-g1-98'/>
+<use x='122.463' y='-6.74' xlink:href='#tce66bba2bb86-g1-101'/>
+<use x='126.891' y='-6.74' xlink:href='#tce66bba2bb86-g1-108'/>
+<use x='129.658' y='-6.74' xlink:href='#tce66bba2bb86-g1-105'/>
+<use x='132.426' y='-6.74' xlink:href='#tce66bba2bb86-g1-101'/>
+<use x='136.854' y='-6.74' xlink:href='#tce66bba2bb86-g1-102'/>
+<rect x='58.204' y='-2.69' height='.398' width='90.826'/>
+<use x='58.204' y='-.638' xlink:href='#tce66bba2bb86-g2-80'/>
+<use x='68.72' y='6.834' xlink:href='#tce66bba2bb86-g1-40'/>
+<use x='72.594' y='6.834' xlink:href='#tce66bba2bb86-g1-115'/>
+<use x='76.524' y='6.834' xlink:href='#tce66bba2bb86-g1-99'/>
+<use x='80.952' y='6.834' xlink:href='#tce66bba2bb86-g1-97'/>
+<use x='85.933' y='6.834' xlink:href='#tce66bba2bb86-g1-108'/>
+<use x='88.701' y='6.834' xlink:href='#tce66bba2bb86-g1-101'/>
+<use x='95.342' y='6.834' xlink:href='#tce66bba2bb86-g0-2'/>
+<use x='105.305' y='6.834' xlink:href='#tce66bba2bb86-g1-111'/>
+<use x='110.286' y='6.834' xlink:href='#tce66bba2bb86-g1-108'/>
+<use x='113.054' y='6.834' xlink:href='#tce66bba2bb86-g1-100'/>
+<use x='121.909' y='6.834' xlink:href='#tce66bba2bb86-g1-98'/>
+<use x='127.721' y='6.834' xlink:href='#tce66bba2bb86-g1-101'/>
+<use x='132.149' y='6.834' xlink:href='#tce66bba2bb86-g1-108'/>
+<use x='134.916' y='6.834' xlink:href='#tce66bba2bb86-g1-105'/>
+<use x='137.684' y='6.834' xlink:href='#tce66bba2bb86-g1-101'/>
+<use x='142.112' y='6.834' xlink:href='#tce66bba2bb86-g1-102'/>
+<use x='145.156' y='6.834' xlink:href='#tce66bba2bb86-g1-41'/>
+</g>
+</svg></div></div></div></div><div style="display:grid;grid-template-columns:max-content 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" style=";padding-right:112px" class="code xxs denser">hallway = np.array([<span class="no">1</span>, <span class="no">1</span>, <span class="no">0</span>, <span class="no">0</span>, <span class="no">0</span>, <span class="no">0</span>, <span class="no">0</span>, <span class="no">0</span>, <span class="no">1</span>, <span class="no">0</span>])
 <span class="k">from</span> filterpy.discrete_bayes <span class="k">import</span> normalize
 <span class="k">def</span> <span class="fn">scaled_update</span>(hall, belief, z, z_prob):
     scale = z_prob / (<span class="no">1.</span> - z_prob)
@@ -274,78 +336,76 @@ plots.bar_plot(belief, ylim=(<span class="no">0</span>, <span class="no">.3</spa
 probability of door = 0.1875
 probability of wall = 0.06249999999999999
 </span><img src="./imgs/run/9bebd1ce2e45_0.png" alt="result"></div></div></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:24%"></i></div><span class="foot-num">09 / 37</span></footer>
+<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:30%"></i></div><span class="foot-num">09 / 30</span></footer>
 </section>
 <section class="slide" data-label="10 Prior, Likelihood, Posterior" data-screen-label="10 Prior, Likelihood, Posterior">
 <header class="head"><span class="kicker">2.3 Noisy Sensors</span><span class="folio">10</span></header>
 <h2 class="title">Prior, Likelihood, Posterior</h2>
 <div class="rule"></div>
-<div class="body"><ul class="ul brief"><li>scaled_update() 를 다시 작성, <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.972 196.296 10.963" role="img" aria-label="\text{posterior} = \text{likelihood} \times \text{prior} \,/\, \text{normalization}" fill="currentColor" style="width:23.752em;height:1.327em;vertical-align:-0.362em;display:inline-block;overflow:visible">
+<div class="body"><div style="display:grid;grid-template-columns:1fr max-content;gap:32px;min-height:0;align-items:center"><div class="cell"><ul class="ul brief"><li>scaled_update() 를 likelihood 계산과 update() 로 나눠 다시 작성</li><li>likelihood 는 센서마다 달라 lh_hallway() 로 분리, 합이 1 이 아니어도 됨</li><li><strong>조건</strong>: 균등 prior, door 측정, z_prob = 0.75</li></ul></div><div class="cell"><div class="card soft" style="padding:14px 36px"><div class="formula" style="font-size:36px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -14.158 130.581 21.492" role="img" aria-label="\text{posterior} = \dfrac{\text{likelihood} \times \text{prior}}{\text{normalization}}" fill="currentColor" style="width:15.800em;height:2.601em;vertical-align:-0.887em;display:inline-block;overflow:visible">
 <defs>
-<path id='t73ae338f406e-g1-61' d='M4.374-7.093C4.423-7.223 4.423-7.263 4.423-7.273C4.423-7.382 4.334-7.472 4.224-7.472C4.154-7.472 4.085-7.442 4.055-7.382L.598 2.112C.548 2.242 .548 2.281 .548 2.291C.548 2.401 .638 2.491 .747 2.491C.877 2.491 .907 2.421 .966 2.252L4.374-7.093Z'/>
-<path id='t73ae338f406e-g0-2' d='M3.875-2.77L1.883-4.752C1.763-4.872 1.743-4.892 1.664-4.892C1.564-4.892 1.465-4.802 1.465-4.692C1.465-4.623 1.484-4.603 1.594-4.493L3.587-2.491L1.594-.488C1.484-.379 1.465-.359 1.465-.289C1.465-.179 1.564-.09 1.664-.09C1.743-.09 1.763-.11 1.883-.229L3.866-2.212L5.928-.149C5.948-.139 6.017-.09 6.077-.09C6.197-.09 6.276-.179 6.276-.289C6.276-.309 6.276-.349 6.247-.399C6.237-.418 4.653-1.983 4.154-2.491L5.978-4.314C6.027-4.374 6.177-4.503 6.227-4.563C6.237-4.583 6.276-4.623 6.276-4.692C6.276-4.802 6.197-4.892 6.077-4.892C5.998-4.892 5.958-4.852 5.848-4.742L3.875-2.77Z'/>
-<path id='t73ae338f406e-g2-61' d='M6.844-3.258C6.994-3.258 7.183-3.258 7.183-3.457S6.994-3.656 6.854-3.656H.887C.747-3.656 .558-3.656 .558-3.457S.747-3.258 .897-3.258H6.844ZM6.854-1.325C6.994-1.325 7.183-1.325 7.183-1.524S6.994-1.724 6.844-1.724H.897C.747-1.724 .558-1.724 .558-1.524S.747-1.325 .887-1.325H6.854Z'/>
-<path id='t73ae338f406e-g2-97' d='M3.318-.757C3.357-.359 3.626 .06 4.095 .06C4.304 .06 4.912-.08 4.912-.887V-1.445H4.663V-.887C4.663-.309 4.413-.249 4.304-.249C3.975-.249 3.935-.697 3.935-.747V-2.74C3.935-3.158 3.935-3.547 3.577-3.915C3.188-4.304 2.69-4.463 2.212-4.463C1.395-4.463 .707-3.995 .707-3.337C.707-3.039 .907-2.869 1.166-2.869C1.445-2.869 1.624-3.068 1.624-3.328C1.624-3.447 1.574-3.776 1.116-3.786C1.385-4.134 1.873-4.244 2.192-4.244C2.68-4.244 3.248-3.856 3.248-2.969V-2.6C2.74-2.57 2.042-2.54 1.415-2.242C.667-1.903 .418-1.385 .418-.946C.418-.139 1.385 .11 2.012 .11C2.67 .11 3.128-.289 3.318-.757ZM3.248-2.391V-1.395C3.248-.448 2.531-.11 2.082-.11C1.594-.11 1.186-.458 1.186-.956C1.186-1.504 1.604-2.331 3.248-2.391Z'/>
-<path id='t73ae338f406e-g2-100' d='M3.786-.548V.11L5.25 0V-.309C4.553-.309 4.473-.379 4.473-.867V-6.914L3.039-6.804V-6.496C3.736-6.496 3.816-6.426 3.816-5.938V-3.786C3.527-4.144 3.098-4.403 2.56-4.403C1.385-4.403 .339-3.427 .339-2.142C.339-.877 1.315 .11 2.451 .11C3.088 .11 3.537-.229 3.786-.548ZM3.786-3.218V-1.176C3.786-.996 3.786-.976 3.676-.807C3.377-.329 2.929-.11 2.501-.11C2.052-.11 1.694-.369 1.455-.747C1.196-1.156 1.166-1.724 1.166-2.132C1.166-2.501 1.186-3.098 1.474-3.547C1.684-3.856 2.062-4.184 2.6-4.184C2.949-4.184 3.367-4.035 3.676-3.587C3.786-3.417 3.786-3.397 3.786-3.218Z'/>
-<path id='t73ae338f406e-g2-101' d='M1.116-2.511C1.176-3.995 2.012-4.244 2.351-4.244C3.377-4.244 3.477-2.899 3.477-2.511H1.116ZM1.106-2.301H3.885C4.105-2.301 4.134-2.301 4.134-2.511C4.134-3.497 3.597-4.463 2.351-4.463C1.196-4.463 .279-3.437 .279-2.192C.279-.857 1.325 .11 2.471 .11C3.686 .11 4.134-.996 4.134-1.186C4.134-1.285 4.055-1.305 4.005-1.305C3.915-1.305 3.895-1.245 3.875-1.166C3.527-.139 2.63-.139 2.531-.139C2.032-.139 1.634-.438 1.405-.807C1.106-1.285 1.106-1.943 1.106-2.301Z'/>
-<path id='t73ae338f406e-g2-104' d='M1.096-.757C1.096-.309 .986-.309 .319-.309V0C.667-.01 1.176-.03 1.445-.03C1.704-.03 2.222-.01 2.56 0V-.309C1.893-.309 1.783-.309 1.783-.757V-2.59C1.783-3.626 2.491-4.184 3.128-4.184C3.756-4.184 3.866-3.646 3.866-3.078V-.757C3.866-.309 3.756-.309 3.088-.309V0C3.437-.01 3.945-.03 4.214-.03C4.473-.03 4.991-.01 5.33 0V-.309C4.812-.309 4.563-.309 4.553-.608V-2.511C4.553-3.367 4.553-3.676 4.244-4.035C4.105-4.204 3.776-4.403 3.198-4.403C2.361-4.403 1.923-3.806 1.753-3.427V-6.914L.319-6.804V-6.496C1.016-6.496 1.096-6.426 1.096-5.938V-.757Z'/>
-<path id='t73ae338f406e-g2-105' d='M1.763-4.403L.369-4.294V-3.985C1.016-3.985 1.106-3.925 1.106-3.437V-.757C1.106-.309 .996-.309 .329-.309V0C.648-.01 1.186-.03 1.425-.03C1.773-.03 2.122-.01 2.461 0V-.309C1.803-.309 1.763-.359 1.763-.747V-4.403ZM1.803-6.137C1.803-6.456 1.554-6.665 1.275-6.665C.966-6.665 .747-6.396 .747-6.137C.747-5.868 .966-5.609 1.275-5.609C1.554-5.609 1.803-5.818 1.803-6.137Z'/>
-<path id='t73ae338f406e-g2-107' d='M1.056-.757C1.056-.309 .946-.309 .279-.309V0C.608-.01 1.076-.03 1.365-.03C1.664-.03 2.062-.02 2.461 0V-.309C1.793-.309 1.684-.309 1.684-.757V-1.783L2.321-2.331C3.088-1.275 3.507-.717 3.507-.538C3.507-.349 3.337-.309 3.148-.309V0C3.427-.01 4.015-.03 4.224-.03C4.513-.03 4.802-.02 5.091 0V-.309C4.722-.309 4.503-.309 4.125-.837L2.859-2.62C2.849-2.64 2.8-2.7 2.8-2.73C2.8-2.77 3.507-3.367 3.606-3.447C4.234-3.955 4.653-3.975 4.862-3.985V-4.294C4.573-4.264 4.443-4.264 4.164-4.264C3.806-4.264 3.188-4.284 3.049-4.294V-3.985C3.238-3.975 3.337-3.866 3.337-3.736C3.337-3.537 3.198-3.417 3.118-3.347L1.714-2.132V-6.914L.279-6.804V-6.496C.976-6.496 1.056-6.426 1.056-5.938V-.757Z'/>
-<path id='t73ae338f406e-g2-108' d='M1.763-6.914L.329-6.804V-6.496C1.026-6.496 1.106-6.426 1.106-5.938V-.757C1.106-.309 .996-.309 .329-.309V0C.658-.01 1.186-.03 1.435-.03S2.172-.01 2.54 0V-.309C1.873-.309 1.763-.309 1.763-.757V-6.914Z'/>
-<path id='t73ae338f406e-g2-109' d='M1.096-3.427V-.757C1.096-.309 .986-.309 .319-.309V0C.667-.01 1.176-.03 1.445-.03C1.704-.03 2.222-.01 2.56 0V-.309C1.893-.309 1.783-.309 1.783-.757V-2.59C1.783-3.626 2.491-4.184 3.128-4.184C3.756-4.184 3.866-3.646 3.866-3.078V-.757C3.866-.309 3.756-.309 3.088-.309V0C3.437-.01 3.945-.03 4.214-.03C4.473-.03 4.991-.01 5.33 0V-.309C4.663-.309 4.553-.309 4.553-.757V-2.59C4.553-3.626 5.26-4.184 5.898-4.184C6.526-4.184 6.635-3.646 6.635-3.078V-.757C6.635-.309 6.526-.309 5.858-.309V0C6.207-.01 6.715-.03 6.984-.03C7.243-.03 7.761-.01 8.1 0V-.309C7.582-.309 7.333-.309 7.323-.608V-2.511C7.323-3.367 7.323-3.676 7.014-4.035C6.874-4.204 6.545-4.403 5.968-4.403C5.131-4.403 4.692-3.806 4.523-3.427C4.384-4.294 3.646-4.403 3.198-4.403C2.471-4.403 2.002-3.975 1.724-3.357V-4.403L.319-4.294V-3.985C1.016-3.985 1.096-3.915 1.096-3.427Z'/>
-<path id='t73ae338f406e-g2-110' d='M1.096-3.427V-.757C1.096-.309 .986-.309 .319-.309V0C.667-.01 1.176-.03 1.445-.03C1.704-.03 2.222-.01 2.56 0V-.309C1.893-.309 1.783-.309 1.783-.757V-2.59C1.783-3.626 2.491-4.184 3.128-4.184C3.756-4.184 3.866-3.646 3.866-3.078V-.757C3.866-.309 3.756-.309 3.088-.309V0C3.437-.01 3.945-.03 4.214-.03C4.473-.03 4.991-.01 5.33 0V-.309C4.812-.309 4.563-.309 4.553-.608V-2.511C4.553-3.367 4.553-3.676 4.244-4.035C4.105-4.204 3.776-4.403 3.198-4.403C2.471-4.403 2.002-3.975 1.724-3.357V-4.403L.319-4.294V-3.985C1.016-3.985 1.096-3.915 1.096-3.427Z'/>
-<path id='t73ae338f406e-g2-111' d='M4.692-2.132C4.692-3.407 3.696-4.463 2.491-4.463C1.245-4.463 .279-3.377 .279-2.132C.279-.847 1.315 .11 2.481 .11C3.686 .11 4.692-.867 4.692-2.132ZM2.491-.139C2.062-.139 1.624-.349 1.355-.807C1.106-1.245 1.106-1.853 1.106-2.212C1.106-2.6 1.106-3.138 1.345-3.577C1.614-4.035 2.082-4.244 2.481-4.244C2.919-4.244 3.347-4.025 3.606-3.597S3.866-2.59 3.866-2.212C3.866-1.853 3.866-1.315 3.646-.877C3.427-.428 2.989-.139 2.491-.139Z'/>
-<path id='t73ae338f406e-g2-112' d='M1.714-3.746V-4.403L.279-4.294V-3.985C.986-3.985 1.056-3.925 1.056-3.487V1.176C1.056 1.624 .946 1.624 .279 1.624V1.933C.618 1.923 1.136 1.903 1.395 1.903C1.664 1.903 2.172 1.923 2.521 1.933V1.624C1.853 1.624 1.743 1.624 1.743 1.176V-.498V-.588C1.793-.428 2.212 .11 2.969 .11C4.154 .11 5.191-.867 5.191-2.152C5.191-3.417 4.224-4.403 3.108-4.403C2.331-4.403 1.913-3.965 1.714-3.746ZM1.743-1.136V-3.357C2.032-3.866 2.521-4.154 3.029-4.154C3.756-4.154 4.364-3.278 4.364-2.152C4.364-.946 3.666-.11 2.929-.11C2.531-.11 2.152-.309 1.883-.717C1.743-.927 1.743-.936 1.743-1.136Z'/>
-<path id='t73ae338f406e-g2-114' d='M1.664-3.308V-4.403L.279-4.294V-3.985C.976-3.985 1.056-3.915 1.056-3.427V-.757C1.056-.309 .946-.309 .279-.309V0C.667-.01 1.136-.03 1.415-.03C1.813-.03 2.281-.03 2.68 0V-.309H2.471C1.733-.309 1.714-.418 1.714-.777V-2.311C1.714-3.298 2.132-4.184 2.889-4.184C2.959-4.184 2.979-4.184 2.999-4.174C2.969-4.164 2.77-4.045 2.77-3.786C2.77-3.507 2.979-3.357 3.198-3.357C3.377-3.357 3.626-3.477 3.626-3.796S3.318-4.403 2.889-4.403C2.162-4.403 1.803-3.736 1.664-3.308Z'/>
-<path id='t73ae338f406e-g2-115' d='M2.072-1.933C2.291-1.893 3.108-1.733 3.108-1.016C3.108-.508 2.76-.11 1.983-.11C1.146-.11 .787-.677 .598-1.524C.568-1.654 .558-1.694 .458-1.694C.329-1.694 .329-1.624 .329-1.445V-.13C.329 .04 .329 .11 .438 .11C.488 .11 .498 .1 .687-.09C.707-.11 .707-.13 .887-.319C1.325 .1 1.773 .11 1.983 .11C3.128 .11 3.587-.558 3.587-1.275C3.587-1.803 3.288-2.102 3.168-2.222C2.839-2.54 2.451-2.62 2.032-2.7C1.474-2.809 .807-2.939 .807-3.517C.807-3.866 1.066-4.274 1.923-4.274C3.019-4.274 3.068-3.377 3.088-3.068C3.098-2.979 3.188-2.979 3.208-2.979C3.337-2.979 3.337-3.029 3.337-3.218V-4.224C3.337-4.394 3.337-4.463 3.228-4.463C3.178-4.463 3.158-4.463 3.029-4.344C2.999-4.304 2.899-4.214 2.859-4.184C2.481-4.463 2.072-4.463 1.923-4.463C.707-4.463 .329-3.796 .329-3.238C.329-2.889 .488-2.61 .757-2.391C1.076-2.132 1.355-2.072 2.072-1.933Z'/>
-<path id='t73ae338f406e-g2-116' d='M1.724-3.985H3.148V-4.294H1.724V-6.127H1.474C1.465-5.31 1.166-4.244 .189-4.204V-3.985H1.036V-1.235C1.036-.01 1.963 .11 2.321 .11C3.029 .11 3.308-.598 3.308-1.235V-1.803H3.059V-1.255C3.059-.518 2.76-.139 2.391-.139C1.724-.139 1.724-1.046 1.724-1.215V-3.985Z'/>
-<path id='t73ae338f406e-g2-122' d='M3.885-3.995C3.975-4.105 3.975-4.125 3.975-4.164C3.975-4.294 3.895-4.294 3.716-4.294H.528L.418-2.69H.667C.727-3.706 .917-4.075 2.012-4.075H3.148L.369-.319C.279-.209 .279-.189 .279-.139C.279 0 .349 0 .538 0H3.826L3.995-1.863H3.746C3.656-.687 3.447-.249 2.291-.249H1.116L3.885-3.995Z'/>
+<path id='t8f04fa77391c-g0-2' d='M3.875-2.77L1.883-4.752C1.763-4.872 1.743-4.892 1.664-4.892C1.564-4.892 1.465-4.802 1.465-4.692C1.465-4.623 1.484-4.603 1.594-4.493L3.587-2.491L1.594-.488C1.484-.379 1.465-.359 1.465-.289C1.465-.179 1.564-.09 1.664-.09C1.743-.09 1.763-.11 1.883-.229L3.866-2.212L5.928-.149C5.948-.139 6.017-.09 6.077-.09C6.197-.09 6.276-.179 6.276-.289C6.276-.309 6.276-.349 6.247-.399C6.237-.418 4.653-1.983 4.154-2.491L5.978-4.314C6.027-4.374 6.177-4.503 6.227-4.563C6.237-4.583 6.276-4.623 6.276-4.692C6.276-4.802 6.197-4.892 6.077-4.892C5.998-4.892 5.958-4.852 5.848-4.742L3.875-2.77Z'/>
+<path id='t8f04fa77391c-g1-61' d='M6.844-3.258C6.994-3.258 7.183-3.258 7.183-3.457S6.994-3.656 6.854-3.656H.887C.747-3.656 .558-3.656 .558-3.457S.747-3.258 .897-3.258H6.844ZM6.854-1.325C6.994-1.325 7.183-1.325 7.183-1.524S6.994-1.724 6.844-1.724H.897C.747-1.724 .558-1.724 .558-1.524S.747-1.325 .887-1.325H6.854Z'/>
+<path id='t8f04fa77391c-g1-97' d='M3.318-.757C3.357-.359 3.626 .06 4.095 .06C4.304 .06 4.912-.08 4.912-.887V-1.445H4.663V-.887C4.663-.309 4.413-.249 4.304-.249C3.975-.249 3.935-.697 3.935-.747V-2.74C3.935-3.158 3.935-3.547 3.577-3.915C3.188-4.304 2.69-4.463 2.212-4.463C1.395-4.463 .707-3.995 .707-3.337C.707-3.039 .907-2.869 1.166-2.869C1.445-2.869 1.624-3.068 1.624-3.328C1.624-3.447 1.574-3.776 1.116-3.786C1.385-4.134 1.873-4.244 2.192-4.244C2.68-4.244 3.248-3.856 3.248-2.969V-2.6C2.74-2.57 2.042-2.54 1.415-2.242C.667-1.903 .418-1.385 .418-.946C.418-.139 1.385 .11 2.012 .11C2.67 .11 3.128-.289 3.318-.757ZM3.248-2.391V-1.395C3.248-.448 2.531-.11 2.082-.11C1.594-.11 1.186-.458 1.186-.956C1.186-1.504 1.604-2.331 3.248-2.391Z'/>
+<path id='t8f04fa77391c-g1-100' d='M3.786-.548V.11L5.25 0V-.309C4.553-.309 4.473-.379 4.473-.867V-6.914L3.039-6.804V-6.496C3.736-6.496 3.816-6.426 3.816-5.938V-3.786C3.527-4.144 3.098-4.403 2.56-4.403C1.385-4.403 .339-3.427 .339-2.142C.339-.877 1.315 .11 2.451 .11C3.088 .11 3.537-.229 3.786-.548ZM3.786-3.218V-1.176C3.786-.996 3.786-.976 3.676-.807C3.377-.329 2.929-.11 2.501-.11C2.052-.11 1.694-.369 1.455-.747C1.196-1.156 1.166-1.724 1.166-2.132C1.166-2.501 1.186-3.098 1.474-3.547C1.684-3.856 2.062-4.184 2.6-4.184C2.949-4.184 3.367-4.035 3.676-3.587C3.786-3.417 3.786-3.397 3.786-3.218Z'/>
+<path id='t8f04fa77391c-g1-101' d='M1.116-2.511C1.176-3.995 2.012-4.244 2.351-4.244C3.377-4.244 3.477-2.899 3.477-2.511H1.116ZM1.106-2.301H3.885C4.105-2.301 4.134-2.301 4.134-2.511C4.134-3.497 3.597-4.463 2.351-4.463C1.196-4.463 .279-3.437 .279-2.192C.279-.857 1.325 .11 2.471 .11C3.686 .11 4.134-.996 4.134-1.186C4.134-1.285 4.055-1.305 4.005-1.305C3.915-1.305 3.895-1.245 3.875-1.166C3.527-.139 2.63-.139 2.531-.139C2.032-.139 1.634-.438 1.405-.807C1.106-1.285 1.106-1.943 1.106-2.301Z'/>
+<path id='t8f04fa77391c-g1-104' d='M1.096-.757C1.096-.309 .986-.309 .319-.309V0C.667-.01 1.176-.03 1.445-.03C1.704-.03 2.222-.01 2.56 0V-.309C1.893-.309 1.783-.309 1.783-.757V-2.59C1.783-3.626 2.491-4.184 3.128-4.184C3.756-4.184 3.866-3.646 3.866-3.078V-.757C3.866-.309 3.756-.309 3.088-.309V0C3.437-.01 3.945-.03 4.214-.03C4.473-.03 4.991-.01 5.33 0V-.309C4.812-.309 4.563-.309 4.553-.608V-2.511C4.553-3.367 4.553-3.676 4.244-4.035C4.105-4.204 3.776-4.403 3.198-4.403C2.361-4.403 1.923-3.806 1.753-3.427V-6.914L.319-6.804V-6.496C1.016-6.496 1.096-6.426 1.096-5.938V-.757Z'/>
+<path id='t8f04fa77391c-g1-105' d='M1.763-4.403L.369-4.294V-3.985C1.016-3.985 1.106-3.925 1.106-3.437V-.757C1.106-.309 .996-.309 .329-.309V0C.648-.01 1.186-.03 1.425-.03C1.773-.03 2.122-.01 2.461 0V-.309C1.803-.309 1.763-.359 1.763-.747V-4.403ZM1.803-6.137C1.803-6.456 1.554-6.665 1.275-6.665C.966-6.665 .747-6.396 .747-6.137C.747-5.868 .966-5.609 1.275-5.609C1.554-5.609 1.803-5.818 1.803-6.137Z'/>
+<path id='t8f04fa77391c-g1-107' d='M1.056-.757C1.056-.309 .946-.309 .279-.309V0C.608-.01 1.076-.03 1.365-.03C1.664-.03 2.062-.02 2.461 0V-.309C1.793-.309 1.684-.309 1.684-.757V-1.783L2.321-2.331C3.088-1.275 3.507-.717 3.507-.538C3.507-.349 3.337-.309 3.148-.309V0C3.427-.01 4.015-.03 4.224-.03C4.513-.03 4.802-.02 5.091 0V-.309C4.722-.309 4.503-.309 4.125-.837L2.859-2.62C2.849-2.64 2.8-2.7 2.8-2.73C2.8-2.77 3.507-3.367 3.606-3.447C4.234-3.955 4.653-3.975 4.862-3.985V-4.294C4.573-4.264 4.443-4.264 4.164-4.264C3.806-4.264 3.188-4.284 3.049-4.294V-3.985C3.238-3.975 3.337-3.866 3.337-3.736C3.337-3.537 3.198-3.417 3.118-3.347L1.714-2.132V-6.914L.279-6.804V-6.496C.976-6.496 1.056-6.426 1.056-5.938V-.757Z'/>
+<path id='t8f04fa77391c-g1-108' d='M1.763-6.914L.329-6.804V-6.496C1.026-6.496 1.106-6.426 1.106-5.938V-.757C1.106-.309 .996-.309 .329-.309V0C.658-.01 1.186-.03 1.435-.03S2.172-.01 2.54 0V-.309C1.873-.309 1.763-.309 1.763-.757V-6.914Z'/>
+<path id='t8f04fa77391c-g1-109' d='M1.096-3.427V-.757C1.096-.309 .986-.309 .319-.309V0C.667-.01 1.176-.03 1.445-.03C1.704-.03 2.222-.01 2.56 0V-.309C1.893-.309 1.783-.309 1.783-.757V-2.59C1.783-3.626 2.491-4.184 3.128-4.184C3.756-4.184 3.866-3.646 3.866-3.078V-.757C3.866-.309 3.756-.309 3.088-.309V0C3.437-.01 3.945-.03 4.214-.03C4.473-.03 4.991-.01 5.33 0V-.309C4.663-.309 4.553-.309 4.553-.757V-2.59C4.553-3.626 5.26-4.184 5.898-4.184C6.526-4.184 6.635-3.646 6.635-3.078V-.757C6.635-.309 6.526-.309 5.858-.309V0C6.207-.01 6.715-.03 6.984-.03C7.243-.03 7.761-.01 8.1 0V-.309C7.582-.309 7.333-.309 7.323-.608V-2.511C7.323-3.367 7.323-3.676 7.014-4.035C6.874-4.204 6.545-4.403 5.968-4.403C5.131-4.403 4.692-3.806 4.523-3.427C4.384-4.294 3.646-4.403 3.198-4.403C2.471-4.403 2.002-3.975 1.724-3.357V-4.403L.319-4.294V-3.985C1.016-3.985 1.096-3.915 1.096-3.427Z'/>
+<path id='t8f04fa77391c-g1-110' d='M1.096-3.427V-.757C1.096-.309 .986-.309 .319-.309V0C.667-.01 1.176-.03 1.445-.03C1.704-.03 2.222-.01 2.56 0V-.309C1.893-.309 1.783-.309 1.783-.757V-2.59C1.783-3.626 2.491-4.184 3.128-4.184C3.756-4.184 3.866-3.646 3.866-3.078V-.757C3.866-.309 3.756-.309 3.088-.309V0C3.437-.01 3.945-.03 4.214-.03C4.473-.03 4.991-.01 5.33 0V-.309C4.812-.309 4.563-.309 4.553-.608V-2.511C4.553-3.367 4.553-3.676 4.244-4.035C4.105-4.204 3.776-4.403 3.198-4.403C2.471-4.403 2.002-3.975 1.724-3.357V-4.403L.319-4.294V-3.985C1.016-3.985 1.096-3.915 1.096-3.427Z'/>
+<path id='t8f04fa77391c-g1-111' d='M4.692-2.132C4.692-3.407 3.696-4.463 2.491-4.463C1.245-4.463 .279-3.377 .279-2.132C.279-.847 1.315 .11 2.481 .11C3.686 .11 4.692-.867 4.692-2.132ZM2.491-.139C2.062-.139 1.624-.349 1.355-.807C1.106-1.245 1.106-1.853 1.106-2.212C1.106-2.6 1.106-3.138 1.345-3.577C1.614-4.035 2.082-4.244 2.481-4.244C2.919-4.244 3.347-4.025 3.606-3.597S3.866-2.59 3.866-2.212C3.866-1.853 3.866-1.315 3.646-.877C3.427-.428 2.989-.139 2.491-.139Z'/>
+<path id='t8f04fa77391c-g1-112' d='M1.714-3.746V-4.403L.279-4.294V-3.985C.986-3.985 1.056-3.925 1.056-3.487V1.176C1.056 1.624 .946 1.624 .279 1.624V1.933C.618 1.923 1.136 1.903 1.395 1.903C1.664 1.903 2.172 1.923 2.521 1.933V1.624C1.853 1.624 1.743 1.624 1.743 1.176V-.498V-.588C1.793-.428 2.212 .11 2.969 .11C4.154 .11 5.191-.867 5.191-2.152C5.191-3.417 4.224-4.403 3.108-4.403C2.331-4.403 1.913-3.965 1.714-3.746ZM1.743-1.136V-3.357C2.032-3.866 2.521-4.154 3.029-4.154C3.756-4.154 4.364-3.278 4.364-2.152C4.364-.946 3.666-.11 2.929-.11C2.531-.11 2.152-.309 1.883-.717C1.743-.927 1.743-.936 1.743-1.136Z'/>
+<path id='t8f04fa77391c-g1-114' d='M1.664-3.308V-4.403L.279-4.294V-3.985C.976-3.985 1.056-3.915 1.056-3.427V-.757C1.056-.309 .946-.309 .279-.309V0C.667-.01 1.136-.03 1.415-.03C1.813-.03 2.281-.03 2.68 0V-.309H2.471C1.733-.309 1.714-.418 1.714-.777V-2.311C1.714-3.298 2.132-4.184 2.889-4.184C2.959-4.184 2.979-4.184 2.999-4.174C2.969-4.164 2.77-4.045 2.77-3.786C2.77-3.507 2.979-3.357 3.198-3.357C3.377-3.357 3.626-3.477 3.626-3.796S3.318-4.403 2.889-4.403C2.162-4.403 1.803-3.736 1.664-3.308Z'/>
+<path id='t8f04fa77391c-g1-115' d='M2.072-1.933C2.291-1.893 3.108-1.733 3.108-1.016C3.108-.508 2.76-.11 1.983-.11C1.146-.11 .787-.677 .598-1.524C.568-1.654 .558-1.694 .458-1.694C.329-1.694 .329-1.624 .329-1.445V-.13C.329 .04 .329 .11 .438 .11C.488 .11 .498 .1 .687-.09C.707-.11 .707-.13 .887-.319C1.325 .1 1.773 .11 1.983 .11C3.128 .11 3.587-.558 3.587-1.275C3.587-1.803 3.288-2.102 3.168-2.222C2.839-2.54 2.451-2.62 2.032-2.7C1.474-2.809 .807-2.939 .807-3.517C.807-3.866 1.066-4.274 1.923-4.274C3.019-4.274 3.068-3.377 3.088-3.068C3.098-2.979 3.188-2.979 3.208-2.979C3.337-2.979 3.337-3.029 3.337-3.218V-4.224C3.337-4.394 3.337-4.463 3.228-4.463C3.178-4.463 3.158-4.463 3.029-4.344C2.999-4.304 2.899-4.214 2.859-4.184C2.481-4.463 2.072-4.463 1.923-4.463C.707-4.463 .329-3.796 .329-3.238C.329-2.889 .488-2.61 .757-2.391C1.076-2.132 1.355-2.072 2.072-1.933Z'/>
+<path id='t8f04fa77391c-g1-116' d='M1.724-3.985H3.148V-4.294H1.724V-6.127H1.474C1.465-5.31 1.166-4.244 .189-4.204V-3.985H1.036V-1.235C1.036-.01 1.963 .11 2.321 .11C3.029 .11 3.308-.598 3.308-1.235V-1.803H3.059V-1.255C3.059-.518 2.76-.139 2.391-.139C1.724-.139 1.724-1.046 1.724-1.215V-3.985Z'/>
+<path id='t8f04fa77391c-g1-122' d='M3.885-3.995C3.975-4.105 3.975-4.125 3.975-4.164C3.975-4.294 3.895-4.294 3.716-4.294H.528L.418-2.69H.667C.727-3.706 .917-4.075 2.012-4.075H3.148L.369-.319C.279-.209 .279-.189 .279-.139C.279 0 .349 0 .538 0H3.826L3.995-1.863H3.746C3.656-.687 3.447-.249 2.291-.249H1.116L3.885-3.995Z'/>
 </defs>
-<g id='t73ae338f406e-page1'>
-<use x='0' y='0' xlink:href='#t73ae338f406e-g2-112'/>
-<use x='5.812' y='0' xlink:href='#t73ae338f406e-g2-111'/>
-<use x='10.793' y='0' xlink:href='#t73ae338f406e-g2-115'/>
-<use x='14.723' y='0' xlink:href='#t73ae338f406e-g2-116'/>
-<use x='18.597' y='0' xlink:href='#t73ae338f406e-g2-101'/>
-<use x='23.025' y='0' xlink:href='#t73ae338f406e-g2-114'/>
-<use x='26.927' y='0' xlink:href='#t73ae338f406e-g2-105'/>
-<use x='29.694' y='0' xlink:href='#t73ae338f406e-g2-111'/>
-<use x='34.676' y='0' xlink:href='#t73ae338f406e-g2-114'/>
-<use x='41.345' y='0' xlink:href='#t73ae338f406e-g2-61'/>
-<use x='51.861' y='0' xlink:href='#t73ae338f406e-g2-108'/>
-<use x='54.628' y='0' xlink:href='#t73ae338f406e-g2-105'/>
-<use x='57.396' y='0' xlink:href='#t73ae338f406e-g2-107'/>
-<use x='62.377' y='0' xlink:href='#t73ae338f406e-g2-101'/>
-<use x='66.805' y='0' xlink:href='#t73ae338f406e-g2-108'/>
-<use x='69.572' y='0' xlink:href='#t73ae338f406e-g2-105'/>
-<use x='72.34' y='0' xlink:href='#t73ae338f406e-g2-104'/>
-<use x='77.875' y='0' xlink:href='#t73ae338f406e-g2-111'/>
-<use x='83.133' y='0' xlink:href='#t73ae338f406e-g2-111'/>
-<use x='88.391' y='0' xlink:href='#t73ae338f406e-g2-100'/>
-<use x='96.14' y='0' xlink:href='#t73ae338f406e-g0-2'/>
-<use x='106.102' y='0' xlink:href='#t73ae338f406e-g2-112'/>
-<use x='111.637' y='0' xlink:href='#t73ae338f406e-g2-114'/>
-<use x='115.539' y='0' xlink:href='#t73ae338f406e-g2-105'/>
-<use x='118.306' y='0' xlink:href='#t73ae338f406e-g2-111'/>
-<use x='123.288' y='0' xlink:href='#t73ae338f406e-g2-114'/>
-<use x='128.85' y='0' xlink:href='#t73ae338f406e-g1-61'/>
-<use x='135.492' y='0' xlink:href='#t73ae338f406e-g2-110'/>
-<use x='141.027' y='0' xlink:href='#t73ae338f406e-g2-111'/>
-<use x='146.008' y='0' xlink:href='#t73ae338f406e-g2-114'/>
-<use x='149.91' y='0' xlink:href='#t73ae338f406e-g2-109'/>
-<use x='158.212' y='0' xlink:href='#t73ae338f406e-g2-97'/>
-<use x='163.194' y='0' xlink:href='#t73ae338f406e-g2-108'/>
-<use x='165.961' y='0' xlink:href='#t73ae338f406e-g2-105'/>
-<use x='168.729' y='0' xlink:href='#t73ae338f406e-g2-122'/>
-<use x='173.156' y='0' xlink:href='#t73ae338f406e-g2-97'/>
-<use x='178.138' y='0' xlink:href='#t73ae338f406e-g2-116'/>
-<use x='182.012' y='0' xlink:href='#t73ae338f406e-g2-105'/>
-<use x='184.779' y='0' xlink:href='#t73ae338f406e-g2-111'/>
-<use x='189.761' y='0' xlink:href='#t73ae338f406e-g2-110'/>
+<g id='t8f04fa77391c-page1'>
+<use x='0' y='0' xlink:href='#t8f04fa77391c-g1-112'/>
+<use x='5.812' y='0' xlink:href='#t8f04fa77391c-g1-111'/>
+<use x='10.793' y='0' xlink:href='#t8f04fa77391c-g1-115'/>
+<use x='14.723' y='0' xlink:href='#t8f04fa77391c-g1-116'/>
+<use x='18.597' y='0' xlink:href='#t8f04fa77391c-g1-101'/>
+<use x='23.025' y='0' xlink:href='#t8f04fa77391c-g1-114'/>
+<use x='26.927' y='0' xlink:href='#t8f04fa77391c-g1-105'/>
+<use x='29.694' y='0' xlink:href='#t8f04fa77391c-g1-111'/>
+<use x='34.676' y='0' xlink:href='#t8f04fa77391c-g1-114'/>
+<use x='41.345' y='0' xlink:href='#t8f04fa77391c-g1-61'/>
+<use x='53.057' y='-6.74' xlink:href='#t8f04fa77391c-g1-108'/>
+<use x='55.824' y='-6.74' xlink:href='#t8f04fa77391c-g1-105'/>
+<use x='58.591' y='-6.74' xlink:href='#t8f04fa77391c-g1-107'/>
+<use x='63.573' y='-6.74' xlink:href='#t8f04fa77391c-g1-101'/>
+<use x='68.001' y='-6.74' xlink:href='#t8f04fa77391c-g1-108'/>
+<use x='70.768' y='-6.74' xlink:href='#t8f04fa77391c-g1-105'/>
+<use x='73.535' y='-6.74' xlink:href='#t8f04fa77391c-g1-104'/>
+<use x='79.07' y='-6.74' xlink:href='#t8f04fa77391c-g1-111'/>
+<use x='84.328' y='-6.74' xlink:href='#t8f04fa77391c-g1-111'/>
+<use x='89.586' y='-6.74' xlink:href='#t8f04fa77391c-g1-100'/>
+<use x='97.335' y='-6.74' xlink:href='#t8f04fa77391c-g0-2'/>
+<use x='107.298' y='-6.74' xlink:href='#t8f04fa77391c-g1-112'/>
+<use x='112.832' y='-6.74' xlink:href='#t8f04fa77391c-g1-114'/>
+<use x='116.735' y='-6.74' xlink:href='#t8f04fa77391c-g1-105'/>
+<use x='119.502' y='-6.74' xlink:href='#t8f04fa77391c-g1-111'/>
+<use x='124.483' y='-6.74' xlink:href='#t8f04fa77391c-g1-114'/>
+<rect x='53.057' y='-2.69' height='.398' width='75.329'/>
+<use x='60.819' y='6.834' xlink:href='#t8f04fa77391c-g1-110'/>
+<use x='66.354' y='6.834' xlink:href='#t8f04fa77391c-g1-111'/>
+<use x='71.335' y='6.834' xlink:href='#t8f04fa77391c-g1-114'/>
+<use x='75.237' y='6.834' xlink:href='#t8f04fa77391c-g1-109'/>
+<use x='83.54' y='6.834' xlink:href='#t8f04fa77391c-g1-97'/>
+<use x='88.521' y='6.834' xlink:href='#t8f04fa77391c-g1-108'/>
+<use x='91.288' y='6.834' xlink:href='#t8f04fa77391c-g1-105'/>
+<use x='94.056' y='6.834' xlink:href='#t8f04fa77391c-g1-122'/>
+<use x='98.484' y='6.834' xlink:href='#t8f04fa77391c-g1-97'/>
+<use x='103.465' y='6.834' xlink:href='#t8f04fa77391c-g1-116'/>
+<use x='107.339' y='6.834' xlink:href='#t8f04fa77391c-g1-105'/>
+<use x='110.107' y='6.834' xlink:href='#t8f04fa77391c-g1-111'/>
+<use x='115.088' y='6.834' xlink:href='#t8f04fa77391c-g1-110'/>
 </g>
-</svg> 는 측정 반영 후 분포</li><li>likelihood 계산은 센서마다 달라 lh_hallway() 로 분리, 합이 1 이 아니어도 됨</li><li><strong>조건</strong>: 균등 prior, door 측정, z_prob = 0.75</li></ul><div style="display:grid;grid-template-columns:max-content 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" style=";padding-right:112px" class="code xxxs denser"><span class="k">def</span> <span class="fn">lh_hallway</span>(hall, z, z_prob):
-    <span class="s">""" compute likelihood that a measurement matches
-    positions in the hallway."""</span>
+</svg></div></div></div></div><div style="display:grid;grid-template-columns:max-content 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" style=";padding-right:59px" class="code xxxs denser"><span class="k">from</span> filterpy.discrete_bayes <span class="k">import</span> normalize
+<span class="k">def</span> <span class="fn">lh_hallway</span>(hall, z, z_prob):
     <span class="k">try</span>:
         scale = z_prob / (<span class="no">1.</span> - z_prob)
     <span class="k">except</span> ZeroDivisionError:
@@ -353,16 +413,18 @@ probability of wall = 0.06249999999999999
     likelihood = np.ones(<span class="fn">len</span>(hall))
     likelihood[hall==z] *= scale
     <span class="k">return</span> likelihood
+<span class="k">def</span> <span class="fn">update</span>(likelihood, prior):
+    <span class="k">return</span> normalize(likelihood * prior)
 belief = np.array([<span class="no">0.1</span>] * <span class="no">10</span>)
 likelihood = lh_hallway(hallway, z=<span class="no">1</span>, z_prob=<span class="no">.75</span>)
 posterior = update(likelihood, belief)
 plots.bar_plot(posterior, ylim=(<span class="no">0</span>, <span class="no">.3</span>))
-posterior</pre></div><div class="cell"><div class="run-slot" data-key="169efe6bab12"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text">[0.188 0.188 0.062 0.062 0.062 0.062 0.062 0.062 0.188 0.062]
-</span><img src="./imgs/run/169efe6bab12_0.png" alt="result"></div></div></div></div></div>
+posterior</pre></div><div class="cell"><div class="run-slot" data-key="04e6b3f7d82b"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text">[0.188 0.188 0.062 0.062 0.062 0.062 0.062 0.062 0.188 0.062]
+</span><img src="./imgs/run/04e6b3f7d82b_0.png" alt="result"></div></div></div></div></div>
 <script type="text/x-run-setup">hallway = np.array([1, 1, 0, 0, 0, 0, 0, 0, 1, 0])
 from filterpy.discrete_bayes import normalize, update, predict
 </script>
-<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:27%"></i></div><span class="foot-num">10 / 37</span></footer>
+<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:33%"></i></div><span class="foot-num">10 / 30</span></footer>
 </section>
 <section class="slide" data-label="11 Perfect Movement" data-screen-label="11 Perfect Movement">
 <header class="head"><span class="kicker">2.4 Incorporating Movement</span><span class="folio">11</span></header>
@@ -380,7 +442,7 @@ plots.bar_plot(belief, title=<span class="s">'Before prediction'</span>, ylim=(<
 belief = perfect_predict(belief, <span class="no">1</span>)
 plt.subplot(<span class="no">122</span>)
 plots.bar_plot(belief, title=<span class="s">'After prediction'</span>, ylim=(<span class="no">0</span>, <span class="no">.4</span>))</pre></div><div class="cell"><div class="run-slot" data-key="ca917bd2cf05"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text"></span><img src="./imgs/run/ca917bd2cf05_0.png" alt="result"></div></div></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:30%"></i></div><span class="foot-num">11 / 37</span></footer>
+<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:37%"></i></div><span class="foot-num">11 / 30</span></footer>
 </section>
 <section class="slide" data-label="12 Walking Around the Hallway" data-screen-label="12 Walking Around the Hallway">
 <header class="head"><span class="kicker">2.4 Incorporating Movement</span><span class="folio">12</span></header>
@@ -410,106 +472,10 @@ interact(simulate, time_step=IntSlider(
         result[i] = belief[(i-move) % n]
     return result
 </script>
-<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:32%"></i></div><span class="foot-num">12 / 37</span></footer>
+<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:40%"></i></div><span class="foot-num">12 / 30</span></footer>
 </section>
-<section class="slide" data-label="13 Terminology" data-screen-label="13 Terminology">
-<header class="head"><span class="kicker">2.5 Terminology</span><span class="folio">13</span></header>
-<h2 class="title">Terminology</h2>
-<div class="rule"></div>
-<div class="body"><div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:32px;min-height:0;"><div class="cell"><div style="display:flex;flex-direction:column;gap:24px;min-width:0"><div class="std"><span class="std-n">system</span><span class="std-d">모델링하거나 필터링하려는 대상, 여기서는 개</span></div><div class="std"><span class="std-n">state</span><span class="std-d">현재 구성이나 값, 여기서는 개의 위치</span></div></div></div><div class="cell"><div style="display:flex;flex-direction:column;gap:24px;min-width:0"><div class="std"><span class="std-n">state evolution</span><span class="std-d">예측과 갱신 한 주기, system propagation</span></div><div class="std"><span class="std-n">process model</span><span class="std-d">시스템 거동의 모델, 매 시간 한 칸 이상 이동</span></div></div></div><div class="cell"><div style="display:flex;flex-direction:column;gap:24px;min-width:0"><div class="std"><span class="std-n">process error</span><span class="std-d">모델의 오차, system error</span></div><div class="std"><span class="std-n">prediction</span><span class="std-d">측정 없이 만든 새로운 prior</span></div></div></div></div><div class="formula" style="gap:16px 72px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.972 95.25 10.963" role="img" aria-label="\bar{x} = 17 + (15 \cdot 2) = 47" fill="currentColor" style="width:11.525em;height:1.327em;vertical-align:-0.362em;display:inline-block;overflow:visible">
-<defs>
-<path id='t858b5ecba68d-g0-1' d='M1.913-2.491C1.913-2.78 1.674-3.019 1.385-3.019S.857-2.78 .857-2.491S1.096-1.963 1.385-1.963S1.913-2.202 1.913-2.491Z'/>
-<path id='t858b5ecba68d-g1-120' d='M3.328-3.009C3.387-3.268 3.616-4.184 4.314-4.184C4.364-4.184 4.603-4.184 4.812-4.055C4.533-4.005 4.334-3.756 4.334-3.517C4.334-3.357 4.443-3.168 4.712-3.168C4.932-3.168 5.25-3.347 5.25-3.746C5.25-4.264 4.663-4.403 4.324-4.403C3.746-4.403 3.397-3.875 3.278-3.646C3.029-4.304 2.491-4.403 2.202-4.403C1.166-4.403 .598-3.118 .598-2.869C.598-2.77 .697-2.77 .717-2.77C.797-2.77 .827-2.79 .847-2.879C1.186-3.935 1.843-4.184 2.182-4.184C2.371-4.184 2.72-4.095 2.72-3.517C2.72-3.208 2.55-2.54 2.182-1.146C2.022-.528 1.674-.11 1.235-.11C1.176-.11 .946-.11 .737-.239C.986-.289 1.205-.498 1.205-.777C1.205-1.046 .986-1.126 .837-1.126C.538-1.126 .289-.867 .289-.548C.289-.09 .787 .11 1.225 .11C1.883 .11 2.242-.588 2.271-.648C2.391-.279 2.75 .11 3.347 .11C4.374 .11 4.941-1.176 4.941-1.425C4.941-1.524 4.852-1.524 4.822-1.524C4.732-1.524 4.712-1.484 4.692-1.415C4.364-.349 3.686-.11 3.367-.11C2.979-.11 2.819-.428 2.819-.767C2.819-.986 2.879-1.205 2.989-1.644L3.328-3.009Z'/>
-<path id='t858b5ecba68d-g2-22' d='M4.284-5.569V-5.878H.687V-5.569H4.284Z'/>
-<path id='t858b5ecba68d-g2-40' d='M3.298 2.391C3.298 2.361 3.298 2.341 3.128 2.172C1.883 .917 1.564-.966 1.564-2.491C1.564-4.224 1.943-5.958 3.168-7.203C3.298-7.323 3.298-7.342 3.298-7.372C3.298-7.442 3.258-7.472 3.198-7.472C3.098-7.472 2.202-6.795 1.614-5.529C1.106-4.433 .986-3.328 .986-2.491C.986-1.714 1.096-.508 1.644 .618C2.242 1.843 3.098 2.491 3.198 2.491C3.258 2.491 3.298 2.461 3.298 2.391Z'/>
-<path id='t858b5ecba68d-g2-41' d='M2.879-2.491C2.879-3.268 2.77-4.473 2.222-5.599C1.624-6.824 .767-7.472 .667-7.472C.608-7.472 .568-7.432 .568-7.372C.568-7.342 .568-7.323 .757-7.143C1.733-6.157 2.301-4.573 2.301-2.491C2.301-.787 1.933 .966 .697 2.222C.568 2.341 .568 2.361 .568 2.391C.568 2.451 .608 2.491 .667 2.491C.767 2.491 1.664 1.813 2.252 .548C2.76-.548 2.879-1.654 2.879-2.491Z'/>
-<path id='t858b5ecba68d-g2-43' d='M4.075-2.291H6.854C6.994-2.291 7.183-2.291 7.183-2.491S6.994-2.69 6.854-2.69H4.075V-5.479C4.075-5.619 4.075-5.808 3.875-5.808S3.676-5.619 3.676-5.479V-2.69H.887C.747-2.69 .558-2.69 .558-2.491S.747-2.291 .887-2.291H3.676V.498C3.676 .638 3.676 .827 3.875 .827S4.075 .638 4.075 .498V-2.291Z'/>
-<path id='t858b5ecba68d-g2-49' d='M2.929-6.376C2.929-6.615 2.929-6.635 2.7-6.635C2.082-5.998 1.205-5.998 .887-5.998V-5.689C1.086-5.689 1.674-5.689 2.192-5.948V-.787C2.192-.428 2.162-.309 1.265-.309H.946V0C1.295-.03 2.162-.03 2.56-.03S3.826-.03 4.174 0V-.309H3.856C2.959-.309 2.929-.418 2.929-.787V-6.376Z'/>
-<path id='t858b5ecba68d-g2-50' d='M1.265-.767L2.321-1.793C3.875-3.168 4.473-3.706 4.473-4.702C4.473-5.838 3.577-6.635 2.361-6.635C1.235-6.635 .498-5.719 .498-4.832C.498-4.274 .996-4.274 1.026-4.274C1.196-4.274 1.544-4.394 1.544-4.802C1.544-5.061 1.365-5.32 1.016-5.32C.936-5.32 .917-5.32 .887-5.31C1.116-5.958 1.654-6.326 2.232-6.326C3.138-6.326 3.567-5.519 3.567-4.702C3.567-3.905 3.068-3.118 2.521-2.501L.608-.369C.498-.259 .498-.239 .498 0H4.194L4.473-1.733H4.224C4.174-1.435 4.105-.996 4.005-.847C3.935-.767 3.278-.767 3.059-.767H1.265Z'/>
-<path id='t858b5ecba68d-g2-52' d='M2.929-1.644V-.777C2.929-.418 2.909-.309 2.172-.309H1.963V0C2.371-.03 2.889-.03 3.308-.03S4.254-.03 4.663 0V-.309H4.453C3.716-.309 3.696-.418 3.696-.777V-1.644H4.692V-1.953H3.696V-6.486C3.696-6.685 3.696-6.745 3.537-6.745C3.447-6.745 3.417-6.745 3.337-6.625L.279-1.953V-1.644H2.929ZM2.989-1.953H.558L2.989-5.669V-1.953Z'/>
-<path id='t858b5ecba68d-g2-53' d='M4.473-2.002C4.473-3.188 3.656-4.184 2.58-4.184C2.102-4.184 1.674-4.025 1.315-3.676V-5.619C1.514-5.559 1.843-5.489 2.162-5.489C3.387-5.489 4.085-6.396 4.085-6.526C4.085-6.585 4.055-6.635 3.985-6.635C3.975-6.635 3.955-6.635 3.905-6.605C3.706-6.516 3.218-6.316 2.55-6.316C2.152-6.316 1.694-6.386 1.225-6.595C1.146-6.625 1.126-6.625 1.106-6.625C1.006-6.625 1.006-6.545 1.006-6.386V-3.437C1.006-3.258 1.006-3.178 1.146-3.178C1.215-3.178 1.235-3.208 1.275-3.268C1.385-3.427 1.753-3.965 2.56-3.965C3.078-3.965 3.328-3.507 3.407-3.328C3.567-2.959 3.587-2.57 3.587-2.072C3.587-1.724 3.587-1.126 3.347-.707C3.108-.319 2.74-.06 2.281-.06C1.554-.06 .986-.588 .817-1.176C.847-1.166 .877-1.156 .986-1.156C1.315-1.156 1.484-1.405 1.484-1.644S1.315-2.132 .986-2.132C.847-2.132 .498-2.062 .498-1.604C.498-.747 1.186 .219 2.301 .219C3.457 .219 4.473-.737 4.473-2.002Z'/>
-<path id='t858b5ecba68d-g2-55' d='M4.742-6.067C4.832-6.187 4.832-6.207 4.832-6.416H2.411C1.196-6.416 1.176-6.545 1.136-6.735H.887L.558-4.682H.807C.837-4.842 .927-5.469 1.056-5.589C1.126-5.649 1.903-5.649 2.032-5.649H4.095C3.985-5.489 3.198-4.403 2.979-4.075C2.082-2.73 1.753-1.345 1.753-.329C1.753-.229 1.753 .219 2.212 .219S2.67-.229 2.67-.329V-.837C2.67-1.385 2.7-1.933 2.78-2.471C2.819-2.7 2.959-3.557 3.397-4.174L4.742-6.067Z'/>
-<path id='t858b5ecba68d-g2-61' d='M6.844-3.258C6.994-3.258 7.183-3.258 7.183-3.457S6.994-3.656 6.854-3.656H.887C.747-3.656 .558-3.656 .558-3.457S.747-3.258 .897-3.258H6.844ZM6.854-1.325C6.994-1.325 7.183-1.325 7.183-1.524S6.994-1.724 6.844-1.724H.897C.747-1.724 .558-1.724 .558-1.524S.747-1.325 .887-1.325H6.854Z'/>
-</defs>
-<g id='t858b5ecba68d-page1'>
-<use x='.633' y='0' xlink:href='#t858b5ecba68d-g2-22'/>
-<use x='0' y='0' xlink:href='#t858b5ecba68d-g1-120'/>
-<use x='8.461' y='0' xlink:href='#t858b5ecba68d-g2-61'/>
-<use x='18.977' y='0' xlink:href='#t858b5ecba68d-g2-49'/>
-<use x='23.959' y='0' xlink:href='#t858b5ecba68d-g2-55'/>
-<use x='31.154' y='0' xlink:href='#t858b5ecba68d-g2-43'/>
-<use x='41.116' y='0' xlink:href='#t858b5ecba68d-g2-40'/>
-<use x='44.991' y='0' xlink:href='#t858b5ecba68d-g2-49'/>
-<use x='49.972' y='0' xlink:href='#t858b5ecba68d-g2-53'/>
-<use x='57.167' y='0' xlink:href='#t858b5ecba68d-g0-1'/>
-<use x='62.149' y='0' xlink:href='#t858b5ecba68d-g2-50'/>
-<use x='67.13' y='0' xlink:href='#t858b5ecba68d-g2-41'/>
-<use x='73.772' y='0' xlink:href='#t858b5ecba68d-g2-61'/>
-<use x='84.288' y='0' xlink:href='#t858b5ecba68d-g2-52'/>
-<use x='89.269' y='0' xlink:href='#t858b5ecba68d-g2-55'/>
-</g>
-</svg><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.972 80.362 10.963" role="img" aria-label="\bar{x}_{k+1} = f_x(\bullet) + x_k" fill="currentColor" style="width:9.724em;height:1.327em;vertical-align:-0.362em;display:inline-block;overflow:visible">
-<defs>
-<path id='tb44a45c142be-g0-15' d='M4.423-2.491C4.423-3.557 3.537-4.423 2.491-4.423C1.415-4.423 .548-3.537 .548-2.491C.548-1.435 1.415-.558 2.491-.558C3.537-.558 4.423-1.425 4.423-2.491Z'/>
-<path id='tb44a45c142be-g4-43' d='M3.229-1.576H5.363C5.454-1.576 5.621-1.576 5.621-1.743C5.621-1.918 5.461-1.918 5.363-1.918H3.229V-4.059C3.229-4.149 3.229-4.317 3.062-4.317C2.887-4.317 2.887-4.156 2.887-4.059V-1.918H.746C.656-1.918 .488-1.918 .488-1.75C.488-1.576 .649-1.576 .746-1.576H2.887V.565C2.887 .656 2.887 .823 3.055 .823C3.229 .823 3.229 .663 3.229 .565V-1.576Z'/>
-<path id='tb44a45c142be-g4-49' d='M2.336-4.435C2.336-4.624 2.322-4.631 2.127-4.631C1.681-4.191 1.046-4.184 .76-4.184V-3.933C.928-3.933 1.388-3.933 1.771-4.129V-.572C1.771-.342 1.771-.251 1.074-.251H.809V0C.934-.007 1.792-.028 2.05-.028C2.267-.028 3.145-.007 3.299 0V-.251H3.034C2.336-.251 2.336-.342 2.336-.572V-4.435Z'/>
-<path id='tb44a45c142be-g2-107' d='M2.183-4.631C2.19-4.645 2.211-4.735 2.211-4.742C2.211-4.777 2.183-4.84 2.099-4.84C1.96-4.84 1.381-4.784 1.206-4.77C1.151-4.763 1.053-4.756 1.053-4.61C1.053-4.512 1.151-4.512 1.234-4.512C1.569-4.512 1.569-4.463 1.569-4.407C1.569-4.359 1.555-4.317 1.541-4.254L.558-.307C.523-.181 .523-.167 .523-.153C.523-.049 .607 .07 .76 .07C.948 .07 1.039-.07 1.081-.223C1.095-.251 1.395-1.478 1.423-1.576C1.918-1.527 2.315-1.367 2.315-1.004C2.315-.969 2.315-.934 2.301-.865C2.273-.76 2.273-.725 2.273-.649C2.273-.153 2.678 .07 3.013 .07C3.689 .07 3.898-.99 3.898-.997C3.898-1.088 3.808-1.088 3.787-1.088C3.689-1.088 3.682-1.053 3.647-.921C3.564-.621 3.375-.126 3.034-.126C2.845-.126 2.79-.3 2.79-.488C2.79-.607 2.79-.621 2.831-.802C2.838-.823 2.866-.941 2.866-1.018C2.866-1.639 2.029-1.736 1.736-1.757C1.939-1.883 2.197-2.113 2.315-2.218C2.671-2.552 3.02-2.88 3.41-2.88C3.494-2.88 3.585-2.859 3.64-2.79C3.34-2.741 3.278-2.504 3.278-2.399C3.278-2.246 3.396-2.141 3.557-2.141C3.745-2.141 3.954-2.294 3.954-2.587C3.954-2.817 3.787-3.075 3.417-3.075C3.02-3.075 2.657-2.79 2.301-2.462C2.008-2.183 1.778-1.967 1.492-1.848L2.183-4.631Z'/>
-<path id='tb44a45c142be-g2-120' d='M1.736-.739C1.667-.502 1.437-.126 1.081-.126C1.06-.126 .851-.126 .704-.223C.99-.314 1.011-.565 1.011-.607C1.011-.76 .893-.865 .732-.865C.537-.865 .335-.697 .335-.439C.335-.091 .725 .07 1.067 .07C1.388 .07 1.674-.133 1.848-.425C2.015-.056 2.399 .07 2.678 .07C3.48 .07 3.905-.802 3.905-.997C3.905-1.088 3.815-1.088 3.794-1.088C3.696-1.088 3.689-1.053 3.661-.969C3.515-.488 3.096-.126 2.706-.126C2.427-.126 2.28-.314 2.28-.579C2.28-.76 2.448-1.395 2.643-2.169C2.783-2.706 3.096-2.88 3.327-2.88C3.34-2.88 3.557-2.88 3.703-2.783C3.48-2.72 3.396-2.525 3.396-2.399C3.396-2.246 3.515-2.141 3.675-2.141S4.066-2.273 4.066-2.566C4.066-2.957 3.619-3.075 3.34-3.075C2.992-3.075 2.713-2.845 2.559-2.58C2.434-2.866 2.113-3.075 1.723-3.075C.941-3.075 .495-2.218 .495-2.008C.495-1.918 .593-1.918 .614-1.918C.704-1.918 .711-1.946 .746-2.036C.921-2.58 1.36-2.88 1.702-2.88C1.932-2.88 2.12-2.755 2.12-2.42C2.12-2.28 2.036-1.932 1.974-1.695L1.736-.739Z'/>
-<path id='tb44a45c142be-g1-102' d='M3.656-3.985H4.513C4.712-3.985 4.812-3.985 4.812-4.184C4.812-4.294 4.712-4.294 4.543-4.294H3.716L3.925-5.43C3.965-5.639 4.105-6.346 4.164-6.466C4.254-6.655 4.423-6.804 4.633-6.804C4.672-6.804 4.932-6.804 5.121-6.625C4.682-6.585 4.583-6.237 4.583-6.087C4.583-5.858 4.762-5.738 4.951-5.738C5.21-5.738 5.499-5.958 5.499-6.336C5.499-6.795 5.041-7.024 4.633-7.024C4.294-7.024 3.666-6.844 3.367-5.858C3.308-5.649 3.278-5.549 3.039-4.294H2.351C2.162-4.294 2.052-4.294 2.052-4.105C2.052-3.985 2.142-3.985 2.331-3.985H2.989L2.242-.05C2.062 .917 1.893 1.823 1.375 1.823C1.335 1.823 1.086 1.823 .897 1.644C1.355 1.614 1.445 1.255 1.445 1.106C1.445 .877 1.265 .757 1.076 .757C.817 .757 .528 .976 .528 1.355C.528 1.803 .966 2.042 1.375 2.042C1.923 2.042 2.321 1.455 2.501 1.076C2.819 .448 3.049-.757 3.059-.827L3.656-3.985Z'/>
-<path id='tb44a45c142be-g1-120' d='M3.328-3.009C3.387-3.268 3.616-4.184 4.314-4.184C4.364-4.184 4.603-4.184 4.812-4.055C4.533-4.005 4.334-3.756 4.334-3.517C4.334-3.357 4.443-3.168 4.712-3.168C4.932-3.168 5.25-3.347 5.25-3.746C5.25-4.264 4.663-4.403 4.324-4.403C3.746-4.403 3.397-3.875 3.278-3.646C3.029-4.304 2.491-4.403 2.202-4.403C1.166-4.403 .598-3.118 .598-2.869C.598-2.77 .697-2.77 .717-2.77C.797-2.77 .827-2.79 .847-2.879C1.186-3.935 1.843-4.184 2.182-4.184C2.371-4.184 2.72-4.095 2.72-3.517C2.72-3.208 2.55-2.54 2.182-1.146C2.022-.528 1.674-.11 1.235-.11C1.176-.11 .946-.11 .737-.239C.986-.289 1.205-.498 1.205-.777C1.205-1.046 .986-1.126 .837-1.126C.538-1.126 .289-.867 .289-.548C.289-.09 .787 .11 1.225 .11C1.883 .11 2.242-.588 2.271-.648C2.391-.279 2.75 .11 3.347 .11C4.374 .11 4.941-1.176 4.941-1.425C4.941-1.524 4.852-1.524 4.822-1.524C4.732-1.524 4.712-1.484 4.692-1.415C4.364-.349 3.686-.11 3.367-.11C2.979-.11 2.819-.428 2.819-.767C2.819-.986 2.879-1.205 2.989-1.644L3.328-3.009Z'/>
-<path id='tb44a45c142be-g3-22' d='M4.284-5.569V-5.878H.687V-5.569H4.284Z'/>
-<path id='tb44a45c142be-g3-40' d='M3.298 2.391C3.298 2.361 3.298 2.341 3.128 2.172C1.883 .917 1.564-.966 1.564-2.491C1.564-4.224 1.943-5.958 3.168-7.203C3.298-7.323 3.298-7.342 3.298-7.372C3.298-7.442 3.258-7.472 3.198-7.472C3.098-7.472 2.202-6.795 1.614-5.529C1.106-4.433 .986-3.328 .986-2.491C.986-1.714 1.096-.508 1.644 .618C2.242 1.843 3.098 2.491 3.198 2.491C3.258 2.491 3.298 2.461 3.298 2.391Z'/>
-<path id='tb44a45c142be-g3-41' d='M2.879-2.491C2.879-3.268 2.77-4.473 2.222-5.599C1.624-6.824 .767-7.472 .667-7.472C.608-7.472 .568-7.432 .568-7.372C.568-7.342 .568-7.323 .757-7.143C1.733-6.157 2.301-4.573 2.301-2.491C2.301-.787 1.933 .966 .697 2.222C.568 2.341 .568 2.361 .568 2.391C.568 2.451 .608 2.491 .667 2.491C.767 2.491 1.664 1.813 2.252 .548C2.76-.548 2.879-1.654 2.879-2.491Z'/>
-<path id='tb44a45c142be-g3-43' d='M4.075-2.291H6.854C6.994-2.291 7.183-2.291 7.183-2.491S6.994-2.69 6.854-2.69H4.075V-5.479C4.075-5.619 4.075-5.808 3.875-5.808S3.676-5.619 3.676-5.479V-2.69H.887C.747-2.69 .558-2.69 .558-2.491S.747-2.291 .887-2.291H3.676V.498C3.676 .638 3.676 .827 3.875 .827S4.075 .638 4.075 .498V-2.291Z'/>
-<path id='tb44a45c142be-g3-61' d='M6.844-3.258C6.994-3.258 7.183-3.258 7.183-3.457S6.994-3.656 6.854-3.656H.887C.747-3.656 .558-3.656 .558-3.457S.747-3.258 .897-3.258H6.844ZM6.854-1.325C6.994-1.325 7.183-1.325 7.183-1.524S6.994-1.724 6.844-1.724H.897C.747-1.724 .558-1.724 .558-1.524S.747-1.325 .887-1.325H6.854Z'/>
-</defs>
-<g id='tb44a45c142be-page1'>
-<use x='.633' y='0' xlink:href='#tb44a45c142be-g3-22'/>
-<use x='0' y='0' xlink:href='#tb44a45c142be-g1-120'/>
-<use x='5.694' y='1.494' xlink:href='#tb44a45c142be-g2-107'/>
-<use x='10.098' y='1.494' xlink:href='#tb44a45c142be-g4-43'/>
-<use x='16.214' y='1.494' xlink:href='#tb44a45c142be-g4-49'/>
-<use x='23.45' y='0' xlink:href='#tb44a45c142be-g3-61'/>
-<use x='33.966' y='0' xlink:href='#tb44a45c142be-g1-102'/>
-<use x='38.844' y='1.494' xlink:href='#tb44a45c142be-g2-120'/>
-<use x='43.86' y='0' xlink:href='#tb44a45c142be-g3-40'/>
-<use x='47.734' y='0' xlink:href='#tb44a45c142be-g0-15'/>
-<use x='52.716' y='0' xlink:href='#tb44a45c142be-g3-41'/>
-<use x='58.804' y='0' xlink:href='#tb44a45c142be-g3-43'/>
-<use x='68.766' y='0' xlink:href='#tb44a45c142be-g1-120'/>
-<use x='74.46' y='1.494' xlink:href='#tb44a45c142be-g2-107'/>
-</g>
-</svg><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.972 63.125 10.963" role="img" aria-label="f_x(v_x, t) = v_k t" fill="currentColor" style="width:7.638em;height:1.327em;vertical-align:-0.362em;display:inline-block;overflow:visible">
-<defs>
-<path id='t31322d9c0f42-g2-40' d='M3.298 2.391C3.298 2.361 3.298 2.341 3.128 2.172C1.883 .917 1.564-.966 1.564-2.491C1.564-4.224 1.943-5.958 3.168-7.203C3.298-7.323 3.298-7.342 3.298-7.372C3.298-7.442 3.258-7.472 3.198-7.472C3.098-7.472 2.202-6.795 1.614-5.529C1.106-4.433 .986-3.328 .986-2.491C.986-1.714 1.096-.508 1.644 .618C2.242 1.843 3.098 2.491 3.198 2.491C3.258 2.491 3.298 2.461 3.298 2.391Z'/>
-<path id='t31322d9c0f42-g2-41' d='M2.879-2.491C2.879-3.268 2.77-4.473 2.222-5.599C1.624-6.824 .767-7.472 .667-7.472C.608-7.472 .568-7.432 .568-7.372C.568-7.342 .568-7.323 .757-7.143C1.733-6.157 2.301-4.573 2.301-2.491C2.301-.787 1.933 .966 .697 2.222C.568 2.341 .568 2.361 .568 2.391C.568 2.451 .608 2.491 .667 2.491C.767 2.491 1.664 1.813 2.252 .548C2.76-.548 2.879-1.654 2.879-2.491Z'/>
-<path id='t31322d9c0f42-g2-61' d='M6.844-3.258C6.994-3.258 7.183-3.258 7.183-3.457S6.994-3.656 6.854-3.656H.887C.747-3.656 .558-3.656 .558-3.457S.747-3.258 .897-3.258H6.844ZM6.854-1.325C6.994-1.325 7.183-1.325 7.183-1.524S6.994-1.724 6.844-1.724H.897C.747-1.724 .558-1.724 .558-1.524S.747-1.325 .887-1.325H6.854Z'/>
-<path id='t31322d9c0f42-g1-107' d='M2.183-4.631C2.19-4.645 2.211-4.735 2.211-4.742C2.211-4.777 2.183-4.84 2.099-4.84C1.96-4.84 1.381-4.784 1.206-4.77C1.151-4.763 1.053-4.756 1.053-4.61C1.053-4.512 1.151-4.512 1.234-4.512C1.569-4.512 1.569-4.463 1.569-4.407C1.569-4.359 1.555-4.317 1.541-4.254L.558-.307C.523-.181 .523-.167 .523-.153C.523-.049 .607 .07 .76 .07C.948 .07 1.039-.07 1.081-.223C1.095-.251 1.395-1.478 1.423-1.576C1.918-1.527 2.315-1.367 2.315-1.004C2.315-.969 2.315-.934 2.301-.865C2.273-.76 2.273-.725 2.273-.649C2.273-.153 2.678 .07 3.013 .07C3.689 .07 3.898-.99 3.898-.997C3.898-1.088 3.808-1.088 3.787-1.088C3.689-1.088 3.682-1.053 3.647-.921C3.564-.621 3.375-.126 3.034-.126C2.845-.126 2.79-.3 2.79-.488C2.79-.607 2.79-.621 2.831-.802C2.838-.823 2.866-.941 2.866-1.018C2.866-1.639 2.029-1.736 1.736-1.757C1.939-1.883 2.197-2.113 2.315-2.218C2.671-2.552 3.02-2.88 3.41-2.88C3.494-2.88 3.585-2.859 3.64-2.79C3.34-2.741 3.278-2.504 3.278-2.399C3.278-2.246 3.396-2.141 3.557-2.141C3.745-2.141 3.954-2.294 3.954-2.587C3.954-2.817 3.787-3.075 3.417-3.075C3.02-3.075 2.657-2.79 2.301-2.462C2.008-2.183 1.778-1.967 1.492-1.848L2.183-4.631Z'/>
-<path id='t31322d9c0f42-g1-120' d='M1.736-.739C1.667-.502 1.437-.126 1.081-.126C1.06-.126 .851-.126 .704-.223C.99-.314 1.011-.565 1.011-.607C1.011-.76 .893-.865 .732-.865C.537-.865 .335-.697 .335-.439C.335-.091 .725 .07 1.067 .07C1.388 .07 1.674-.133 1.848-.425C2.015-.056 2.399 .07 2.678 .07C3.48 .07 3.905-.802 3.905-.997C3.905-1.088 3.815-1.088 3.794-1.088C3.696-1.088 3.689-1.053 3.661-.969C3.515-.488 3.096-.126 2.706-.126C2.427-.126 2.28-.314 2.28-.579C2.28-.76 2.448-1.395 2.643-2.169C2.783-2.706 3.096-2.88 3.327-2.88C3.34-2.88 3.557-2.88 3.703-2.783C3.48-2.72 3.396-2.525 3.396-2.399C3.396-2.246 3.515-2.141 3.675-2.141S4.066-2.273 4.066-2.566C4.066-2.957 3.619-3.075 3.34-3.075C2.992-3.075 2.713-2.845 2.559-2.58C2.434-2.866 2.113-3.075 1.723-3.075C.941-3.075 .495-2.218 .495-2.008C.495-1.918 .593-1.918 .614-1.918C.704-1.918 .711-1.946 .746-2.036C.921-2.58 1.36-2.88 1.702-2.88C1.932-2.88 2.12-2.755 2.12-2.42C2.12-2.28 2.036-1.932 1.974-1.695L1.736-.739Z'/>
-<path id='t31322d9c0f42-g0-59' d='M2.022-.01C2.022-.667 1.773-1.056 1.385-1.056C1.056-1.056 .857-.807 .857-.528C.857-.259 1.056 0 1.385 0C1.504 0 1.634-.04 1.733-.13C1.763-.149 1.773-.159 1.783-.159S1.803-.149 1.803-.01C1.803 .727 1.455 1.325 1.126 1.654C1.016 1.763 1.016 1.783 1.016 1.813C1.016 1.883 1.066 1.923 1.116 1.923C1.225 1.923 2.022 1.156 2.022-.01Z'/>
-<path id='t31322d9c0f42-g0-102' d='M3.656-3.985H4.513C4.712-3.985 4.812-3.985 4.812-4.184C4.812-4.294 4.712-4.294 4.543-4.294H3.716L3.925-5.43C3.965-5.639 4.105-6.346 4.164-6.466C4.254-6.655 4.423-6.804 4.633-6.804C4.672-6.804 4.932-6.804 5.121-6.625C4.682-6.585 4.583-6.237 4.583-6.087C4.583-5.858 4.762-5.738 4.951-5.738C5.21-5.738 5.499-5.958 5.499-6.336C5.499-6.795 5.041-7.024 4.633-7.024C4.294-7.024 3.666-6.844 3.367-5.858C3.308-5.649 3.278-5.549 3.039-4.294H2.351C2.162-4.294 2.052-4.294 2.052-4.105C2.052-3.985 2.142-3.985 2.331-3.985H2.989L2.242-.05C2.062 .917 1.893 1.823 1.375 1.823C1.335 1.823 1.086 1.823 .897 1.644C1.355 1.614 1.445 1.255 1.445 1.106C1.445 .877 1.265 .757 1.076 .757C.817 .757 .528 .976 .528 1.355C.528 1.803 .966 2.042 1.375 2.042C1.923 2.042 2.321 1.455 2.501 1.076C2.819 .448 3.049-.757 3.059-.827L3.656-3.985Z'/>
-<path id='t31322d9c0f42-g0-116' d='M2.052-3.985H2.989C3.188-3.985 3.288-3.985 3.288-4.184C3.288-4.294 3.188-4.294 3.009-4.294H2.132C2.491-5.709 2.54-5.908 2.54-5.968C2.54-6.137 2.421-6.237 2.252-6.237C2.222-6.237 1.943-6.227 1.853-5.878L1.465-4.294H.528C.329-4.294 .229-4.294 .229-4.105C.229-3.985 .309-3.985 .508-3.985H1.385C.667-1.156 .628-.986 .628-.807C.628-.269 1.006 .11 1.544 .11C2.56 .11 3.128-1.345 3.128-1.425C3.128-1.524 3.049-1.524 3.009-1.524C2.919-1.524 2.909-1.494 2.859-1.385C2.431-.349 1.903-.11 1.564-.11C1.355-.11 1.255-.239 1.255-.568C1.255-.807 1.275-.877 1.315-1.046L2.052-3.985Z'/>
-<path id='t31322d9c0f42-g0-118' d='M4.663-3.706C4.663-4.244 4.403-4.403 4.224-4.403C3.975-4.403 3.736-4.144 3.736-3.925C3.736-3.796 3.786-3.736 3.895-3.626C4.105-3.427 4.234-3.168 4.234-2.809C4.234-2.391 3.626-.11 2.461-.11C1.953-.11 1.724-.458 1.724-.976C1.724-1.534 1.993-2.262 2.301-3.088C2.371-3.258 2.421-3.397 2.421-3.587C2.421-4.035 2.102-4.403 1.604-4.403C.667-4.403 .289-2.959 .289-2.869C.289-2.77 .389-2.77 .408-2.77C.508-2.77 .518-2.79 .568-2.949C.857-3.955 1.285-4.184 1.574-4.184C1.654-4.184 1.823-4.184 1.823-3.866C1.823-3.616 1.724-3.347 1.654-3.168C1.215-2.012 1.086-1.554 1.086-1.126C1.086-.05 1.963 .11 2.421 .11C4.095 .11 4.663-3.188 4.663-3.706Z'/>
-</defs>
-<g id='t31322d9c0f42-page1'>
-<use x='0' y='0' xlink:href='#t31322d9c0f42-g0-102'/>
-<use x='4.878' y='1.494' xlink:href='#t31322d9c0f42-g1-120'/>
-<use x='9.893' y='0' xlink:href='#t31322d9c0f42-g2-40'/>
-<use x='13.768' y='0' xlink:href='#t31322d9c0f42-g0-118'/>
-<use x='18.597' y='1.494' xlink:href='#t31322d9c0f42-g1-120'/>
-<use x='23.613' y='0' xlink:href='#t31322d9c0f42-g0-59'/>
-<use x='28.041' y='0' xlink:href='#t31322d9c0f42-g0-116'/>
-<use x='31.638' y='0' xlink:href='#t31322d9c0f42-g2-41'/>
-<use x='38.28' y='0' xlink:href='#t31322d9c0f42-g2-61'/>
-<use x='48.796' y='0' xlink:href='#t31322d9c0f42-g0-118'/>
-<use x='53.625' y='1.494' xlink:href='#t31322d9c0f42-g1-107'/>
-<use x='58.527' y='0' xlink:href='#t31322d9c0f42-g0-116'/>
-</g>
-</svg></div><div class="point"><b>예</b>: 현재 17 m, 속도 15 m/s, 2 초 뒤 47 m. 윗줄(bar)은 prior(예측값) 표시</div><figure class="fig plain"><img src="./imgs/predict_update.svg" alt="predict_update" style="width:900px"></figure></div>
-<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:35%"></i></div><span class="foot-num">13 / 37</span></footer>
-</section>
-<section class="slide" data-label="14 Noisy Movement" data-screen-label="14 Noisy Movement">
-<header class="head"><span class="kicker">2.6 Adding Uncertainty to the Prediction</span><span class="folio">14</span></header>
+<section class="slide" data-label="13 Noisy Movement" data-screen-label="13 Noisy Movement">
+<header class="head"><span class="kicker">2.6 Adding Uncertainty to the Prediction</span><span class="folio">13</span></header>
 <h2 class="title">Noisy Movement</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>실제 이동 센서는 잡음이 있어 한 칸 이동 보고에도 두 칸이나 제자리일 수 있음</li><li>정확, 한 칸 초과, 한 칸 미달 세 경우의 확률을 각 위치에 합쳐 prior 계산</li><li>위치 3 에서 확실히 출발해 2 칸 이동 보고 → 위치 5 에 0.8, 위치 4 와 6 에 0.1</li><li><strong>조건</strong>: 위치 3 에서 2 칸 이동 보고, 정확 80%, 한 칸 초과 10%, 한 칸 미달 10%</li></ul><div style="display:grid;grid-template-columns:max-content 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" style=";padding-right:112px" class="code xxs denser"><span class="k">def</span> <span class="fn">predict_move</span>(belief, move, p_under, p_correct, p_over):
@@ -524,77 +490,13 @@ interact(simulate, time_step=IntSlider(
 belief = [<span class="no">0.</span>, <span class="no">0.</span>, <span class="no">0.</span>, <span class="no">1.</span>, <span class="no">0.</span>, <span class="no">0.</span>, <span class="no">0.</span>, <span class="no">0.</span>, <span class="no">0.</span>, <span class="no">0.</span>]
 prior = predict_move(belief, <span class="no">2</span>, <span class="no">.1</span>, <span class="no">.8</span>, <span class="no">.1</span>)
 plots.plot_belief_vs_prior(belief, prior)</pre></div><div class="cell"><div class="run-slot" data-key="b6fbbbe6a25b"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text"></span><img src="./imgs/run/b6fbbbe6a25b_0.png" alt="result"></div></div></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:38%"></i></div><span class="foot-num">14 / 37</span></footer>
+<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:43%"></i></div><span class="foot-num">13 / 30</span></footer>
 </section>
-<section class="slide" data-label="15 Uncertain Belief" data-screen-label="15 Uncertain Belief">
-<header class="head"><span class="kicker">2.6 Adding Uncertainty to the Prediction</span><span class="folio">15</span></header>
+<section class="slide" data-label="14 Uncertain Belief" data-screen-label="14 Uncertain Belief">
+<header class="head"><span class="kicker">2.6 Adding Uncertainty to the Prediction</span><span class="folio">14</span></header>
 <h2 class="title">Uncertain Belief</h2>
 <div class="rule"></div>
-<div class="body"><ul class="ul brief"><li>시작 위치가 위치 2 (0.4) 와 위치 3 (0.6) 로 불확실한 경우의 같은 예측</li><li>0.38 은 2 칸 정확 이동과 한 칸 미달의 합, 0.04 는 0.4 가 한 칸 미달한 경우</li><li>예측 후 확률은 낮아지고 여러 위치로 퍼짐, 이 계산 과정의 이해가 핵심</li><li><strong>조건</strong>: 위치 2 에 0.4, 위치 3 에 0.6, 2 칸 이동 보고, 같은 이동 오차</li></ul><div class="formula" style="gap:16px 72px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.972 134.942 10.963" role="img" aria-label="0.38 = (0.4 \times 0.8) + (0.6 \times 0.1)" fill="currentColor" style="width:16.328em;height:1.327em;vertical-align:-0.362em;display:inline-block;overflow:visible">
-<defs>
-<path id='t10da4dd5403e-g0-2' d='M3.875-2.77L1.883-4.752C1.763-4.872 1.743-4.892 1.664-4.892C1.564-4.892 1.465-4.802 1.465-4.692C1.465-4.623 1.484-4.603 1.594-4.493L3.587-2.491L1.594-.488C1.484-.379 1.465-.359 1.465-.289C1.465-.179 1.564-.09 1.664-.09C1.743-.09 1.763-.11 1.883-.229L3.866-2.212L5.928-.149C5.948-.139 6.017-.09 6.077-.09C6.197-.09 6.276-.179 6.276-.289C6.276-.309 6.276-.349 6.247-.399C6.237-.418 4.653-1.983 4.154-2.491L5.978-4.314C6.027-4.374 6.177-4.503 6.227-4.563C6.237-4.583 6.276-4.623 6.276-4.692C6.276-4.802 6.197-4.892 6.077-4.892C5.998-4.892 5.958-4.852 5.848-4.742L3.875-2.77Z'/>
-<path id='t10da4dd5403e-g1-58' d='M1.913-.528C1.913-.817 1.674-1.056 1.385-1.056S.857-.817 .857-.528S1.096 0 1.385 0S1.913-.239 1.913-.528Z'/>
-<path id='t10da4dd5403e-g2-40' d='M3.298 2.391C3.298 2.361 3.298 2.341 3.128 2.172C1.883 .917 1.564-.966 1.564-2.491C1.564-4.224 1.943-5.958 3.168-7.203C3.298-7.323 3.298-7.342 3.298-7.372C3.298-7.442 3.258-7.472 3.198-7.472C3.098-7.472 2.202-6.795 1.614-5.529C1.106-4.433 .986-3.328 .986-2.491C.986-1.714 1.096-.508 1.644 .618C2.242 1.843 3.098 2.491 3.198 2.491C3.258 2.491 3.298 2.461 3.298 2.391Z'/>
-<path id='t10da4dd5403e-g2-41' d='M2.879-2.491C2.879-3.268 2.77-4.473 2.222-5.599C1.624-6.824 .767-7.472 .667-7.472C.608-7.472 .568-7.432 .568-7.372C.568-7.342 .568-7.323 .757-7.143C1.733-6.157 2.301-4.573 2.301-2.491C2.301-.787 1.933 .966 .697 2.222C.568 2.341 .568 2.361 .568 2.391C.568 2.451 .608 2.491 .667 2.491C.767 2.491 1.664 1.813 2.252 .548C2.76-.548 2.879-1.654 2.879-2.491Z'/>
-<path id='t10da4dd5403e-g2-43' d='M4.075-2.291H6.854C6.994-2.291 7.183-2.291 7.183-2.491S6.994-2.69 6.854-2.69H4.075V-5.479C4.075-5.619 4.075-5.808 3.875-5.808S3.676-5.619 3.676-5.479V-2.69H.887C.747-2.69 .558-2.69 .558-2.491S.747-2.291 .887-2.291H3.676V.498C3.676 .638 3.676 .827 3.875 .827S4.075 .638 4.075 .498V-2.291Z'/>
-<path id='t10da4dd5403e-g2-48' d='M4.583-3.188C4.583-3.985 4.533-4.782 4.184-5.519C3.726-6.476 2.909-6.635 2.491-6.635C1.893-6.635 1.166-6.376 .757-5.45C.438-4.762 .389-3.985 .389-3.188C.389-2.441 .428-1.544 .837-.787C1.265 .02 1.993 .219 2.481 .219C3.019 .219 3.776 .01 4.214-.936C4.533-1.624 4.583-2.401 4.583-3.188ZM2.481 0C2.092 0 1.504-.249 1.325-1.205C1.215-1.803 1.215-2.72 1.215-3.308C1.215-3.945 1.215-4.603 1.295-5.141C1.484-6.326 2.232-6.416 2.481-6.416C2.809-6.416 3.467-6.237 3.656-5.25C3.756-4.692 3.756-3.935 3.756-3.308C3.756-2.56 3.756-1.883 3.646-1.245C3.497-.299 2.929 0 2.481 0Z'/>
-<path id='t10da4dd5403e-g2-49' d='M2.929-6.376C2.929-6.615 2.929-6.635 2.7-6.635C2.082-5.998 1.205-5.998 .887-5.998V-5.689C1.086-5.689 1.674-5.689 2.192-5.948V-.787C2.192-.428 2.162-.309 1.265-.309H.946V0C1.295-.03 2.162-.03 2.56-.03S3.826-.03 4.174 0V-.309H3.856C2.959-.309 2.929-.418 2.929-.787V-6.376Z'/>
-<path id='t10da4dd5403e-g2-51' d='M2.889-3.507C3.706-3.776 4.284-4.473 4.284-5.26C4.284-6.077 3.407-6.635 2.451-6.635C1.445-6.635 .687-6.037 .687-5.28C.687-4.951 .907-4.762 1.196-4.762C1.504-4.762 1.704-4.981 1.704-5.27C1.704-5.768 1.235-5.768 1.086-5.768C1.395-6.257 2.052-6.386 2.411-6.386C2.819-6.386 3.367-6.167 3.367-5.27C3.367-5.151 3.347-4.573 3.088-4.134C2.79-3.656 2.451-3.626 2.202-3.616C2.122-3.606 1.883-3.587 1.813-3.587C1.733-3.577 1.664-3.567 1.664-3.467C1.664-3.357 1.733-3.357 1.903-3.357H2.341C3.158-3.357 3.527-2.68 3.527-1.704C3.527-.349 2.839-.06 2.401-.06C1.973-.06 1.225-.229 .877-.817C1.225-.767 1.534-.986 1.534-1.365C1.534-1.724 1.265-1.923 .976-1.923C.737-1.923 .418-1.783 .418-1.345C.418-.438 1.345 .219 2.431 .219C3.646 .219 4.553-.687 4.553-1.704C4.553-2.521 3.925-3.298 2.889-3.507Z'/>
-<path id='t10da4dd5403e-g2-52' d='M2.929-1.644V-.777C2.929-.418 2.909-.309 2.172-.309H1.963V0C2.371-.03 2.889-.03 3.308-.03S4.254-.03 4.663 0V-.309H4.453C3.716-.309 3.696-.418 3.696-.777V-1.644H4.692V-1.953H3.696V-6.486C3.696-6.685 3.696-6.745 3.537-6.745C3.447-6.745 3.417-6.745 3.337-6.625L.279-1.953V-1.644H2.929ZM2.989-1.953H.558L2.989-5.669V-1.953Z'/>
-<path id='t10da4dd5403e-g2-54' d='M1.315-3.268V-3.507C1.315-6.027 2.55-6.386 3.059-6.386C3.298-6.386 3.716-6.326 3.935-5.988C3.786-5.988 3.387-5.988 3.387-5.539C3.387-5.23 3.626-5.081 3.846-5.081C4.005-5.081 4.304-5.171 4.304-5.559C4.304-6.157 3.866-6.635 3.039-6.635C1.763-6.635 .418-5.35 .418-3.148C.418-.488 1.574 .219 2.501 .219C3.606 .219 4.553-.717 4.553-2.032C4.553-3.298 3.666-4.254 2.56-4.254C1.883-4.254 1.514-3.746 1.315-3.268ZM2.501-.06C1.873-.06 1.574-.658 1.514-.807C1.335-1.275 1.335-2.072 1.335-2.252C1.335-3.029 1.654-4.025 2.55-4.025C2.71-4.025 3.168-4.025 3.477-3.407C3.656-3.039 3.656-2.531 3.656-2.042C3.656-1.564 3.656-1.066 3.487-.707C3.188-.11 2.73-.06 2.501-.06Z'/>
-<path id='t10da4dd5403e-g2-56' d='M1.624-4.553C1.166-4.852 1.126-5.191 1.126-5.36C1.126-5.968 1.773-6.386 2.481-6.386C3.208-6.386 3.846-5.868 3.846-5.151C3.846-4.583 3.457-4.105 2.859-3.756L1.624-4.553ZM3.078-3.606C3.796-3.975 4.284-4.493 4.284-5.151C4.284-6.067 3.397-6.635 2.491-6.635C1.494-6.635 .687-5.898 .687-4.971C.687-4.792 .707-4.344 1.126-3.875C1.235-3.756 1.604-3.507 1.853-3.337C1.275-3.049 .418-2.491 .418-1.504C.418-.448 1.435 .219 2.481 .219C3.606 .219 4.553-.608 4.553-1.674C4.553-2.032 4.443-2.481 4.065-2.899C3.875-3.108 3.716-3.208 3.078-3.606ZM2.082-3.188L3.308-2.411C3.587-2.222 4.055-1.923 4.055-1.315C4.055-.578 3.308-.06 2.491-.06C1.634-.06 .917-.677 .917-1.504C.917-2.082 1.235-2.72 2.082-3.188Z'/>
-<path id='t10da4dd5403e-g2-61' d='M6.844-3.258C6.994-3.258 7.183-3.258 7.183-3.457S6.994-3.656 6.854-3.656H.887C.747-3.656 .558-3.656 .558-3.457S.747-3.258 .897-3.258H6.844ZM6.854-1.325C6.994-1.325 7.183-1.325 7.183-1.524S6.994-1.724 6.844-1.724H.897C.747-1.724 .558-1.724 .558-1.524S.747-1.325 .887-1.325H6.854Z'/>
-</defs>
-<g id='t10da4dd5403e-page1'>
-<use x='0' y='0' xlink:href='#t10da4dd5403e-g2-48'/>
-<use x='4.981' y='0' xlink:href='#t10da4dd5403e-g1-58'/>
-<use x='7.749' y='0' xlink:href='#t10da4dd5403e-g2-51'/>
-<use x='12.73' y='0' xlink:href='#t10da4dd5403e-g2-56'/>
-<use x='20.479' y='0' xlink:href='#t10da4dd5403e-g2-61'/>
-<use x='30.995' y='0' xlink:href='#t10da4dd5403e-g2-40'/>
-<use x='34.869' y='0' xlink:href='#t10da4dd5403e-g2-48'/>
-<use x='39.851' y='0' xlink:href='#t10da4dd5403e-g1-58'/>
-<use x='42.618' y='0' xlink:href='#t10da4dd5403e-g2-52'/>
-<use x='49.813' y='0' xlink:href='#t10da4dd5403e-g0-2'/>
-<use x='59.776' y='0' xlink:href='#t10da4dd5403e-g2-48'/>
-<use x='64.757' y='0' xlink:href='#t10da4dd5403e-g1-58'/>
-<use x='67.525' y='0' xlink:href='#t10da4dd5403e-g2-56'/>
-<use x='72.506' y='0' xlink:href='#t10da4dd5403e-g2-41'/>
-<use x='78.594' y='0' xlink:href='#t10da4dd5403e-g2-43'/>
-<use x='88.557' y='0' xlink:href='#t10da4dd5403e-g2-40'/>
-<use x='92.431' y='0' xlink:href='#t10da4dd5403e-g2-48'/>
-<use x='97.412' y='0' xlink:href='#t10da4dd5403e-g1-58'/>
-<use x='100.18' y='0' xlink:href='#t10da4dd5403e-g2-54'/>
-<use x='107.375' y='0' xlink:href='#t10da4dd5403e-g0-2'/>
-<use x='117.338' y='0' xlink:href='#t10da4dd5403e-g2-48'/>
-<use x='122.319' y='0' xlink:href='#t10da4dd5403e-g1-58'/>
-<use x='125.086' y='0' xlink:href='#t10da4dd5403e-g2-49'/>
-<use x='130.068' y='0' xlink:href='#t10da4dd5403e-g2-41'/>
-</g>
-</svg><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -6.92 69.631 8.251" role="img" aria-label="0.04 = 0.4 \times 0.1" fill="currentColor" style="width:8.425em;height:0.998em;vertical-align:-0.161em;display:inline-block;overflow:visible">
-<defs>
-<path id='tcd82e01e00b4-g0-2' d='M3.875-2.77L1.883-4.752C1.763-4.872 1.743-4.892 1.664-4.892C1.564-4.892 1.465-4.802 1.465-4.692C1.465-4.623 1.484-4.603 1.594-4.493L3.587-2.491L1.594-.488C1.484-.379 1.465-.359 1.465-.289C1.465-.179 1.564-.09 1.664-.09C1.743-.09 1.763-.11 1.883-.229L3.866-2.212L5.928-.149C5.948-.139 6.017-.09 6.077-.09C6.197-.09 6.276-.179 6.276-.289C6.276-.309 6.276-.349 6.247-.399C6.237-.418 4.653-1.983 4.154-2.491L5.978-4.314C6.027-4.374 6.177-4.503 6.227-4.563C6.237-4.583 6.276-4.623 6.276-4.692C6.276-4.802 6.197-4.892 6.077-4.892C5.998-4.892 5.958-4.852 5.848-4.742L3.875-2.77Z'/>
-<path id='tcd82e01e00b4-g1-58' d='M1.913-.528C1.913-.817 1.674-1.056 1.385-1.056S.857-.817 .857-.528S1.096 0 1.385 0S1.913-.239 1.913-.528Z'/>
-<path id='tcd82e01e00b4-g2-48' d='M4.583-3.188C4.583-3.985 4.533-4.782 4.184-5.519C3.726-6.476 2.909-6.635 2.491-6.635C1.893-6.635 1.166-6.376 .757-5.45C.438-4.762 .389-3.985 .389-3.188C.389-2.441 .428-1.544 .837-.787C1.265 .02 1.993 .219 2.481 .219C3.019 .219 3.776 .01 4.214-.936C4.533-1.624 4.583-2.401 4.583-3.188ZM2.481 0C2.092 0 1.504-.249 1.325-1.205C1.215-1.803 1.215-2.72 1.215-3.308C1.215-3.945 1.215-4.603 1.295-5.141C1.484-6.326 2.232-6.416 2.481-6.416C2.809-6.416 3.467-6.237 3.656-5.25C3.756-4.692 3.756-3.935 3.756-3.308C3.756-2.56 3.756-1.883 3.646-1.245C3.497-.299 2.929 0 2.481 0Z'/>
-<path id='tcd82e01e00b4-g2-49' d='M2.929-6.376C2.929-6.615 2.929-6.635 2.7-6.635C2.082-5.998 1.205-5.998 .887-5.998V-5.689C1.086-5.689 1.674-5.689 2.192-5.948V-.787C2.192-.428 2.162-.309 1.265-.309H.946V0C1.295-.03 2.162-.03 2.56-.03S3.826-.03 4.174 0V-.309H3.856C2.959-.309 2.929-.418 2.929-.787V-6.376Z'/>
-<path id='tcd82e01e00b4-g2-52' d='M2.929-1.644V-.777C2.929-.418 2.909-.309 2.172-.309H1.963V0C2.371-.03 2.889-.03 3.308-.03S4.254-.03 4.663 0V-.309H4.453C3.716-.309 3.696-.418 3.696-.777V-1.644H4.692V-1.953H3.696V-6.486C3.696-6.685 3.696-6.745 3.537-6.745C3.447-6.745 3.417-6.745 3.337-6.625L.279-1.953V-1.644H2.929ZM2.989-1.953H.558L2.989-5.669V-1.953Z'/>
-<path id='tcd82e01e00b4-g2-61' d='M6.844-3.258C6.994-3.258 7.183-3.258 7.183-3.457S6.994-3.656 6.854-3.656H.887C.747-3.656 .558-3.656 .558-3.457S.747-3.258 .897-3.258H6.844ZM6.854-1.325C6.994-1.325 7.183-1.325 7.183-1.524S6.994-1.724 6.844-1.724H.897C.747-1.724 .558-1.724 .558-1.524S.747-1.325 .887-1.325H6.854Z'/>
-</defs>
-<g id='tcd82e01e00b4-page1'>
-<use x='0' y='0' xlink:href='#tcd82e01e00b4-g2-48'/>
-<use x='4.981' y='0' xlink:href='#tcd82e01e00b4-g1-58'/>
-<use x='7.749' y='0' xlink:href='#tcd82e01e00b4-g2-48'/>
-<use x='12.73' y='0' xlink:href='#tcd82e01e00b4-g2-52'/>
-<use x='20.479' y='0' xlink:href='#tcd82e01e00b4-g2-61'/>
-<use x='30.995' y='0' xlink:href='#tcd82e01e00b4-g2-48'/>
-<use x='35.976' y='0' xlink:href='#tcd82e01e00b4-g1-58'/>
-<use x='38.744' y='0' xlink:href='#tcd82e01e00b4-g2-52'/>
-<use x='45.939' y='0' xlink:href='#tcd82e01e00b4-g0-2'/>
-<use x='55.901' y='0' xlink:href='#tcd82e01e00b4-g2-48'/>
-<use x='60.883' y='0' xlink:href='#tcd82e01e00b4-g1-58'/>
-<use x='63.65' y='0' xlink:href='#tcd82e01e00b4-g2-49'/>
-</g>
-</svg></div><div style="display:grid;grid-template-columns:max-content 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" style=";padding-right:112px" class="code xxs denser">belief = [<span class="no">0</span>, <span class="no">0</span>, <span class="no">.4</span>, <span class="no">.6</span>, <span class="no">0</span>, <span class="no">0</span>, <span class="no">0</span>, <span class="no">0</span>, <span class="no">0</span>, <span class="no">0</span>]
+<div class="body"><div style="display:grid;grid-template-columns:1fr 780px;gap:24px;min-height:0;align-items:center"><div class="cell"><ul class="ul brief"><li>위치 2 (0.4), 위치 3 (0.6) 의 불확실한 시작에 2 칸 이동 예측 적용</li><li>결과: 각 확률을 정확 이동 0.8, 미달 0.1, 초과 0.1 로 이웃 위치에 분배</li><li>도착 위치별로 합산, 최대 확률은 낮아지고 분포는 넓어짐</li><li><strong>조건</strong>: 위치 2 에 0.4, 위치 3 에 0.6, 2 칸 이동, 이동 오차 (0.1, 0.8, 0.1)</li></ul></div><div class="cell"><figure class="fig plain"><img src="./imgs/uncertain.svg" alt="where each start probability goes" style="width:100%"></figure></div></div><div style="display:grid;grid-template-columns:max-content 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" style=";padding-right:112px" class="code xxs denser">belief = [<span class="no">0</span>, <span class="no">0</span>, <span class="no">.4</span>, <span class="no">.6</span>, <span class="no">0</span>, <span class="no">0</span>, <span class="no">0</span>, <span class="no">0</span>, <span class="no">0</span>, <span class="no">0</span>]
 prior = predict_move(belief, <span class="no">2</span>, <span class="no">.1</span>, <span class="no">.8</span>, <span class="no">.1</span>)
 plots.plot_belief_vs_prior(belief, prior)
 prior</pre></div><div class="cell"><div class="run-slot" data-key="57442b4a078c"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text">[0.   0.   0.   0.04 0.38 0.52 0.06 0.   0.   0.  ]
@@ -609,10 +511,10 @@ prior</pre></div><div class="cell"><div class="run-slot" data-key="57442b4a078c"
             belief[(i-move+1) % n] * p_under)
     return prior
 </script>
-<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:41%"></i></div><span class="foot-num">15 / 37</span></footer>
+<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:47%"></i></div><span class="foot-num">14 / 30</span></footer>
 </section>
-<section class="slide" data-label="16 Losing Information" data-screen-label="16 Losing Information">
-<header class="head"><span class="kicker">2.6 Adding Uncertainty to the Prediction</span><span class="folio">16</span></header>
+<section class="slide" data-label="15 Losing Information" data-screen-label="15 Losing Information">
+<header class="head"><span class="kicker">2.6 Adding Uncertainty to the Prediction</span><span class="folio">15</span></header>
 <h2 class="title">Losing Information</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>위치 0 에서 100% 확실하게 출발한 뒤 측정 없이 잡음 있는 예측만 100 번 반복</li><li>step 슬라이더로 단계마다 분포가 넓게 퍼지며 최대 확률이 낮아지는 과정 확인</li><li>예측마다 정보를 잃으므로 결국 모든 위치가 거의 같은 확률(약 0.1)</li><li><strong>조건</strong>: 위치 0 에서 100% 확실하게 출발, 측정 없이 100 step, 한 칸씩 이동</li></ul><div style="display:grid;grid-template-columns:max-content 1fr;gap:28px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxxs denser"><span class="k">from</span> ipywidgets <span class="k">import</span> interact, IntSlider
@@ -640,10 +542,10 @@ interact(show_prior, step=IntSlider(
             belief[(i-move+1) % n] * p_under)
     return prior
 </script>
-<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:43%"></i></div><span class="foot-num">16 / 37</span></footer>
+<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:50%"></i></div><span class="foot-num">15 / 30</span></footer>
 </section>
-<section class="slide" data-label="17 Convolution" data-screen-label="17 Convolution">
-<header class="head"><span class="kicker">2.7 Generalizing with Convolution</span><span class="folio">17</span></header>
+<section class="slide" data-label="16 Convolution" data-screen-label="16 Convolution">
+<header class="head"><span class="kicker">2.7 Generalizing with Convolution</span><span class="folio">16</span></header>
 <h2 class="title">Convolution</h2>
 <div class="rule"></div>
 <div class="body"><div class="formula" style="gap:16px 96px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -10.352 132.943 14.394" role="img" aria-label="(f \ast g)(t) = \int_0^t f(\tau)\, g(t - \tau)\, d\tau" fill="currentColor" style="width:16.086em;height:1.742em;vertical-align:-0.489em;display:inline-block;overflow:visible">
@@ -734,10 +636,10 @@ interact(show_prior, step=IntSlider(
 <use x='125.637' y='0' xlink:href='#t6200b9f089cc-g3-93'/>
 </g>
 </svg></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;min-height:0;"><div class="cell"><ul class="ul"><li><strong>일반화</strong>: 이동 오차가 두 칸, 세 칸 이상일 수도, 합성곱으로 일반화</li></ul></div><div class="cell"><ul class="ul"><li><strong>kernel</strong>: [0.1, 0.8, 0.1] 을 배열 위로 미끄러뜨리며 곱해서 더함</li></ul></div></div><div class="point"><b>핵심</b>: predict_move() 는 이미 합성곱, 확률 분포를 센서 오차 함수로 변형하는 연산</div><figure class="fig plain"><img src="./imgs/convolution.svg" alt="convolution" style="width:100%"></figure></div>
-<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:46%"></i></div><span class="foot-num">17 / 37</span></footer>
+<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:53%"></i></div><span class="foot-num">16 / 30</span></footer>
 </section>
-<section class="slide" data-label="18 Convolution in Code" data-screen-label="18 Convolution in Code">
-<header class="head"><span class="kicker">2.7 Generalizing with Convolution</span><span class="folio">18</span></header>
+<section class="slide" data-label="17 Convolution in Code" data-screen-label="17 Convolution in Code">
+<header class="head"><span class="kicker">2.7 Generalizing with Convolution</span><span class="folio">17</span></header>
 <h2 class="title">Convolution in Code</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>이동 오차가 두 칸 이상일 수 있으므로 이동 오차 분포를 kernel 배열로 일반화</li><li>kernel 을 belief 위로 미끄러뜨리며 이웃 값과 곱해 더하는 합성곱으로 prior 계산</li><li>반복문은 원리 설명용으로 느림, 실제로는 convolve() 와 np.roll() 한 줄로 구현</li><li><strong>조건</strong>: 위치 4 에 0.55, 한 칸 이동, kernel [0.1, 0.8, 0.1], 확률 배열 이름 pdf</li></ul><div style="display:grid;grid-template-columns:max-content 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxxs denser"><span class="k">def</span> <span class="fn">predict_move_convolution</span>(pdf, offset, kernel):
@@ -753,10 +655,10 @@ interact(show_prior, step=IntSlider(
 belief = [<span class="no">.05</span>, <span class="no">.05</span>, <span class="no">.05</span>, <span class="no">.05</span>, <span class="no">.55</span>, <span class="no">.05</span>, <span class="no">.05</span>, <span class="no">.05</span>, <span class="no">.05</span>, <span class="no">.05</span>]
 prior = predict_move_convolution(belief, <span class="no">1</span>, [<span class="no">.1</span>, <span class="no">.8</span>, <span class="no">.1</span>])
 plots.plot_belief_vs_prior(belief, prior, ylim=(<span class="no">0</span>, <span class="no">0.6</span>))</pre></div><div class="cell"><div class="run-slot" data-key="6945e2c5c827"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text"></span><img src="./imgs/run/6945e2c5c827_0.png" alt="result"></div></div></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:49%"></i></div><span class="foot-num">18 / 37</span></footer>
+<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:57%"></i></div><span class="foot-num">17 / 30</span></footer>
 </section>
-<section class="slide" data-label="19 Asymmetric Kernel" data-screen-label="19 Asymmetric Kernel">
-<header class="head"><span class="kicker">2.7 Generalizing with Convolution</span><span class="folio">19</span></header>
+<section class="slide" data-label="18 Asymmetric Kernel" data-screen-label="18 Asymmetric Kernel">
+<header class="head"><span class="kicker">2.7 Generalizing with Convolution</span><span class="folio">18</span></header>
 <h2 class="title">Asymmetric Kernel</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>한 칸보다 큰 이동과 좌우가 다른 kernel 에서도 예측이 올바른지 확인</li><li>결과는 3 칸 이동한 위치가 가장 높고, 한 칸 초과 쪽 확률이 미달 쪽보다 큼</li><li>확률 없이는 위치에 이동량을 더하고, 확률 분포에서는 두 분포를 합성곱</li><li><strong>조건</strong>: 3 칸 이동, kernel [.05, .05, .6, .2, .1], 초과 쪽 가중치가 큼</li></ul><div class="formula" style="gap:16px 96px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.972 80.362 10.963" role="img" aria-label="\bar{x}_{k+1} = x_k + f_x(\bullet)" fill="currentColor" style="width:9.724em;height:1.327em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -826,10 +728,10 @@ plots.plot_belief_vs_prior(belief, prior, ylim=(<span class="no">0</span>, <span
 belief = [<span class="no">.05</span>, <span class="no">.05</span>, <span class="no">.05</span>, <span class="no">.05</span>, <span class="no">.55</span>, <span class="no">.05</span>, <span class="no">.05</span>, <span class="no">.05</span>, <span class="no">.05</span>, <span class="no">.05</span>]
 prior = predict(belief, offset=<span class="no">3</span>, kernel=[<span class="no">.05</span>, <span class="no">.05</span>, <span class="no">.6</span>, <span class="no">.2</span>, <span class="no">.1</span>])
 plots.plot_belief_vs_prior(belief, prior, ylim=(<span class="no">0</span>,<span class="no">0.6</span>))</pre></div><div class="cell"><div class="run-slot" data-key="b70b2278a331"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text"></span><img src="./imgs/run/b70b2278a331_0.png" alt="result"></div></div></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:51%"></i></div><span class="foot-num">19 / 37</span></footer>
+<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:60%"></i></div><span class="foot-num">18 / 30</span></footer>
 </section>
-<section class="slide" data-label="20 First Update" data-screen-label="20 First Update">
-<header class="head"><span class="kicker">2.8 Integrating Measurements and Movement Updates</span><span class="folio">20</span></header>
+<section class="slide" data-label="19 First Update" data-screen-label="19 First Update">
+<header class="head"><span class="kicker">2.8 Integrating Measurements and Movement Updates</span><span class="folio">19</span></header>
 <h2 class="title">First Update</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>예측은 확실성을 낮추고 갱신은 높이므로, 두 단계를 번갈아 수행하면 개 추적기 완성</li><li>개가 위치 0 에서 출발해 매 주기 한 칸씩 이동하는 측정 입력, 처음엔 위치 정보 없음</li><li>첫 갱신 후 문 위치는 높은 확률, 벽 위치는 낮은 확률</li><li><strong>조건</strong>: 위치 0 에서 출발해 매 주기 한 칸 이동, 균등 prior, door 측정, z_prob = 0.75</li></ul><div style="display:grid;grid-template-columns:max-content 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" style=";padding-right:112px" class="code xxs denser"><span class="k">from</span> filterpy.discrete_bayes <span class="k">import</span> normalize, update, predict
@@ -851,10 +753,10 @@ plots.plot_prior_vs_posterior(prior, posterior, ylim=(<span class="no">0</span>,
     likelihood[hall==z] *= scale
     return likelihood
 </script>
-<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:54%"></i></div><span class="foot-num">20 / 37</span></footer>
+<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:63%"></i></div><span class="foot-num">19 / 30</span></footer>
 </section>
-<section class="slide" data-label="21 Predict, Then Sense a Door" data-screen-label="21 Predict, Then Sense a Door">
-<header class="head"><span class="kicker">2.8 Integrating Measurements and Movement Updates</span><span class="folio">21</span></header>
+<section class="slide" data-label="20 Predict, Then Sense a Door" data-screen-label="20 Predict, Then Sense a Door">
+<header class="head"><span class="kicker">2.8 Integrating Measurements and Movement Updates</span><span class="folio">20</span></header>
 <h2 class="title">Predict, Then Sense a Door</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>첫 갱신 결과를 한 칸 이동 예측으로 옮긴 뒤, 두 번째 door 측정을 반영</li><li>예측은 확률을 오른쪽으로 옮기며 조금 퍼뜨리고, 갱신은 측정과 맞는 위치를 강화</li><li>위치 1 의 막대가 가장 높음, 0 에서 출발해 문, 이동, 문을 감지한 경우와 일치</li><li><strong>조건</strong>: 첫 갱신 결과에서 시작, kernel (.1, .8, .1), 한 칸 이동, z_prob = 0.75</li></ul><div style="display:grid;grid-template-columns:max-content 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxs denser">prior = predict(posterior, <span class="no">1</span>, kernel)
@@ -881,10 +783,10 @@ likelihood = lh_hallway(hallway, z=1, z_prob=.75)
 posterior = update(likelihood, prior)
 kernel = (.1, .8, .1)
 </script>
-<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:57%"></i></div><span class="foot-num">21 / 37</span></footer>
+<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:67%"></i></div><span class="foot-num">20 / 30</span></footer>
 </section>
-<section class="slide" data-label="22 Sensing Walls" data-screen-label="22 Sensing Walls">
-<header class="head"><span class="kicker">2.8 Integrating Measurements and Movement Updates</span><span class="folio">22</span></header>
+<section class="slide" data-label="21 Sensing Walls" data-screen-label="21 Sensing Walls">
+<header class="head"><span class="kicker">2.8 Integrating Measurements and Movement Updates</span><span class="folio">21</span></header>
 <h2 class="title">Sensing Walls</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>예측과 갱신을 두 주기 더 진행, 두 번 모두 wall 을 측정</li><li>측정이 쌓일수록 실제 위치(3)의 막대가 다른 위치보다 뚜렷하게 높아짐</li><li>이동 센서가 있다고 가정, 이동을 직접 측정하지 않으면 process model 변화를 알 수 없음</li><li><strong>조건</strong>: 두 주기 더 진행, 매번 한 칸 이동 후 wall 측정, z_prob = 0.75</li></ul><div style="display:grid;grid-template-columns:max-content 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" style=";padding-right:46px" class="code xxs denser"><span class="k">for</span> z <span class="k">in</span> (<span class="no">0</span>, <span class="no">0</span>):   <span class="c"># two more cycles, both sense a wall</span>
@@ -915,10 +817,10 @@ prior = predict(posterior, 1, kernel)
 likelihood = lh_hallway(hallway, z=1, z_prob=.75)
 posterior = update(likelihood, prior)
 </script>
-<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:59%"></i></div><span class="foot-num">22 / 37</span></footer>
+<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:70%"></i></div><span class="foot-num">21 / 30</span></footer>
 </section>
-<section class="slide" data-label="23 The Discrete Bayes Algorithm" data-screen-label="23 The Discrete Bayes Algorithm">
-<header class="head"><span class="kicker">2.9 The Discrete Bayes Algorithm</span><span class="folio">23</span></header>
+<section class="slide" data-label="22 The Discrete Bayes Algorithm" data-screen-label="22 The Discrete Bayes Algorithm">
+<header class="head"><span class="kicker">2.9 The Discrete Bayes Algorithm</span><span class="folio">22</span></header>
 <h2 class="title">The Discrete Bayes Algorithm</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:28px;min-height:0;"><div class="cell"><div class="card tight"><h3 class="card-h sky">Initialization</h3><ul class="ul"><li>상태에 대한 믿음 초기화</li></ul></div></div><div class="cell"><div class="card tight"><h3 class="card-h coral">Predict</h3><ul class="ul"><li>시스템 거동으로 다음 시점 상태 예측</li><li>예측의 불확실성을 반영해 믿음 조정</li></ul></div></div><div class="cell"><div class="card good tight"><h3 class="card-h leaf">Update</h3><ul class="ul"><li>측정값과 그 정확도에 대한 믿음 획득</li><li>측정이 각 상태와 맞을 가능성 계산</li><li>그 likelihood 로 상태 믿음 갱신</li></ul></div></div></div><div class="formula" style="gap:16px 96px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.972 100.087 10.963" role="img" aria-label="\bar{\mathbf{x}} = \mathbf{x} \ast f_x(\bullet) \quad \text{Predict}" fill="currentColor" style="width:12.111em;height:1.327em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -991,10 +893,10 @@ posterior = update(likelihood, prior)
 <use x='87.043' y='0' xlink:href='#t0a1cab9e846a-g2-101'/>
 </g>
 </svg></div><div class="point"><b>predictor corrector</b>: 예측한 뒤 측정으로 보정, Kalman filter 도 같은 알고리즘이고 계산만 다름</div><figure class="fig plain"><img src="./imgs/predict_update.svg" alt="predict_update" style="width:850px"></figure></div>
-<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:62%"></i></div><span class="foot-num">23 / 37</span></footer>
+<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:73%"></i></div><span class="foot-num">22 / 30</span></footer>
 </section>
-<section class="slide" data-label="24 Simulation Function" data-screen-label="24 Simulation Function">
-<header class="head"><span class="kicker">2.9 The Discrete Bayes Algorithm</span><span class="folio">24</span></header>
+<section class="slide" data-label="23 Simulation Function" data-screen-label="23 Simulation Function">
+<header class="head"><span class="kicker">2.9 The Discrete Bayes Algorithm</span><span class="folio">23</span></header>
 <h2 class="title">Simulation Function</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>측정마다 predict 로 prior, update 로 posterior 를 구하는 과정을 함수로 정리</li><li>잡음 없는 측정 50 개 뒤의 posterior 는 실제 위치 한 곳에 확률이 집중</li><li><strong>조건</strong>: 균등 prior, kernel (.1, .8, .1), 잡음 없는 측정 50 개, z_prob = 1.0</li></ul><div style="display:grid;grid-template-columns:max-content 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxxs denser"><span class="k">def</span> <span class="fn">discrete_bayes_sim</span>(prior, kernel, measurements,
@@ -1028,10 +930,10 @@ def lh_hallway(hall, z, z_prob):
     return likelihood
 prior = np.array([.1] * 10)
 </script>
-<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:65%"></i></div><span class="foot-num">24 / 37</span></footer>
+<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:77%"></i></div><span class="foot-num">23 / 30</span></footer>
 </section>
-<section class="slide" data-label="25 Running the Filter" data-screen-label="25 Running the Filter">
-<header class="head"><span class="kicker">2.9 The Discrete Bayes Algorithm</span><span class="folio">25</span></header>
+<section class="slide" data-label="24 Running the Filter" data-screen-label="24 Running the Filter">
+<header class="head"><span class="kicker">2.9 The Discrete Bayes Algorithm</span><span class="folio">24</span></header>
 <h2 class="title">Running the Filter</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>step 슬라이더로 prior (주황) 와 posterior (파랑) 를 번갈아 표시, 값을 바꿔 재실행 가능</li><li>검정 막대는 문 위치, 세로선은 시뮬레이션이라 알 수 있는 실제 위치</li><li>prior 는 위치를 옮기며 확실성 감소, posterior 는 제자리에서 확실성 증가</li><li><strong>조건</strong>: 잡음 없는 측정 50 개, z_prob = 1.0, step 슬라이더로 prior, posterior 교대 표시</li></ul><div style="display:grid;grid-template-columns:max-content 1fr;gap:28px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxs denser"><span class="c"># change these numbers to alter the simulation</span>
@@ -1094,20 +996,13 @@ def animate_discrete_bayes(hallway, priors, posteriors):
 from ipywidgets import interact, IntSlider
 prior = np.array([.1] * 10)
 </script>
-<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:68%"></i></div><span class="foot-num">25 / 37</span></footer>
+<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:80%"></i></div><span class="foot-num">24 / 30</span></footer>
 </section>
-<section class="slide" data-label="26 Reading the Animation" data-screen-label="26 Reading the Animation">
-<header class="head"><span class="kicker">2.9 The Discrete Bayes Algorithm</span><span class="folio">26</span></header>
-<h2 class="title">Reading the Animation</h2>
-<div class="rule"></div>
-<div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;min-height:0;"><div class="cell"><ul class="ul"><li><strong>검정 막대</strong>: 문 위치</li><li><strong>주황 막대</strong>: prior, 위치 이동, 확실성 감소</li><li><strong>파랑 막대</strong>: posterior, 같은 위치, 확실성 증가</li></ul></div><div class="cell"><ul class="ul"><li><strong>세로선</strong>: 실제 위치, 시뮬레이션이라 알 수 있는 값</li><li><strong>문 앞</strong>: 문이 적으므로 문 감지 때 확실성이 크게 증가</li><li><strong>긴 벽 구간</strong>: 문이 없는 구간에서는 확실성 감소</li></ul></div></div><div class="point"><b>핵심</b>: 예측은 분포를 옮기며 퍼뜨리고, 측정은 그 자리에서 분포를 뾰족하게 만듦</div><figure class="fig plain"><img src="./imgs/predict_update.svg" alt="predict_update" style="width:1050px"></figure></div>
-<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:70%"></i></div><span class="foot-num">26 / 37</span></footer>
-</section>
-<section class="slide" data-label="27 Alternating Doors" data-screen-label="27 Alternating Doors">
-<header class="head"><span class="kicker">2.10 The Effect of Bad Sensor Data</span><span class="folio">27</span></header>
+<section class="slide" data-label="25 Alternating Doors" data-screen-label="25 Alternating Doors">
+<header class="head"><span class="kicker">2.10 The Effect of Bad Sensor Data</span><span class="folio">25</span></header>
 <h2 class="title">Alternating Doors</h2>
 <div class="rule"></div>
-<div class="body"><ul class="ul brief"><li>필터라면 잘못된 측정도 걸러내야 함, 확인을 위해 문과 벽이 번갈아 나오는 복도 사용</li><li>먼저 올바른 측정 6 개(1, 0, 1, 0, 0, 1)로 필터를 실행해 기준 결과 확인</li><li>1, 0, 1, 0, 0 순서를 보고 위치 0 또는 5 에서 출발한 경우로 좁혀짐</li><li><strong>조건</strong>: 문과 벽이 번갈아 나오는 복도 [1, 0, 1, 0, 0] x 2, z_prob = 0.75</li></ul><div style="display:grid;grid-template-columns:max-content 1fr;gap:28px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxs denser">hallway = np.array([<span class="no">1</span>, <span class="no">0</span>, <span class="no">1</span>, <span class="no">0</span>, <span class="no">0</span>]*<span class="no">2</span>)
+<div class="body"><ul class="ul brief"><li>필터라면 잘못된 측정도 걸러내야 함, 확인을 위해 문과 벽이 번갈아 나오는 복도 사용</li><li>먼저 올바른 측정 6 개(1, 0, 1, 0, 0, 1)로 필터를 실행해 기준 결과 확인</li><li>1, 0, 1, 0, 0 순서를 보고 위치 0 또는 5 에서 출발한 경우로 좁혀짐</li><li>그래프: <b style="color:#ff8015">주황 막대</b> prior, <b style="color:#2563eb">파랑 막대</b> posterior, <b style="color:#0f172a">검정 막대</b> 문 위치, <b style="color:#2563eb">파랑 세로선</b> 실제 위치</li><li><strong>조건</strong>: 문과 벽이 번갈아 나오는 복도 [1, 0, 1, 0, 0] x 2, z_prob = 0.75</li></ul><div style="display:grid;grid-template-columns:max-content 1fr;gap:28px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxs denser">hallway = np.array([<span class="no">1</span>, <span class="no">0</span>, <span class="no">1</span>, <span class="no">0</span>, <span class="no">0</span>]*<span class="no">2</span>)
 kernel = (<span class="no">.1</span>, <span class="no">.8</span>, <span class="no">.1</span>)
 prior = np.array([<span class="no">.1</span>] * <span class="no">10</span>)
 zs = [<span class="no">1</span>, <span class="no">0</span>, <span class="no">1</span>, <span class="no">0</span>, <span class="no">0</span>, <span class="no">1</span>]
@@ -1164,21 +1059,22 @@ def animate_discrete_bayes(hallway, priors, posteriors):
     return animate
 from ipywidgets import interact, IntSlider
 </script>
-<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:73%"></i></div><span class="foot-num">27 / 37</span></footer>
+<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:83%"></i></div><span class="foot-num">25 / 30</span></footer>
 </section>
-<section class="slide" data-label="28 One Bad Measurement" data-screen-label="28 One Bad Measurement">
-<header class="head"><span class="kicker">2.10 The Effect of Bad Sensor Data</span><span class="folio">28</span></header>
+<section class="slide" data-label="26 One Bad Measurement" data-screen-label="26 One Bad Measurement">
+<header class="head"><span class="kicker">2.10 The Effect of Bad Sensor Data</span><span class="folio">26</span></header>
 <h2 class="title">One Bad Measurement</h2>
 <div class="rule"></div>
-<div class="body"><ul class="ul brief"><li>올바른 측정 6 개 뒤에, 0 이어야 할 7 번째 측정을 1 로 넣은 상황</li><li>7 번째 주기의 posterior 에서 위치 후보들의 확률이 어떻게 변하는지 확인</li><li>잘못된 측정 하나로 위치에 대한 지식이 크게 약해짐</li><li><strong>조건</strong>: 측정 [1, 0, 1, 0, 0, 1, 1], 마지막 1 은 원래 0 이어야 하는 오류</li></ul><div style="display:grid;grid-template-columns:max-content 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxs denser">hallway = np.array([<span class="no">1</span>, <span class="no">0</span>, <span class="no">1</span>, <span class="no">0</span>, <span class="no">0</span>]*<span class="no">2</span>)
+<div class="body"><ul class="ul brief"><li>올바른 측정 6 개 뒤에, 0 이어야 할 7 번째 측정을 1 로 넣은 상황</li><li>step 슬라이더로 단계별 prior, posterior 확인, 마지막 step 14 가 7 번째 posterior</li><li>잘못된 측정 하나로 위치에 대한 지식이 크게 약해짐</li><li>그래프: <b style="color:#ff8015">주황 막대</b> prior, <b style="color:#2563eb">파랑 막대</b> posterior, <b style="color:#0f172a">검정 막대</b> 문 위치, <b style="color:#2563eb">파랑 세로선</b> 실제 위치</li><li><strong>조건</strong>: 측정 [1, 0, 1, 0, 0, 1, 1], 마지막 1 은 원래 0 이어야 하는 오류</li></ul><div style="display:grid;grid-template-columns:max-content 1fr;gap:28px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxs denser">hallway = np.array([<span class="no">1</span>, <span class="no">0</span>, <span class="no">1</span>, <span class="no">0</span>, <span class="no">0</span>]*<span class="no">2</span>)
 kernel = (<span class="no">.1</span>, <span class="no">.8</span>, <span class="no">.1</span>)
 prior = np.array([<span class="no">.1</span>] * <span class="no">10</span>)
 z_prob = <span class="no">0.75</span>
-
 measurements = [<span class="no">1</span>, <span class="no">0</span>, <span class="no">1</span>, <span class="no">0</span>, <span class="no">0</span>, <span class="no">1</span>, <span class="no">1</span>]  <span class="c"># last 1 should be 0</span>
 priors, posteriors = discrete_bayes_sim(
-    prior, kernel, measurements, z_prob, hallway);
-plot_posterior(hallway, posteriors, <span class="no">6</span>)</pre></div><div class="cell"><div class="run-slot" data-key="349394d35315"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text"></span><img src="./imgs/run/349394d35315_0.png" alt="result"></div></div></div></div></div>
+    prior, kernel, measurements, z_prob, hallway)
+anim = animate_discrete_bayes(hallway, priors, posteriors)
+interact(anim,
+         step=IntSlider(value=<span class="no">14</span>, <span class="fn">min</span>=<span class="no">1</span>, <span class="fn">max</span>=<span class="fn">len</span>(measurements)*<span class="no">2</span>));</pre></div><div class="cell"><div style="display:flex;flex-direction:column;gap:12px;min-width:0"><div data-sliders=""><label class="slider-row"><span class="slider-name">step</span><input type="range" data-var="step" min="1" max="14" step="1" value="14"><span class="slider-val">14</span></label></div><div class="run-slot" data-key="4acd0b336f73"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text"></span><img src="./imgs/run/4acd0b336f73_0.png" alt="result"></div></div></div></div></div></div>
 <script type="text/x-run-setup">from filterpy.discrete_bayes import normalize, update, predict
 def lh_hallway(hall, z, z_prob):
     """ compute likelihood that a measurement matches
@@ -1226,10 +1122,10 @@ def animate_discrete_bayes(hallway, priors, posteriors):
     return animate
 from ipywidgets import interact, IntSlider
 </script>
-<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:76%"></i></div><span class="foot-num">28 / 37</span></footer>
+<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:87%"></i></div><span class="foot-num">26 / 30</span></footer>
 </section>
-<section class="slide" data-label="29 Recovering" data-screen-label="29 Recovering">
-<header class="head"><span class="kicker">2.10 The Effect of Bad Sensor Data</span><span class="folio">29</span></header>
+<section class="slide" data-label="27 Recovering" data-screen-label="27 Recovering">
+<header class="head"><span class="kicker">2.10 The Effect of Bad Sensor Data</span><span class="folio">27</span></header>
 <h2 class="title">Recovering</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>잘못된 7 번째 측정 뒤에 올바른 측정 3 개가 이어지는 10 단계 실행</li><li>각 step 의 posterior 를 나란히 그려 7 번째(빨간색) 이후 분포의 회복 과정 확인</li><li>올바른 측정이 이어지며 잘못된 값을 빠르게 걸러내고 가능성 높은 위치로 수렴</li><li><strong>조건</strong>: 측정 10 개 중 7 번째가 오류, z_prob = 0.75, 단계별 posterior 표시</li></ul><div style="display:grid;grid-template-columns:max-content 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxs denser">hallway = np.array([<span class="no">1</span>, <span class="no">0</span>, <span class="no">1</span>, <span class="no">0</span>, <span class="no">0</span>]*<span class="no">2</span>)
@@ -1293,320 +1189,17 @@ def animate_discrete_bayes(hallway, priors, posteriors):
     return animate
 from ipywidgets import interact, IntSlider
 </script>
-<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:78%"></i></div><span class="foot-num">29 / 37</span></footer>
+<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:90%"></i></div><span class="foot-num">27 / 30</span></footer>
 </section>
-<section class="slide" data-label="30 Drawbacks and Limitations" data-screen-label="30 Drawbacks and Limitations">
-<header class="head"><span class="kicker">2.11 Drawbacks and Limitations</span><span class="folio">30</span></header>
+<section class="slide" data-label="28 Drawbacks and Limitations" data-screen-label="28 Drawbacks and Limitations">
+<header class="head"><span class="kicker">2.11 Drawbacks and Limitations</span><span class="folio">28</span></header>
 <h2 class="title">Drawbacks and Limitations</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:repeat(4, 1fr);gap:24px;min-height:0;"><div class="cell"><div class="card tight"><h3 class="card-h coral">Scaling</h3><ul class="ul"><li>변수마다 격자 차원 증가</li><li>4 변수면 매 단계 O(n^4) 계산</li></ul></div></div><div class="cell"><div class="card tight"><h3 class="card-h coral">Discrete</h3><ul class="ul"><li>연속 세계를 칸으로 근사</li><li>100 m 를 1 cm 로 → 10,000 칸</li></ul></div></div><div class="cell"><div class="card tight"><h3 class="card-h coral">Multimodal</h3><ul class="ul"><li>여러 위치에 동시에 확률</li><li>차량 위치 "D 거리 40%, Willow 30%"</li></ul></div></div><div class="cell"><div class="card tight"><h3 class="card-h coral">Movement</h3><ul class="ul"><li>상태 변화의 측정 필요</li><li>이동 센서가 있어야 예측 가능</li></ul></div></div></div><div class="point"><b>그래도</b>: 작은 문제라면 구현, 디버깅, 이해가 쉬운 이 필터가 좋은 선택, 실제 사용 가능한 완전한 필터</div><figure class="fig plain"><img src="./imgs/scaling.svg" alt="scaling" style="width:1100px"></figure></div>
-<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:81%"></i></div><span class="foot-num">30 / 37</span></footer>
+<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:93%"></i></div><span class="foot-num">28 / 30</span></footer>
 </section>
-<section class="slide" data-label="31 Tracking and Control" data-screen-label="31 Tracking and Control">
-<header class="head"><span class="kicker">2.12 Tracking and Control</span><span class="folio">31</span></header>
-<h2 class="title">Tracking and Control</h2>
-<div class="rule"></div>
-<div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;min-height:0;"><div class="cell"><ul class="ul"><li><strong>문제</strong>: 창고 로봇이 선로를 따라 이동, 바퀴 미끄러짐과 모터 오차로 명령한 위치와 다름</li><li><strong>센서</strong>: 선로의 자석을 Hall 센서로 세어 위치 파악, 놓치거나 두 번 셀 수 있음</li></ul></div><div class="cell"><ul class="ul"><li><strong>버리지 않을 정보</strong>: 로봇에 보낸 이동 명령</li><li><strong>예측</strong>: 개처럼 이전 방향을 가정하지 않고, 보낸 명령과 그 오차 kernel 로 predict()</li></ul></div></div><div class="point"><b>핵심</b>: 제어 입력은 이미 알고 있는 정보, 예측 단계에 그대로 사용</div><figure class="fig plain"><img src="./imgs/track.svg" alt="track" style="width:100%"></figure></div>
-<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:84%"></i></div><span class="foot-num">31 / 37</span></footer>
-</section>
-<section class="slide" data-label="32 Simulating the Train" data-screen-label="32 Simulating the Train">
-<header class="head"><span class="kicker">2.12.1 Simulating the Train Behavior</span><span class="folio">32</span></header>
-<h2 class="title">Simulating the Train</h2>
-<div class="rule"></div>
-<div class="body"><ul class="ul brief"><li>창고 로봇이 선로를 따라 이동, 바퀴 미끄러짐과 모터 오차로 명령과 다른 위치 도달</li><li>move() 는 kernel 확률에 따라 한 칸 앞뒤 오차, sense() 는 가끔 한 칸 틀린 위치 보고</li><li>4 칸씩 8 번 이동하며 실제 위치(pos)와 센서 값(sensed) 비교</li><li><strong>조건</strong>: 트랙 10 칸, 명령 4 칸, kernel [.1, .8, .1], 센서 정확도 90%</li></ul><div style="display:grid;grid-template-columns:max-content 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" style=";padding-right:112px" class="code xxs denser">random.seed(<span class="no">3</span>)
-robot = Train(<span class="no">10</span>, kernel=[<span class="no">.1</span>, <span class="no">.8</span>, <span class="no">.1</span>], sensor_accuracy=<span class="no">.9</span>)
-<span class="k">for</span> i <span class="k">in</span> <span class="fn">range</span>(<span class="no">8</span>):
-    pos = robot.move(distance=<span class="no">4</span>)
-    <span class="fn">print</span>(<span class="s">'time {}: pos {}, sensed {}'</span>.format(
-        i, pos, robot.sense()))</pre></div><div class="cell"><div class="run-slot" data-key="6a2f5321ab2c"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text">time 0: pos 4, sensed 4
-time 1: pos 8, sensed 8
-time 2: pos 2, sensed 2
-time 3: pos 5, sensed 5
-time 4: pos 9, sensed 9
-time 5: pos 4, sensed 4
-time 6: pos 8, sensed 8
-time 7: pos 2, sensed 2
-</span></div></div></div></div></div>
-<script type="text/x-run-setup">import random
-
-class Train(object):
-
-    def __init__(self, track_len, kernel=[1.], sensor_accuracy=.9):
-        self.track_len = track_len
-        self.pos = 0
-        self.kernel = kernel
-        self.sensor_accuracy = sensor_accuracy
-
-    def move(self, distance=1):
-        """ move in the specified direction
-        with some small chance of error"""
-
-        self.pos += distance
-        # insert random movement error according to kernel
-        r = random.random()
-        s = 0
-        offset = -(len(self.kernel) - 1) / 2
-        for k in self.kernel:
-            s += k
-            if r <= s:
-                break
-            offset += 1
-        self.pos = int((self.pos + offset) % self.track_len)
-        return self.pos
-
-    def sense(self):
-        pos = self.pos
-        # insert random sensor error
-        if random.random() > self.sensor_accuracy:
-            if random.random() > 0.5:
-                pos += 1
-            else:
-                pos -= 1
-        return pos
-</script>
-<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:86%"></i></div><span class="foot-num">32 / 37</span></footer>
-</section>
-<section class="slide" data-label="33 Train Filter" data-screen-label="33 Train Filter">
-<header class="head"><span class="kicker">2.12.1 Simulating the Train Behavior</span><span class="folio">33</span></header>
-<h2 class="title">Train Filter</h2>
-<div class="rule"></div>
-<div class="body"><ul class="ul brief"><li>로봇에 보낸 이동 명령(제어 입력)과 그 오차 kernel 을 predict() 에 그대로 사용</li><li>이동, 센서 오차가 없으면 pos, sensed, est 가 매번 같아야 필터 코드가 올바름</li><li><strong>조건</strong>: 이동 오차 없음(kernel [1.]), 센서 정확도 99.9%, 4 칸씩 4 회 이동</li></ul><div style="display:grid;grid-template-columns:max-content 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" style="line-height:1.16" class="code xxxs denser"><span class="k">def</span> <span class="fn">train_filter</span>(iterations, kernel, sensor_accuracy,
-                 move_distance, do_print=<span class="k">True</span>):
-    track = np.array([<span class="no">0</span>, <span class="no">1</span>, <span class="no">2</span>, <span class="no">3</span>, <span class="no">4</span>, <span class="no">5</span>, <span class="no">6</span>, <span class="no">7</span>, <span class="no">8</span>, <span class="no">9</span>])
-    prior = np.array([<span class="no">.9</span>] + [<span class="no">0.01</span>]*<span class="no">9</span>)
-    posterior = prior[:]
-    normalize(prior)
-    robot = Train(<span class="fn">len</span>(track), kernel, sensor_accuracy)
-    <span class="k">for</span> i <span class="k">in</span> <span class="fn">range</span>(iterations):
-        robot.move(distance=move_distance)
-        prior = predict(posterior, move_distance, kernel)
-        m = robot.sense()
-        likelihood = lh_hallway(track, m, sensor_accuracy)
-        posterior = update(likelihood, prior)
-        <span class="k">if</span> do_print:
-            <span class="fn">print</span>(<span class="s">'time {}: pos {}, sensed {}, est {}'</span>.format(
-                i, robot.pos, m, np.argmax(posterior)))
-    plots.bar_plot(posterior)
-train_filter(<span class="no">4</span>, kernel=[<span class="no">1.</span>], sensor_accuracy=<span class="no">.999</span>, move_distance=<span class="no">4</span>)</pre></div><div class="cell"><div class="run-slot" data-key="064f8ab38ebf"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text">time 0: pos 4, sensed 4, est 4
-time 1: pos 8, sensed 8, est 8
-time 2: pos 2, sensed 2, est 2
-time 3: pos 6, sensed 6, est 6
-</span><img src="./imgs/run/064f8ab38ebf_0.png" alt="result"></div></div></div></div></div>
-<script type="text/x-run-setup">import random
-
-class Train(object):
-
-    def __init__(self, track_len, kernel=[1.], sensor_accuracy=.9):
-        self.track_len = track_len
-        self.pos = 0
-        self.kernel = kernel
-        self.sensor_accuracy = sensor_accuracy
-
-    def move(self, distance=1):
-        """ move in the specified direction
-        with some small chance of error"""
-
-        self.pos += distance
-        # insert random movement error according to kernel
-        r = random.random()
-        s = 0
-        offset = -(len(self.kernel) - 1) / 2
-        for k in self.kernel:
-            s += k
-            if r <= s:
-                break
-            offset += 1
-        self.pos = int((self.pos + offset) % self.track_len)
-        return self.pos
-
-    def sense(self):
-        pos = self.pos
-        # insert random sensor error
-        if random.random() > self.sensor_accuracy:
-            if random.random() > 0.5:
-                pos += 1
-            else:
-                pos -= 1
-        return pos
-from filterpy.discrete_bayes import normalize, update, predict
-def lh_hallway(hall, z, z_prob):
-    """ compute likelihood that a measurement matches
-    positions in the hallway."""
-
-    try:
-        scale = z_prob / (1. - z_prob)
-    except ZeroDivisionError:
-        scale = 1e8
-
-    likelihood = np.ones(len(hall))
-    likelihood[hall==z] *= scale
-    return likelihood
-random.seed(3)
-</script>
-<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:89%"></i></div><span class="foot-num">33 / 37</span></footer>
-</section>
-<section class="slide" data-label="34 Train with Errors" data-screen-label="34 Train with Errors">
-<header class="head"><span class="kicker">2.12.1 Simulating the Train Behavior</span><span class="folio">34</span></header>
-<h2 class="title">Train with Errors</h2>
-<div class="rule"></div>
-<div class="body"><ul class="ul brief"><li>이동 오차 kernel [.1, .8, .1] 과 센서 정확도 90% 로 4 회 이동하며 추적</li><li>출력에서 실제 위치(pos), 센서 값(sensed), 추정(est) 을 시간별로 비교</li><li>시간 1, 3 의 센서 오차에는 추정도 한 칸 어긋나지만 시간 2 에는 실제 위치로 복귀</li><li><strong>조건</strong>: kernel [.1, .8, .1], 센서 정확도 90%, 4 칸씩 4 회 이동, seed 5</li></ul><div style="display:grid;grid-template-columns:max-content 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" style=";padding-right:112px" class="code xxs denser">random.seed(<span class="no">5</span>)
-train_filter(<span class="no">4</span>, kernel=[<span class="no">.1</span>, <span class="no">.8</span>, <span class="no">.1</span>], sensor_accuracy=<span class="no">.9</span>,
-             move_distance=<span class="no">4</span>, do_print=<span class="k">True</span>)</pre></div><div class="cell"><div class="run-slot" data-key="f9a408afede9"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text">time 0: pos 4, sensed 4, est 4
-time 1: pos 8, sensed 9, est 9
-time 2: pos 3, sensed 3, est 3
-time 3: pos 7, sensed 8, est 8
-</span><img src="./imgs/run/f9a408afede9_0.png" alt="result"></div></div></div></div></div>
-<script type="text/x-run-setup">import random
-
-class Train(object):
-
-    def __init__(self, track_len, kernel=[1.], sensor_accuracy=.9):
-        self.track_len = track_len
-        self.pos = 0
-        self.kernel = kernel
-        self.sensor_accuracy = sensor_accuracy
-
-    def move(self, distance=1):
-        """ move in the specified direction
-        with some small chance of error"""
-
-        self.pos += distance
-        # insert random movement error according to kernel
-        r = random.random()
-        s = 0
-        offset = -(len(self.kernel) - 1) / 2
-        for k in self.kernel:
-            s += k
-            if r <= s:
-                break
-            offset += 1
-        self.pos = int((self.pos + offset) % self.track_len)
-        return self.pos
-
-    def sense(self):
-        pos = self.pos
-        # insert random sensor error
-        if random.random() > self.sensor_accuracy:
-            if random.random() > 0.5:
-                pos += 1
-            else:
-                pos -= 1
-        return pos
-from filterpy.discrete_bayes import normalize, update, predict
-def lh_hallway(hall, z, z_prob):
-    """ compute likelihood that a measurement matches
-    positions in the hallway."""
-
-    try:
-        scale = z_prob / (1. - z_prob)
-    except ZeroDivisionError:
-        scale = 1e8
-
-    likelihood = np.ones(len(hall))
-    likelihood[hall==z] *= scale
-    return likelihood
-def train_filter(iterations, kernel, sensor_accuracy,
-                 move_distance, do_print=True):
-    track = np.array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
-    prior = np.array([.9] + [0.01]*9)
-    posterior = prior[:]
-    normalize(prior)
-    robot = Train(len(track), kernel, sensor_accuracy)
-    for i in range(iterations):
-        robot.move(distance=move_distance)
-        prior = predict(posterior, move_distance, kernel)
-        m = robot.sense()
-        likelihood = lh_hallway(track, m, sensor_accuracy)
-        posterior = update(likelihood, prior)
-        if do_print:
-            print('time {}: pos {}, sensed {}, est {}'.format(
-                i, robot.pos, m, np.argmax(posterior)))
-    plots.bar_plot(posterior)
-</script>
-<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:92%"></i></div><span class="foot-num">34 / 37</span></footer>
-</section>
-<section class="slide" data-label="35 Long Run with Errors" data-screen-label="35 Long Run with Errors">
-<header class="head"><span class="kicker">2.12.1 Simulating the Train Behavior</span><span class="folio">35</span></header>
-<h2 class="title">Long Run with Errors</h2>
-<div class="rule"></div>
-<div class="body"><ul class="ul brief"><li>센서 정확도를 80% 로 낮추고 148 ~ 151 회 긴 실행의 마지막 posterior 를 비교</li><li>148 회는 확신이 낮고 여러 위치에 확률이 남지만, 이후 반복에서 한 위치로 집중</li><li>오차가 생겨도 몇 번의 반복 안에 스스로 보정해 확신을 회복</li><li><strong>조건</strong>: kernel [.1, .8, .1], 센서 정확도 80%, 4 칸씩 이동, 매 실행 seed 3</li></ul><div style="display:grid;grid-template-columns:max-content 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxs denser"><span class="k">for</span> i <span class="k">in</span> <span class="fn">range</span> (<span class="no">4</span>):
-    random.seed(<span class="no">3</span>)
-    plt.subplot(<span class="no">221</span>+i)
-    train_filter(<span class="no">148</span>+i, kernel=[<span class="no">.1</span>, <span class="no">.8</span>, <span class="no">.1</span>],
-                 sensor_accuracy=<span class="no">.8</span>,
-                 move_distance=<span class="no">4</span>, do_print=<span class="k">False</span>)
-    plt.title (<span class="s">'iteration {}'</span>.format(<span class="no">148</span>+i))</pre></div><div class="cell"><div class="run-slot" data-key="2b5d20f3049c"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text"></span><img src="./imgs/run/2b5d20f3049c_0.png" alt="result"></div></div></div></div></div>
-<script type="text/x-run-setup">import random
-
-class Train(object):
-
-    def __init__(self, track_len, kernel=[1.], sensor_accuracy=.9):
-        self.track_len = track_len
-        self.pos = 0
-        self.kernel = kernel
-        self.sensor_accuracy = sensor_accuracy
-
-    def move(self, distance=1):
-        """ move in the specified direction
-        with some small chance of error"""
-
-        self.pos += distance
-        # insert random movement error according to kernel
-        r = random.random()
-        s = 0
-        offset = -(len(self.kernel) - 1) / 2
-        for k in self.kernel:
-            s += k
-            if r <= s:
-                break
-            offset += 1
-        self.pos = int((self.pos + offset) % self.track_len)
-        return self.pos
-
-    def sense(self):
-        pos = self.pos
-        # insert random sensor error
-        if random.random() > self.sensor_accuracy:
-            if random.random() > 0.5:
-                pos += 1
-            else:
-                pos -= 1
-        return pos
-from filterpy.discrete_bayes import normalize, update, predict
-def lh_hallway(hall, z, z_prob):
-    """ compute likelihood that a measurement matches
-    positions in the hallway."""
-
-    try:
-        scale = z_prob / (1. - z_prob)
-    except ZeroDivisionError:
-        scale = 1e8
-
-    likelihood = np.ones(len(hall))
-    likelihood[hall==z] *= scale
-    return likelihood
-def train_filter(iterations, kernel, sensor_accuracy,
-                 move_distance, do_print=True):
-    track = np.array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
-    prior = np.array([.9] + [0.01]*9)
-    posterior = prior[:]
-    normalize(prior)
-    robot = Train(len(track), kernel, sensor_accuracy)
-    for i in range(iterations):
-        robot.move(distance=move_distance)
-        prior = predict(posterior, move_distance, kernel)
-        m = robot.sense()
-        likelihood = lh_hallway(track, m, sensor_accuracy)
-        posterior = update(likelihood, prior)
-        if do_print:
-            print('time {}: pos {}, sensed {}, est {}'.format(
-                i, robot.pos, m, np.argmax(posterior)))
-    plots.bar_plot(posterior)
-</script>
-<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:95%"></i></div><span class="foot-num">35 / 37</span></footer>
-</section>
-<section class="slide" data-label="36 Bayes and Total Probability" data-screen-label="36 Bayes and Total Probability">
-<header class="head"><span class="kicker">2.13 Bayes Theorem and the Total Probability Theorem</span><span class="folio">36</span></header>
+<section class="slide" data-label="29 Bayes and Total Probability" data-screen-label="29 Bayes and Total Probability">
+<header class="head"><span class="kicker">2.13 Bayes Theorem and the Total Probability Theorem</span><span class="folio">29</span></header>
 <h2 class="title">Bayes and Total Probability</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;min-height:0;"><div class="cell"><div class="card soft"><h3 class="card-h sky">Update = Bayes theorem</h3><div class="formula"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -9.787 125.883 13.723" role="img" aria-label="\text{posterior} = \frac{\text{likelihood} \times \text{prior}}{\text{normalization factor}}" fill="currentColor" style="width:15.232em;height:1.660em;vertical-align:-0.476em;display:inline-block;overflow:visible">
@@ -1811,14 +1404,14 @@ def train_filter(iterations, kernel, sensor_accuracy,
 <use x='305.577' y='0' xlink:href='#t0db99681ea3e-g0-107'/>
 </g>
 </svg></div><div class="point"><b>핵심</b>: 복도의 개를 추론하며 만든 두 단계가 곧 Bayes 정리와 전확률 정리</div></div>
-<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:97%"></i></div><span class="foot-num">36 / 37</span></footer>
+<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:97%"></i></div><span class="foot-num">29 / 30</span></footer>
 </section>
-<section class="slide" data-label="37 Summary" data-screen-label="37 Summary">
-<header class="head"><span class="kicker">2.14 Summary</span><span class="folio">37</span></header>
+<section class="slide" data-label="30 Summary" data-screen-label="30 Summary">
+<header class="head"><span class="kicker">2.14 Summary</span><span class="folio">30</span></header>
 <h2 class="title">Summary</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;min-height:0;"><div class="cell"><ul class="ul"><li><strong>표현</strong>: 위치를 칸마다의 확률(histogram)로 표현</li><li><strong>갱신</strong>: 측정의 likelihood 를 곱하고 정규화, 확실성 증가</li><li><strong>예측</strong>: 이동 kernel 과 합성곱, 확실성 감소</li></ul></div><div class="cell"><ul class="ul"><li><strong>수렴</strong>: 잡음 있는 센서로도 가장 가능성 높은 위치로 빠르게 수렴</li><li><strong>연결</strong>: Kalman filter 도 같은 논리, 계산 방식만 다름</li><li><strong>한계</strong>: 차원 증가, 이산화, 다봉 분포, 이동 측정 필요</li></ul></div></div><div class="point"><b>결론</b>: 측정할 때 확률을 곱하고, 이동할 때 확률을 옮기면 해에 수렴</div><figure class="fig plain"><img src="./imgs/predict_update.svg" alt="predict_update" style="width:1050px"></figure></div>
-<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:100%"></i></div><span class="foot-num">37 / 37</span></footer>
+<footer class="foot"><span class="foot-sec">Day 1 · Chapter 2 Discrete Bayes Filter</span><div class="bar"><i style="width:100%"></i></div><span class="foot-num">30 / 30</span></footer>
 </section>
 </deck-stage>
 </body></html>
