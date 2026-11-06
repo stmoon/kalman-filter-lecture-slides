@@ -734,8 +734,10 @@ plots.plot_belief_vs_prior(belief, prior, ylim=(<span class="no">0</span>,<span 
 <header class="head"><span class="kicker">2.8 Integrating Measurements and Movement Updates</span><span class="folio">19</span></header>
 <h2 class="title">First Update</h2>
 <div class="rule"></div>
-<div class="body"><ul class="ul brief"><li>예측은 확실성을 낮추고 갱신은 높이므로, 두 단계를 번갈아 수행하면 개 추적기 완성</li><li>개가 위치 0 에서 출발해 매 주기 한 칸씩 이동하는 측정 입력, 처음엔 위치 정보 없음</li><li>첫 갱신 후 문 위치는 높은 확률, 벽 위치는 낮은 확률</li><li><strong>조건</strong>: 위치 0 에서 출발해 매 주기 한 칸 이동, 균등 prior, door 측정, z_prob = 0.75</li></ul><div style="display:grid;grid-template-columns:max-content 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" style=";padding-right:112px" class="code xxs denser"><span class="k">from</span> filterpy.discrete_bayes <span class="k">import</span> normalize, update, predict
+<div class="body"><ul class="ul brief"><li>예측은 확실성을 낮추고 갱신은 높이므로, 두 단계를 번갈아 수행하면 개 추적기 완성</li><li>개가 위치 0 에서 출발해 매 주기 한 칸씩 이동하는 측정 입력, 처음엔 위치 정보 없음</li><li>첫 갱신 후 문 위치는 높은 확률, 벽 위치는 낮은 확률</li><li><strong>조건</strong>: 위치 0 에서 출발해 매 주기 한 칸 이동, 균등 prior, door 측정, z_prob = 0.75</li></ul><div style="display:grid;grid-template-columns:max-content 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" style=";padding-right:112px" class="code xxs denser"><span class="k">from</span> filterpy.discrete_bayes <span class="k">import</span> normalize
 hallway = np.array([<span class="no">1</span>, <span class="no">1</span>, <span class="no">0</span>, <span class="no">0</span>, <span class="no">0</span>, <span class="no">0</span>, <span class="no">0</span>, <span class="no">0</span>, <span class="no">1</span>, <span class="no">0</span>])
+<span class="k">def</span> <span class="fn">update</span>(likelihood, prior):
+    <span class="k">return</span> normalize(likelihood * prior)
 prior = np.array([<span class="no">.1</span>] * <span class="no">10</span>)
 likelihood = lh_hallway(hallway, z=<span class="no">1</span>, z_prob=<span class="no">.75</span>)
 posterior = update(likelihood, prior)
