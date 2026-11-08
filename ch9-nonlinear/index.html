@@ -140,7 +140,7 @@ figure.fig { align-items: center; }
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 9 Nonlinear Filtering</span><div class="bar"><i style="width:5%"></i></div><span class="foot-num">01 / 22</span></footer>
 </section>
 <section class="slide" data-label="02 Sources of Nonlinearity" data-screen-label="02 Sources of Nonlinearity">
-<header class="head"><span class="kicker">9.1 Introduction</span><span class="folio">02</span></header>
+<header class="head"><span class="kicker">Introduction</span><span class="folio">02</span></header>
 <h2 class="title">Sources of Nonlinearity</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul"><li><strong>선형 Kalman filter</strong>: 선형 방정식 기반, 선형 문제만 처리 가능, 비선형인 실제 세계에서는 활용이 제한됨</li><li><strong>process model</strong>: 대기 중 낙하 물체, 항력은 공기 밀도에 비례하고 공기 밀도는 고도가 높을수록 감소</li><li><strong>measurement</strong>: radar 는 물체까지의 slant range 를 측정, 관심 대상은 지면 위 위치, 피타고라스 정리로 변환</li></ul><div class="formula" style="gap:16px 160px;font-size:34px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -11.687 85.443 16.978" role="img" aria-label="\ddot{x} = \frac{\rho_0 \, g \, e^{-x/k} \, \dot{x}^2}{2 \beta} - g" fill="currentColor" style="width:10.339em;height:2.054em;vertical-align:-0.640em;display:inline-block;overflow:visible">
@@ -228,14 +228,14 @@ figure.fig { align-items: center; }
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 9 Nonlinear Filtering</span><div class="bar"><i style="width:9%"></i></div><span class="foot-num">02 / 22</span></footer>
 </section>
 <section class="slide" data-label="03 Linearization" data-screen-label="03 Linearization">
-<header class="head"><span class="kicker">9.1 Introduction</span><span class="folio">03</span></header>
+<header class="head"><span class="kicker">Introduction</span><span class="folio">03</span></header>
 <h2 class="title">Linearization</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 0.95fr;gap:48px;min-height:0;"><div class="cell"><ul class="ul"><li><strong>Ax = b</strong>: 확실하게 풀 수 있는 것은 사실상 선형 방정식뿐, 해를 구하거나 해가 없음을 증명</li><li><strong>해석해의 한계</strong>: 간단한 물리계도 해석해가 없는 경우가 대부분, log 항 하나만 추가해도 적분 불가</li><li><strong>선형화</strong>: 공기 흐름, 기상 예측, 미사일 추적 모두 문제를 선형 방정식으로 바꿔 근사해 계산</li><li><strong>오차 누적</strong>: 선형화는 부정확한 답, Kalman filter 같은 재귀 알고리즘에서 작은 오차가 서로 강화</li><li><strong>발산</strong>: 수치 오차가 해를 압도하는 필터 발산(divergence)과 계속 싸워야 하는 문제</li></ul></div><div class="cell"><figure class="fig plain"><img src="./imgs/tangent.svg" alt="tangent" style="width:100%"></figure></div></div><div class="point"><b>핵심</b>: 명확한 최적해가 없음, 문제의 비선형성이 일으키는 구체적 문제를 이해한 뒤에 필터 설계</div></div>
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 9 Nonlinear Filtering</span><div class="bar"><i style="width:14%"></i></div><span class="foot-num">03 / 22</span></footer>
 </section>
 <section class="slide" data-label="04 Linearity" data-screen-label="04 Linearity">
-<header class="head"><span class="kicker">9.2 The Problem with Nonlinearity</span><span class="folio">04</span></header>
+<header class="head"><span class="kicker">The Problem with Nonlinearity</span><span class="folio">04</span></header>
 <h2 class="title">Linearity</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul"><li><strong>Gaussian 의 특별함</strong>: Gaussian 자체는 비선형이지만 두 Gaussian 을 더하거나 곱하면 다시 Gaussian, 매우 드문 성질</li><li><strong>반례</strong>: <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.154 46.916 9.591" role="img" aria-label="\sin x \cdot \sin y" fill="currentColor" style="width:5.677em;height:1.161em;vertical-align:-0.295em;display:inline-block;overflow:visible">
@@ -312,7 +312,7 @@ figure.fig { align-items: center; }
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 9 Nonlinear Filtering</span><div class="bar"><i style="width:18%"></i></div><span class="foot-num">04 / 22</span></footer>
 </section>
 <section class="slide" data-label="05 Zero Input, Zero Output" data-screen-label="05 Zero Input, Zero Output">
-<header class="head"><span class="kicker">9.2 The Problem with Nonlinearity</span><span class="folio">05</span></header>
+<header class="head"><span class="kicker">The Problem with Nonlinearity</span><span class="folio">05</span></header>
 <h2 class="title">Zero Input, Zero Output</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 0.95fr;gap:48px;min-height:0;"><div class="cell"><div style="display:flex;flex-direction:column;gap:20px;min-width:0"><ul class="ul"><li><strong>결과</strong>: 선형이면 입력이 0 일 때 출력도 0</li><li><strong>앰프 예</strong>: 두 사람의 목소리를 앰프에 넣으면 출력은 두 목소리의 합에 gain 을 곱한 값</li><li><strong>잡음</strong>: 입력이 0 인데 hum 같은 0 이 아닌 출력이 나오면 가법성이 깨짐</li></ul><div class="formula" style="font-size:28px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.972 184.541 10.963" role="img" aria-label="amp(v) = amp(v + 0) = amp(v) + amp(0)" fill="currentColor" style="width:22.329em;height:1.327em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -362,14 +362,14 @@ figure.fig { align-items: center; }
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 9 Nonlinear Filtering</span><div class="bar"><i style="width:23%"></i></div><span class="foot-num">05 / 22</span></footer>
 </section>
 <section class="slide" data-label="06 Range and Bearing" data-screen-label="06 Range and Bearing">
-<header class="head"><span class="kicker">9.3 An Intuitive Look at the Problem</span><span class="folio">06</span></header>
+<header class="head"><span class="kicker">An Intuitive Look at the Problem</span><span class="folio">06</span></header>
 <h2 class="title">Range and Bearing</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1.05fr 1fr;gap:48px;min-height:0;"><div class="cell"><ul class="ul"><li><strong>상황</strong>: radar 가 목표물까지의 거리(range)와 각도(bearing)를 측정, 목표물의 위치를 추적</li><li><strong>측정</strong>: 거리 50 km, 각도 90°, 두 오차 모두 Gaussian 분포</li><li><strong>질문</strong>: 측정을 무한히 반복하면 위치의 기대값은 어디인가</li><li><strong>직관</strong>: 거리 평균 50 km, 각도 평균 90° 이므로 x = 0 km, y = 50 km 로 예상</li><li><strong>실험</strong>: 거리 표준편차 0.4 km, 각도 표준편차 0.35 rad 의 측정점을 생성해 평균 계산</li></ul></div><div class="cell"><figure class="fig plain"><img src="./imgs/polar.svg" alt="polar" style="width:100%"></figure></div></div></div>
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 9 Nonlinear Filtering</span><div class="bar"><i style="width:27%"></i></div><span class="foot-num">06 / 22</span></footer>
 </section>
 <section class="slide" data-label="07 Intuition versus Mean" data-screen-label="07 Intuition versus Mean">
-<header class="head"><span class="kicker">9.3 An Intuitive Look at the Problem</span><span class="folio">07</span></header>
+<header class="head"><span class="kicker">An Intuitive Look at the Problem</span><span class="folio">07</span></header>
 <h2 class="title">Intuition versus Mean</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>거리 50 km, 각도 90° 의 측정에 Gaussian 잡음을 넣은 5000 개 점을 x, y 로 변환해 표시</li><li>큰 원(Intuition)은 직관의 답 (0, 50), 별(Mean)은 모든 점의 평균, 평균이 원보다 아래에 위치</li><li>비선형 변환이 모든 오차를 한 방향으로 치우치게 만듦, 반복되면 필터 발산의 원인</li><li><strong>조건</strong>: 거리 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -8.61 49.981 11.6" role="img" aria-label="\mathcal{N}(50, 0.4^2)" fill="currentColor" style="width:6.048em;height:1.404em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -445,7 +445,7 @@ plt.legend();</pre></div><div class="cell"><div class="run-slot" data-key="11b47
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 9 Nonlinear Filtering</span><div class="bar"><i style="width:32%"></i></div><span class="foot-num">07 / 22</span></footer>
 </section>
 <section class="slide" data-label="08 Changing the Noise" data-screen-label="08 Changing the Noise">
-<header class="head"><span class="kicker">9.3 An Intuitive Look at the Problem</span><span class="folio">08</span></header>
+<header class="head"><span class="kicker">An Intuitive Look at the Problem</span><span class="folio">08</span></header>
 <h2 class="title">Changing the Noise</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>거리 표준편차 std_r, 각도 표준편차 std_a 를 바꾸며 평균(별)의 위치 관찰, 제목은 평균의 y 값</li><li>각도 오차가 커질수록 평균이 직관(원)에서 아래로 멀어짐, 거리 오차만 키우면 평균은 거의 그대로</li><li><strong>조건</strong>: std_r 0.1 ~ 5 km, std_a 0.05 ~ 1 rad, N = 5000</li></ul><div style="display:grid;grid-template-columns:936px 1fr;gap:28px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxxs tightest"><span class="k">from</span> ipywidgets <span class="k">import</span> interact, FloatSlider
@@ -467,7 +467,7 @@ interact(plot_polar,
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 9 Nonlinear Filtering</span><div class="bar"><i style="width:36%"></i></div><span class="foot-num">08 / 22</span></footer>
 </section>
 <section class="slide" data-label="09 Linear Function" data-screen-label="09 Linear Function">
-<header class="head"><span class="kicker">9.4 The Effect of Nonlinear Functions on Gaussians</span><span class="folio">09</span></header>
+<header class="head"><span class="kicker">The Effect of Nonlinear Functions on Gaussians</span><span class="folio">09</span></header>
 <h2 class="title">Linear Function</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>Gaussian 500,000 개 점을 선형 함수 f(x) = 2x + 1 에 통과시키고 입력, 함수, 출력을 함께 표시</li><li>빨간 선은 입력 평균 x = 0 이 함수를 거쳐 가는 경로, 주황 점선은 출력 점들의 평균</li><li>출력도 Gaussian, 2x 는 분산을 키우고 +1 은 평균을 0 에서 1 로 이동, 두 평균선이 거의 일치</li><li><strong>조건</strong>: 입력 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.972 32.782 10.963" role="img" aria-label="\mathcal{N}(0, 1)" fill="currentColor" style="width:3.967em;height:1.327em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -497,7 +497,7 @@ plots.plot_nonlinear_func(data, g1)</pre></div><div class="cell"><div class="run
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 9 Nonlinear Filtering</span><div class="bar"><i style="width:41%"></i></div><span class="foot-num">09 / 22</span></footer>
 </section>
 <section class="slide" data-label="10 Nonlinear Function" data-screen-label="10 Nonlinear Function">
-<header class="head"><span class="kicker">9.4 The Effect of Nonlinear Functions on Gaussians</span><span class="folio">10</span></header>
+<header class="head"><span class="kicker">The Effect of Nonlinear Functions on Gaussians</span><span class="folio">10</span></header>
 <h2 class="title">Nonlinear Function</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>같은 입력을 직선에 가까워 보이는 비선형 함수 g2 에 통과, 출력 분포는 Gaussian 과 전혀 다른 모양</li><li>Gaussian 곱 공식 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -8.61 128.141 11.6" role="img" aria-label="\mu = (\sigma_1^2 \mu_2 + \sigma_2^2 \mu_1) / (\sigma_1^2 + \sigma_2^2)" fill="currentColor" style="width:15.505em;height:1.404em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -598,7 +598,7 @@ plots.plot_nonlinear_func(data, g2)</pre></div><div class="cell"><div class="run
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 9 Nonlinear Filtering</span><div class="bar"><i style="width:45%"></i></div><span class="foot-num">10 / 22</span></footer>
 </section>
 <section class="slide" data-label="11 Scatter View" data-screen-label="11 Scatter View">
-<header class="head"><span class="kicker">9.4 The Effect of Nonlinear Functions on Gaussians</span><span class="folio">11</span></header>
+<header class="head"><span class="kicker">The Effect of Nonlinear Functions on Gaussians</span><span class="folio">11</span></header>
 <h2 class="title">Scatter View</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>같은 데이터 중 30,000 개를 가로축에 값, 세로축에 순번으로 찍어 입력과 출력을 비교</li><li>입력은 0 을 중심으로 고르게 퍼진 Gaussian, 출력은 -3 근처에 짙은 띠가 생기고 양쪽이 비대칭</li><li>이 띠의 모양이 g2 출력 분포(Output)의 모양과 일치</li><li><strong>조건</strong>: 입력 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.972 32.782 10.963" role="img" aria-label="\mathcal{N}(0, 1)" fill="currentColor" style="width:3.967em;height:1.327em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -634,7 +634,7 @@ def g2(x):
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 9 Nonlinear Filtering</span><div class="bar"><i style="width:50%"></i></div><span class="foot-num">11 / 22</span></footer>
 </section>
 <section class="slide" data-label="12 Second Pass" data-screen-label="12 Second Pass">
-<header class="head"><span class="kicker">9.4 The Effect of Nonlinear Functions on Gaussians</span><span class="folio">12</span></header>
+<header class="head"><span class="kicker">The Effect of Nonlinear Functions on Gaussians</span><span class="folio">12</span></header>
 <h2 class="title">Second Pass</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>Kalman filter 의 다음 단계처럼 g2 의 출력을 다시 g2 에 통과시켜 분포 변화 확인</li><li>분포가 원래 Gaussian 에서 더 크게 왜곡, 그래도 x = 0 근처에서 어느 정도 대칭</li><li>Kalman filter 의 모든 식은 Gaussian 이 process 함수를 거쳐도 Gaussian 이라는 가정 위에 성립</li><li><strong>조건</strong>: y = g2(data), 입력과 출력의 평균, 분산 출력</li></ul><div style="display:grid;grid-template-columns:677px 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxs denser">y = g2(data)
@@ -655,7 +655,7 @@ def g2(x):
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 9 Nonlinear Filtering</span><div class="bar"><i style="width:55%"></i></div><span class="foot-num">12 / 22</span></footer>
 </section>
 <section class="slide" data-label="13 Linear Approximation" data-screen-label="13 Linear Approximation">
-<header class="head"><span class="kicker">9.4 The Effect of Nonlinear Functions on Gaussians</span><span class="folio">13</span></header>
+<header class="head"><span class="kicker">The Effect of Nonlinear Functions on Gaussians</span><span class="folio">13</span></header>
 <h2 class="title">Linear Approximation</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>g2 와 매우 가까운 직선, 즉 (-2, 3) 과 (2, -3) 을 지나는 직선 g3 으로 같은 실험 반복</li><li>출력 모양은 g2 와 전혀 다르지만 평균과 분산은 g2 의 결과와 거의 같음</li><li><strong>조건</strong>: 입력 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.972 32.782 10.963" role="img" aria-label="\mathcal{N}(0, 1)" fill="currentColor" style="width:3.967em;height:1.327em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -726,7 +726,7 @@ def g2(x):
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 9 Nonlinear Filtering</span><div class="bar"><i style="width:59%"></i></div><span class="foot-num">13 / 22</span></footer>
 </section>
 <section class="slide" data-label="14 Iterating Ten Times" data-screen-label="14 Iterating Ten Times">
-<header class="head"><span class="kicker">9.4 The Effect of Nonlinear Functions on Gaussians</span><span class="folio">14</span></header>
+<header class="head"><span class="kicker">The Effect of Nonlinear Functions on Gaussians</span><span class="folio">14</span></header>
 <h2 class="title">Iterating Ten Times</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>함수가 직선에 가깝다면 무시해도 되는지 확인하기 위해 g3 (직선)과 g2 (비선형)를 10 번 반복 적용</li><li>선형 결과의 평균은 0 근처에 머무르지만 비선형 결과는 평균이 크게 이동하고 분산도 훨씬 커짐</li><li>직선에 가까운 함수를 골라 문제를 줄인 경우에도 비선형 반복은 불안정</li><li><strong>조건</strong>: 입력 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.972 32.782 10.963" role="img" aria-label="\mathcal{N}(0, 1)" fill="currentColor" style="width:3.967em;height:1.327em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -770,7 +770,7 @@ def g2(x):
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 9 Nonlinear Filtering</span><div class="bar"><i style="width:64%"></i></div><span class="foot-num">14 / 22</span></footer>
 </section>
 <section class="slide" data-label="15 Parabola" data-screen-label="15 Parabola">
-<header class="head"><span class="kicker">9.4 The Effect of Nonlinear Functions on Gaussians</span><span class="folio">15</span></header>
+<header class="head"><span class="kicker">The Effect of Nonlinear Functions on Gaussians</span><span class="folio">15</span></header>
 <h2 class="title">Parabola</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>포물선 y(x) = <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -8.61 18.912 9.94" role="img" aria-label="-x^2" fill="currentColor" style="width:2.288em;height:1.203em;vertical-align:-0.161em;display:inline-block;overflow:visible">
@@ -825,7 +825,7 @@ def g2(x):
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 9 Nonlinear Filtering</span><div class="bar"><i style="width:68%"></i></div><span class="foot-num">15 / 22</span></footer>
 </section>
 <section class="slide" data-label="16 Changing the Input" data-screen-label="16 Changing the Input">
-<header class="head"><span class="kicker">9.4 The Effect of Nonlinear Functions on Gaussians</span><span class="folio">16</span></header>
+<header class="head"><span class="kicker">The Effect of Nonlinear Functions on Gaussians</span><span class="folio">16</span></header>
 <h2 class="title">Changing the Input</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>포물선에 넣는 Gaussian 의 평균 mean 과 표준편차 std 를 슬라이더로 바꾸며 출력 분포 관찰</li><li>std 가 작으면 출력이 Gaussian 에 가깝고 두 평균선이 일치, std 가 크거나 mean 이 0 에 가까우면 왜곡</li><li><strong>조건</strong>: mean -2 ~ 2, std 0.1 ~ 2, 100,000 개, f(x) = <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -8.61 18.912 9.94" role="img" aria-label="-x^2" fill="currentColor" style="width:2.288em;height:1.203em;vertical-align:-0.161em;display:inline-block;overflow:visible">
@@ -857,7 +857,7 @@ def g2(x):
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 9 Nonlinear Filtering</span><div class="bar"><i style="width:73%"></i></div><span class="foot-num">16 / 22</span></footer>
 </section>
 <section class="slide" data-label="17 Covariance and Range" data-screen-label="17 Covariance and Range">
-<header class="head"><span class="kicker">9.5 A 2D Example</span><span class="folio">17</span></header>
+<header class="head"><span class="kicker">A 2D Example</span><span class="folio">17</span></header>
 <h2 class="title">Covariance and Range</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>radar 로 항공기를 추적하는 상황, 현재 추정은 (10, 2) km 에 기울어진 공분산 타원(초록)으로 표현</li><li>radar 는 항공기 바로 아래 (10, 0) 에 있고 다음 측정이 거리 3 km, 이를 만족하는 위치는 반지름 3 km 의 원</li><li>타원과 원이 겹치는 x = 11.4, y = 2.7 근처가 항공기의 가장 그럴듯한 위치</li><li><strong>조건</strong>: 추정 평균 (10, 2), 공분산 P, radar (10, 0), 측정 거리 3 km</li></ul><div style="display:grid;grid-template-columns:828px 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxxs denser">P = np.array([[<span class="no">6</span>, <span class="no">2.5</span>], [<span class="no">2.5</span>, <span class="no">1.2</span>]])
@@ -874,7 +874,7 @@ plt.legend(loc=<span class="no">3</span>);</pre></div><div class="cell"><div cla
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 9 Nonlinear Filtering</span><div class="bar"><i style="width:77%"></i></div><span class="foot-num">17 / 22</span></footer>
 </section>
 <section class="slide" data-label="18 Linearizing the Measurement" data-screen-label="18 Linearizing the Measurement">
-<header class="head"><span class="kicker">9.5 A 2D Example</span><span class="folio">18</span></header>
+<header class="head"><span class="kicker">A 2D Example</span><span class="folio">18</span></header>
 <h2 class="title">Linearizing the Measurement</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>거리 측정은 비선형이므로 마지막 추정 위치 (10, 2) 에서 선형화, x = 10 에서 측정 원은 y = 3</li><li>선형화된 측정은 직선 y = 3 (점선), 이 직선과 타원으로 구한 추정(빨강)은 실제 위치(파랑)에서 멀리 떨어짐</li><li>다음 단계는 이 나쁜 추정에서 다시 선형화, 몇 번의 반복만에 필터가 발산할 수 있음</li><li><strong>조건</strong>: 선형화 지점 (10, 2), 선형화 추정 (12, 3), 실제 근처 위치 (11.4, 2.65)</li></ul><div style="display:grid;grid-template-columns:848px 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxs denser">plot_problem()
@@ -895,7 +895,7 @@ def plot_problem():
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 9 Nonlinear Filtering</span><div class="bar"><i style="width:82%"></i></div><span class="foot-num">18 / 22</span></footer>
 </section>
 <section class="slide" data-label="19 Linearization Point" data-screen-label="19 Linearization Point">
-<header class="head"><span class="kicker">9.5 A 2D Example</span><span class="folio">19</span></header>
+<header class="head"><span class="kicker">A 2D Example</span><span class="folio">19</span></header>
 <h2 class="title">Linearization Point</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>선형화 지점(검은 x) 에서 거리 함수의 접선으로 측정을 선형화, 추정은 직선과 원 위에서 Mahalanobis 거리가 가장 작은 점</li><li>선형화 지점이 실제 위치 (11.4, 2.6) 에 가까울수록 오차(제목)가 줄고, 멀리서 선형화하면 오차가 커짐</li><li><strong>조건</strong>: x_lin 8 ~ 12, y_lin 1 ~ 3, 측정 거리 3 km, 추정 평균 (10, 2), 원과 Mahalanobis 함수는 미리 정의</li></ul><div style="display:grid;grid-template-columns:840px 1fr;gap:28px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxxs tightest"><span class="k">from</span> ipywidgets <span class="k">import</span> interact, FloatSlider
@@ -936,14 +936,14 @@ def closest(pts):
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 9 Nonlinear Filtering</span><div class="bar"><i style="width:86%"></i></div><span class="foot-num">19 / 22</span></footer>
 </section>
 <section class="slide" data-label="20 Three Approaches" data-screen-label="20 Three Approaches">
-<header class="head"><span class="kicker">9.6 The Algorithms</span><span class="folio">20</span></header>
+<header class="head"><span class="kicker">The Algorithms</span><span class="folio">20</span></header>
 <h2 class="title">Three Approaches</h2>
 <div class="rule"></div>
 <div class="body"><table class="tbl"><thead><tr><th style="width:17%"></th><th style="width:28%">Idea</th><th style="width:26%">Strength</th><th>Cost</th></tr></thead><tbody><tr><td><strong>Linearized KF, EKF</strong></td><td>한 점에서 선형화, 편미분 행렬(Jacobian) 계산</td><td>오랜 표준 기법, 항공기 비행 소프트웨어, GPS</td><td>Jacobian 계산이 어렵고 오차 증가, 강한 비선형에서 발산</td></tr><tr><td><strong>Particle filter</strong></td><td>수천 개의 무작위 점을 측정과 비교, 잘 맞는 점만 복제</td><td>극도의 비선형에 강인, 여러 물체 동시 추적</td><td>계산량 큼, 엄밀한 공분산 없음, 점 구름 해석 필요</td></tr><tr><td><strong>UKF</strong></td><td>해석해 없이 몇 개의 sigma point 로 비선형 변환</td><td>대부분 EKF 보다 정확, 설계가 쉬움</td><td>EKF 보다 수 배 느릴 수 있음, 수치 Jacobian EKF 보다는 빠름</td></tr></tbody></table><figure class="fig plain"><img src="./imgs/approaches.svg" alt="approaches" style="width:100%"></figure></div>
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 9 Nonlinear Filtering</span><div class="bar"><i style="width:91%"></i></div><span class="foot-num">20 / 22</span></footer>
 </section>
 <section class="slide" data-label="21 Comparing on Range and Bearing" data-screen-label="21 Comparing on Range and Bearing">
-<header class="head"><span class="kicker">9.6 The Algorithms</span><span class="folio">21</span></header>
+<header class="head"><span class="kicker">The Algorithms</span><span class="folio">21</span></header>
 <h2 class="title">Comparing on Range and Bearing</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;min-height:0;"><div class="cell"><ul class="ul"><li><strong>예</strong>: 거리 50 km, 각도 90° 측정의 Gaussian 을 x, y 로 변환한 결과를 세 방식으로 비교</li><li><strong>particles</strong>: 무작위 점을 직접 변환한 분포(회색)와 평균(검은 별), 기준 역할</li><li><strong>linearized (EKF)</strong>: 평균점의 Jacobian 으로 변환(빨강), 평균이 위로 치우치고 휜 분포를 놓침</li><li><strong>unscented (UKF)</strong>: 몇 개의 점만 변환(파랑), 평균과 공분산이 기준에 훨씬 가까움</li><li><strong>타원</strong>: 각 방식으로 구한 1 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -4.789 7.05 5.289" role="img" aria-label="\sigma" fill="currentColor" style="width:0.853em;height:0.640em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -957,7 +957,7 @@ def closest(pts):
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 9 Nonlinear Filtering</span><div class="bar"><i style="width:95%"></i></div><span class="foot-num">21 / 22</span></footer>
 </section>
 <section class="slide" data-label="22 Summary" data-screen-label="22 Summary">
-<header class="head"><span class="kicker">9.7 Summary</span><span class="folio">22</span></header>
+<header class="head"><span class="kicker">Summary</span><span class="folio">22</span></header>
 <h2 class="title">Summary</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;min-height:0;"><div class="cell"><ul class="ul"><li><strong>문제</strong>: 실제 세계는 비선형, 확실히 풀 수 있는 것은 선형 문제뿐</li><li><strong>세 관점</strong>: 편향된 평균, Gaussian 이 아닌 출력, 선형화 오차, 같은 문제를 보는 세 방식</li></ul></div><div class="cell"><ul class="ul"><li><strong>EKF</strong>: 오랜 표준이지만 이해와 사용이 어렵고 불안정할 수 있음</li><li><strong>UKF, particle filter</strong>: 구현과 이해가 쉽고 대개 더 안정적, UKF 를 출발점으로</li></ul></div></div><div class="point"><b>결론</b>: 비선형 필터는 근사와 발산의 싸움, 문제의 비선형성을 먼저 이해하고 기법 선택</div><figure class="fig plain"><img src="./imgs/three_views.svg" alt="three_views" style="width:100%"></figure></div>

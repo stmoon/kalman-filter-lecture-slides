@@ -326,7 +326,7 @@ def f(x):
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:6%"></i></div><span class="foot-num">04 / 69</span></footer>
 </section>
 <section class="slide" data-label="05 Sigma Points - Sampling from a Distribution" data-screen-label="05 Sigma Points - Sampling from a Distribution">
-<header class="head"><span class="kicker">10.1 Sigma Points - Sampling from a Distribution</span><span class="folio">05</span></header>
+<header class="head"><span class="kicker">Sigma Points - Sampling from a Distribution</span><span class="folio">05</span></header>
 <h2 class="title">Sigma Points - Sampling from a Distribution</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;min-height:0;"><div class="cell"><div style="display:flex;flex-direction:column;gap:28px;min-width:0"><ul class="ul"><li><strong>2D 공분산 타원</strong>: 그리기 쉬워 2 차원으로 설명, 임의 차원으로 확장 가능</li><li><strong>방법</strong>: 첫 공분산 타원에서 무작위 점을 뽑아 비선형 함수로 이동</li><li><strong>추정</strong>: 이동한 점들의 평균과 공분산을 새 확률 분포의 추정으로 사용</li><li><strong>그림</strong>: 왼쪽 1 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -4.789 7.05 5.289" role="img" aria-label="\sigma" fill="currentColor" style="width:0.853em;height:0.640em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -409,7 +409,7 @@ def f(x):
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:7%"></i></div><span class="foot-num">05 / 69</span></footer>
 </section>
 <section class="slide" data-label="06 Linearized Mean" data-screen-label="06 Linearized Mean">
-<header class="head"><span class="kicker">10.1 Sigma Points - Sampling from a Distribution</span><span class="folio">06</span></header>
+<header class="head"><span class="kicker">Sigma Points - Sampling from a Distribution</span><span class="folio">06</span></header>
 <h2 class="title">Linearized Mean</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.972 97.539 10.963" role="img" aria-label="\mathcal{N}(0, [[32, 15], [15, 40]])" fill="currentColor" style="width:11.802em;height:1.327em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -493,7 +493,7 @@ plots.plot_monte_carlo_mean(xs, ys, f_nonlinear_xy,
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:9%"></i></div><span class="foot-num">06 / 69</span></footer>
 </section>
 <section class="slide" data-label="07 Julier Sigma Points" data-screen-label="07 Julier Sigma Points">
-<header class="head"><span class="kicker">10.2 A Quick Example</span><span class="folio">07</span></header>
+<header class="head"><span class="kicker">A Quick Example</span><span class="folio">07</span></header>
 <h2 class="title">Julier Sigma Points</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>sigma point 를 만드는 여러 알고리즘 중 하나인 JulierSigmaPoints 로 2 차원 sigma point 생성</li><li>점의 크기는 가중치, 평균 (3, 17) 주변의 5 개 점이 500,000 개 무작위 점만큼 또는 그 이상으로 동작</li><li><strong>조건</strong>: n = 2, <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -4.789 6.74 5.289" role="img" aria-label="\kappa" fill="currentColor" style="width:0.816em;height:0.640em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -518,7 +518,7 @@ plots.plot_sigmas(sigmas, x=[<span class="no">3</span>, <span class="no">17</spa
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:10%"></i></div><span class="foot-num">07 / 69</span></footer>
 </section>
 <section class="slide" data-label="08 A Quick Example" data-screen-label="08 A Quick Example">
-<header class="head"><span class="kicker">10.2 A Quick Example</span><span class="folio">08</span></header>
+<header class="head"><span class="kicker">A Quick Example</span><span class="folio">08</span></header>
 <h2 class="title">A Quick Example</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>상태 [x, <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.154 6.694 7.654" role="img" aria-label="\dot{x}" fill="currentColor" style="width:0.810em;height:0.926em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -576,14 +576,14 @@ plt.plot(xs); plt.plot(zs, marker=<span class="s">'x'</span>, ls=<span class="s"
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:12%"></i></div><span class="foot-num">08 / 69</span></footer>
 </section>
 <section class="slide" data-label="09 Choosing Sigma Points" data-screen-label="09 Choosing Sigma Points">
-<header class="head"><span class="kicker">10.3 Choosing Sigma Points</span><span class="folio">09</span></header>
+<header class="head"><span class="kicker">Choosing Sigma Points</span><span class="folio">09</span></header>
 <h2 class="title">Choosing Sigma Points</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1.1fr 1fr;gap:40px;min-height:0;"><div class="cell"><ul class="ul"><li><strong>목표</strong>: 함수에 대한 사전 지식 없이 모든 함수에 쓰는 일반 알고리즘, 가장 적은 점의 수</li><li><strong>기준</strong>: 항등 함수 f(x) = x 에서 입력과 출력이 같아야 함, 아니면 필터 발산</li><li><strong>1 개</strong>: 평균 그대로면 선형 Kalman filter, 평균 + 델타면 항등 함수에서 발산</li><li><strong>2 개</strong>: 평균과 다른 한 점, 비대칭이 생겨 항등 함수를 만족시키기 어려움</li><li><strong>3 개</strong>: 평균과 양쪽에 하나씩, Gaussian 의 대칭성 유지</li></ul></div><div class="cell"><figure class="fig plain"><img src="./imgs/three_sigma.svg" alt="three_sigma" style="width:100%"></figure></div></div><div class="point"><b>핵심</b>: 차원당 3 개의 점, 평균과 그 양쪽 대칭 위치에서 시작</div></div>
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:13%"></i></div><span class="foot-num">09 / 69</span></footer>
 </section>
 <section class="slide" data-label="10 Weights and Constraints" data-screen-label="10 Weights and Constraints">
-<header class="head"><span class="kicker">10.3 Choosing Sigma Points</span><span class="folio">10</span></header>
+<header class="head"><span class="kicker">Choosing Sigma Points</span><span class="folio">10</span></header>
 <h2 class="title">Weights and Constraints</h2>
 <div class="rule"></div>
 <div class="body"><div class="formula" style="gap:16px 64px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.972 49.726 11.461" role="img" aria-label="1 = \sum_i w^m_i" fill="currentColor" style="width:6.017em;height:1.387em;vertical-align:-0.422em;display:inline-block;overflow:visible">
@@ -697,7 +697,7 @@ plt.plot(xs); plt.plot(zs, marker=<span class="s">'x'</span>, ls=<span class="s"
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:14%"></i></div><span class="foot-num">10 / 69</span></footer>
 </section>
 <section class="slide" data-label="11 The Unscented Transform" data-screen-label="11 The Unscented Transform">
-<header class="head"><span class="kicker">10.4 The Unscented Transform</span><span class="folio">11</span></header>
+<header class="head"><span class="kicker">The Unscented Transform</span><span class="folio">11</span></header>
 <h2 class="title">The Unscented Transform</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 1.15fr;gap:40px;min-height:0;flex:none"><div class="cell"><div style="display:flex;flex-direction:column;gap:16px;min-width:0"><ul class="ul"><li><strong>변환</strong>: sigma point 를 비선형 함수에 통과, 변환된 점들의 평균과 공분산이 새 추정</li><li><strong>결과</strong>: 임의의 분포에서 뽑은 점을 임의의 비선형 함수에 통과시켜 Gaussian 을 얻음</li><li><strong>그림</strong>: 왼쪽 sigma point, 오른쪽 변환된 점과 UT 평균, 공분산(녹색)</li></ul><div class="formula" style="flex-direction:column;gap:10px;font-size:30px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.972 41.693 10.963" role="img" aria-label="\mathcal{Y} = f(\chi)" fill="currentColor" style="width:5.045em;height:1.327em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -795,7 +795,7 @@ plt.plot(xs); plt.plot(zs, marker=<span class="s">'x'</span>, ls=<span class="s"
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:16%"></i></div><span class="foot-num">11 / 69</span></footer>
 </section>
 <section class="slide" data-label="12 Accuracy of the Unscented Transform" data-screen-label="12 Accuracy of the Unscented Transform">
-<header class="head"><span class="kicker">10.4.1 Accuracy of the Unscented Transform</span><span class="folio">12</span></header>
+<header class="head"><span class="kicker">Accuracy of the Unscented Transform</span><span class="folio">12</span></header>
 <h2 class="title">Accuracy of the Unscented Transform</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>같은 비선형 함수에 sigma point 5 개(빨간 점)만 통과시키고 unscented transform 으로 평균 계산</li><li>평균 오차가 x 약 -0.1, y 약 0.5 로 선형화의 40 이상보다 훨씬 작음, 점은 함수를 모르고 생성</li><li><strong>조건</strong>: MerweScaledSigmaPoints n = 2, <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -4.789 7.41 5.289" role="img" aria-label="\alpha" fill="currentColor" style="width:0.897em;height:0.640em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -843,7 +843,7 @@ ax.scatter(sigmas[:,<span class="no">0</span>], sigmas[:,<span class="no">1</spa
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:17%"></i></div><span class="foot-num">12 / 69</span></footer>
 </section>
 <section class="slide" data-label="13 Predict Step" data-screen-label="13 Predict Step">
-<header class="head"><span class="kicker">10.5.1 Predict Step</span><span class="folio">13</span></header>
+<header class="head"><span class="kicker">Predict Step</span><span class="folio">13</span></header>
 <h2 class="title">Predict Step</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;min-height:0;"><div class="cell"><div style="display:flex;flex-direction:column;gap:20px;min-width:0"><ul class="ul"><li><strong>sigma point</strong>: process 모델 f() 가 비선형이므로 x, P 에서 sigma point 와 가중치 생성</li><li><strong>prior</strong>: 각 sigma point 를 f(x, dt) 로 시간 전진, 변환된 점 집합이 prior</li></ul><div class="formula" style="flex-direction:column;gap:12px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.972 110.554 10.963" role="img" aria-label="\chi = \text{sigma-function}(\mathbf{x}, \mathbf{P})" fill="currentColor" style="width:13.377em;height:1.327em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -1174,7 +1174,7 @@ ax.scatter(sigmas[:,<span class="no">0</span>], sigmas[:,<span class="no">1</spa
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:19%"></i></div><span class="foot-num">13 / 69</span></footer>
 </section>
 <section class="slide" data-label="14 Update Step" data-screen-label="14 Update Step">
-<header class="head"><span class="kicker">10.5.2 Update Step</span><span class="folio">14</span></header>
+<header class="head"><span class="kicker">Update Step</span><span class="folio">14</span></header>
 <h2 class="title">Update Step</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;min-height:0;flex:none"><div class="cell"><div style="display:flex;flex-direction:column;gap:8px;min-width:0"><ul class="ul"><li><strong>측정 공간</strong>: prior sigma point 를 h() 로 측정 공간에 변환</li><li><strong>Kalman gain</strong>: 교차 공분산을 측정 공분산으로 나눈 비율</li></ul><div class="formula" style="flex-direction:column;gap:2px;font-size:26px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.972 43.261 10.963" role="img" aria-label="\mathcal{Z} = h(\mathcal{Y})" fill="currentColor" style="width:5.235em;height:1.327em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -1461,7 +1461,7 @@ ax.scatter(sigmas[:,<span class="no">0</span>], sigmas[:,<span class="no">1</spa
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:20%"></i></div><span class="foot-num">14 / 69</span></footer>
 </section>
 <section class="slide" data-label="15 Kalman Filter and Unscented Kalman Filter" data-screen-label="15 Kalman Filter and Unscented Kalman Filter">
-<header class="head"><span class="kicker">10.5.2 Update Step</span><span class="folio">15</span></header>
+<header class="head"><span class="kicker">Update Step</span><span class="folio">15</span></header>
 <h2 class="title">Kalman Filter and Unscented Kalman Filter</h2>
 <div class="rule"></div>
 <div class="body"><table class="tbl"><thead><tr><th style="width:14%"></th><th style="width:28%">Kalman Filter</th><th>Unscented Kalman Filter</th></tr></thead><tbody><tr><td><strong>Predict</strong></td><td><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.335 33.586 7.835" role="img" aria-label="\bar{\mathbf{x}} = \mathbf{Fx}" fill="currentColor" style="width:4.064em;height:0.948em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -1850,7 +1850,7 @@ ax.scatter(sigmas[:,<span class="no">0</span>], sigmas[:,<span class="no">1</spa
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:22%"></i></div><span class="foot-num">15 / 69</span></footer>
 </section>
 <section class="slide" data-label="16 Van der Merwe&#x27;s Scaled Sigma Point Algorithm" data-screen-label="16 Van der Merwe&#x27;s Scaled Sigma Point Algorithm">
-<header class="head"><span class="kicker">10.6 Van der Merwe&#x27;s Scaled Sigma Point Algorithm</span><span class="folio">16</span></header>
+<header class="head"><span class="kicker">Van der Merwe&#x27;s Scaled Sigma Point Algorithm</span><span class="folio">16</span></header>
 <h2 class="title">Van der Merwe&#x27;s Scaled Sigma Point Algorithm</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 1.4fr;gap:40px;min-height:0;"><div class="cell"><ul class="ul"><li><strong>표준</strong>: 2005 년 무렵부터 연구와 산업에서 주로 쓰는 sigma point 알고리즘</li><li><strong>장점</strong>: 다양한 문제에서 잘 동작, 성능과 정확도의 균형</li><li><strong>파라미터</strong>: <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -4.789 7.41 5.289" role="img" aria-label="\alpha" fill="currentColor" style="width:0.897em;height:0.640em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -1885,7 +1885,7 @@ ax.scatter(sigmas[:,<span class="no">0</span>], sigmas[:,<span class="no">1</spa
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:23%"></i></div><span class="foot-num">16 / 69</span></footer>
 </section>
 <section class="slide" data-label="17 Sigma Point Computation" data-screen-label="17 Sigma Point Computation">
-<header class="head"><span class="kicker">10.6.1 Sigma Point Computation</span><span class="folio">17</span></header>
+<header class="head"><span class="kicker">Sigma Point Computation</span><span class="folio">17</span></header>
 <h2 class="title">Sigma Point Computation</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1.2fr 1fr;gap:40px;min-height:0;"><div class="cell"><div style="display:flex;flex-direction:column;gap:24px;min-width:0"><div class="formula" style="gap:16px 64px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -4.789 30.989 7.227" role="img" aria-label="\chi_0 = \mu" fill="currentColor" style="width:3.750em;height:0.874em;vertical-align:-0.295em;display:inline-block;overflow:visible">
@@ -2012,7 +2012,7 @@ ax.scatter(sigmas[:,<span class="no">0</span>], sigmas[:,<span class="no">1</spa
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:25%"></i></div><span class="foot-num">17 / 69</span></footer>
 </section>
 <section class="slide" data-label="18 Weight Computation" data-screen-label="18 Weight Computation">
-<header class="head"><span class="kicker">10.6.2 Weight Computation</span><span class="folio">18</span></header>
+<header class="head"><span class="kicker">Weight Computation</span><span class="folio">18</span></header>
 <h2 class="title">Weight Computation</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1.2fr 1fr;gap:40px;min-height:0;"><div class="cell"><div style="display:flex;flex-direction:column;gap:24px;min-width:0"><div class="formula" style="gap:16px 64px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -9.266 50.801 14.031" role="img" aria-label="W^m_0 = \frac{\lambda}{n + \lambda}" fill="currentColor" style="width:6.147em;height:1.698em;vertical-align:-0.577em;display:inline-block;overflow:visible">
@@ -2152,7 +2152,7 @@ ax.scatter(sigmas[:,<span class="no">0</span>], sigmas[:,<span class="no">1</spa
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:26%"></i></div><span class="foot-num">18 / 69</span></footer>
 </section>
 <section class="slide" data-label="19 Reasonable Choices for the Parameters" data-screen-label="19 Reasonable Choices for the Parameters">
-<header class="head"><span class="kicker">10.6.3 Reasonable Choices for the Parameters</span><span class="folio">19</span></header>
+<header class="head"><span class="kicker">Reasonable Choices for the Parameters</span><span class="folio">19</span></header>
 <h2 class="title">Reasonable Choices for the Parameters</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>권장값 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.419 7.161 9.856" role="img" aria-label="\beta" fill="currentColor" style="width:0.866em;height:1.193em;vertical-align:-0.295em;display:inline-block;overflow:visible">
@@ -2226,7 +2226,7 @@ interact(plot_merwe,
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:28%"></i></div><span class="foot-num">19 / 69</span></footer>
 </section>
 <section class="slide" data-label="20 Using the UKF" data-screen-label="20 Using the UKF">
-<header class="head"><span class="kicker">10.7 Using the UKF</span><span class="folio">20</span></header>
+<header class="head"><span class="kicker">Using the UKF</span><span class="folio">20</span></header>
 <h2 class="title">Using the UKF</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul"><li><strong>목표</strong>: 이미 아는 2 차원 등속 추적 문제를 선형 KF 와 UKF 로 풀고 같은 점과 다른 점 비교</li><li><strong>설계</strong>: x, F, H, R, Q 지정, 선형 문제에서 UKF 도 선형 KF 와 같은 최적 결과</li><li><strong>센서</strong>: 위치만 측정, x, y 모두 오차 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -4.789 7.05 5.289" role="img" aria-label="\sigma" fill="currentColor" style="width:0.853em;height:0.640em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -2431,7 +2431,7 @@ interact(plot_merwe,
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:29%"></i></div><span class="foot-num">20 / 69</span></footer>
 </section>
 <section class="slide" data-label="21 Linear Kalman Filter" data-screen-label="21 Linear Kalman Filter">
-<header class="head"><span class="kicker">10.7 Using the UKF</span><span class="folio">21</span></header>
+<header class="head"><span class="kicker">Using the UKF</span><span class="folio">21</span></header>
 <h2 class="title">Linear Kalman Filter</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>x, y 가 매 초 1 m 씩 증가하는 대각선 이동을 위치 센서로 측정하고 선형 KF 로 batch 처리</li><li>선형 문제의 기준 해, 다음 슬라이드의 UKF 결과와 비교하는 데 사용</li><li><strong>조건</strong>: <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -4.789 7.05 5.289" role="img" aria-label="\sigma" fill="currentColor" style="width:0.853em;height:0.640em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -2461,7 +2461,7 @@ plt.plot(xs[:, <span class="no">0</span>], xs[:, <span class="no">2</span>]);</p
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:30%"></i></div><span class="foot-num">21 / 69</span></footer>
 </section>
 <section class="slide" data-label="22 Unscented Kalman Filter" data-screen-label="22 Unscented Kalman Filter">
-<header class="head"><span class="kicker">10.7 Using the UKF</span><span class="folio">22</span></header>
+<header class="head"><span class="kicker">Using the UKF</span><span class="folio">22</span></header>
 <h2 class="title">Unscented Kalman Filter</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>같은 측정을 f_cv(), h_cv() 함수와 MerweScaledSigmaPoints 로 만든 UKF 로 처리</li><li>두 궤적이 겹치고 KF 와의 차이 표준편차가 0.013 m, 선형 문제에서 사실상 같은 해</li><li><strong>조건</strong>: n = 4, <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -4.789 7.41 5.289" role="img" aria-label="\alpha" fill="currentColor" style="width:0.897em;height:0.640em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -2526,7 +2526,7 @@ xs, _, _, _ = kf.batch_filter(zs)
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:32%"></i></div><span class="foot-num">22 / 69</span></footer>
 </section>
 <section class="slide" data-label="23 Tracking an Airplane" data-screen-label="23 Tracking an Airplane">
-<header class="head"><span class="kicker">10.8 Tracking an Airplane</span><span class="folio">23</span></header>
+<header class="head"><span class="kicker">Tracking an Airplane</span><span class="folio">23</span></header>
 <h2 class="title">Tracking an Airplane</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;min-height:0;"><div class="cell"><ul class="ul"><li><strong>레이더</strong>: 전파를 쏘고 반사파가 돌아오는 시간으로 slant range, 안테나 이득으로 각도 계산</li><li><strong>2 차원</strong>: 지상 거리와 고도만 추적, 각 차원이 독립이므로 일반성 유지</li><li><strong>측정</strong>: slant range 와 지면 기준 elevation angle, 모두 비선형</li></ul></div><div class="cell"><div class="formula" style="gap:16px 56px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -20.924 101.353 36.866" role="img" aria-label="\mathbf{x} = \begin{bmatrix} x \\ \dot{x} \\ y \end{bmatrix} = \begin{bmatrix} \text{distance} \\ \text{velocity} \\ \text{altitude} \end{bmatrix}" fill="currentColor" style="width:12.264em;height:4.461em;vertical-align:-1.929em;display:inline-block;overflow:visible">
@@ -2633,7 +2633,7 @@ xs, _, _, _ = kf.batch_filter(zs)
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:33%"></i></div><span class="foot-num">23 / 69</span></footer>
 </section>
 <section class="slide" data-label="24 Measurement Function" data-screen-label="24 Measurement Function">
-<header class="head"><span class="kicker">10.8 Tracking an Airplane</span><span class="folio">24</span></header>
+<header class="head"><span class="kicker">Tracking an Airplane</span><span class="folio">24</span></header>
 <h2 class="title">Measurement Function</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>f_radar() 는 일정 고도 등속 비행의 선형 전이, h_radar() 는 상태를 거리와 고도각으로 변환</li><li>고도 1000 m 에서 x 를 바꾸며 h_radar() 출력을 그리면 거리와 각도 모두 x 에 대해 비선형</li><li>각도는 모듈러 값, 359 도와 1 도의 차이는 2 도이므로 지금은 각이 0 근처를 지나지 않게 배치</li><li><strong>조건</strong>: 레이더 (0, 0), 고도 1000 m, x = -5 ~ 5 km</li></ul><div style="display:grid;grid-template-columns:1000px 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxxs tightest"><span class="k">def</span> <span class="fn">f_radar</span>(x, dt):
@@ -2655,7 +2655,7 @@ plt.title(<span class="s">'elevation (deg)'</span>); plt.xlabel(<span class="s">
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:35%"></i></div><span class="foot-num">24 / 69</span></footer>
 </section>
 <section class="slide" data-label="25 Radar Tracking" data-screen-label="25 Radar Tracking">
-<header class="head"><span class="kicker">10.8 Tracking an Airplane</span><span class="folio">25</span></header>
+<header class="head"><span class="kicker">Tracking an Airplane</span><span class="folio">25</span></header>
 <h2 class="title">Radar Tracking</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>RadarStation 은 거리와 고도각에 잡음을 더해 보고, ACSim 은 속도에 작은 잡음이 있는 등속 비행</li><li>레이더 바로 위 고도 1000 m 에서 100 m/s 로 비행, 위치, 속도, 고도 추정이 안정적으로 수렴</li><li><strong>조건</strong>: 측정 주기 3 s, 거리 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -4.789 7.05 5.289" role="img" aria-label="\sigma" fill="currentColor" style="width:0.853em;height:0.640em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -2744,7 +2744,7 @@ ac_pos = (0., 1000.)
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:36%"></i></div><span class="foot-num">25 / 69</span></footer>
 </section>
 <section class="slide" data-label="26 Tracking Maneuevering Aircraft" data-screen-label="26 Tracking Maneuevering Aircraft">
-<header class="head"><span class="kicker">10.8.1 Tracking Maneuevering Aircraft</span><span class="folio">26</span></header>
+<header class="head"><span class="kicker">Tracking Maneuevering Aircraft</span><span class="folio">26</span></header>
 <h2 class="title">Tracking Maneuevering Aircraft</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>같은 필터로 1 분 뒤부터 분당 300 m 로 상승하는 항공기를 추적, 실선(UKF 고도)이 점선(실제)을 못 따라감</li><li>상태에 상승률이 없어 고도가 일정하다고 믿는 모델, 설계 수정이 필요</li><li><strong>조건</strong>: t ≥ 60 s 에서 상승률 5 m/s, 측정 주기 3 s, 360 s 동안 추적</li></ul><div style="display:grid;grid-template-columns:880px 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxxs tightest">kf.x = np.array([<span class="no">0.</span>, <span class="no">90.</span>, <span class="no">1100.</span>])
@@ -2830,7 +2830,7 @@ radar = RadarStation((0, 0), range_std, elevation_angle_std)
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:38%"></i></div><span class="foot-num">26 / 69</span></footer>
 </section>
 <section class="slide" data-label="27 Add Climb Rate to the State" data-screen-label="27 Add Climb Rate to the State">
-<header class="head"><span class="kicker">10.8.1 Tracking Maneuevering Aircraft</span><span class="folio">27</span></header>
+<header class="head"><span class="kicker">Tracking Maneuevering Aircraft</span><span class="folio">27</span></header>
 <h2 class="title">Add Climb Rate to the State</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul"><li><strong>수정</strong>: 상태에 상승률을 추가, 상태 전이는 여전히 선형</li><li><strong>그대로</strong>: 측정 함수는 그대로, 상태 차원이 바뀌므로 Q 만 4 x 4 블록으로 변경</li></ul><div class="formula" style="gap:16px 72px;font-size:38px;margin:8px 0"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -26.901 109.904 48.821" role="img" aria-label="\mathbf{x} = \begin{bmatrix} x \\ \dot{x} \\ y \\ \dot{y} \end{bmatrix} = \begin{bmatrix} \text{distance} \\ \text{velocity} \\ \text{altitude} \\ \text{climb rate} \end{bmatrix}" fill="currentColor" style="width:13.298em;height:5.907em;vertical-align:-2.652em;display:inline-block;overflow:visible">
@@ -3013,7 +3013,7 @@ radar = RadarStation((0, 0), range_std, elevation_angle_std)
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:39%"></i></div><span class="foot-num">27 / 69</span></footer>
 </section>
 <section class="slide" data-label="28 Constant Velocity UKF" data-screen-label="28 Constant Velocity UKF">
-<header class="head"><span class="kicker">10.8.1 Tracking Maneuevering Aircraft</span><span class="folio">28</span></header>
+<header class="head"><span class="kicker">Tracking Maneuevering Aircraft</span><span class="folio">28</span></header>
 <h2 class="title">Constant Velocity UKF</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>상승률을 포함한 4 상태 전이 f_cv_radar() 와 필터 생성 함수 cv_UKF(), R 은 표준편차 행렬의 제곱</li><li>결과는 생성된 필터의 Q, 지상 방향과 고도 방향의 2 x 2 블록 두 개가 대각선에 위치</li><li><strong>조건</strong>: dt 3 s, n = 4, <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -4.789 7.41 5.289" role="img" aria-label="\alpha" fill="currentColor" style="width:0.897em;height:0.640em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -3115,7 +3115,7 @@ radar = RadarStation((0, 0), range_std, elevation_angle_std)
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:41%"></i></div><span class="foot-num">28 / 69</span></footer>
 </section>
 <section class="slide" data-label="29 Tracking the Climb" data-screen-label="29 Tracking the Climb">
-<header class="head"><span class="kicker">10.8.1 Tracking Maneuevering Aircraft</span><span class="folio">29</span></header>
+<header class="head"><span class="kicker">Tracking Maneuevering Aircraft</span><span class="folio">29</span></header>
 <h2 class="title">Tracking the Climb</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>상승률을 포함한 4 상태 cv_UKF 로 같은 상승 비행을 다시 추적</li><li>고도 추정에 잡음이 늘었지만 최종 고도가 실제 2515 m 에 가깝게 추적</li><li><strong>조건</strong>: t ≥ 60 s 에서 상승률 5 m/s, P = <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -8.61 98.164 11.6" role="img" aria-label="\mathrm{diag}(300^2, 3^2, 150^2, 3^2)" fill="currentColor" style="width:11.878em;height:1.404em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -3245,7 +3245,7 @@ def cv_UKF(fx, hx, R_std):
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:42%"></i></div><span class="foot-num">29 / 69</span></footer>
 </section>
 <section class="slide" data-label="30 Sensor Fusion" data-screen-label="30 Sensor Fusion">
-<header class="head"><span class="kicker">10.8.2 Sensor Fusion</span><span class="folio">30</span></header>
+<header class="head"><span class="kicker">Sensor Fusion</span><span class="folio">30</span></header>
 <h2 class="title">Sensor Fusion</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>Doppler 속도 센서와의 sensor fusion 효과를 보기 위해 먼저 레이더만 쓰는 필터의 속도 정확도 측정</li><li>거리 오차를 500 m 로 키운 레이더만으로 추정한 속도, 수렴 구간 10 개를 뺀 표준편차 계산</li><li><strong>조건</strong>: 거리 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -4.789 7.05 5.289" role="img" aria-label="\sigma" fill="currentColor" style="width:0.853em;height:0.640em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -3348,7 +3348,7 @@ def cv_UKF(fx, hx, R_std):
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:43%"></i></div><span class="foot-num">30 / 69</span></footer>
 </section>
 <section class="slide" data-label="31 Doppler Velocity" data-screen-label="31 Doppler Velocity">
-<header class="head"><span class="kicker">10.8.2 Sensor Fusion</span><span class="folio">31</span></header>
+<header class="head"><span class="kicker">Sensor Fusion</span><span class="folio">31</span></header>
 <h2 class="title">Doppler Velocity</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>Doppler 센서가 x, y 속도를 2 m/s 로 측정, h_vel() 은 거리와 각도에 상태의 두 속도를 더해 4 개 값 반환</li><li>레이더만 쓸 때보다 속도 추정의 표준편차가 크게 감소, 서로 다른 정보를 주는 센서의 결합 효과</li><li><strong>조건</strong>: 속도 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -4.789 7.05 5.289" role="img" aria-label="\sigma" fill="currentColor" style="width:0.853em;height:0.640em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -3459,14 +3459,14 @@ time = np.arange(0, 360 + dt, dt)
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:45%"></i></div><span class="foot-num">31 / 69</span></footer>
 </section>
 <section class="slide" data-label="32 Complementary Sensors" data-screen-label="32 Complementary Sensors">
-<header class="head"><span class="kicker">10.8.2 Sensor Fusion</span><span class="folio">32</span></header>
+<header class="head"><span class="kicker">Sensor Fusion</span><span class="folio">32</span></header>
 <h2 class="title">Complementary Sensors</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;min-height:0;"><div class="cell"><div class="card"><h3 class="card-h sky">GPS</h3><ul class="ul"><li>초당 1 회 정도의 비교적 정확한 위치</li><li>속도 추정은 부정확</li><li>느린 갱신</li></ul></div></div><div class="cell"><div class="card soft"><h3 class="card-h sky">Inertial system</h3><ul class="ul"><li>50 Hz 의 매우 정확한 속도</li><li>위치 추정은 시간이 지나면 크게 틀어짐</li><li>빠른 갱신</li></ul></div></div></div><ul class="ul"><li><strong>Complementary filter</strong>: 빠른 관성 속도를 GPS 갱신 사이에 적분해 높은 주기의 정확한 위치와 속도 생성</li><li><strong>직교하는 강점</strong>: 한 센서의 약점이 다른 센서의 강점, 두 정보가 서로 겹치지 않음</li><li><strong>자율주행</strong>: GNSS, IMU, 휠 오도메트리처럼 서로의 약점을 보완하는 센서 조합이 위치인식의 기본 구조</li></ul><div class="point"><b>핵심</b>: 강점과 약점이 서로 직교하는 센서를 결합하면 어느 한 센서보다 좋은 추정</div></div>
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:46%"></i></div><span class="foot-num">32 / 69</span></footer>
 </section>
 <section class="slide" data-label="33 Multiple Position Sensors" data-screen-label="33 Multiple Position Sensors">
-<header class="head"><span class="kicker">10.8.3 Multiple Position Sensors</span><span class="folio">33</span></header>
+<header class="head"><span class="kicker">Multiple Position Sensors</span><span class="folio">33</span></header>
 <h2 class="title">Multiple Position Sensors</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1.2fr 1fr;gap:40px;min-height:0;"><div class="cell"><div style="display:flex;flex-direction:column;gap:16px;min-width:0"><ul class="ul"><li><strong>VOR</strong>: GPS 이전 항공기 항법, 지상 국 방향(radial)만 알려 주는 bearing 센서</li><li><strong>수동 방식</strong>: 두 국의 radial 교차점을 지도에서 찾음, 정확도 낮음</li><li><strong>Kalman filter</strong>: 두 bearing 측정으로 훨씬 정확한 위치 추정</li><li><strong>그림</strong>: 부채꼴 폭은 센서 잡음 3 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -4.789 7.05 5.289" role="img" aria-label="\sigma" fill="currentColor" style="width:0.853em;height:0.640em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -3554,7 +3554,7 @@ time = np.arange(0, 360 + dt, dt)
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:48%"></i></div><span class="foot-num">33 / 69</span></footer>
 </section>
 <section class="slide" data-label="34 Two Bearing Sensors" data-screen-label="34 Two Bearing Sensors">
-<header class="head"><span class="kicker">10.8.3 Multiple Position Sensors</span><span class="folio">34</span></header>
+<header class="head"><span class="kicker">Multiple Position Sensors</span><span class="folio">34</span></header>
 <h2 class="title">Two Bearing Sensors</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>A(-400, 0), B(400, 0) 두 bearing 센서로 (100, 200) 에서 대각선으로 움직이는 목표물 추적</li><li>시작 부분은 오차가 크지만 곧 수렴해 점선(실제 경로)을 잘 따라감</li><li>plot_straight_line_target() 은 목표물을 매 단계 (1, 1) m 이동, 두 bearing 에 잡음 추가</li><li><strong>조건</strong>: bearing <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -4.789 7.05 5.289" role="img" aria-label="\sigma" fill="currentColor" style="width:0.853em;height:0.640em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -3619,7 +3619,7 @@ def plot_straight_line_target(f, std_noise):
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:49%"></i></div><span class="foot-num">34 / 69</span></footer>
 </section>
 <section class="slide" data-label="35 Angle Nonlinearity" data-screen-label="35 Angle Nonlinearity">
-<header class="head"><span class="kicker">10.8.3 Multiple Position Sensors</span><span class="folio">35</span></header>
+<header class="head"><span class="kicker">Multiple Position Sensors</span><span class="folio">35</span></header>
 <h2 class="title">Angle Nonlinearity</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>목표물을 두 센서 사이 (0, 0) 에서 출발, B 에서 본 각이 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -4.789 7.036 5.289" role="img" aria-label="\pi" fill="currentColor" style="width:0.851em;height:0.640em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -3693,7 +3693,7 @@ std_noise = math.radians(0.5)
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:51%"></i></div><span class="foot-num">35 / 69</span></footer>
 </section>
 <section class="slide" data-label="36 Effects of Sensor Error and Geometry" data-screen-label="36 Effects of Sensor Error and Geometry">
-<header class="head"><span class="kicker">10.9 Effects of Sensor Error and Geometry</span><span class="folio">36</span></header>
+<header class="head"><span class="kicker">Effects of Sensor Error and Geometry</span><span class="folio">36</span></header>
 <h2 class="title">Effects of Sensor Error and Geometry</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;min-height:0;"><div class="cell"><ul class="ul"><li><strong>기하</strong>: 센서와 목표물의 배치가 만드는 물리적 한계, 필터 설계로 극복하기 어려움</li><li><strong>평행한 radial</strong>: 작은 각도 오차가 매우 큰 거리 오차로</li></ul></div><div class="cell"><ul class="ul"><li><strong>비선형</strong>: x 축과 y 축의 오차 비율이 실제 bearing 에 따라 달라짐</li><li><strong>그림</strong>: 거리 100 m 의 1 도 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -4.789 7.05 5.289" role="img" aria-label="\sigma" fill="currentColor" style="width:0.853em;height:0.640em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -3707,21 +3707,21 @@ std_noise = math.radians(0.5)
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:52%"></i></div><span class="foot-num">36 / 69</span></footer>
 </section>
 <section class="slide" data-label="37 One Sensor" data-screen-label="37 One Sensor">
-<header class="head"><span class="kicker">10.10 Exercise: Explain Filter Performance</span><span class="folio">37</span></header>
+<header class="head"><span class="kicker">Exercise: Explain Filter Performance</span><span class="folio">37</span></header>
 <h2 class="title">One Sensor</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1.15fr 1fr;gap:40px;min-height:0;"><div class="cell"><ul class="ul"><li><strong>질문</strong>: 작은 각도 오차가 큰 위치 오차를 만드는데 UKF 가 잘 동작한 이유</li><li><strong>움직이는 목표</strong>: 측정 하나는 오차가 크지만 연속 측정은 오른쪽 위로의 뚜렷한 추세</li><li><strong>Kalman gain</strong>: 측정 함수로 오차 분포를 반영, 45 도 선 방향 오차는 낮추고 수직 방향은 신뢰</li><li><strong>측정 수</strong>: 그림은 위치마다 측정 100 개, 필터는 갱신마다 1 개만 받으므로 녹색 점선만큼 맞추지는 못함</li><li><strong>거리 정보 없음</strong>: 1000 km 밖에 작은 P 로 초기화하면 1 도가 17.5 km, 수렴 불가</li></ul></div><div class="cell"><figure class="fig plain"><img src="./imgs/moving_target.svg" alt="moving_target" style="width:100%"></figure></div></div><div class="point"><b>핵심</b>: 필터는 움직임 모델과 측정 오차의 방향을 함께 이용, 단일 측정보다 훨씬 정확</div></div>
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:54%"></i></div><span class="foot-num">37 / 69</span></footer>
 </section>
 <section class="slide" data-label="38 Two Sensors" data-screen-label="38 Two Sensors">
-<header class="head"><span class="kicker">10.10 Exercise: Explain Filter Performance</span><span class="folio">38</span></header>
+<header class="head"><span class="kicker">Exercise: Explain Filter Performance</span><span class="folio">38</span></header>
 <h2 class="title">Two Sensors</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 1.5fr;gap:40px;min-height:0;"><div class="cell"><ul class="ul"><li><strong>두 번째 센서</strong>: 두 bearing 의 교차로 거리 정보를 얻음, 배치에 따라 오차 모양이 달라짐</li><li><strong>그림 표기</strong>: 두 센서(삼각형, 사각형), 두 잡음 bearing 의 교차점을 빨간 점으로</li><li><strong>직교 배치</strong>: x 모양 교차, 센서 B 의 y 좌표에 가까워질수록 길쭉한 타원</li><li><strong>비직교 배치</strong>: 한 센서 바로 옆에서 출발해 다른 센서를 지나감, 교차가 비직교라 오차가 넓게 퍼짐</li></ul></div><div class="cell"><figure class="fig plain"><img src="./imgs/iscts.svg" alt="iscts" style="width:100%"></figure></div></div></div>
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:55%"></i></div><span class="foot-num">38 / 69</span></footer>
 </section>
 <section class="slide" data-label="39 Implementation of the UKF" data-screen-label="39 Implementation of the UKF">
-<header class="head"><span class="kicker">10.11 Implementation of the UKF</span><span class="folio">39</span></header>
+<header class="head"><span class="kicker">Implementation of the UKF</span><span class="folio">39</span></header>
 <h2 class="title">Implementation of the UKF</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;min-height:0;flex:none"><div class="cell"><div style="display:flex;flex-direction:column;gap:8px;min-width:0"><ul class="ul"><li><strong>구현</strong>: 식을 코드로 옮기는 연습, weights, sigma points, predict, update 순서</li><li><strong>저장</strong>: sigma point 를 행으로 저장, i 번째 점을 sigmas[i] 로 참조</li><li><strong>크기</strong>: 2n + 1 행, n 열, n = 3 이면 7 행 3 열</li></ul><div class="formula" style="font-size:30px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -8.968 135.984 12.955" role="img" aria-label="\text{weights} = \begin{bmatrix} w_0 &amp; w_1 &amp; \ldots &amp; w_{2n} \end{bmatrix}" fill="currentColor" style="width:16.454em;height:1.568em;vertical-align:-0.482em;display:inline-block;overflow:visible">
@@ -3878,7 +3878,7 @@ std_noise = math.radians(0.5)
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:57%"></i></div><span class="foot-num">39 / 69</span></footer>
 </section>
 <section class="slide" data-label="40 Weights" data-screen-label="40 Weights">
-<header class="head"><span class="kicker">10.11.1 Weights</span><span class="folio">40</span></header>
+<header class="head"><span class="kicker">Weights</span><span class="folio">40</span></header>
 <h2 class="title">Weights</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>Van der Merwe 가중치 식을 NumPy 로 구현, lambda 는 예약어라 lambda_ 로 표기</li><li>직접 계산한 Wm, Wc 가 MerweScaledSigmaPoints 의 값과 일치하는지 확인</li><li>작은 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -4.789 7.41 5.289" role="img" aria-label="\alpha" fill="currentColor" style="width:0.897em;height:0.640em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -3928,7 +3928,7 @@ sum Wm 1.000000000000007
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:58%"></i></div><span class="foot-num">40 / 69</span></footer>
 </section>
 <section class="slide" data-label="41 Matrix Square Root" data-screen-label="41 Matrix Square Root">
-<header class="head"><span class="kicker">10.11.2 Sigma Points</span><span class="folio">41</span></header>
+<header class="head"><span class="kicker">Sigma Points</span><span class="folio">41</span></header>
 <h2 class="title">Matrix Square Root</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1.3fr 1fr;gap:40px;min-height:0;"><div class="cell"><div style="display:flex;flex-direction:column;gap:24px;min-width:0"><div class="formula" style="gap:16px 48px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.308 31.862 9.745" role="img" aria-label="\mathcal{X}_0 = \mu" fill="currentColor" style="width:3.855em;height:1.179em;vertical-align:-0.295em;display:inline-block;overflow:visible">
@@ -4016,7 +4016,7 @@ sum Wm 1.000000000000007
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:59%"></i></div><span class="foot-num">41 / 69</span></footer>
 </section>
 <section class="slide" data-label="42 Sigma Points" data-screen-label="42 Sigma Points">
-<header class="head"><span class="kicker">10.11.2 Sigma Points</span><span class="folio">42</span></header>
+<header class="head"><span class="kicker">Sigma Points</span><span class="folio">42</span></header>
 <h2 class="title">Sigma Points</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>Cholesky 로 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.972 40.548 10.963" role="img" aria-label="(n + \lambda)\mathbf{P}" fill="currentColor" style="width:4.906em;height:1.327em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -4093,7 +4093,7 @@ True
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:61%"></i></div><span class="foot-num">42 / 69</span></footer>
 </section>
 <section class="slide" data-label="43 Unscented Transform" data-screen-label="43 Unscented Transform">
-<header class="head"><span class="kicker">10.11.2 Sigma Points</span><span class="folio">43</span></header>
+<header class="head"><span class="kicker">Sigma Points</span><span class="folio">43</span></header>
 <h2 class="title">Unscented Transform</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>np.dot(Wm, sigmas) 로 가중 평균, np.outer(y, y) 로 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -8.958 17.043 11.395" role="img" aria-label="y y^\mathsf{T}" fill="currentColor" style="width:2.062em;height:1.379em;vertical-align:-0.295em;display:inline-block;overflow:visible">
@@ -4187,7 +4187,7 @@ def sigma_points(X, P, alpha, kappa):
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:62%"></i></div><span class="foot-num">43 / 69</span></footer>
 </section>
 <section class="slide" data-label="44 Predict Step" data-screen-label="44 Predict Step">
-<header class="head"><span class="kicker">10.11.3 Predict Step</span><span class="folio">44</span></header>
+<header class="head"><span class="kicker">Predict Step</span><span class="folio">44</span></header>
 <h2 class="title">Predict Step</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>필터의 행렬과 벡터를 저장하는 클래스, predict() 는 sigma point 를 f 에 통과시키고 UT 로 prior 계산</li><li>등속 모델에서 1 초 예측, 위치가 속도만큼 이동하고 위치 분산이 커짐</li><li><strong>조건</strong>: x = (0, 1, 0, 1), P = I, Q = I, dt 1 s, <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -4.789 7.41 5.289" role="img" aria-label="\alpha" fill="currentColor" style="width:0.897em;height:0.640em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -4275,7 +4275,7 @@ def h_cv(x):
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:64%"></i></div><span class="foot-num">44 / 69</span></footer>
 </section>
 <section class="slide" data-label="45 Update Step" data-screen-label="45 Update Step">
-<header class="head"><span class="kicker">10.11.4 Update Step</span><span class="folio">45</span></header>
+<header class="head"><span class="kicker">Update Step</span><span class="folio">45</span></header>
 <h2 class="title">Update Step</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>update() 는 prior sigma point 를 h 로 측정 공간에 옮기고 UT, 교차 공분산 Pxz, gain K 계산</li><li>앞 슬라이드의 prior (1, 1, 1, 1) 에 측정 (1.2, 0.9) 를 반영, 위치가 측정 쪽으로 이동하고 분산 감소</li><li><strong>조건</strong>: prior 는 앞 슬라이드의 xp, Pp, R = I, 측정 z = (1.2, 0.9)</li></ul><div style="display:grid;grid-template-columns:1.75fr 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxxs tightest"><span class="k">from</span> numpy.linalg <span class="k">import</span> inv
@@ -4356,7 +4356,7 @@ ukf.predict(lambda x, P: sigma_points(x, P, .1, 1.))
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:65%"></i></div><span class="foot-num">45 / 69</span></footer>
 </section>
 <section class="slide" data-label="46 Running the Filter" data-screen-label="46 Running the Filter">
-<header class="head"><span class="kicker">10.11.4 Update Step</span><span class="folio">46</span></header>
+<header class="head"><span class="kicker">Update Step</span><span class="folio">46</span></header>
 <h2 class="title">Running the Filter</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>직접 구현한 MyUKF 로 10.7 의 대각선 이동 측정을 처리하고 선형 KF 결과와 비교</li><li>두 궤적이 겹침, 식을 그대로 옮긴 30 줄 남짓의 코드로 동작하는 UKF 완성</li><li><strong>조건</strong>: 같은 측정 zs, R = 0.09 I, Q 는 선형 KF 와 동일, <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -4.789 7.41 5.289" role="img" aria-label="\alpha" fill="currentColor" style="width:0.897em;height:0.640em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -4473,7 +4473,7 @@ xs, _, _, _ = kf.batch_filter(zs)
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:67%"></i></div><span class="foot-num">46 / 69</span></footer>
 </section>
 <section class="slide" data-label="47 Batch Processing" data-screen-label="47 Batch Processing">
-<header class="head"><span class="kicker">10.12 Batch Processing</span><span class="folio">47</span></header>
+<header class="head"><span class="kicker">Batch Processing</span><span class="folio">47</span></header>
 <h2 class="title">Batch Processing</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>이미 모은 측정 배열을 batch_filter() 에 넣어 한 번에 처리, 모든 단계의 추정 xs 와 공분산 covs 반환</li><li>레이더 추적 문제를 12 초 주기 측정으로 batch 처리, 위치, 속도, 고도 추정</li><li><strong>조건</strong>: dt 12 s, 거리 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -4.789 7.05 5.289" role="img" aria-label="\sigma" fill="currentColor" style="width:0.853em;height:0.640em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -4560,7 +4560,7 @@ ac_pos = (0., 1000.)
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:68%"></i></div><span class="foot-num">47 / 69</span></footer>
 </section>
 <section class="slide" data-label="48 Smoothing the Results" data-screen-label="48 Smoothing the Results">
-<header class="head"><span class="kicker">10.13 Smoothing the Results</span><span class="folio">48</span></header>
+<header class="head"><span class="kicker">Smoothing the Results</span><span class="folio">48</span></header>
 <h2 class="title">Smoothing the Results</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>차가 직진 중 왼쪽으로 꺾는 듯한 잡음 측정, 필터는 잡음인지 회전 시작인지 판단할 수 없음</li><li>사후 처리라면 이후 측정으로 판단 가능, batch 결과를 RTS smoother 로 뒤에서부터 보정</li><li>위치 개선은 작지만 속도는 개선되고 고도는 크게 개선, 사후 처리가 가능하면 항상 사용 권장</li><li><strong>조건</strong>: 앞 슬라이드의 batch 결과 xs, covs, 출력은 마지막 5 개 점의 위치 차이</li></ul><div style="display:grid;grid-template-columns:560px 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxs denser">Ms, P, K = kf.rts_smoother(xs, covs)
@@ -4636,7 +4636,7 @@ xs, covs = kf.batch_filter(zs)
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:70%"></i></div><span class="foot-num">48 / 69</span></footer>
 </section>
 <section class="slide" data-label="49 Choosing the Sigma Parameters" data-screen-label="49 Choosing the Sigma Parameters">
-<header class="head"><span class="kicker">10.14 Choosing the Sigma Parameters</span><span class="folio">49</span></header>
+<header class="head"><span class="kicker">Choosing the Sigma Parameters</span><span class="folio">49</span></header>
 <h2 class="title">Choosing the Sigma Parameters</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>n = 1, <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.419 7.161 9.856" role="img" aria-label="\beta" fill="currentColor" style="width:0.866em;height:1.193em;vertical-align:-0.295em;display:inline-block;overflow:visible">
@@ -4717,7 +4717,7 @@ sum cov -39996.00000000001
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:71%"></i></div><span class="foot-num">49 / 69</span></footer>
 </section>
 <section class="slide" data-label="50 Very Small Alpha" data-screen-label="50 Very Small Alpha">
-<header class="head"><span class="kicker">10.14 Choosing the Sigma Parameters</span><span class="folio">50</span></header>
+<header class="head"><span class="kicker">Choosing the Sigma Parameters</span><span class="folio">50</span></header>
 <h2 class="title">Very Small Alpha</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>권장 범위 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -6.92 43.939 8.775" role="img" aria-label="0 &lt; \alpha \le 1" fill="currentColor" style="width:5.317em;height:1.062em;vertical-align:-0.224em;display:inline-block;overflow:visible">
@@ -4784,7 +4784,7 @@ sum cov 3.9999989999923855
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:72%"></i></div><span class="foot-num">50 / 69</span></footer>
 </section>
 <section class="slide" data-label="51 Effect of the Parameters" data-screen-label="51 Effect of the Parameters">
-<header class="head"><span class="kicker">10.14 Choosing the Sigma Parameters</span><span class="folio">51</span></header>
+<header class="head"><span class="kicker">Choosing the Sigma Parameters</span><span class="folio">51</span></header>
 <h2 class="title">Effect of the Parameters</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1.1fr 1fr;gap:40px;min-height:0;"><div class="cell"><div style="display:flex;flex-direction:column;gap:16px;min-width:0"><div class="formula" style="flex-direction:column;gap:6px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -9.815 119.905 13.354" role="img" aria-label="\mathcal{X}_i = 0 \pm \sqrt{(1 + 2) \cdot 3} = \pm 3" fill="currentColor" style="width:14.509em;height:1.616em;vertical-align:-0.428em;display:inline-block;overflow:visible">
@@ -4884,14 +4884,14 @@ sum cov 3.9999989999923855
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:74%"></i></div><span class="foot-num">51 / 69</span></footer>
 </section>
 <section class="slide" data-label="52 Robot Localization" data-screen-label="52 Robot Localization">
-<header class="head"><span class="kicker">10.15 Robot Localization - A Fully Worked Example</span><span class="folio">52</span></header>
+<header class="head"><span class="kicker">Robot Localization - A Fully Worked Example</span><span class="folio">52</span></header>
 <h2 class="title">Robot Localization</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;min-height:0;"><div class="cell"><ul class="ul"><li><strong>문제</strong>: 알려진 landmark 를 센서로 감지하며 움직이는 로봇의 위치 추정</li><li><strong>예</strong>: 나무, 건물을 인식하는 자율주행차, 로봇 청소기, 물류 창고 로봇</li><li><strong>운동</strong>: 자동차와 같은 4 바퀴, 앞바퀴를 꺾어 뒤 차축 중심으로 회전, 비선형</li><li><strong>센서</strong>: landmark 까지의 대략적인 거리와 bearing, 제곱근과 삼각함수로 비선형</li><li><strong>선택</strong>: process, 측정 모델 모두 비선형, 둘 다 다루는 UKF 가 적합</li></ul></div><div class="cell"><figure class="fig plain"><img src="./imgs/robot_scene.svg" alt="robot_scene" style="width:100%"></figure></div></div><div class="point"><b>핵심</b>: 실제 문제의 설계 과정, 모델 선택부터 각도 처리까지 하나씩 해결</div></div>
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:75%"></i></div><span class="foot-num">52 / 69</span></footer>
 </section>
 <section class="slide" data-label="53 Robot Motion Model" data-screen-label="53 Robot Motion Model">
-<header class="head"><span class="kicker">10.15.1 Robot Motion Model</span><span class="folio">53</span></header>
+<header class="head"><span class="kicker">Robot Motion Model</span><span class="folio">53</span></header>
 <h2 class="title">Robot Motion Model</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 1.2fr;gap:40px;min-height:0;flex:none"><div class="cell"><div style="display:flex;flex-direction:column;gap:20px;min-width:0"><ul class="ul"><li><strong>조향</strong>: 앞바퀴가 향하는 방향으로 앞부분이 이동, 뒷바퀴를 중심으로 회전</li><li><strong>복잡성</strong>: 미끄러짐, 타이어 특성, 안쪽과 바깥 바퀴의 회전 반경 차이</li><li><strong>bicycle model</strong>: 저속 로봇에서 잘 동작하는 단순 모델</li><li><strong>그림</strong>: 짧은 시간 뒤 뒷바퀴(파란색)가 반경 R 의 원을 따라 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.419 7.161 9.856" role="img" aria-label="\beta" fill="currentColor" style="width:0.866em;height:1.193em;vertical-align:-0.295em;display:inline-block;overflow:visible">
@@ -4960,7 +4960,7 @@ sum cov 3.9999989999923855
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:77%"></i></div><span class="foot-num">53 / 69</span></footer>
 </section>
 <section class="slide" data-label="54 Pose After the Turn" data-screen-label="54 Pose After the Turn">
-<header class="head"><span class="kicker">10.15.1 Robot Motion Model</span><span class="folio">54</span></header>
+<header class="head"><span class="kicker">Robot Motion Model</span><span class="folio">54</span></header>
 <h2 class="title">Pose After the Turn</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;min-height:0;"><div class="cell"><div style="display:flex;flex-direction:column;gap:22px;min-width:0"><ul class="ul"><li><strong>짧은 시간</strong>: 반경 R 의 원을 따라 회전한다고 근사, 회전 중심 C</li></ul><div class="formula" style="flex-direction:column;gap:12px;font-size:34px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.972 78.526 10.963" role="img" aria-label="C_x = x - R \sin(\theta)" fill="currentColor" style="width:9.502em;height:1.327em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -5206,7 +5206,7 @@ sum cov 3.9999989999923855
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:78%"></i></div><span class="foot-num">54 / 69</span></footer>
 </section>
 <section class="slide" data-label="55 Design the State Variables" data-screen-label="55 Design the State Variables">
-<header class="head"><span class="kicker">10.15.2 Design the State Variables</span><span class="folio">55</span></header>
+<header class="head"><span class="kicker">Design the State Variables</span><span class="folio">55</span></header>
 <h2 class="title">Design the State Variables</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 1.3fr;gap:40px;min-height:0;"><div class="cell"><div style="display:flex;flex-direction:column;gap:22px;min-width:0"><ul class="ul"><li><strong>상태</strong>: 로봇의 위치와 방향, 속도까지 넣으면 수학이 더 어려워짐</li><li><strong>제어 입력</strong>: 명령 속도 v 와 조향각 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -4.789 7.41 5.289" role="img" aria-label="\alpha" fill="currentColor" style="width:0.897em;height:0.640em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -5295,7 +5295,7 @@ sum cov 3.9999989999923855
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:80%"></i></div><span class="foot-num">55 / 69</span></footer>
 </section>
 <section class="slide" data-label="56 Design the System Model" data-screen-label="56 Design the System Model">
-<header class="head"><span class="kicker">10.15.3 Design the System Model</span><span class="folio">56</span></header>
+<header class="head"><span class="kicker">Design the System Model</span><span class="folio">56</span></header>
 <h2 class="title">Design the System Model</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>bicycle model 을 move(x, dt, u, wheelbase) 로 구현, 같은 속도에 조향각만 바꿔 50 단계 이동</li><li>조향각에 따라 원호 반경이 달라지는 비선형 운동, dt 가 크거나 강한 비선형이면 Runge Kutta 필요</li><li><strong>조건</strong>: v 1.1 m/s, dt 0.1 s, wheelbase 0.5 m, 조향각 -20, 0, 10, 30 도</li></ul><div style="display:grid;grid-template-columns:1080px 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxxs tightest"><span class="k">def</span> <span class="fn">move</span>(x, dt, u, wheelbase):
@@ -5320,7 +5320,7 @@ plt.axis(<span class="s">'equal'</span>); plt.legend();</pre></div><div class="c
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:81%"></i></div><span class="foot-num">56 / 69</span></footer>
 </section>
 <section class="slide" data-label="57 Design the Measurement Model" data-screen-label="57 Design the Measurement Model">
-<header class="head"><span class="kicker">10.15.4 Design the Measurement Model</span><span class="folio">57</span></header>
+<header class="head"><span class="kicker">Design the Measurement Model</span><span class="folio">57</span></header>
 <h2 class="title">Design the Measurement Model</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;min-height:0;"><div class="cell"><div style="display:flex;flex-direction:column;gap:22px;min-width:0"><ul class="ul"><li><strong>센서</strong>: 알려진 여러 위치(landmark)까지의 잡음 섞인 거리와 bearing</li><li><strong>bearing</strong>: 로봇 방향 기준이므로 landmark 방향 각에서 로봇 방향 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.419 5.954 7.919" role="img" aria-label="\theta" fill="currentColor" style="width:0.720em;height:0.958em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -5510,7 +5510,7 @@ plt.axis(<span class="s">'equal'</span>); plt.legend();</pre></div><div class="c
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:83%"></i></div><span class="foot-num">57 / 69</span></footer>
 </section>
 <section class="slide" data-label="58 Design Measurement Noise" data-screen-label="58 Design Measurement Noise">
-<header class="head"><span class="kicker">10.15.5 Design Measurement Noise</span><span class="folio">58</span></header>
+<header class="head"><span class="kicker">Design Measurement Noise</span><span class="folio">58</span></header>
 <h2 class="title">Design Measurement Noise</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>거리와 bearing 잡음은 독립, R = <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -8.61 88.936 13.287" role="img" aria-label="\mathrm{diag}(\sigma_\mathrm{range}^2, \sigma_\mathrm{bearing}^2)" fill="currentColor" style="width:10.761em;height:1.608em;vertical-align:-0.566em;display:inline-block;overflow:visible">
@@ -5597,7 +5597,7 @@ plt.scatter(pos[<span class="no">0</span>], pos[<span class="no">1</span>], s=<s
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:84%"></i></div><span class="foot-num">58 / 69</span></footer>
 </section>
 <section class="slide" data-label="59 Angle Residual" data-screen-label="59 Angle Residual">
-<header class="head"><span class="kicker">10.15.6 Implementation</span><span class="folio">59</span></header>
+<header class="head"><span class="kicker">Implementation</span><span class="folio">59</span></header>
 <h2 class="title">Angle Residual</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>측정 1 도, h(x) 359 도이면 단순 뺄셈은 -358 도, normalize_angle() 로 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.972 31.891 10.963" role="img" aria-label="[-\pi, \pi)" fill="currentColor" style="width:3.859em;height:1.327em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -5646,7 +5646,7 @@ plt.xlabel(<span class="s">'angle (deg)'</span>); plt.ylabel(<span class="s">'no
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:86%"></i></div><span class="foot-num">59 / 69</span></footer>
 </section>
 <section class="slide" data-label="60 Measurement Function" data-screen-label="60 Measurement Function">
-<header class="head"><span class="kicker">10.15.6 Implementation</span><span class="folio">60</span></header>
+<header class="head"><span class="kicker">Implementation</span><span class="folio">60</span></header>
 <h2 class="title">Measurement Function</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>Hx() 는 landmark 배열을 받아 [dist_1, bearing_1, dist_2, bearing_2, ...] 반환, 개수가 바뀌어도 동작</li><li>로봇 (2, 6), 방향 0.3 rad(빨간 화살표) 에서 세 landmark 까지의 거리와 bearing 을 그림에 표시</li><li><strong>조건</strong>: landmarks (5, 10), (10, 5), (15, 15), bearing 은 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.972 31.891 10.963" role="img" aria-label="[-\pi, \pi)" fill="currentColor" style="width:3.859em;height:1.327em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -5693,7 +5693,7 @@ plt.xlim(<span class="no">0</span>, <span class="no">20</span>); plt.ylim(<span 
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:87%"></i></div><span class="foot-num">60 / 69</span></footer>
 </section>
 <section class="slide" data-label="61 Mean of Angles" data-screen-label="61 Mean of Angles">
-<header class="head"><span class="kicker">10.15.6 Implementation</span><span class="folio">61</span></header>
+<header class="head"><span class="kicker">Implementation</span><span class="folio">61</span></header>
 <h2 class="title">Mean of Angles</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1.1fr 1fr;gap:40px;min-height:0;"><div class="cell"><div style="display:flex;flex-direction:column;gap:22px;min-width:0"><ul class="ul"><li><strong>문제</strong>: unscented transform 은 상태와 측정 벡터의 평균을 계산, 둘 다 각도를 포함</li><li><strong>예</strong>: 359 도와 3 도의 평균은 1 도가 직관적이지만 단순 산술 평균은 181 도</li><li><strong>해결</strong>: sin 과 cos 의 평균으로 atan2 를 계산하는 원형 평균</li></ul><div class="formula" style="font-size:34px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -11.957 146.261 18.933" role="img" aria-label="\bar{\theta} = \operatorname{atan2}\left( \frac{\sum_{i=1}^{n} \sin \theta_i}{n}, \frac{\sum_{i=1}^{n} \cos \theta_i}{n} \right)" fill="currentColor" style="width:17.698em;height:2.291em;vertical-align:-0.844em;display:inline-block;overflow:visible">
@@ -5762,7 +5762,7 @@ plt.xlim(<span class="no">0</span>, <span class="no">20</span>); plt.ylim(<span 
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:88%"></i></div><span class="foot-num">61 / 69</span></footer>
 </section>
 <section class="slide" data-label="62 state_mean and z_mean" data-screen-label="62 state_mean and z_mean">
-<header class="head"><span class="kicker">10.15.6 Implementation</span><span class="folio">62</span></header>
+<header class="head"><span class="kicker">Implementation</span><span class="folio">62</span></header>
 <h2 class="title">state_mean and z_mean</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>가중치 Wm 으로 sin, cos 의 가중합을 구해 atan2 로 각도 평균, 위치와 거리는 일반 가중 평균</li><li>각도 179 도와 -179 도인 두 점의 평균, 단순 가중합은 0 도, state_mean 은 180 도로 올바른 값</li><li><strong>조건</strong>: 두 점, 가중치 (0.5, 0.5), NumPy 삼각함수와 dot 이 배열 단위로 동작해 반복문보다 빠름</li></ul><div style="display:grid;grid-template-columns:1.85fr 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxxs tightest"><span class="k">def</span> <span class="fn">state_mean</span>(sigmas, Wm):
@@ -5790,7 +5790,7 @@ state_mean: 180.0
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:90%"></i></div><span class="foot-num">62 / 69</span></footer>
 </section>
 <section class="slide" data-label="63 Building the Filter" data-screen-label="63 Building the Filter">
-<header class="head"><span class="kicker">10.15.6 Implementation</span><span class="folio">63</span></header>
+<header class="head"><span class="kicker">Implementation</span><span class="folio">63</span></header>
 <h2 class="title">Building the Filter</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>sigma point 와 UKF 에 residual, 평균 함수 전달, move() 와 Hx() 의 추가 인자는 keyword 로 전달</li><li>한 번의 predict(회색) 로 커진 6 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -4.789 7.05 5.289" role="img" aria-label="\sigma" fill="currentColor" style="width:0.853em;height:0.640em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -5930,7 +5930,7 @@ def z_mean(sigmas, Wm):
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:91%"></i></div><span class="foot-num">63 / 69</span></footer>
 </section>
 <section class="slide" data-label="64 UKF Robot Localization" data-screen-label="64 UKF Robot Localization">
-<header class="head"><span class="kicker">10.15.6 Implementation</span><span class="folio">64</span></header>
+<header class="head"><span class="kicker">Implementation</span><span class="folio">64</span></header>
 <h2 class="title">UKF Robot Localization</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>시뮬레이션은 dt/step 간격으로 10 배 촘촘히, UKF 는 step 번마다 한 번, 측정은 sense() 로 생성</li><li>회색은 prior, 녹색은 posterior 의 6 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -4.789 7.05 5.289" role="img" aria-label="\sigma" fill="currentColor" style="width:0.853em;height:0.640em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -6057,14 +6057,14 @@ landmarks = np.array([[5, 10], [10, 5], [15, 15]])
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:93%"></i></div><span class="foot-num">64 / 69</span></footer>
 </section>
 <section class="slide" data-label="65 Design Process" data-screen-label="65 Design Process">
-<header class="head"><span class="kicker">10.15.6 Implementation</span><span class="folio">65</span></header>
+<header class="head"><span class="kicker">Implementation</span><span class="folio">65</span></header>
 <h2 class="title">Design Process</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul"><li><strong>설계 순서</strong>: 미리 정한 landmark 로 기본 UKF 를 먼저 동작시키고 질문을 하나씩 해결</li><li><strong>질문 1</strong>: 다른 landmark 가 보이면? 측정 함수가 landmark 배열을 받도록 변경</li><li><strong>질문 2</strong>: 각도의 residual 은? 각도 정규화 함수 작성</li><li><strong>질문 3</strong>: 각도들의 평균은? 원형 평균 구현</li><li><strong>시뮬레이션 10 Hz</strong>: Runge Kutta 없이 운동 방정식을 적분하므로 작은 시간 간격으로 정확도 확보</li><li><strong>UKF 1 Hz</strong>: 임베디드 시스템의 제한된 계산 능력, 필요한 만큼만 필터 실행</li></ul><div class="point"><b>핵심</b>: 처음부터 완벽한 설계는 없음, 할 수 있는 부분을 만들고 질문을 하나씩 해결</div></div>
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:94%"></i></div><span class="foot-num">65 / 69</span></footer>
 </section>
 <section class="slide" data-label="66 Steering Commands" data-screen-label="66 Steering Commands">
-<header class="head"><span class="kicker">10.15.7 Steering the Robot</span><span class="folio">66</span></header>
+<header class="head"><span class="kicker">Steering the Robot</span><span class="folio">66</span></header>
 <h2 class="title">Steering Commands</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>속도와 조향각이 변하지 않는 앞의 시뮬레이션은 비현실적, linspace 로 변하는 조향 명령 생성</li><li>정지에서 가속 후 직진, 좌회전, 우회전, 다시 좌회전하는 명령 시퀀스를 그래프로 확인</li><li><strong>조건</strong>: turn(v, t0, t1, steps) 는 조향각을 t0 에서 t1 도까지 steps 단계로 변화, 최대 속도 1.1 m/s</li></ul><div style="display:grid;grid-template-columns:1000px 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxxs tightest"><span class="k">def</span> <span class="fn">turn</span>(v, t0, t1, steps):
@@ -6090,7 +6090,7 @@ plt.title(<span class="s">'steering (deg)'</span>); plt.xlabel(<span class="s">'
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:96%"></i></div><span class="foot-num">66 / 69</span></footer>
 </section>
 <section class="slide" data-label="67 Steering the Robot" data-screen-label="67 Steering the Robot">
-<header class="head"><span class="kicker">10.15.7 Steering the Robot</span><span class="folio">67</span></header>
+<header class="head"><span class="kicker">Steering the Robot</span><span class="folio">67</span></header>
 <h2 class="title">Steering the Robot</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>더 멀리 이동하므로 landmark 를 7 개로 늘리고 dt 0.1 s 마다 UKF 실행</li><li>불확실성이 매우 빠르게 작아져 6 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -4.789 7.05 5.289" role="img" aria-label="\sigma" fill="currentColor" style="width:0.853em;height:0.640em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -6236,7 +6236,7 @@ cmds.extend([cmds[-1]]*100)
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:97%"></i></div><span class="foot-num">67 / 69</span></footer>
 </section>
 <section class="slide" data-label="68 Two Landmarks" data-screen-label="68 Two Landmarks">
-<header class="head"><span class="kicker">10.15.7 Steering the Robot</span><span class="folio">68</span></header>
+<header class="head"><span class="kicker">Steering the Robot</span><span class="folio">68</span></header>
 <h2 class="title">Two Landmarks</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>출발점 근처의 landmark 2 개만 제공해 오차를 키운 실험</li><li>로봇이 landmark 에서 멀어질수록 타원이 커지고 최종 공분산, 특히 y 분산이 증가</li><li><strong>조건</strong>: landmarks[0:2] = (5, 10), (10, 5), 나머지 조건 동일</li></ul><div style="display:grid;grid-template-columns:1000px 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxs denser">landmarks = np.array([[<span class="no">5</span>, <span class="no">10</span>], [<span class="no">10</span>, <span class="no">5</span>], [<span class="no">15</span>, <span class="no">15</span>], [<span class="no">20</span>, <span class="no">5</span>],
@@ -6361,7 +6361,7 @@ cmds.extend([cmds[-1]]*100)
 <footer class="foot"><span class="foot-sec">Day 5 · Chapter 10 The Unscented Kalman Filter</span><div class="bar"><i style="width:99%"></i></div><span class="foot-num">68 / 69</span></footer>
 </section>
 <section class="slide" data-label="69 Discussion" data-screen-label="69 Discussion">
-<header class="head"><span class="kicker">10.16 Discussion</span><span class="folio">69</span></header>
+<header class="head"><span class="kicker">Discussion</span><span class="folio">69</span></header>
 <h2 class="title">Discussion</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;min-height:0;"><div class="cell"><div class="card"><h3 class="card-h sky">UKF</h3><ul class="ul"><li>2n + 1 개 sigma point 와 f(x), h(x) 함수 작성</li><li>각도의 모듈러 연산 처리가 번거로운 부분</li><li>개념이 단순, 여러 점을 표본해 강한 비선형에서 정확</li></ul></div></div><div class="cell"><div class="card soft"><h3 class="card-h sky">EKF</h3><ul class="ul"><li>한 점에서 선형화해 선형 Kalman filter 에 통과</li><li>꽤 어려운 수학, 닫힌 해가 없으면 반복 해법</li><li>UKF 가 최소한 비슷하고 보통 더 좋은 성능</li></ul></div></div></div><ul class="ul"><li><strong>권장</strong>: UKF 부터 구현, 발산 시 큰 피해가 나는 시스템은 정교한 분석과 실험으로 필터 선택</li><li><strong>사용한 UKF</strong>: scaled unscented filter 를 Van der Merwe 방식으로 파라미터화한 형태</li><li><strong>sigma point filter 계열</strong>: 점을 고르고 가중하는 방식이 다른 여러 필터, SVD 를 쓰는 필터 등 다양</li></ul><div class="point"><b>결론</b>: UKF 는 sigma point filter 의 한 형태, 비선형 위치인식 문제의 실용적인 출발점</div></div>

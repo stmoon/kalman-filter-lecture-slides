@@ -189,14 +189,14 @@ figure.fig { align-items: center; }
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:2%"></i></div><span class="foot-num">01 / 57</span></footer>
 </section>
 <section class="slide" data-label="02 Introduction" data-screen-label="02 Introduction">
-<header class="head"><span class="kicker">6.1 Introduction</span><span class="folio">02</span></header>
+<header class="head"><span class="kicker">Introduction</span><span class="folio">02</span></header>
 <h2 class="title">Introduction</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;min-height:0;"><div class="cell"><ul class="ul"><li><strong>다변량 Kalman filter</strong>: 상태를 다변량 Gaussian 으로 표현, 평균은 벡터, 공분산은 행렬</li><li><strong>상관관계</strong>: 위치와 속도를 대략만 알아도 서로 상관되어 있으면 posterior 가 매우 정확</li></ul></div><div class="cell"><ul class="ul"><li><strong>대상</strong>: Newton 운동 방정식으로 기술되는 시스템으로 한정</li><li><strong>명칭</strong>: discretized continuous-time kinematic filter</li></ul></div></div><div class="point"><b>핵심</b>: 위치만 측정해도 상관된 속도까지 함께 좁혀지는 것이 다변량 필터의 이점</div><figure class="fig plain"><img src="./imgs/intro_corr.svg" alt="intro_corr" style="width:1600px"></figure></div>
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:4%"></i></div><span class="foot-num">02 / 57</span></footer>
 </section>
 <section class="slide" data-label="03 Newton&#x27;s Equations of Motion" data-screen-label="03 Newton&#x27;s Equations of Motion">
-<header class="head"><span class="kicker">6.2 Newton&#x27;s Equations of Motion</span><span class="folio">03</span></header>
+<header class="head"><span class="kicker">Newton&#x27;s Equations of Motion</span><span class="folio">03</span></header>
 <h2 class="title">Newton&#x27;s Equations of Motion</h2>
 <div class="rule"></div>
 <div class="body"><div class="formula" style="gap:16px 72px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -6.628 51.101 8.622" role="img" aria-label="x = vt + x_0" fill="currentColor" style="width:6.183em;height:1.043em;vertical-align:-0.241em;display:inline-block;overflow:visible">
@@ -373,14 +373,14 @@ figure.fig { align-items: center; }
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:5%"></i></div><span class="foot-num">03 / 57</span></footer>
 </section>
 <section class="slide" data-label="04 Kalman Filter Algorithm" data-screen-label="04 Kalman Filter Algorithm">
-<header class="head"><span class="kicker">6.3 Kalman Filter Algorithm</span><span class="folio">04</span></header>
+<header class="head"><span class="kicker">Kalman Filter Algorithm</span><span class="folio">04</span></header>
 <h2 class="title">Kalman Filter Algorithm</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:24px;min-height:0;"><div class="cell"><div class="card tight"><h3 class="card-h sky">Initialization</h3><ul class="ul"><li>필터 상태 초기화</li><li>상태에 대한 믿음 초기화</li></ul></div></div><div class="cell"><div class="card tight"><h3 class="card-h coral">Predict</h3><ul class="ul"><li>process model 로 다음 시점 상태 예측</li><li>예측 불확실성을 반영해 믿음 조정</li></ul></div></div><div class="cell"><div class="card good tight"><h3 class="card-h leaf">Update</h3><ul class="ul"><li>측정과 그 정확도 획득</li><li>추정 상태와 측정의 residual 계산</li><li>측정과 예측 중 더 정확한 쪽으로 비율 계산</li><li>그 비율로 예측과 측정 사이에 상태 설정</li><li>측정 확실성에 따라 믿음 갱신</li></ul></div></div></div><figure class="fig plain"><img src="./imgs/predict_update.svg" alt="predict_update" style="width:1050px"></figure></div>
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:7%"></i></div><span class="foot-num">04 / 57</span></footer>
 </section>
 <section class="slide" data-label="05 Predict Equations" data-screen-label="05 Predict Equations">
-<header class="head"><span class="kicker">6.3 Kalman Filter Algorithm</span><span class="folio">05</span></header>
+<header class="head"><span class="kicker">Kalman Filter Algorithm</span><span class="folio">05</span></header>
 <h2 class="title">Predict Equations</h2>
 <div class="rule"></div>
 <div class="body"><table class="tbl"><thead><tr><th style="width:18%"></th><th style="width:26%">Univariate</th><th style="width:26%">Univariate (Kalman form)</th><th>Multivariate</th></tr></thead><tbody><tr><td><strong>Mean</strong></td><td><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -6.312 53.293 9.662" role="img" aria-label="\bar{\mu} = \mu + \mu_{f_x}" fill="currentColor" style="width:6.448em;height:1.169em;vertical-align:-0.405em;display:inline-block;overflow:visible">
@@ -563,7 +563,7 @@ figure.fig { align-items: center; }
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:9%"></i></div><span class="foot-num">05 / 57</span></footer>
 </section>
 <section class="slide" data-label="06 Update Equations" data-screen-label="06 Update Equations">
-<header class="head"><span class="kicker">6.3 Kalman Filter Algorithm</span><span class="folio">06</span></header>
+<header class="head"><span class="kicker">Kalman Filter Algorithm</span><span class="folio">06</span></header>
 <h2 class="title">Update Equations</h2>
 <div class="rule"></div>
 <div class="body"><table class="tbl"><thead><tr><th style="width:18%"></th><th style="width:22%">Univariate</th><th style="width:24%">Univariate (Kalman form)</th><th>Multivariate</th></tr></thead><tbody><tr><td><strong>Residual</strong></td><td></td><td><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -6.312 42.467 8.749" role="img" aria-label="y = z - \bar{x}" fill="currentColor" style="width:5.139em;height:1.059em;vertical-align:-0.295em;display:inline-block;overflow:visible">
@@ -834,14 +834,14 @@ figure.fig { align-items: center; }
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:11%"></i></div><span class="foot-num">06 / 57</span></footer>
 </section>
 <section class="slide" data-label="07 Tracking a Dog" data-screen-label="07 Tracking a Dog">
-<header class="head"><span class="kicker">6.4 Tracking a Dog</span><span class="folio">07</span></header>
+<header class="head"><span class="kicker">Tracking a Dog</span><span class="folio">07</span></header>
 <h2 class="title">Tracking a Dog</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;min-height:0;"><div class="cell"><ul class="ul"><li><strong>상황</strong>: 복도를 걷는 개, 매 단계 약 1 m 전진, 속도는 process 분산만큼 변동</li><li><strong>센서</strong>: 위치만 측정, 측정 분산 z_var 의 잡음</li></ul></div><div class="cell"><ul class="ul"><li><strong>추정</strong>: 측정하지 않는 속도까지 hidden variable 로 함께 추정</li><li><strong>계산</strong>: 다변량 Gaussian 의 곱과 합, 아이디어는 1 차원 필터와 동일</li></ul></div></div><figure class="fig plain"><img src="./imgs/dog.svg" alt="dog" style="width:100%"></figure></div>
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:12%"></i></div><span class="foot-num">07 / 57</span></footer>
 </section>
 <section class="slide" data-label="08 Simulating the Dog" data-screen-label="08 Simulating the Dog">
-<header class="head"><span class="kicker">6.4 Tracking a Dog</span><span class="folio">08</span></header>
+<header class="head"><span class="kicker">Tracking a Dog</span><span class="folio">08</span></header>
 <h2 class="title">Simulating the Dog</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>count 단계 동안 개를 약 1 m 씩 전진시키며 실제 위치와 잡음 섞인 측정을 함께 생성</li><li>그래프에서 검은 점선은 실제 경로(track), 원은 측정, 측정이 실제 경로 주위로 흩어짐</li><li><strong>조건</strong>: z_var = 10 (측정 분산), process_var = 0.01 (속도 변동), 50 단계, dt = 1 s</li></ul><div style="display:grid;grid-template-columns:900px 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxxs tightest"><span class="k">def</span> <span class="fn">compute_dog_data</span>(z_var, process_var, count=<span class="no">1</span>, dt=<span class="no">1.</span>):
@@ -863,7 +863,7 @@ plt.legend(loc=<span class="no">4</span>);</pre></div><div class="cell"><div cla
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:14%"></i></div><span class="foot-num">08 / 57</span></footer>
 </section>
 <section class="slide" data-label="09 Designing the Filter" data-screen-label="09 Designing the Filter">
-<header class="head"><span class="kicker">6.5 Predict Step</span><span class="folio">09</span></header>
+<header class="head"><span class="kicker">Predict Step</span><span class="folio">09</span></header>
 <h2 class="title">Designing the Filter</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:repeat(4, 1fr);gap:24px;min-height:0;"><div class="cell"><div class="card tight"><h3 class="card-h sky">State</h3><div class="formula" style="flex-direction:column;gap:8px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -14.946 36.54 24.911" role="img" aria-label="\mathbf{x} = \begin{bmatrix} x \\ \dot{x} \end{bmatrix}" fill="currentColor" style="width:4.421em;height:3.014em;vertical-align:-1.206em;display:inline-block;overflow:visible">
@@ -1021,7 +1021,7 @@ plt.legend(loc=<span class="no">4</span>);</pre></div><div class="cell"><div cla
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:16%"></i></div><span class="foot-num">09 / 57</span></footer>
 </section>
 <section class="slide" data-label="10 Design State Variable" data-screen-label="10 Design State Variable">
-<header class="head"><span class="kicker">6.5.1 Design State Variable</span><span class="folio">10</span></header>
+<header class="head"><span class="kicker">Design State Variable</span><span class="folio">10</span></header>
 <h2 class="title">Design State Variable</h2>
 <div class="rule"></div>
 <div class="body"><div class="formula" style="gap:16px 80px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -14.946 49.563 24.911" role="img" aria-label="\boldsymbol{\mu} = \begin{bmatrix} 10.0 \\ 4.5 \end{bmatrix}" fill="currentColor" style="width:5.997em;height:3.014em;vertical-align:-1.206em;display:inline-block;overflow:visible">
@@ -1100,7 +1100,7 @@ plt.legend(loc=<span class="no">4</span>);</pre></div><div class="cell"><div cla
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:18%"></i></div><span class="foot-num">10 / 57</span></footer>
 </section>
 <section class="slide" data-label="11 State Vector in NumPy" data-screen-label="11 State Vector in NumPy">
-<header class="head"><span class="kicker">6.5.1 Design State Variable</span><span class="folio">11</span></header>
+<header class="head"><span class="kicker">Design State Variable</span><span class="folio">11</span></header>
 <h2 class="title">State Vector in NumPy</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>위치 10 m, 속도 4.5 m/s 의 상태를 열 벡터, 전치, 1 차원 배열의 세 방식으로 생성</li><li>행렬 곱 np.dot 과 @ 연산자의 결과 비교, 1 차원 배열과 곱하면 1 차원 배열 반환</li><li><strong>조건</strong>: x = [10.0, 4.5], A = [[1, 2], [3, 4]], 정수와 실수가 섞이면 float 배열</li></ul><div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxxs tightest">x = np.array([[<span class="no">10.0</span>],
@@ -1132,7 +1132,7 @@ x = np.array([<span class="no">10.0</span>, <span class="no">4.5</span>])
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:19%"></i></div><span class="foot-num">11 / 57</span></footer>
 </section>
 <section class="slide" data-label="12 Design State Covariance" data-screen-label="12 Design State Covariance">
-<header class="head"><span class="kicker">6.5.2 Design State Covariance</span><span class="folio">12</span></header>
+<header class="head"><span class="kicker">Design State Covariance</span><span class="folio">12</span></header>
 <h2 class="title">Design State Covariance</h2>
 <div class="rule"></div>
 <div class="body"><div class="formula" style="gap:16px 64px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -8.61 63.756 12.929" role="img" aria-label="\sigma_{pos}^2 = 500\ m^2" fill="currentColor" style="width:7.714em;height:1.564em;vertical-align:-0.523em;display:inline-block;overflow:visible">
@@ -1248,7 +1248,7 @@ x = np.array([<span class="no">10.0</span>, <span class="no">4.5</span>])
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:21%"></i></div><span class="foot-num">12 / 57</span></footer>
 </section>
 <section class="slide" data-label="13 Design the Process Model" data-screen-label="13 Design the Process Model">
-<header class="head"><span class="kicker">6.5.3 Design the Process Model</span><span class="folio">13</span></header>
+<header class="head"><span class="kicker">Design the Process Model</span><span class="folio">13</span></header>
 <h2 class="title">Design the Process Model</h2>
 <div class="rule"></div>
 <div class="body"><div class="formula" style="gap:16px 72px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -17.935 177.397 30.888" role="img" aria-label="\begin{cases} 2x + 3y = 8 \\ 4x - y = 2 \end{cases} \;\Rightarrow\; \begin{bmatrix} 2 &amp; 3 \\ 4 &amp; -1 \end{bmatrix}\begin{bmatrix} x \\ y \end{bmatrix} = \begin{bmatrix} 8 \\ 2 \end{bmatrix}" fill="currentColor" style="width:21.465em;height:3.737em;vertical-align:-1.567em;display:inline-block;overflow:visible">
@@ -1379,7 +1379,7 @@ x = np.array([<span class="no">10.0</span>, <span class="no">4.5</span>])
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:23%"></i></div><span class="foot-num">13 / 57</span></footer>
 </section>
 <section class="slide" data-label="14 Predicting with F" data-screen-label="14 Predicting with F">
-<header class="head"><span class="kicker">6.5.3 Design the Process Model</span><span class="folio">14</span></header>
+<header class="head"><span class="kicker">Design the Process Model</span><span class="folio">14</span></header>
 <h2 class="title">Predicting with F</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>위치 10 m, 속도 4.5 m/s 의 상태에 F 를 곱하는 예측을 측정 없이 5 번 반복</li><li>첫 예측 위치는 10.45 m, 속도는 그대로 유지, 이후 매번 0.45 m 씩 증가</li><li>5 번 예측 후 P 는 위치 분산이 커지고 비대각 성분이 0 이 아님, 위치와 속도의 상관 생성</li><li><strong>조건</strong>: dt = 0.1 s, P = <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.972 56.486 10.963" role="img" aria-label="\mathrm{diag}(500, 49)" fill="currentColor" style="width:6.835em;height:1.327em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -1442,7 +1442,7 @@ x = [12.25  4.5 ]
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:25%"></i></div><span class="foot-num">14 / 57</span></footer>
 </section>
 <section class="slide" data-label="15 Covariance Before and After" data-screen-label="15 Covariance Before and After">
-<header class="head"><span class="kicker">6.5.3 Design the Process Model</span><span class="folio">15</span></header>
+<header class="head"><span class="kicker">Design the Process Model</span><span class="folio">15</span></header>
 <h2 class="title">Covariance Before and After</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>초기 공분산(빨간 실선)과 한 번 예측한 prior(검은 점선)의 공분산 타원 비교</li><li>위치 변화로 타원 중심이 10 에서 11.35 로 이동, 타원이 늘어나며 기울어짐</li><li>Q = 0 이므로 잡음 때문이 아님, 예측 단계에서 정보가 줄어드는 효과</li><li><strong>조건</strong>: dt = 0.3 s, P = <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.972 61.468 10.963" role="img" aria-label="\mathrm{diag}(500, 500)" fill="currentColor" style="width:7.438em;height:1.327em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -1484,7 +1484,7 @@ plots.set_labels(x=<span class="s">'position'</span>, y=<span class="s">'velocit
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:26%"></i></div><span class="foot-num">15 / 57</span></footer>
 </section>
 <section class="slide" data-label="16 Design Process Noise" data-screen-label="16 Design Process Noise">
-<header class="head"><span class="kicker">6.5.4 Design Process Noise</span><span class="folio">16</span></header>
+<header class="head"><span class="kicker">Design Process Noise</span><span class="folio">16</span></header>
 <h2 class="title">Design Process Noise</h2>
 <div class="rule"></div>
 <div class="body"><div class="formula" style="gap:16px 64px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.308 80.345 10.132" role="img" aria-label="\bar{x}_k = \dot{x}_k \Delta t + x_{k-1}" fill="currentColor" style="width:9.722em;height:1.226em;vertical-align:-0.342em;display:inline-block;overflow:visible">
@@ -1618,7 +1618,7 @@ plots.set_labels(x=<span class="s">'position'</span>, y=<span class="s">'velocit
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:28%"></i></div><span class="foot-num">16 / 57</span></footer>
 </section>
 <section class="slide" data-label="17 Design the Control Function" data-screen-label="17 Design the Control Function">
-<header class="head"><span class="kicker">6.5.5 Design the Control Function</span><span class="folio">17</span></header>
+<header class="head"><span class="kicker">Design the Control Function</span><span class="folio">17</span></header>
 <h2 class="title">Design the Control Function</h2>
 <div class="rule"></div>
 <div class="body"><div class="formula" style="gap:16px 96px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.335 43.147 7.835" role="img" aria-label="\Delta\mathbf{x} = \mathbf{Bu}" fill="currentColor" style="width:5.221em;height:0.948em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -1674,7 +1674,7 @@ plots.set_labels(x=<span class="s">'position'</span>, y=<span class="s">'velocit
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:30%"></i></div><span class="foot-num">17 / 57</span></footer>
 </section>
 <section class="slide" data-label="18 Prediction with Q, B, u" data-screen-label="18 Prediction with Q, B, u">
-<header class="head"><span class="kicker">6.5.5 Design the Control Function</span><span class="folio">18</span></header>
+<header class="head"><span class="kicker">Design the Control Function</span><span class="folio">18</span></header>
 <h2 class="title">Prediction with Q, B, u</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>한 번 예측한 상태(빨간 실선)에 Q 를 더하고 B = 0, u = 0 으로 다시 예측(검은 점선)</li><li>평균은 Fx + Bu 로 12.7 m, 공분산은 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -9.715 28.809 10.215" role="img" aria-label="\mathbf{FPF}^\mathsf{T}" fill="currentColor" style="width:3.486em;height:1.236em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -1709,7 +1709,7 @@ P = [[680.587 301.175]
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:32%"></i></div><span class="foot-num">18 / 57</span></footer>
 </section>
 <section class="slide" data-label="19 Design the Measurement Function" data-screen-label="19 Design the Measurement Function">
-<header class="head"><span class="kicker">6.6.1 Design the Measurement Function</span><span class="folio">19</span></header>
+<header class="head"><span class="kicker">Design the Measurement Function</span><span class="folio">19</span></header>
 <h2 class="title">Design the Measurement Function</h2>
 <div class="rule"></div>
 <div class="body"><div class="formula" style="gap:16px 56px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.419 141.778 9.856" role="img" aria-label="\text{residual} = \text{measured} - \text{predicted}" fill="currentColor" style="width:17.155em;height:1.193em;vertical-align:-0.295em;display:inline-block;overflow:visible">
@@ -1846,7 +1846,7 @@ P = [[680.587 301.175]
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:33%"></i></div><span class="foot-num">19 / 57</span></footer>
 </section>
 <section class="slide" data-label="20 Designing H, z and R" data-screen-label="20 Designing H, z and R">
-<header class="head"><span class="kicker">6.6.1 Design the Measurement Function</span><span class="folio">20</span></header>
+<header class="head"><span class="kicker">Design the Measurement Function</span><span class="folio">20</span></header>
 <h2 class="title">Designing H, z and R</h2>
 <div class="rule"></div>
 <div class="body"><div class="formula" style="gap:16px 96px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -14.946 98.922 24.911" role="img" aria-label="\begin{bmatrix} y \end{bmatrix} = \begin{bmatrix} z \end{bmatrix} - \begin{bmatrix} ? &amp; ? \end{bmatrix}\begin{bmatrix} x \\ \dot{x} \end{bmatrix}" fill="currentColor" style="width:11.970em;height:3.014em;vertical-align:-1.206em;display:inline-block;overflow:visible">
@@ -1984,7 +1984,7 @@ P = [[680.587 301.175]
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:35%"></i></div><span class="foot-num">20 / 57</span></footer>
 </section>
 <section class="slide" data-label="21 Performing the Update" data-screen-label="21 Performing the Update">
-<header class="head"><span class="kicker">6.6 Update Step</span><span class="folio">21</span></header>
+<header class="head"><span class="kicker">Update Step</span><span class="folio">21</span></header>
 <h2 class="title">Performing the Update</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>Q, B, u 로 예측한 prior(검은 점선)에 측정 z = 1 m 를 반영해 update 식으로 posterior(초록) 계산</li><li>posterior 위치가 측정(빨간 선) 근처 1.085 m 로 이동, 측정하지 않은 속도도 -0.64 m/s 로 변화</li><li><strong>조건</strong>: prior x = [12.7, 4.5], H = [1, 0], R = [5], S = <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -9.715 32.323 10.215" role="img" aria-label="\mathbf{HPH}^\mathsf{T}" fill="currentColor" style="width:3.911em;height:1.236em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -2047,7 +2047,7 @@ P = np.dot(F, P).dot(F.T) + Q
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:37%"></i></div><span class="foot-num">21 / 57</span></footer>
 </section>
 <section class="slide" data-label="22 Constant Velocity Filter" data-screen-label="22 Constant Velocity Filter">
-<header class="head"><span class="kicker">6.7 Implementing the Kalman Filter</span><span class="folio">22</span></header>
+<header class="head"><span class="kicker">Implementing the Kalman Filter</span><span class="folio">22</span></header>
 <h2 class="title">Constant Velocity Filter</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>위치와 속도 상태의 등속 모델 필터를 만드는 함수, x, F, H, R, P, Q 를 개 추적 설계대로 지정</li><li>R, P 는 단위 행렬에 스칼라를 곱해 대각 원소를 한 번에 지정, Q 는 분산으로 이산화</li><li><strong>조건</strong>: x = [0, 0], P = 500, R = 5, Q = 0.1, dt = 0.1 s</li></ul><div style="display:grid;grid-template-columns:1fr 520px;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxxs tightest"><span class="k">def</span> <span class="fn">pos_vel_filter</span>(x, P, R, Q=<span class="no">0.</span>, dt=<span class="no">1.0</span>):
@@ -2082,7 +2082,7 @@ Q =
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:39%"></i></div><span class="foot-num">22 / 57</span></footer>
 </section>
 <section class="slide" data-label="23 Running the Filter" data-screen-label="23 Running the Filter">
-<header class="head"><span class="kicker">6.7 Implementing the Kalman Filter</span><span class="folio">23</span></header>
+<header class="head"><span class="kicker">Implementing the Kalman Filter</span><span class="folio">23</span></header>
 <h2 class="title">Running the Filter</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>측정마다 predict 와 update 를 호출하고 상태와 공분산을 저장, 대부분은 준비 코드</li><li>왼쪽: 실제 경로, 측정, 필터 출력과 노란 1 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -4.789 7.05 5.289" role="img" aria-label="\sigma" fill="currentColor" style="width:0.853em;height:0.640em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -2169,7 +2169,7 @@ def pos_vel_filter(x, P, R, Q=0., dt=1.0):
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:40%"></i></div><span class="foot-num">23 / 57</span></footer>
 </section>
 <section class="slide" data-label="24 Gaussians over Time" data-screen-label="24 Gaussians over Time">
-<header class="head"><span class="kicker">6.7 Implementing the Kalman Filter</span><span class="folio">24</span></header>
+<header class="head"><span class="kicker">Implementing the Kalman Filter</span><span class="folio">24</span></header>
 <h2 class="title">Gaussians over Time</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>25 단계 동안의 상태 Gaussian 을 7 단계마다 하나씩 3 차원 곡면으로 표시, 왼쪽이 첫 단계</li><li>시간이 지나며 위치 평균이 오른쪽으로 이동하고 분포가 점점 좁고 뾰족해짐</li><li><strong>조건</strong>: P = <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.972 41.542 10.963" role="img" aria-label="\mathrm{diag}(3, 1)" fill="currentColor" style="width:5.027em;height:1.327em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -2246,7 +2246,7 @@ def run(x0=(0., 0.), P=500, R=0, Q=0, dt=1.0,
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:42%"></i></div><span class="foot-num">24 / 57</span></footer>
 </section>
 <section class="slide" data-label="25 Prediction Equations" data-screen-label="25 Prediction Equations">
-<header class="head"><span class="kicker">6.9.1 Prediction Equations</span><span class="folio">25</span></header>
+<header class="head"><span class="kicker">Prediction Equations</span><span class="folio">25</span></header>
 <h2 class="title">Prediction Equations</h2>
 <div class="rule"></div>
 <div class="body"><div class="formula" style="gap:16px 120px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.335 60.277 8.666" role="img" aria-label="\bar{\mathbf{x}} = \mathbf{Fx} + \mathbf{Bu}" fill="currentColor" style="width:7.294em;height:1.049em;vertical-align:-0.161em;display:inline-block;overflow:visible">
@@ -2393,7 +2393,7 @@ def run(x0=(0., 0.), P=500, R=0, Q=0, dt=1.0,
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:44%"></i></div><span class="foot-num">25 / 57</span></footer>
 </section>
 <section class="slide" data-label="26 Covariance Prediction" data-screen-label="26 Covariance Prediction">
-<header class="head"><span class="kicker">6.9.1 Prediction Equations</span><span class="folio">26</span></header>
+<header class="head"><span class="kicker">Prediction Equations</span><span class="folio">26</span></header>
 <h2 class="title">Covariance Prediction</h2>
 <div class="rule"></div>
 <div class="body"><div class="formula"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -14.946 373.707 24.911" role="img" aria-label="\mathbf{FPF}^\mathsf{T} = \begin{bmatrix} 1 &amp; \Delta t \\ 0 &amp; 1 \end{bmatrix}\begin{bmatrix} \sigma_x^2 &amp; 0 \\ 0 &amp; \sigma_v^2 \end{bmatrix}\begin{bmatrix} 1 &amp; 0 \\ \Delta t &amp; 1 \end{bmatrix} = \begin{bmatrix} \sigma_x^2 &amp; \sigma_v^2 \Delta t \\ 0 &amp; \sigma_v^2 \end{bmatrix}\begin{bmatrix} 1 &amp; 0 \\ \Delta t &amp; 1 \end{bmatrix} = \begin{bmatrix} \sigma_x^2 + \sigma_v^2 \Delta t^2 &amp; \sigma_v^2 \Delta t \\ \sigma_v^2 \Delta t &amp; \sigma_v^2 \end{bmatrix}" fill="currentColor" style="width:45.219em;height:3.014em;vertical-align:-1.206em;display:inline-block;overflow:visible">
@@ -2607,7 +2607,7 @@ def run(x0=(0., 0.), P=500, R=0, Q=0, dt=1.0,
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:46%"></i></div><span class="foot-num">26 / 57</span></footer>
 </section>
 <section class="slide" data-label="27 Projecting P Forward" data-screen-label="27 Projecting P Forward">
-<header class="head"><span class="kicker">6.9.1 Prediction Equations</span><span class="folio">27</span></header>
+<header class="head"><span class="kicker">Prediction Equations</span><span class="folio">27</span></header>
 <h2 class="title">Projecting P Forward</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>F 로 0.6 s 씩 5 번 예측하며 매 단계 공분산 타원을 그림, 빨간 실선이 초기 P</li><li>속도 5 로 위치가 매번 3 씩 이동, 타원 폭이 커지며 위치 정보 손실, 높이는 그대로</li><li>시간이 갈수록 타원이 더 기울어짐, F 가 x 와 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.154 6.694 7.654" role="img" aria-label="\dot{x}" fill="currentColor" style="width:0.810em;height:0.926em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -2660,7 +2660,7 @@ plots.set_labels(x=<span class="s">'position'</span>, y=<span class="s">'velocit
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:47%"></i></div><span class="foot-num">27 / 57</span></footer>
 </section>
 <section class="slide" data-label="28 Interactive FPF^T" data-screen-label="28 Interactive FPF^T">
-<header class="head"><span class="kicker">6.9.1 Prediction Equations</span><span class="folio">28</span></header>
+<header class="head"><span class="kicker">Prediction Equations</span><span class="folio">28</span></header>
 <h2 class="title">Interactive FPF^T</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>F 의 네 원소와 초기 공분산 covar 를 슬라이더로 바꾸며 P(파란)와 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -9.715 28.809 10.215" role="img" aria-label="\mathbf{FPF}^\mathsf{T}" fill="currentColor" style="width:3.486em;height:1.236em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -2748,7 +2748,7 @@ interact(plot_FPFT, F00=IntSlider(value=<span class="no">1</span>, <span class="
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:49%"></i></div><span class="foot-num">28 / 57</span></footer>
 </section>
 <section class="slide" data-label="29 System Uncertainty and Kalman Gain" data-screen-label="29 System Uncertainty and Kalman Gain">
-<header class="head"><span class="kicker">6.9.2 Update Equations</span><span class="folio">29</span></header>
+<header class="head"><span class="kicker">Update Equations</span><span class="folio">29</span></header>
 <h2 class="title">System Uncertainty and Kalman Gain</h2>
 <div class="rule"></div>
 <div class="body"><div class="formula" style="gap:16px 96px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -11.226 72.741 12.557" role="img" aria-label="\mathbf{S} = \mathbf{H\bar{P}H}^\mathsf{T} + \mathbf{R}" fill="currentColor" style="width:8.802em;height:1.519em;vertical-align:-0.161em;display:inline-block;overflow:visible">
@@ -2963,7 +2963,7 @@ interact(plot_FPFT, F00=IntSlider(value=<span class="no">1</span>, <span class="
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:51%"></i></div><span class="foot-num">29 / 57</span></footer>
 </section>
 <section class="slide" data-label="30 Residual, State and Covariance Update" data-screen-label="30 Residual, State and Covariance Update">
-<header class="head"><span class="kicker">6.9.2 Update Equations</span><span class="folio">30</span></header>
+<header class="head"><span class="kicker">Update Equations</span><span class="folio">30</span></header>
 <h2 class="title">Residual, State and Covariance Update</h2>
 <div class="rule"></div>
 <div class="body"><div class="formula" style="gap:16px 96px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.335 52.771 9.773" role="img" aria-label="\mathbf{y} = \mathbf{z} - \mathbf{H}\bar{\mathbf{x}}" fill="currentColor" style="width:6.385em;height:1.183em;vertical-align:-0.295em;display:inline-block;overflow:visible">
@@ -3116,7 +3116,7 @@ interact(plot_FPFT, F00=IntSlider(value=<span class="no">1</span>, <span class="
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:53%"></i></div><span class="foot-num">30 / 57</span></footer>
 </section>
 <section class="slide" data-label="31 Kalman Filter with NumPy" data-screen-label="31 Kalman Filter with NumPy">
-<header class="head"><span class="kicker">6.9.3 An Example not using FilterPy</span><span class="folio">31</span></header>
+<header class="head"><span class="kicker">An Example not using FilterPy</span><span class="folio">31</span></header>
 <h2 class="title">Kalman Filter with NumPy</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>라이브러리 없이 행렬을 변수로 정의하고 predict, update 식을 numpy 로 직접 구현</li><li>결과는 같은 설계의 필터와 동일, 식을 직접 쓰면 H 를 열 벡터로 쓰는 실수도 쉽게 디버깅</li><li><strong>조건</strong>: 측정 분산 10, process 분산 0.01, x = [10.0, 4.5], P = <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.972 56.486 10.963" role="img" aria-label="\mathrm{diag}(500, 49)" fill="currentColor" style="width:6.835em;height:1.327em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -3199,7 +3199,7 @@ def pos_vel_filter(x, P, R, Q=0., dt=1.0):
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:54%"></i></div><span class="foot-num">31 / 57</span></footer>
 </section>
 <section class="slide" data-label="32 Kalman Filter Equations" data-screen-label="32 Kalman Filter Equations">
-<header class="head"><span class="kicker">6.9.4 Summary</span><span class="folio">32</span></header>
+<header class="head"><span class="kicker">Summary</span><span class="folio">32</span></header>
 <h2 class="title">Kalman Filter Equations</h2>
 <div class="rule"></div>
 <div class="body"><style>.tight-tbl .tbl td { padding: 7px 18px; }</style><div class="tight-tbl"><table class="tbl"><thead><tr><th style="width:20%"></th><th style="width:42%">Multivariate</th><th>Univariate (Kalman form)</th></tr></thead><tbody><tr><td><strong>Predict</strong></td><td><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.335 60.277 8.666" role="img" aria-label="\bar{\mathbf{x}} = \mathbf{Fx} + \mathbf{Bu}" fill="currentColor" style="width:7.294em;height:1.049em;vertical-align:-0.161em;display:inline-block;overflow:visible">
@@ -3477,7 +3477,7 @@ def pos_vel_filter(x, P, R, Q=0., dt=1.0):
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:56%"></i></div><span class="foot-num">32 / 57</span></footer>
 </section>
 <section class="slide" data-label="33 Notation in the Literature" data-screen-label="33 Notation in the Literature">
-<header class="head"><span class="kicker">6.9.4 Summary</span><span class="folio">33</span></header>
+<header class="head"><span class="kicker">Summary</span><span class="folio">33</span></header>
 <h2 class="title">Notation in the Literature</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;min-height:0;"><div class="cell"><div class="formula" style="flex-direction:column;gap:30px;align-items:flex-start;font-size:40px;padding:6px 0 22px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.557 128.92 11.599" role="img" aria-label="\hat{\mathbf{x}}_{k|k-1} = \mathbf{F}_k\hat{\mathbf{x}}_{k-1|k-1} + \mathbf{B}_k\mathbf{u}_k" fill="currentColor" style="width:15.599em;height:1.403em;vertical-align:-0.489em;display:inline-block;overflow:visible">
@@ -3790,7 +3790,7 @@ def pos_vel_filter(x, P, R, Q=0., dt=1.0):
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:58%"></i></div><span class="foot-num">33 / 57</span></footer>
 </section>
 <section class="slide" data-label="34 Show Effect of Hidden Variables" data-screen-label="34 Show Effect of Hidden Variables">
-<header class="head"><span class="kicker">6.10 Exercise: Show Effect of Hidden Variables</span><span class="folio">34</span></header>
+<header class="head"><span class="kicker">Exercise: Show Effect of Hidden Variables</span><span class="folio">34</span></header>
 <h2 class="title">Show Effect of Hidden Variables</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>위치만 상태로 둔 1 차원 필터와 위치, 속도를 상태로 둔 2 차원 필터를 같은 측정에 적용</li><li>빨간 점의 2 차원 필터가 훨씬 정확, 1 차원 필터는 속도를 추정할 수 없어 대상을 뒤따라감</li><li><strong>조건</strong>: x0 = 0, P = 50, R = 5, Q = 0.02, 실제 속도 1, 100 단계</li></ul><div style="display:grid;grid-template-columns:830px 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxxs tightest"><span class="k">def</span> <span class="fn">univariate_filter</span>(x0, P, R, Q):
@@ -3861,7 +3861,7 @@ def compare_1D_2D(x0, P, R, Q, vel, u=None):
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:60%"></i></div><span class="foot-num">34 / 57</span></footer>
 </section>
 <section class="slide" data-label="35 Control Input u" data-screen-label="35 Control Input u">
-<header class="head"><span class="kicker">6.10.2 Discussion</span><span class="folio">35</span></header>
+<header class="head"><span class="kicker">Discussion</span><span class="folio">35</span></header>
 <h2 class="title">Control Input u</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>1 차원 필터의 predict 에 제어 입력 u 로 이동량을 직접 알려 주고 두 필터 비교</li><li>두 필터 성능이 비슷, 1 차원 필터가 더 가깝게 따라가기도 함</li><li><strong>조건</strong>: u = 1, 실제 속도 vel = 1, x0 = 0, P = 50, R = 5, Q = 0.02</li></ul><div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxxs tightest"><span class="k">def</span> <span class="fn">compare_1D_2D</span>(x0, P, R, Q, vel, u=<span class="k">None</span>):
@@ -3933,7 +3933,7 @@ def plot_1d_2d(xs, xs1d, xs2d):
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:61%"></i></div><span class="foot-num">35 / 57</span></footer>
 </section>
 <section class="slide" data-label="36 Wrong Control Input" data-screen-label="36 Wrong Control Input">
-<header class="head"><span class="kicker">6.10.2 Discussion</span><span class="folio">36</span></header>
+<header class="head"><span class="kicker">Discussion</span><span class="folio">36</span></header>
 <h2 class="title">Wrong Control Input</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>실제 속도 -2 인데 제어 입력 u = 1 로 잘못된 이동량을 알려 준 경우</li><li>1 차원 필터는 잘못된 예측을 따라 크게 벗어나고, 속도를 추정하는 2 차원 필터는 정확</li><li>제어하는 로봇이면 u 가 정확한 예측을 주지만, 수동 추적에서는 속도를 미리 알기 어려움</li><li><strong>조건</strong>: u = 1, 실제 속도 vel = -2, x0 = 0, P = 50, R = 5, Q = 0.02</li></ul><div style="display:grid;grid-template-columns:700px 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xs">compare_1D_2D(x0=<span class="no">0</span>, P=<span class="no">50.</span>, R=<span class="no">5.</span>, Q=<span class="no">.02</span>,
@@ -4006,7 +4006,7 @@ def compare_1D_2D(x0, P, R, Q, vel, u=None):
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:63%"></i></div><span class="foot-num">36 / 57</span></footer>
 </section>
 <section class="slide" data-label="37 How Velocity is Calculated" data-screen-label="37 How Velocity is Calculated">
-<header class="head"><span class="kicker">6.11 How Velocity is Calculated</span><span class="folio">37</span></header>
+<header class="head"><span class="kicker">How Velocity is Calculated</span><span class="folio">37</span></header>
 <h2 class="title">How Velocity is Calculated</h2>
 <div class="rule"></div>
 <div class="body"><div class="formula"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -14.946 263.891 24.911" role="img" aria-label="\mathbf{S} = \mathbf{H\bar{P}H}^\mathsf{T} + \mathbf{R} = \begin{bmatrix} 1 &amp; 0 \end{bmatrix}\begin{bmatrix} \sigma_x^2 &amp; \sigma_{xv} \\ \sigma_{xv} &amp; \sigma_v^2 \end{bmatrix}\begin{bmatrix} 1 \\ 0 \end{bmatrix} + [\sigma_z^2] = [\sigma_x^2 + \sigma_z^2]" fill="currentColor" style="width:31.931em;height:3.014em;vertical-align:-1.206em;display:inline-block;overflow:visible">
@@ -4273,7 +4273,7 @@ def compare_1D_2D(x0, P, R, Q, vel, u=None):
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:65%"></i></div><span class="foot-num">37 / 57</span></footer>
 </section>
 <section class="slide" data-label="38 Velocity Update" data-screen-label="38 Velocity Update">
-<header class="head"><span class="kicker">6.11 How Velocity is Calculated</span><span class="folio">38</span></header>
+<header class="head"><span class="kicker">How Velocity is Calculated</span><span class="folio">38</span></header>
 <h2 class="title">Velocity Update</h2>
 <div class="rule"></div>
 <div class="body"><div class="formula" style="gap:16px 120px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -14.946 89.776 24.911" role="img" aria-label="\begin{bmatrix} x \\ \dot{x} \end{bmatrix} = \begin{bmatrix} \bar{x} \\ \bar{\dot{x}} \end{bmatrix} + \begin{bmatrix} K_x \\ K_{\dot{x}} \end{bmatrix} y" fill="currentColor" style="width:10.863em;height:3.014em;vertical-align:-1.206em;display:inline-block;overflow:visible">
@@ -4400,7 +4400,7 @@ def compare_1D_2D(x0, P, R, Q, vel, u=None):
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:67%"></i></div><span class="foot-num">38 / 57</span></footer>
 </section>
 <section class="slide" data-label="39 Large Q versus Small Q" data-screen-label="39 Large Q versus Small Q">
-<header class="head"><span class="kicker">6.12 Adjusting the Filter</span><span class="folio">39</span></header>
+<header class="head"><span class="kicker">Adjusting the Filter</span><span class="folio">39</span></header>
 <h2 class="title">Large Q versus Small Q</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>측정 분산 225 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -8.61 13.772 9.11" role="img" aria-label="\mathrm{m}^2" fill="currentColor" style="width:1.666em;height:1.102em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -4496,7 +4496,7 @@ P = np.diag([500., 49.])
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:68%"></i></div><span class="foot-num">39 / 57</span></footer>
 </section>
 <section class="slide" data-label="40 Large R and Bad Initial Position" data-screen-label="40 Large R and Bad Initial Position">
-<header class="head"><span class="kicker">6.12 Adjusting the Filter</span><span class="folio">40</span></header>
+<header class="head"><span class="kicker">Adjusting the Filter</span><span class="folio">40</span></header>
 <h2 class="title">Large R and Bad Initial Position</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>실제 225 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -8.61 13.772 9.11" role="img" aria-label="\mathrm{m}^2" fill="currentColor" style="width:1.666em;height:1.102em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -4573,7 +4573,7 @@ P = np.diag([500., 49.])
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:70%"></i></div><span class="foot-num">40 / 57</span></footer>
 </section>
 <section class="slide" data-label="41 Correct R with Bad Initial Position" data-screen-label="41 Correct R with Bad Initial Position">
-<header class="head"><span class="kicker">6.12 Adjusting the Filter</span><span class="folio">41</span></header>
+<header class="head"><span class="kicker">Adjusting the Filter</span><span class="folio">41</span></header>
 <h2 class="title">Correct R with Bad Initial Position</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>R 을 올바른 225 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -8.61 13.772 9.11" role="img" aria-label="\mathrm{m}^2" fill="currentColor" style="width:1.666em;height:1.102em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -4647,7 +4647,7 @@ P = np.diag([500., 49.])
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:72%"></i></div><span class="foot-num">41 / 57</span></footer>
 </section>
 <section class="slide" data-label="42 Large Initial P" data-screen-label="42 Large Initial P">
-<header class="head"><span class="kicker">6.13 A Detailed Examination of the Covariance Matrix</span><span class="folio">42</span></header>
+<header class="head"><span class="kicker">A Detailed Examination of the Covariance Matrix</span><span class="folio">42</span></header>
 <h2 class="title">Large Initial P</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>초기 P = 500 I 는 위치 표준편차 약 22.36 m, prior 가 최대 67 m 까지 틀릴 수 있다는 뜻</li><li>초반 측정이 튀면 자신의 추정을 불신해 측정 쪽으로 크게 점프, 이후 P 가 현실적인 값으로 빠르게 수렴</li><li>K 는 예측과 측정 불확실성의 비율, P 가 R 보다 크면 추정 대부분을 측정에서 가져옴</li><li><strong>조건</strong>: 측정 분산 27.5, Q = 0.02, P = 500 I, 측정 50 개</li></ul><div style="display:grid;grid-template-columns:640px 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xs">run(track=trk, zs=zs, R=var, Q=<span class="no">.02</span>,
@@ -4703,7 +4703,7 @@ trk, zs = compute_dog_data(z_var=var, process_var=.02, count=50)
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:74%"></i></div><span class="foot-num">42 / 57</span></footer>
 </section>
 <section class="slide" data-label="43 Small Initial P" data-screen-label="43 Small Initial P">
-<header class="head"><span class="kicker">6.13 A Detailed Examination of the Covariance Matrix</span><span class="folio">43</span></header>
+<header class="head"><span class="kicker">A Detailed Examination of the Covariance Matrix</span><span class="folio">43</span></header>
 <h2 class="title">Small Initial P</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>같은 데이터에 초기 P = 1 I 로 설정, 처음부터 측정을 따라가고 정착 시간이 없어 보임</li><li>그러나 오른쪽 위치 분산 그래프에 초기 급등이 있고 끝까지 잘 수렴하지 않음, 긴 수렴과 차선의 결과</li><li>P 는 데이터에 대한 실제 지식을 반영해야 함, 생물 추적은 불확실, 온도계는 첫 측정도 확실</li><li><strong>조건</strong>: 측정 분산 27.5, Q = 0.02, P = 1 I, 측정 50 개</li></ul><div style="display:grid;grid-template-columns:640px 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xs">run(track=trk, zs=zs, R=var, Q=<span class="no">.02</span>,
@@ -4759,7 +4759,7 @@ trk, zs = compute_dog_data(z_var=var, process_var=.02, count=50)
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:75%"></i></div><span class="foot-num">43 / 57</span></footer>
 </section>
 <section class="slide" data-label="44 Bad Initial Estimate" data-screen-label="44 Bad Initial Estimate">
-<header class="head"><span class="kicker">6.13 A Detailed Examination of the Covariance Matrix</span><span class="folio">44</span></header>
+<header class="head"><span class="kicker">A Detailed Examination of the Covariance Matrix</span><span class="folio">44</span></header>
 <h2 class="title">Bad Initial Estimate</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>실제 시작은 0 m 인데 초기 위치를 100 m 로 잘못 두고 P 를 1 과 500 으로 비교</li><li>왼쪽 P = 1 은 3 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -4.789 7.05 5.289" role="img" aria-label="\sigma" fill="currentColor" style="width:0.853em;height:0.640em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -4826,7 +4826,7 @@ trk, zs = compute_dog_data(z_var=var, process_var=.02, count=50)
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:77%"></i></div><span class="foot-num">44 / 57</span></footer>
 </section>
 <section class="slide" data-label="45 Covariance Ellipses" data-screen-label="45 Covariance Ellipses">
-<header class="head"><span class="kicker">6.13 A Detailed Examination of the Covariance Matrix</span><span class="folio">45</span></header>
+<header class="head"><span class="kicker">A Detailed Examination of the Covariance Matrix</span><span class="folio">45</span></header>
 <h2 class="title">Covariance Ellipses</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>매 단계 공분산을 (단계, 위치) 위치에 2 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -4.789 7.05 5.289" role="img" aria-label="\sigma" fill="currentColor" style="width:0.853em;height:0.640em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -4882,7 +4882,7 @@ def pos_vel_filter(x, P, R, Q=0., dt=1.0):
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:79%"></i></div><span class="foot-num">45 / 57</span></footer>
 </section>
 <section class="slide" data-label="46 Question: Explain Ellipse Differences" data-screen-label="46 Question: Explain Ellipse Differences">
-<header class="head"><span class="kicker">6.14 Question: Explain Ellipse Differences</span><span class="folio">46</span></header>
+<header class="head"><span class="kicker">Question: Explain Ellipse Differences</span><span class="folio">46</span></header>
 <h2 class="title">Question: Explain Ellipse Differences</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;min-height:0;"><div class="cell"><ul class="ul"><li><strong>질문</strong>: R = 5 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -8.61 13.772 9.11" role="img" aria-label="\mathrm{m}^2" fill="currentColor" style="width:1.666em;height:1.102em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -4916,7 +4916,7 @@ def pos_vel_filter(x, P, R, Q=0., dt=1.0):
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:81%"></i></div><span class="foot-num">46 / 57</span></footer>
 </section>
 <section class="slide" data-label="47 Very Large Measurement Error" data-screen-label="47 Very Large Measurement Error">
-<header class="head"><span class="kicker">6.14.1 Solution</span><span class="folio">47</span></header>
+<header class="head"><span class="kicker">Solution</span><span class="folio">47</span></header>
 <h2 class="title">Very Large Measurement Error</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>측정 오차를 R = 200 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -8.61 13.772 9.11" role="img" aria-label="\mathrm{m}^2" fill="currentColor" style="width:1.666em;height:1.102em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -4981,7 +4981,7 @@ def plot_covariances(count, R, Q=0, P=20., title=''):
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:82%"></i></div><span class="foot-num">47 / 57</span></footer>
 </section>
 <section class="slide" data-label="48 Filter Initialization" data-screen-label="48 Filter Initialization">
-<header class="head"><span class="kicker">6.15 Filter Initialization</span><span class="folio">48</span></header>
+<header class="head"><span class="kicker">Filter Initialization</span><span class="folio">48</span></header>
 <h2 class="title">Filter Initialization</h2>
 <div class="rule"></div>
 <div class="body"><div class="formula" style="gap:16px 120px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -8.61 193.25 9.11" role="img" aria-label="\mathbf{z} = \mathbf{Hx} \;\Rightarrow\; \mathbf{H}^{-1}\mathbf{Hx} = \mathbf{H}^{-1}\mathbf{z} \;\Rightarrow\; \mathbf{x} = \mathbf{H}^{-1}\mathbf{z}" fill="currentColor" style="width:23.383em;height:1.102em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -5056,7 +5056,7 @@ def plot_covariances(count, R, Q=0, P=20., title=''):
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:84%"></i></div><span class="foot-num">48 / 57</span></footer>
 </section>
 <section class="slide" data-label="49 Initial State from the First Measurement" data-screen-label="49 Initial State from the First Measurement">
-<header class="head"><span class="kicker">6.15 Filter Initialization</span><span class="folio">49</span></header>
+<header class="head"><span class="kicker">Filter Initialization</span><span class="folio">49</span></header>
 <h2 class="title">Initial State from the First Measurement</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>위치만 측정하는 H 의 유사역행렬로 첫 측정 3.2 m 를 상태 벡터로 변환</li><li>위치는 3.2, 측정으로 알 수 없는 속도는 0 으로 채워짐</li><li><strong>조건</strong>: H = [1, 0], z0 = 3.2 m</li></ul><div style="display:grid;grid-template-columns:1.3fr 0.7fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xs"><span class="k">from</span> scipy.linalg <span class="k">import</span> pinv
@@ -5069,7 +5069,7 @@ x = np.dot(pinv(H), z0)
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:86%"></i></div><span class="foot-num">49 / 57</span></footer>
 </section>
 <section class="slide" data-label="50 Batch Processing" data-screen-label="50 Batch Processing">
-<header class="head"><span class="kicker">6.16 Batch Processing</span><span class="folio">50</span></header>
+<header class="head"><span class="kicker">Batch Processing</span><span class="folio">50</span></header>
 <h2 class="title">Batch Processing</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>이미 수집한 측정 전체를 한 번에 필터링, 내부는 측정마다 predict, update 를 반복하는 루프</li><li>상태, 공분산과 각각의 prior 를 배열로 모아 반환, 재귀 필터와 같은 결과를 간단한 코드로 얻음</li><li><strong>조건</strong>: 측정 분산 10, process 분산 0.2, 필터 R = 3, Q = 0.02, P = <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.972 56.486 10.963" role="img" aria-label="\mathrm{diag}(500, 49)" fill="currentColor" style="width:6.835em;height:1.327em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -5141,7 +5141,7 @@ def pos_vel_filter(x, P, R, Q=0., dt=1.0):
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:88%"></i></div><span class="foot-num">50 / 57</span></footer>
 </section>
 <section class="slide" data-label="51 Residual Check" data-screen-label="51 Residual Check">
-<header class="head"><span class="kicker">6.16 Batch Processing</span><span class="folio">51</span></header>
+<header class="head"><span class="kicker">Batch Processing</span><span class="folio">51</span></header>
 <h2 class="title">Residual Check</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>batch 결과의 prior 로 residual y = z - Hx 를 계산해 200 단계 동안 그래프로 확인</li><li>residual 이 0 주위의 잡음처럼 보이면 설계가 적절, 0 에서 벗어나거나 잡음처럼 보이지 않으면 설계 문제</li><li><strong>조건</strong>: 측정 분산 10, process 분산 0.2, 필터 R = 3, Q = 0.02, 측정 200 개</li></ul><div style="display:grid;grid-template-columns:900px 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxs denser">track, zs = compute_dog_data(<span class="no">10</span>, <span class="no">.2</span>, <span class="no">200</span>)
@@ -5182,14 +5182,14 @@ def pos_vel_filter(x, P, R, Q=0., dt=1.0):
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:89%"></i></div><span class="foot-num">51 / 57</span></footer>
 </section>
 <section class="slide" data-label="52 Smoothing the Results" data-screen-label="52 Smoothing the Results">
-<header class="head"><span class="kicker">6.17 Smoothing the Results</span><span class="folio">52</span></header>
+<header class="head"><span class="kicker">Smoothing the Results</span><span class="folio">52</span></header>
 <h2 class="title">Smoothing the Results</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;min-height:0;"><div class="cell"><ul class="ul"><li><strong>상황</strong>: 직선 주행 중인 차량, 한 측정이 좌회전 시작을 암시</li><li><strong>필터</strong>: 잡음인지 실제 회전 시작인지 판단 불가, 추정을 측정 쪽으로 일부만 이동</li></ul></div><div class="cell"><ul class="ul"><li><strong>미래 측정</strong>: 이후 측정도 좌회전이면 회전 확정, 직선이면 잡음으로 무시</li><li><strong>RTS smoother</strong>: Rauch, Tung, Striebel 의 알고리즘, batch 결과의 평균과 공분산을 입력</li></ul></div></div><div class="point"><b>핵심</b>: 미래 측정까지 사용해 측정을 완전히 반영하거나 무시, 출력이 더 매끄럽고 정확</div><figure class="fig plain"><img src="./imgs/smoothing.svg" alt="smoothing" style="width:1600px"></figure></div>
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:91%"></i></div><span class="foot-num">52 / 57</span></footer>
 </section>
 <section class="slide" data-label="53 RTS Position" data-screen-label="53 RTS Position">
-<header class="head"><span class="kicker">6.17 Smoothing the Results</span><span class="folio">53</span></header>
+<header class="head"><span class="kicker">Smoothing the Results</span><span class="folio">53</span></header>
 <h2 class="title">RTS Position</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>batch 로 구한 상태와 공분산을 RTS smoother 에 넣어 smoothing 한 위치와 필터 위치 비교</li><li>RTS 출력(실선)이 Kalman filter 출력(점선)보다 훨씬 매끄럽고 거의 항상 더 정확</li><li><strong>조건</strong>: 측정 분산 3, process 분산 0.02, R = 3, Q = 0.02, P = <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.972 56.486 10.963" role="img" aria-label="\mathrm{diag}(500, 49)" fill="currentColor" style="width:6.835em;height:1.327em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -5264,7 +5264,7 @@ def pos_vel_filter(x, P, R, Q=0., dt=1.0):
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:93%"></i></div><span class="foot-num">53 / 57</span></footer>
 </section>
 <section class="slide" data-label="54 RTS Velocity" data-screen-label="54 RTS Velocity">
-<header class="head"><span class="kicker">6.17 Smoothing the Results</span><span class="folio">54</span></header>
+<header class="head"><span class="kicker">Smoothing the Results</span><span class="folio">54</span></header>
 <h2 class="title">RTS Velocity</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>같은 결과에서 hidden variable 인 속도를 Kalman filter 와 RTS smoother 로 비교</li><li>속도의 개선이 위치보다 더 극적, RTS 속도가 실제 속도 1 (검은 선) 에 가깝게 유지</li><li><strong>조건</strong>: 위 슬라이드와 같은 데이터와 필터, 실제 속도 약 1 m/s</li></ul><div style="display:grid;grid-template-columns:820px 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxs denser">plt.plot(Xs[:, <span class="no">1</span>], ls=<span class="s">'--'</span>, label=<span class="s">'Kalman Velocity'</span>)
@@ -5310,7 +5310,7 @@ Ms, Ps, _, _ = f.rts_smoother(Xs, Covs)
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:95%"></i></div><span class="foot-num">54 / 57</span></footer>
 </section>
 <section class="slide" data-label="55 Compare Velocities" data-screen-label="55 Compare Velocities">
-<header class="head"><span class="kicker">6.18 Exercise: Compare Velocities</span><span class="folio">55</span></header>
+<header class="head"><span class="kicker">Exercise: Compare Velocities</span><span class="folio">55</span></header>
 <h2 class="title">Compare Velocities</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>연속한 측정의 차이로 구한 raw 속도를 Kalman filter, RTS 속도와 함께 그림</li><li>잡음이 신호를 덮어 raw 속도는 쓸모가 없음, 필터는 다차원 K (예: <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -8.958 66.889 11.949" role="img" aria-label="[0.1274, 0.843]^\mathsf{T}" fill="currentColor" style="width:8.094em;height:1.446em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -5390,14 +5390,14 @@ Ms, Ps, _, _ = f.rts_smoother(Xs, Covs)
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:96%"></i></div><span class="foot-num">55 / 57</span></footer>
 </section>
 <section class="slide" data-label="56 Hidden Variables" data-screen-label="56 Hidden Variables">
-<header class="head"><span class="kicker">6.19 Discussion and Summary</span><span class="folio">56</span></header>
+<header class="head"><span class="kicker">Discussion and Summary</span><span class="folio">56</span></header>
 <h2 class="title">Hidden Variables</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;min-height:0;"><div class="cell"><ul class="ul"><li><strong>hidden variable</strong>: 관측 변수와 상관되어 있어 필터 정확도를 크게 향상</li><li><strong>observability</strong>: 시스템 출력을 관측해 상태를 결정할 수 있는지의 문제, 복잡하면 엄밀한 분석 필요</li><li><strong>주의</strong>: 위치로 차량 색을 추정하는 필터도 만들 수 있지만 무의미, 추정한 속도는 반드시 검증</li></ul></div><div class="cell"><ul class="ul"><li><strong>Nyquist</strong>: 속도가 주기 성분을 가지면 표본 주기가 충분히 짧아야 함, 주기가 같으면 속도가 일정하다고 보고</li><li><strong>초기화</strong>: 나쁜 초기값에서 관측 변수는 회복해도 hidden variable 은 실패할 수 있음</li><li><strong>설계 단계</strong>: 상태 추정, 모델 작성, 시험, 수정을 반복하는 과정, 처방이 아닌 안내</li></ul></div></div><div class="point"><b>핵심</b>: hidden variable 추정은 강력하지만 위험한 도구, 결과를 반드시 검증</div><figure class="fig plain"><img src="./imgs/nyquist.svg" alt="nyquist" style="width:1600px"></figure></div>
 <footer class="foot"><span class="foot-sec">Day 3 · Chapter 6 Multivariate Kalman Filters</span><div class="bar"><i style="width:98%"></i></div><span class="foot-num">56 / 57</span></footer>
 </section>
 <section class="slide" data-label="57 Designing R and Q" data-screen-label="57 Designing R and Q">
-<header class="head"><span class="kicker">6.19 Discussion and Summary</span><span class="folio">57</span></header>
+<header class="head"><span class="kicker">Discussion and Summary</span><span class="folio">57</span></header>
 <h2 class="title">Designing R and Q</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;min-height:0;"><div class="cell"><ul class="ul"><li><strong>R</strong>: 센서는 Gaussian 이 아님, 0.5 kg 물체를 표준편차 1 kg 저울로 재도 음수는 보고하지 않음</li><li><strong>분포</strong>: 실제 센서는 두꺼운 꼬리(kurtosis)와 비대칭(skew), 꼬리가 잘리기도 함</li><li><strong>Q</strong>: 개의 다음 움직임, 언덕, 바람, 운전 습관을 하나의 정확한 수치로 표현해야 함</li></ul></div><div class="cell"><ul class="ul"><li><strong>smug filter</strong>: 알려준 잡음 값만 믿어 P 는 줄어드는데 실제 정확도는 나빠짐, 최악은 발산</li><li><strong>최적성</strong>: 선형, Gaussian 가정이 맞으면 최소제곱 의미의 최적, 실제로는 거의 성립하지 않음</li><li><strong>설계 과정</strong>: 수학으로 초기값, 실험으로 조정, 잡음이 많으면 Q 증가, 너무 크면 반응 지연</li></ul></div></div><div class="point"><b>결론</b>: Kalman filter 는 세계의 수학적 모델, 출력은 그 모델의 정확도만큼</div><figure class="fig plain"><img src="./imgs/sensor_fig.svg" alt="sensor_fig" style="width:1600px"></figure></div>

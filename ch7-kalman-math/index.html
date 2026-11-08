@@ -128,7 +128,7 @@ figure.fig { align-items: center; }
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 7 Kalman Filter Math</span><div class="bar"><i style="width:2%"></i></div><span class="foot-num">01 / 43</span></footer>
 </section>
 <section class="slide" data-label="02 Modeling a Dynamic System" data-screen-label="02 Modeling a Dynamic System">
-<header class="head"><span class="kicker">7.1 Modeling a Dynamic System</span><span class="folio">02</span></header>
+<header class="head"><span class="kicker">Modeling a Dynamic System</span><span class="folio">02</span></header>
 <h2 class="title">Modeling a Dynamic System</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 830px;gap:40px;min-height:0;"><div class="cell"><ul class="ul"><li><strong>동적 시스템</strong>: 위치, 온도 등 상태가 시간에 따라 변하는 물리 시스템, 미분방정식으로 모델링</li><li><strong>Process</strong>: 자동차는 일정 시간 동안 속도만큼 이동, 속도는 가속도에 따라 변화</li><li><strong>현실</strong>: 도로 요철, 바람 저항, 언덕, 서스펜션 마찰로 완벽한 모델링은 불가능</li><li><strong>Process noise</strong>: 모델이 설명하지 못하는 부분, 무작위 사건만 뜻하지 않음 (예: 진공을 가정한 공 모델의 공기 저항)</li></ul></div><div class="cell"><figure class="fig plain"><img src="./imgs/f_noise.svg" alt="f_noise" style="width:100%"></figure></div></div><div class="formula" style="justify-content:space-between"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -13.66 129.819 20.994" role="img" aria-label="\displaystyle v = at, \quad x = \frac{1}{2}at^2 + v_0 t + x_0" fill="currentColor" style="width:15.708em;height:2.540em;vertical-align:-0.887em;display:inline-block;overflow:visible">
@@ -249,7 +249,7 @@ figure.fig { align-items: center; }
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 7 Kalman Filter Math</span><div class="bar"><i style="width:5%"></i></div><span class="foot-num">02 / 43</span></footer>
 </section>
 <section class="slide" data-label="03 System Model with Noise and Control" data-screen-label="03 System Model with Noise and Control">
-<header class="head"><span class="kicker">7.1 Modeling a Dynamic System</span><span class="folio">03</span></header>
+<header class="head"><span class="kicker">Modeling a Dynamic System</span><span class="folio">03</span></header>
 <h2 class="title">System Model with Noise and Control</h2>
 <div class="rule"></div>
 <div class="body"><div class="formula" style="justify-content:space-around;font-size:34px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.335 35.039 7.835" role="img" aria-label="\displaystyle \dot{\mathbf{x}} = \mathbf{Ax}" fill="currentColor" style="width:4.240em;height:0.948em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -311,7 +311,7 @@ figure.fig { align-items: center; }
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 7 Kalman Filter Math</span><div class="bar"><i style="width:7%"></i></div><span class="foot-num">03 / 43</span></footer>
 </section>
 <section class="slide" data-label="04 From Derivative to Recursion" data-screen-label="04 From Derivative to Recursion">
-<header class="head"><span class="kicker">7.2 State-Space Representation of Dynamic Systems</span><span class="folio">04</span></header>
+<header class="head"><span class="kicker">State-Space Representation of Dynamic Systems</span><span class="folio">04</span></header>
 <h2 class="title">From Derivative to Recursion</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 760px;gap:40px;min-height:0;"><div class="cell"><div style="display:flex;flex-direction:column;gap:22px;min-width:0"><ul class="ul"><li><strong>목표</strong>: 미분이 아닌 x 자체, <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -4.789 21.794 7.614" role="img" aria-label="x_{k-1}" fill="currentColor" style="width:2.637em;height:0.921em;vertical-align:-0.342em;display:inline-block;overflow:visible">
@@ -528,7 +528,7 @@ figure.fig { align-items: center; }
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 7 Kalman Filter Math</span><div class="bar"><i style="width:9%"></i></div><span class="foot-num">04 / 43</span></footer>
 </section>
 <section class="slide" data-label="05 State-Space Methods" data-screen-label="05 State-Space Methods">
-<header class="head"><span class="kicker">7.2 State-Space Representation of Dynamic Systems</span><span class="folio">05</span></header>
+<header class="head"><span class="kicker">State-Space Representation of Dynamic Systems</span><span class="folio">05</span></header>
 <h2 class="title">State-Space Methods</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;min-height:0;"><div class="cell"><ul class="ul"><li><strong>등장</strong>: Apollo 계획 무렵 Kalman 의 연구로 널리 사용</li><li><strong>절차</strong>: n 차 미분방정식을 등가인 1 차 미분방정식 집합으로 변환한 뒤 벡터-행렬 형태로 정리</li></ul></div><div class="cell"><ul class="ul"><li><strong>이산화</strong>: 여러 기법으로 선형 미분방정식을 재귀식으로 변환</li><li><strong>명칭</strong>: 해를 시스템 상태로 표현하므로 state-space, F 를 fundamental matrix 또는 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.308 8.195 7.808" role="img" aria-label="\Phi" fill="currentColor" style="width:0.992em;height:0.945em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -582,7 +582,7 @@ figure.fig { align-items: center; }
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 7 Kalman Filter Math</span><div class="bar"><i style="width:12%"></i></div><span class="foot-num">05 / 43</span></footer>
 </section>
 <section class="slide" data-label="06 Higher Order to First Order" data-screen-label="06 Higher Order to First Order">
-<header class="head"><span class="kicker">7.2.1 Forming First Order Equations from Higher Order Equations</span><span class="folio">06</span></header>
+<header class="head"><span class="kicker">Forming First Order Equations from Higher Order Equations</span><span class="folio">06</span></header>
 <h2 class="title">Higher Order to First Order</h2>
 <div class="rule"></div>
 <div class="body"><div class="formula" style="justify-content:center"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -15.349 235.303 22.683" role="img" aria-label="\displaystyle a_n \frac{d^n y}{dt^n} + a_{n-1} \frac{d^{n-1} y}{dt^{n-1}} + \cdots + a_2 \frac{d^2 y}{dt^2} + a_1 \frac{dy}{dt} + a_0 y = u" fill="currentColor" style="width:28.472em;height:2.745em;vertical-align:-0.887em;display:inline-block;overflow:visible">
@@ -775,7 +775,7 @@ figure.fig { align-items: center; }
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 7 Kalman Filter Math</span><div class="bar"><i style="width:14%"></i></div><span class="foot-num">06 / 43</span></footer>
 </section>
 <section class="slide" data-label="07 State-Space Form" data-screen-label="07 State-Space Form">
-<header class="head"><span class="kicker">7.2.2 First Order Differential Equations In State-Space Form</span><span class="folio">07</span></header>
+<header class="head"><span class="kicker">First Order Differential Equations In State-Space Form</span><span class="folio">07</span></header>
 <h2 class="title">State-Space Form</h2>
 <div class="rule"></div>
 <div class="body"><div class="formula" style="justify-content:space-around"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -14.158 173.194 21.492" role="img" aria-label="\displaystyle \frac{dx_1}{dt} = x_2, \ \frac{dx_2}{dt} = x_3, \ \ldots, \ \frac{dx_{n-1}}{dt} = x_n" fill="currentColor" style="width:20.956em;height:2.601em;vertical-align:-0.887em;display:inline-block;overflow:visible">
@@ -1057,7 +1057,7 @@ figure.fig { align-items: center; }
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 7 Kalman Filter Math</span><div class="bar"><i style="width:16%"></i></div><span class="foot-num">07 / 43</span></footer>
 </section>
 <section class="slide" data-label="08 Finding the Fundamental Matrix" data-screen-label="08 Finding the Fundamental Matrix">
-<header class="head"><span class="kicker">7.2.3 Finding the Fundamental Matrix for Time Invariant Systems</span><span class="folio">08</span></header>
+<header class="head"><span class="kicker">Finding the Fundamental Matrix for Time Invariant Systems</span><span class="folio">08</span></header>
 <h2 class="title">Finding the Fundamental Matrix</h2>
 <div class="rule"></div>
 <div class="body"><div class="formula" style="justify-content:center;gap:16px 90px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.335 35.039 7.835" role="img" aria-label="\displaystyle \dot{\mathbf{x}} = \mathbf{Ax}" fill="currentColor" style="width:4.240em;height:0.948em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -1161,7 +1161,7 @@ figure.fig { align-items: center; }
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 7 Kalman Filter Math</span><div class="bar"><i style="width:19%"></i></div><span class="foot-num">08 / 43</span></footer>
 </section>
 <section class="slide" data-label="09 Matrix Exponential" data-screen-label="09 Matrix Exponential">
-<header class="head"><span class="kicker">7.2.4 The Matrix Exponential</span><span class="folio">09</span></header>
+<header class="head"><span class="kicker">The Matrix Exponential</span><span class="folio">09</span></header>
 <h2 class="title">Matrix Exponential</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 1fr 760px;gap:28px;min-height:0;"><div class="cell"><div style="display:flex;flex-direction:column;gap:24px;min-width:0"><div class="card tight soft"><h3 class="card-h sky">Scalar</h3><div class="formula" style="flex-direction:column;align-items:flex-start;gap:6px;"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -14.158 38.748 21.492" role="img" aria-label="\displaystyle \frac{dx}{dt} = kx" fill="currentColor" style="width:4.689em;height:2.601em;vertical-align:-0.887em;display:inline-block;overflow:visible">
@@ -1398,7 +1398,7 @@ figure.fig { align-items: center; }
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 7 Kalman Filter Math</span><div class="bar"><i style="width:21%"></i></div><span class="foot-num">09 / 43</span></footer>
 </section>
 <section class="slide" data-label="10 Newton&#x27;s Equations" data-screen-label="10 Newton&#x27;s Equations">
-<header class="head"><span class="kicker">7.2.4 The Matrix Exponential</span><span class="folio">10</span></header>
+<header class="head"><span class="kicker">The Matrix Exponential</span><span class="folio">10</span></header>
 <h2 class="title">Newton&#x27;s Equations</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1.15fr 1fr;gap:40px;min-height:0;"><div class="cell"><div class="formula" style="flex-direction:column;align-items:flex-start;gap:40px;"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -14.946 151.712 24.911" role="img" aria-label="\displaystyle \begin{bmatrix} \dot{x} \\ \dot{v} \end{bmatrix} = \begin{bmatrix} 0 &amp; 1 \\ 0 &amp; 0 \end{bmatrix} \begin{bmatrix} x \\ v \end{bmatrix}, \quad \mathbf{A}^2 = \begin{bmatrix} 0 &amp; 0 \\ 0 &amp; 0 \end{bmatrix}" fill="currentColor" style="width:18.357em;height:3.014em;vertical-align:-1.206em;display:inline-block;overflow:visible">
@@ -1597,7 +1597,7 @@ figure.fig { align-items: center; }
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 7 Kalman Filter Math</span><div class="bar"><i style="width:23%"></i></div><span class="foot-num">10 / 43</span></footer>
 </section>
 <section class="slide" data-label="11 Constant Velocity with expm()" data-screen-label="11 Constant Velocity with expm()">
-<header class="head"><span class="kicker">7.2.4 The Matrix Exponential</span><span class="folio">11</span></header>
+<header class="head"><span class="kicker">The Matrix Exponential</span><span class="folio">11</span></header>
 <h2 class="title">Constant Velocity with expm()</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>등속 모델 A 의 matrix exponential 을 scipy 의 expm() 으로 계산, 출력된 F 가 [[1, <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.308 12.9 7.808" role="img" aria-label="\Delta t" fill="currentColor" style="width:1.561em;height:0.945em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -1629,7 +1629,7 @@ plots.set_labels(x=<span class="s">'time (s)'</span>, y=<span class="s">'positio
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 7 Kalman Filter Math</span><div class="bar"><i style="width:26%"></i></div><span class="foot-num">11 / 43</span></footer>
 </section>
 <section class="slide" data-label="12 Time Invariance" data-screen-label="12 Time Invariance">
-<header class="head"><span class="kicker">7.2.5 Time Invariance</span><span class="folio">12</span></header>
+<header class="head"><span class="kicker">Time Invariance</span><span class="folio">12</span></header>
 <h2 class="title">Time Invariance</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;min-height:0;"><div class="cell"><ul class="ul"><li><strong>시간 불변</strong>: 입력을 t 대신 t + <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.308 12.9 7.808" role="img" aria-label="\Delta t" fill="currentColor" style="width:1.561em;height:0.945em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -1728,7 +1728,7 @@ plots.set_labels(x=<span class="s">'time (s)'</span>, y=<span class="s">'positio
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 7 Kalman Filter Math</span><div class="bar"><i style="width:28%"></i></div><span class="foot-num">12 / 43</span></footer>
 </section>
 <section class="slide" data-label="13 Separation of Variables" data-screen-label="13 Separation of Variables">
-<header class="head"><span class="kicker">7.2.5 Time Invariance</span><span class="folio">13</span></header>
+<header class="head"><span class="kicker">Time Invariance</span><span class="folio">13</span></header>
 <h2 class="title">Separation of Variables</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;min-height:0;"><div class="cell"><div class="formula" style="flex-direction:column;align-items:flex-start;gap:12px;"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -14.158 46.946 21.492" role="img" aria-label="\displaystyle \frac{dx}{dt} = f(x)" fill="currentColor" style="width:5.680em;height:2.601em;vertical-align:-0.887em;display:inline-block;overflow:visible">
@@ -1893,7 +1893,7 @@ plots.set_labels(x=<span class="s">'time (s)'</span>, y=<span class="s">'positio
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 7 Kalman Filter Math</span><div class="bar"><i style="width:30%"></i></div><span class="foot-num">13 / 43</span></footer>
 </section>
 <section class="slide" data-label="14 Example: Mass-Spring-Damper Model" data-screen-label="14 Example: Mass-Spring-Damper Model">
-<header class="head"><span class="kicker">7.2.5 Time Invariance</span><span class="folio">14</span></header>
+<header class="head"><span class="kicker">Time Invariance</span><span class="folio">14</span></header>
 <h2 class="title">Example: Mass-Spring-Damper Model</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 960px;gap:40px;min-height:0;"><div class="cell"><div class="formula" style="flex-direction:column;align-items:flex-start;gap:22px;"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.419 79.98 8.749" role="img" aria-label="\displaystyle m\ddot{x} + c\dot{x} + kx = u" fill="currentColor" style="width:9.678em;height:1.059em;vertical-align:-0.161em;display:inline-block;overflow:visible">
@@ -2119,7 +2119,7 @@ plots.set_labels(x=<span class="s">'time (s)'</span>, y=<span class="s">'positio
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 7 Kalman Filter Math</span><div class="bar"><i style="width:33%"></i></div><span class="foot-num">14 / 43</span></footer>
 </section>
 <section class="slide" data-label="15 Example: Mass-Spring-Damper Model" data-screen-label="15 Example: Mass-Spring-Damper Model">
-<header class="head"><span class="kicker">7.2.5 Time Invariance</span><span class="folio">15</span></header>
+<header class="head"><span class="kicker">Time Invariance</span><span class="folio">15</span></header>
 <h2 class="title">Example: Mass-Spring-Damper Model</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>질량-스프링-감쇠 시스템의 F 를 급수 앞 두 항 I + <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.308 20.372 7.808" role="img" aria-label="A\Delta t" fill="currentColor" style="width:2.465em;height:0.945em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -2178,7 +2178,7 @@ plt.legend(loc=<span class="no">3</span>);</pre></div><div class="cell"><div cla
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 7 Kalman Filter Math</span><div class="bar"><i style="width:35%"></i></div><span class="foot-num">15 / 43</span></footer>
 </section>
 <section class="slide" data-label="16 Linear Time Invariant Theory" data-screen-label="16 Linear Time Invariant Theory">
-<header class="head"><span class="kicker">7.2.6 Linear Time Invariant Theory</span><span class="folio">16</span></header>
+<header class="head"><span class="kicker">Linear Time Invariant Theory</span><span class="folio">16</span></header>
 <h2 class="title">Linear Time Invariant Theory</h2>
 <div class="rule"></div>
 <div class="body"><div class="formula" style="justify-content:center;font-size:38px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -9.108 104.225 12.098" role="img" aria-label="\displaystyle \Phi(t) = \mathcal{L}^{-1}[(s\mathbf{I} - \mathbf{A})^{-1}]" fill="currentColor" style="width:12.611em;height:1.464em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -2322,7 +2322,7 @@ plt.legend(loc=<span class="no">3</span>);</pre></div><div class="cell"><div cla
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 7 Kalman Filter Math</span><div class="bar"><i style="width:37%"></i></div><span class="foot-num">16 / 43</span></footer>
 </section>
 <section class="slide" data-label="17 Numerical Solutions" data-screen-label="17 Numerical Solutions">
-<header class="head"><span class="kicker">7.2.7 Numerical Solutions</span><span class="folio">17</span></header>
+<header class="head"><span class="kicker">Numerical Solutions</span><span class="folio">17</span></header>
 <h2 class="title">Numerical Solutions</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>필터가 커지면 해석 해가 번거로우므로 van Loan 방법으로 연속 모델 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.308 60.553 8.638" role="img" aria-label="\dot{x} = Ax + Gw" fill="currentColor" style="width:7.327em;height:1.045em;vertical-align:-0.161em;display:inline-block;overflow:visible">
@@ -2375,14 +2375,14 @@ plots.set_labels(x=<span class="s">'x'</span>, y=<span class="s">'dx/dt'</span>)
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 7 Kalman Filter Math</span><div class="bar"><i style="width:40%"></i></div><span class="foot-num">17 / 43</span></footer>
 </section>
 <section class="slide" data-label="18 Design of the Process Noise Matrix" data-screen-label="18 Design of the Process Noise Matrix">
-<header class="head"><span class="kicker">7.3 Design of the Process Noise Matrix</span><span class="folio">18</span></header>
+<header class="head"><span class="kicker">Design of the Process Noise Matrix</span><span class="folio">18</span></header>
 <h2 class="title">Design of the Process Noise Matrix</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;min-height:0;"><div class="cell"><ul class="ul"><li><strong>어려움</strong>: 신호 이론이 필요, 정보가 거의 없는 대상의 잡음을 모델링</li><li><strong>예</strong>: 던진 야구공의 회전, 실밥의 항력, 바람, 공기 밀도</li></ul></div><div class="cell"><ul class="ul"><li><strong>Q 가 너무 작음</strong>: 예측 모델을 과신해 실제 해에서 발산</li><li><strong>Q 가 너무 큼</strong>: 측정 잡음에 과하게 끌려가 최적보다 나쁜 성능</li></ul></div></div><figure class="fig plain"><img src="./imgs/f_q_tuning.svg" alt="f_q_tuning" style="width:100%"></figure><div class="point"><b>연속과 이산</b>: 운동은 연속, 필터는 일정 간격으로 샘플링하므로 잡음 항의 이산 표현이 필요</div></div>
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 7 Kalman Filter Math</span><div class="bar"><i style="width:42%"></i></div><span class="foot-num">18 / 43</span></footer>
 </section>
 <section class="slide" data-label="19 Continuous White Noise Model" data-screen-label="19 Continuous White Noise Model">
-<header class="head"><span class="kicker">7.3.1 Continuous White Noise Model</span><span class="folio">19</span></header>
+<header class="head"><span class="kicker">Continuous White Noise Model</span><span class="folio">19</span></header>
 <h2 class="title">Continuous White Noise Model</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 700px;gap:40px;min-height:0;"><div class="cell"><div style="display:flex;flex-direction:column;gap:18px;min-width:0"><ul class="ul"><li><strong>가정</strong>: 구간마다 일정한 가속도가 zero-mean 연속 white noise w(t) 로 변화</li><li><strong>이산화</strong>: 연속 잡음을 F 로 투영하고 구간 [0, <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.308 12.9 7.808" role="img" aria-label="\Delta t" fill="currentColor" style="width:1.561em;height:0.945em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -2516,7 +2516,7 @@ plots.set_labels(x=<span class="s">'x'</span>, y=<span class="s">'dx/dt'</span>)
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 7 Kalman Filter Math</span><div class="bar"><i style="width:44%"></i></div><span class="foot-num">19 / 43</span></footer>
 </section>
 <section class="slide" data-label="20 Q for Position, Velocity, Acceleration" data-screen-label="20 Q for Position, Velocity, Acceleration">
-<header class="head"><span class="kicker">7.3.1 Continuous White Noise Model</span><span class="folio">20</span></header>
+<header class="head"><span class="kicker">Continuous White Noise Model</span><span class="folio">20</span></header>
 <h2 class="title">Q for Position, Velocity, Acceleration</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>위치, 속도, 가속도 모델의 Q 를 SymPy 로 기호 적분, 가독성을 위해 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.308 12.454 9.302" role="img" aria-label="\Phi_s" fill="currentColor" style="width:1.507em;height:1.126em;vertical-align:-0.241em;display:inline-block;overflow:visible">
@@ -2585,7 +2585,7 @@ plots.show_matrix(Q, phi)</pre></div><div class="cell"><div class="run-slot" dat
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 7 Kalman Filter Math</span><div class="bar"><i style="width:47%"></i></div><span class="foot-num">20 / 43</span></footer>
 </section>
 <section class="slide" data-label="21 0th and 1st Order Models" data-screen-label="21 0th and 1st Order Models">
-<header class="head"><span class="kicker">7.3.1 Continuous White Noise Model</span><span class="folio">21</span></header>
+<header class="head"><span class="kicker">Continuous White Noise Model</span><span class="folio">21</span></header>
 <h2 class="title">0th and 1st Order Models</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>같은 적분을 0 차(위치만) 모델과 1 차(위치, 속도) 모델에 적용해 이산 process noise 계산</li><li>0 차는 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.308 24.353 9.302" role="img" aria-label="\Delta t \Phi_s" fill="currentColor" style="width:2.947em;height:1.126em;vertical-align:-0.241em;display:inline-block;overflow:visible">
@@ -2667,7 +2667,7 @@ plots.show_matrix(Q1, phi, title=<span class="s">'1st order'</span>)</pre></div>
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 7 Kalman Filter Math</span><div class="bar"><i style="width:49%"></i></div><span class="foot-num">21 / 43</span></footer>
 </section>
 <section class="slide" data-label="22 Piecewise White Noise Model" data-screen-label="22 Piecewise White Noise Model">
-<header class="head"><span class="kicker">7.3.2 Piecewise White Noise Model</span><span class="folio">22</span></header>
+<header class="head"><span class="kicker">Piecewise White Noise Model</span><span class="folio">22</span></header>
 <h2 class="title">Piecewise White Noise Model</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;min-height:0;"><div class="cell"><ul class="ul"><li><strong>가정</strong>: 최고차 항(예: 가속도)은 각 구간 동안 일정, 구간마다 다르고 서로 상관 없음</li><li><strong>차이</strong>: 구간 경계에서 불연속 점프, 연속적으로 변하는 잡음을 가정한 모델과 구별</li></ul></div><div class="cell"><div class="formula" style="flex-direction:column;align-items:flex-start;gap:16px;"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.972 73.088 10.963" role="img" aria-label="\displaystyle f(\mathbf{x}) = \mathbf{Fx} + \Gamma w" fill="currentColor" style="width:8.844em;height:1.327em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -2803,7 +2803,7 @@ plots.show_matrix(Q1, phi, title=<span class="s">'1st order'</span>)</pre></div>
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 7 Kalman Filter Math</span><div class="bar"><i style="width:51%"></i></div><span class="foot-num">22 / 43</span></footer>
 </section>
 <section class="slide" data-label="23 Q for 1st and 2nd Order Models" data-screen-label="23 Q for 1st and 2nd Order Models">
-<header class="head"><span class="kicker">7.3.2 Piecewise White Noise Model</span><span class="folio">23</span></header>
+<header class="head"><span class="kicker">Piecewise White Noise Model</span><span class="folio">23</span></header>
 <h2 class="title">Q for 1st and 2nd Order Models</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>구간 상수 잡음 모델의 Q = <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.308 7.227 7.808" role="img" aria-label="\Gamma" fill="currentColor" style="width:0.874em;height:0.945em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -2894,7 +2894,7 @@ plots.show_matrix(Q2, var, title=<span class="s">'2nd order'</span>)</pre></div>
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 7 Kalman Filter Math</span><div class="bar"><i style="width:53%"></i></div><span class="foot-num">23 / 43</span></footer>
 </section>
 <section class="slide" data-label="24 Choosing a Noise Model" data-screen-label="24 Choosing a Noise Model">
-<header class="head"><span class="kicker">7.3.2 Piecewise White Noise Model</span><span class="folio">24</span></header>
+<header class="head"><span class="kicker">Piecewise White Noise Model</span><span class="folio">24</span></header>
 <h2 class="title">Choosing a Noise Model</h2>
 <div class="rule"></div>
 <div class="body"><p class="note">두 모델 모두 실제 물체의 움직임에 대한 근사, 어느 쪽이 더 옳다고 할 수 없으며 경험과 실험으로 선택</p><div style="display:grid;grid-template-columns:1fr 800px;gap:40px;min-height:0;"><div class="cell"><div style="display:flex;flex-direction:column;gap:24px;min-width:0"><div class="card tight soft"><h3 class="card-h sky">Continuous white noise</h3><ul class="ul"><li><strong>잡음 표현</strong>: spectral density <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.308 12.454 9.302" role="img" aria-label="\Phi_s" fill="currentColor" style="width:1.507em;height:1.126em;vertical-align:-0.241em;display:inline-block;overflow:visible">
@@ -2949,7 +2949,7 @@ plots.show_matrix(Q2, var, title=<span class="s">'2nd order'</span>)</pre></div>
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 7 Kalman Filter Math</span><div class="bar"><i style="width:56%"></i></div><span class="foot-num">24 / 43</span></footer>
 </section>
 <section class="slide" data-label="25 Simplification of Q" data-screen-label="25 Simplification of Q">
-<header class="head"><span class="kicker">7.3.4 Simplification of Q</span><span class="folio">25</span></header>
+<header class="head"><span class="kicker">Simplification of Q</span><span class="folio">25</span></header>
 <h2 class="title">Simplification of Q</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>짧은 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.308 12.9 7.808" role="img" aria-label="\Delta t" fill="currentColor" style="width:1.561em;height:0.945em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -2999,7 +2999,7 @@ plt.grid(<span class="k">False</span>);</pre></div><div class="cell"><div class=
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 7 Kalman Filter Math</span><div class="bar"><i style="width:58%"></i></div><span class="foot-num">25 / 43</span></footer>
 </section>
 <section class="slide" data-label="26 Lower Right Term Only" data-screen-label="26 Lower Right Term Only">
-<header class="head"><span class="kicker">7.3.4 Simplification of Q</span><span class="folio">26</span></header>
+<header class="head"><span class="kicker">Simplification of Q</span><span class="folio">26</span></header>
 <h2 class="title">Lower Right Term Only</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 640px;gap:40px;min-height:0;"><div class="cell"><div style="display:flex;flex-direction:column;gap:32px;min-width:0"><div class="formula" style="font-size:36px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -20.924 76.581 36.866" role="img" aria-label="\displaystyle \mathbf{Q} = \begin{bmatrix} 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; \sigma^2 \end{bmatrix}" fill="currentColor" style="width:9.266em;height:4.461em;vertical-align:-1.929em;display:inline-block;overflow:visible">
@@ -3083,7 +3083,7 @@ plt.grid(<span class="k">False</span>);</pre></div><div class="cell"><div class=
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 7 Kalman Filter Math</span><div class="bar"><i style="width:60%"></i></div><span class="foot-num">26 / 43</span></footer>
 </section>
 <section class="slide" data-label="27 Joseph Form" data-screen-label="27 Joseph Form">
-<header class="head"><span class="kicker">7.4 Stable Computation of the Posterior Covariance</span><span class="folio">27</span></header>
+<header class="head"><span class="kicker">Stable Computation of the Posterior Covariance</span><span class="folio">27</span></header>
 <h2 class="title">Joseph Form</h2>
 <div class="rule"></div>
 <div class="body"><div class="formula" style="justify-content:space-around;font-size:38px;padding:20px 0"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -8.703 72.163 11.693" role="img" aria-label="\displaystyle \mathbf{P} = (\mathbf{I} - \mathbf{KH})\bar{\mathbf{P}}" fill="currentColor" style="width:8.732em;height:1.415em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -3204,7 +3204,7 @@ plt.grid(<span class="k">False</span>);</pre></div><div class="cell"><div class=
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 7 Kalman Filter Math</span><div class="bar"><i style="width:63%"></i></div><span class="foot-num">27 / 43</span></footer>
 </section>
 <section class="slide" data-label="28 Joseph Form with Any Gain" data-screen-label="28 Joseph Form with Any Gain">
-<header class="head"><span class="kicker">7.4 Stable Computation of the Posterior Covariance</span><span class="folio">28</span></header>
+<header class="head"><span class="kicker">Stable Computation of the Posterior Covariance</span><span class="folio">28</span></header>
 <h2 class="title">Joseph Form with Any Gain</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>최적 gain 에 배율 s 를 곱한 임의의 gain 으로 두 식의 trace 를 비교, 두 값은 s = 1 (K = <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.308 21.444 10.658" role="img" aria-label="K_\mathrm{opt}" fill="currentColor" style="width:2.595em;height:1.290em;vertical-align:-0.405em;display:inline-block;overflow:visible">
@@ -3252,7 +3252,7 @@ plt.legend();</pre></div><div class="cell"><div class="run-slot" data-key="6dcab
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 7 Kalman Filter Math</span><div class="bar"><i style="width:65%"></i></div><span class="foot-num">28 / 43</span></footer>
 </section>
 <section class="slide" data-label="29 Derivation: Definitions" data-screen-label="29 Derivation: Definitions">
-<header class="head"><span class="kicker">7.4 Stable Computation of the Posterior Covariance</span><span class="folio">29</span></header>
+<header class="head"><span class="kicker">Stable Computation of the Posterior Covariance</span><span class="folio">29</span></header>
 <h2 class="title">Derivation: Definitions</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;min-height:0;"><div class="cell"><div class="formula" style="flex-direction:column;align-items:flex-start;gap:22px;"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.335 83.731 10.16" role="img" aria-label="\displaystyle \mathbf{x}_{k+1} = \mathbf{F}_k\mathbf{x}_k + \mathbf{w}_k" fill="currentColor" style="width:10.131em;height:1.229em;vertical-align:-0.342em;display:inline-block;overflow:visible">
@@ -3412,7 +3412,7 @@ plt.legend();</pre></div><div class="cell"><div class="run-slot" data-key="6dcab
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 7 Kalman Filter Math</span><div class="bar"><i style="width:67%"></i></div><span class="foot-num">29 / 43</span></footer>
 </section>
 <section class="slide" data-label="30 Derivation: Expanding the Error" data-screen-label="30 Derivation: Expanding the Error">
-<header class="head"><span class="kicker">7.4 Stable Computation of the Posterior Covariance</span><span class="folio">30</span></header>
+<header class="head"><span class="kicker">Stable Computation of the Posterior Covariance</span><span class="folio">30</span></header>
 <h2 class="title">Derivation: Expanding the Error</h2>
 <div class="rule"></div>
 <div class="body"><div class="formula" style="flex-direction:column;align-items:flex-start;gap:10px;padding-left:40px;font-size:31px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.972 139.508 10.963" role="img" aria-label="\displaystyle (\mathbf{x} - \hat{\mathbf{x}}) = \mathbf{x} - (\bar{\mathbf{x}} + \mathbf{K}(\mathbf{z} - \mathbf{H}\bar{\mathbf{x}}))" fill="currentColor" style="width:16.880em;height:1.327em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -3744,7 +3744,7 @@ plt.legend();</pre></div><div class="cell"><div class="run-slot" data-key="6dcab
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 7 Kalman Filter Math</span><div class="bar"><i style="width:70%"></i></div><span class="foot-num">30 / 43</span></footer>
 </section>
 <section class="slide" data-label="31 Derivation: Optimal Gain" data-screen-label="31 Derivation: Optimal Gain">
-<header class="head"><span class="kicker">7.4 Stable Computation of the Posterior Covariance</span><span class="folio">31</span></header>
+<header class="head"><span class="kicker">Stable Computation of the Posterior Covariance</span><span class="folio">31</span></header>
 <h2 class="title">Derivation: Optimal Gain</h2>
 <div class="rule"></div>
 <div class="body"><div class="formula" style="justify-content:center"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -9.379 117.592 12.37" role="img" aria-label="\displaystyle \mathbf{K} = \bar{\mathbf{P}}\mathbf{H}^T(\mathbf{H}\bar{\mathbf{P}}\mathbf{H}^T + \mathbf{R})^{-1}" fill="currentColor" style="width:14.229em;height:1.497em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -3983,7 +3983,7 @@ plt.legend();</pre></div><div class="cell"><div class="run-slot" data-key="6dcab
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 7 Kalman Filter Math</span><div class="bar"><i style="width:72%"></i></div><span class="foot-num">31 / 43</span></footer>
 </section>
 <section class="slide" data-label="32 Minimizing the Trace of P" data-screen-label="32 Minimizing the Trace of P">
-<header class="head"><span class="kicker">7.5 Deriving the Kalman Gain Equation</span><span class="folio">32</span></header>
+<header class="head"><span class="kicker">Deriving the Kalman Gain Equation</span><span class="folio">32</span></header>
 <h2 class="title">Minimizing the Trace of P</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 820px;gap:40px;min-height:0;"><div class="cell"><div style="display:flex;flex-direction:column;gap:28px;min-width:0"><ul class="ul"><li><strong>관점</strong>: Bayes 식이 아닌 미분으로 오차를 최소화하는 유도</li><li><strong>목표</strong>: P 의 대각은 상태 원소별 분산, 대각의 합 trace(P) 를 K 로 미분해 0 이 되는 K 탐색</li><li><strong>trace 미분 공식</strong>: AB 는 정방, C 는 대칭</li></ul><div class="formula" style="gap:16px 60px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -14.712 85.092 22.046" role="img" aria-label="\displaystyle \frac{d\, trace(\mathbf{AB})}{d\mathbf{A}} = \mathbf{B}^T" fill="currentColor" style="width:10.296em;height:2.668em;vertical-align:-0.887em;display:inline-block;overflow:visible">
@@ -4137,7 +4137,7 @@ plt.legend();</pre></div><div class="cell"><div class="run-slot" data-key="6dcab
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 7 Kalman Filter Math</span><div class="bar"><i style="width:74%"></i></div><span class="foot-num">32 / 43</span></footer>
 </section>
 <section class="slide" data-label="33 Solving for K" data-screen-label="33 Solving for K">
-<header class="head"><span class="kicker">7.5 Deriving the Kalman Gain Equation</span><span class="folio">33</span></header>
+<header class="head"><span class="kicker">Deriving the Kalman Gain Equation</span><span class="folio">33</span></header>
 <h2 class="title">Solving for K</h2>
 <div class="rule"></div>
 <div class="body"><table class="tbl"><thead><tr><th style="width:30%">Term</th><th style="width:30%"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.972 60.288 10.963" role="img" aria-label="d\, trace(\cdot)/dK" fill="currentColor" style="width:7.295em;height:1.327em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -4444,7 +4444,7 @@ plt.legend();</pre></div><div class="cell"><div class="run-slot" data-key="6dcab
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 7 Kalman Filter Math</span><div class="bar"><i style="width:77%"></i></div><span class="foot-num">33 / 43</span></footer>
 </section>
 <section class="slide" data-label="34 Numeric Integration of Differential Equations" data-screen-label="34 Numeric Integration of Differential Equations">
-<header class="head"><span class="kicker">7.6 Numeric Integration of Differential Equations</span><span class="folio">34</span></header>
+<header class="head"><span class="kicker">Numeric Integration of Differential Equations</span><span class="folio">34</span></header>
 <h2 class="title">Numeric Integration of Differential Equations</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 720px;gap:40px;min-height:0;"><div class="cell"><div style="display:flex;flex-direction:column;gap:28px;min-width:0"><ul class="ul"><li><strong>지금까지</strong>: state-space, Laplace 변환, van Loan 방법은 선형 상미분방정식(ODE)에 적합</li><li><strong>한계</strong>: 비선형 방정식에는 잘 맞지 않음</li><li><strong>예</strong>: 자동차는 앞바퀴를 돌려 뒤 차축을 중심으로 회전, 경로가 계속 휘어 선형 예측은 틀린 값</li><li><strong>필요</strong>: <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.308 12.9 7.808" role="img" aria-label="\Delta t" fill="currentColor" style="width:1.561em;height:0.945em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -4460,7 +4460,7 @@ plt.legend();</pre></div><div class="cell"><div class="run-slot" data-key="6dcab
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 7 Kalman Filter Math</span><div class="bar"><i style="width:79%"></i></div><span class="foot-num">34 / 43</span></footer>
 </section>
 <section class="slide" data-label="35 Slope at the Initial Value" data-screen-label="35 Slope at the Initial Value">
-<header class="head"><span class="kicker">7.6.1 Euler&#x27;s Method</span><span class="folio">35</span></header>
+<header class="head"><span class="kicker">Euler&#x27;s Method</span><span class="folio">35</span></header>
 <h2 class="title">Slope at the Initial Value</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>초기값 문제 y' = y, y(0) = 1 에서 아는 것은 기울기(미분)와 초기값뿐, 정확한 해는 y = <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -8.405 9.147 8.905" role="img" aria-label="e^t" fill="currentColor" style="width:1.107em;height:1.078em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -4498,7 +4498,7 @@ plots.set_labels(x=<span class="s">'x'</span>, y=<span class="s">'y'</span>);</p
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 7 Kalman Filter Math</span><div class="bar"><i style="width:81%"></i></div><span class="foot-num">35 / 43</span></footer>
 </section>
 <section class="slide" data-label="36 Euler in Code" data-screen-label="36 Euler in Code">
-<header class="head"><span class="kicker">7.6.1 Euler&#x27;s Method</span><span class="folio">36</span></header>
+<header class="head"><span class="kicker">Euler&#x27;s Method</span><span class="folio">36</span></header>
 <h2 class="title">Euler in Code</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>기울기에 step 을 곱해 더하는 Euler 법을 함수로 구현, step 1 에서 2.0, 4.0 으로 손 계산과 일치</li><li>step 0.00001 의 오차는 작지만 40 만 번 반복이 필요, 너무 느려 실제로는 더 정교한 방법 사용</li><li><strong>조건</strong>: y' = y, y(0) = 1, t = 0 ~ 4, step 1 과 0.00001</li></ul><div style="display:grid;grid-template-columns:0.85fr 1.15fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxxs tightest"><span class="k">def</span> <span class="fn">euler</span>(t, tmax, y, dx, step=<span class="no">1.</span>):
@@ -4528,7 +4528,7 @@ iterations = 400000
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 7 Kalman Filter Math</span><div class="bar"><i style="width:84%"></i></div><span class="foot-num">36 / 43</span></footer>
 </section>
 <section class="slide" data-label="37 Taylor Expansion" data-screen-label="37 Taylor Expansion">
-<header class="head"><span class="kicker">7.6.1 Euler&#x27;s Method</span><span class="folio">37</span></header>
+<header class="head"><span class="kicker">Euler&#x27;s Method</span><span class="folio">37</span></header>
 <h2 class="title">Taylor Expansion</h2>
 <div class="rule"></div>
 <div class="body"><div class="formula" style="justify-content:center"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -13.66 273.743 20.994" role="img" aria-label="\displaystyle y(t_0 + h) = y(t_0) + hy&#x27;(t_0) + \frac{1}{2!}h^2y&#x27;&#x27;(t_0) + \frac{1}{3!}h^3y&#x27;&#x27;&#x27;(t_0) + O(h^4)" fill="currentColor" style="width:33.123em;height:2.540em;vertical-align:-0.887em;display:inline-block;overflow:visible">
@@ -4654,7 +4654,7 @@ iterations = 400000
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 7 Kalman Filter Math</span><div class="bar"><i style="width:86%"></i></div><span class="foot-num">37 / 43</span></footer>
 </section>
 <section class="slide" data-label="38 RK4 Method" data-screen-label="38 RK4 Method">
-<header class="head"><span class="kicker">7.6.2 Runge Kutta Methods</span><span class="folio">38</span></header>
+<header class="head"><span class="kicker">Runge Kutta Methods</span><span class="folio">38</span></header>
 <h2 class="title">RK4 Method</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 820px;gap:40px;min-height:0;"><div class="cell"><div style="display:flex;flex-direction:column;gap:24px;min-width:0"><div class="formula" style="flex-direction:column;align-items:flex-start;gap:8px;"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -14.158 87.365 21.492" role="img" aria-label="\displaystyle \ddot{y} = \frac{d}{dt}\dot{y} = \frac{d}{dt}f(y, t)" fill="currentColor" style="width:10.571em;height:2.601em;vertical-align:-0.887em;display:inline-block;overflow:visible">
@@ -4899,7 +4899,7 @@ iterations = 400000
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 7 Kalman Filter Math</span><div class="bar"><i style="width:88%"></i></div><span class="foot-num">38 / 43</span></footer>
 </section>
 <section class="slide" data-label="39 RK4 in Code" data-screen-label="39 RK4 in Code">
-<header class="head"><span class="kicker">7.6.2 Runge Kutta Methods</span><span class="folio">39</span></header>
+<header class="head"><span class="kicker">Runge Kutta Methods</span><span class="folio">39</span></header>
 <h2 class="title">RK4 in Code</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>RK4 함수로 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -9.346 42.548 11.783" role="img" aria-label="\dot{y} = t\,y^{1/2}" fill="currentColor" style="width:5.148em;height:1.426em;vertical-align:-0.295em;display:inline-block;overflow:visible">
@@ -4974,7 +4974,7 @@ error = np.array(exact) - np.array(ys)
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 7 Kalman Filter Math</span><div class="bar"><i style="width:91%"></i></div><span class="foot-num">39 / 43</span></footer>
 </section>
 <section class="slide" data-label="40 Statistical Inversion" data-screen-label="40 Statistical Inversion">
-<header class="head"><span class="kicker">7.7 Bayesian Filtering</span><span class="folio">40</span></header>
+<header class="head"><span class="kicker">Bayesian Filtering</span><span class="folio">40</span></header>
 <h2 class="title">Statistical Inversion</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;min-height:0;"><div class="cell"><ul class="ul"><li><strong>상태</strong>: 시각 t 의 위치, 속도 등, 예: <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -8.881 57.373 11.871" role="img" aria-label="\mathbf{x}_t = [x_t \ \dot{x}_t]^T" fill="currentColor" style="width:6.942em;height:1.436em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -5120,7 +5120,7 @@ error = np.array(exact) - np.array(ys)
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 7 Kalman Filter Math</span><div class="bar"><i style="width:93%"></i></div><span class="foot-num">40 / 43</span></footer>
 </section>
 <section class="slide" data-label="41 Recursive Bayesian Filter" data-screen-label="41 Recursive Bayesian Filter">
-<header class="head"><span class="kicker">7.7 Bayesian Filtering</span><span class="folio">41</span></header>
+<header class="head"><span class="kicker">Bayesian Filtering</span><span class="folio">41</span></header>
 <h2 class="title">Recursive Bayesian Filter</h2>
 <div class="rule"></div>
 <div class="body"><div class="formula" style="justify-content:space-around"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.972 80.099 10.963" role="img" aria-label="\displaystyle x_k \sim P(x_k \mid x_{k-1})" fill="currentColor" style="width:9.692em;height:1.327em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -5210,7 +5210,7 @@ error = np.array(exact) - np.array(ys)
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 7 Kalman Filter Math</span><div class="bar"><i style="width:95%"></i></div><span class="foot-num">41 / 43</span></footer>
 </section>
 <section class="slide" data-label="42 Kalman Filter as a g-h Filter" data-screen-label="42 Kalman Filter as a g-h Filter">
-<header class="head"><span class="kicker">7.8 Converting Kalman Filter to a g-h Filter</span><span class="folio">42</span></header>
+<header class="head"><span class="kicker">Converting Kalman Filter to a g-h Filter</span><span class="folio">42</span></header>
 <h2 class="title">Kalman Filter as a g-h Filter</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1.2fr 760px;gap:36px;min-height:0;"><div class="cell"><div style="display:flex;flex-direction:column;gap:16px;min-width:0"><div class="formula" style="flex-direction:column;align-items:flex-start;gap:12px;"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -15.349 130.182 25.34" role="img" aria-label="\displaystyle \mu_x = \frac{\sigma_1^2 \mu_2 + \sigma_2^2 \mu_1}{\sigma_1^2 + \sigma_2^2} = \frac{ya + xb}{a + b}" fill="currentColor" style="width:15.752em;height:3.066em;vertical-align:-1.209em;display:inline-block;overflow:visible">
@@ -5482,7 +5482,7 @@ error = np.array(exact) - np.array(ys)
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 7 Kalman Filter Math</span><div class="bar"><i style="width:98%"></i></div><span class="foot-num">42 / 43</span></footer>
 </section>
 <section class="slide" data-label="43 Gain g Varies with Time" data-screen-label="43 Gain g Varies with Time">
-<header class="head"><span class="kicker">7.8 Converting Kalman Filter to a g-h Filter</span><span class="folio">43</span></header>
+<header class="head"><span class="kicker">Converting Kalman Filter to a g-h Filter</span><span class="folio">43</span></header>
 <h2 class="title">Gain g Varies with Time</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>1 차원 Kalman filter 를 반복하며 매 단계 Kalman gain K 와 g_n = (추정 분산) / (측정 분산) 을 함께 기록</li><li>두 값이 모든 단계에서 겹침, g 는 상수가 아니라 분산이 변하는 동안 단계마다 바뀌다가 수렴</li><li>g, h 는 측정과 예측의 분산, 공분산으로 결정, 두 입력의 품질로 정한 비율만큼 둘 사이의 점을 선택</li><li><strong>조건</strong>: 초기 분산 500, process 분산 Q = 1, 측정 분산 R = 10, 30 단계</li></ul><div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxs denser">P = <span class="no">500.</span>            <span class="c"># initial variance</span>

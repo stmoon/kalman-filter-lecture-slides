@@ -173,14 +173,14 @@ figure.fig { align-items: center; }
 <footer class="foot"><span class="foot-sec">Day 2 · Chapter 4 One Dimensional Kalman Filters</span><div class="bar"><i style="width:5%"></i></div><span class="foot-num">02 / 40</span></footer>
 </section>
 <section class="slide" data-label="03 Problem Description" data-screen-label="03 Problem Description">
-<header class="head"><span class="kicker">4.1 Problem Description</span><span class="folio">03</span></header>
+<header class="head"><span class="kicker">Problem Description</span><span class="folio">03</span></header>
 <h2 class="title">Problem Description</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;min-height:0;"><div class="cell"><ul class="ul"><li><strong>센서</strong>: RFID 추적기, 복도 왼쪽 끝에서 개까지의 거리를 m 단위로 보고</li><li><strong>오차</strong>: 23.4 는 23.0 이나 23.7 일 수 있지만 47.6 일 가능성은 매우 낮음</li></ul></div><div class="cell"><ul class="ul"><li><strong>오차 모양</strong>: 참값 양쪽으로 고르게, 작은 오차가 큰 오차보다 흔함 → Gaussian</li><li><strong>예측</strong>: 개의 이동 예측도 넘치거나 모자랄 수 있음 → Gaussian</li></ul></div></div><div class="point"><b>핵심</b>: 측정과 예측 모두의 불확실성을 Gaussian 으로 모델링</div><figure class="fig plain"><img src="./imgs/problem.svg" alt="problem" style="width:1100px"></figure></div>
 <footer class="foot"><span class="foot-sec">Day 2 · Chapter 4 One Dimensional Kalman Filters</span><div class="bar"><i style="width:8%"></i></div><span class="foot-num">03 / 40</span></footer>
 </section>
 <section class="slide" data-label="04 Beliefs as Gaussians" data-screen-label="04 Beliefs as Gaussians">
-<header class="head"><span class="kicker">4.2 Beliefs as Gaussians</span><span class="folio">04</span></header>
+<header class="head"><span class="kicker">Beliefs as Gaussians</span><span class="folio">04</span></header>
 <h2 class="title">Beliefs as Gaussians</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>개 위치의 믿음을 Gaussian 으로 표현, 10 m 에 있다고 믿고 그 믿음의 분산은 1 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -8.61 13.772 9.11" role="img" aria-label="\mathrm{m}^2" fill="currentColor" style="width:1.666em;height:1.102em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -225,7 +225,7 @@ stats.plot_gaussian_pdf(mean=<span class="no">10.</span>, variance=<span class="
 <footer class="foot"><span class="foot-sec">Day 2 · Chapter 4 One Dimensional Kalman Filters</span><div class="bar"><i style="width:10%"></i></div><span class="foot-num">04 / 40</span></footer>
 </section>
 <section class="slide" data-label="05 500 Readings" data-screen-label="05 500 Readings">
-<header class="head"><span class="kicker">4.2 Beliefs as Gaussians</span><span class="folio">05</span></header>
+<header class="head"><span class="kicker">Beliefs as Gaussians</span><span class="folio">05</span></header>
 <h2 class="title">500 Readings</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>정지한 개를 센서로 500 번 읽은 값을 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.972 37.763 10.963" role="img" aria-label="\mathcal{N}(10, 1)" fill="currentColor" style="width:4.569em;height:1.327em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -258,7 +258,7 @@ plt.plot(xs, ys)
 <footer class="foot"><span class="foot-sec">Day 2 · Chapter 4 One Dimensional Kalman Filters</span><div class="bar"><i style="width:12%"></i></div><span class="foot-num">05 / 40</span></footer>
 </section>
 <section class="slide" data-label="06 Histogram to Gaussian" data-screen-label="06 Histogram to Gaussian">
-<header class="head"><span class="kicker">4.3 Tracking with Gaussian Probabilities</span><span class="folio">06</span></header>
+<header class="head"><span class="kicker">Tracking with Gaussian Probabilities</span><span class="folio">06</span></header>
 <h2 class="title">Histogram to Gaussian</h2>
 <div class="rule"></div>
 <div class="body"><table class="tbl"><thead><tr><th style="width:14%"></th><th style="width:30%">Discrete Bayes</th><th style="width:36%">Gaussian</th><th>Step</th></tr></thead><tbody><tr><td>수식</td><td><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.972 55.531 10.963" role="img" aria-label="\bar{\mathbf{x}} = \mathbf{x} \ast f(\mathbf{x})" fill="currentColor" style="width:6.719em;height:1.327em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -351,7 +351,7 @@ plt.plot(xs, ys)
 <footer class="foot"><span class="foot-sec">Day 2 · Chapter 4 One Dimensional Kalman Filters</span><div class="bar"><i style="width:15%"></i></div><span class="foot-num">06 / 40</span></footer>
 </section>
 <section class="slide" data-label="07 Predictions with Gaussians" data-screen-label="07 Predictions with Gaussians">
-<header class="head"><span class="kicker">4.4 Predictions with Gaussians</span><span class="folio">07</span></header>
+<header class="head"><span class="kicker">Predictions with Gaussians</span><span class="folio">07</span></header>
 <h2 class="title">Predictions with Gaussians</h2>
 <div class="rule"></div>
 <div class="body"><div class="formula" style="gap:16px 80px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.419 135.627 10.243" role="img" aria-label="\bar{x}_k = x_{k-1} + v_k \Delta t = x_{k-1} + f_x" fill="currentColor" style="width:16.411em;height:1.239em;vertical-align:-0.342em;display:inline-block;overflow:visible">
@@ -542,7 +542,7 @@ plt.plot(xs, ys)
 <footer class="foot"><span class="foot-sec">Day 2 · Chapter 4 One Dimensional Kalman Filters</span><div class="bar"><i style="width:18%"></i></div><span class="foot-num">07 / 40</span></footer>
 </section>
 <section class="slide" data-label="08 predict() with namedtuple" data-screen-label="08 predict() with namedtuple">
-<header class="head"><span class="kicker">4.4 Predictions with Gaussians</span><span class="folio">08</span></header>
+<header class="head"><span class="kicker">Predictions with Gaussians</span><span class="folio">08</span></header>
 <h2 class="title">predict() with namedtuple</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>Gaussian 을 이름 붙은 tuple 로 구현, g.mean, g.var 또는 g[0], g[1] 로 접근</li><li>predict() 는 위치와 이동의 두 Gaussian 을 더해 prior 계산, 평균과 분산을 각각 더함</li><li>결과 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.972 50.493 10.963" role="img" aria-label="\mathcal{N}(25, 0.53)" fill="currentColor" style="width:6.110em;height:1.327em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -636,7 +636,7 @@ predict(pos, move)</pre></div><div class="cell"><div class="run-slot" data-key="
 <footer class="foot"><span class="foot-sec">Day 2 · Chapter 4 One Dimensional Kalman Filters</span><div class="bar"><i style="width:20%"></i></div><span class="foot-num">08 / 40</span></footer>
 </section>
 <section class="slide" data-label="09 Updates with Gaussians" data-screen-label="09 Updates with Gaussians">
-<header class="head"><span class="kicker">4.5 Updates with Gaussians</span><span class="folio">09</span></header>
+<header class="head"><span class="kicker">Updates with Gaussians</span><span class="folio">09</span></header>
 <h2 class="title">Updates with Gaussians</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>prior 와 likelihood 를 모두 Gaussian 으로 두고 두 Gaussian 의 곱으로 update 구현</li><li>결과 평균은 prior 와 측정의 가중합, 분산은 두 분산의 결합으로 평균 값과 무관</li><li><strong>조건</strong>: prior <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -8.61 49.981 11.6" role="img" aria-label="\mathcal{N}(10, 0.2^2)" fill="currentColor" style="width:6.048em;height:1.404em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -834,7 +834,7 @@ gaussian.__repr__ = lambda s: '𝒩(μ={:.3f}, 𝜎²={:.3f})'.format(s[0], s[1]
 <footer class="foot"><span class="foot-sec">Day 2 · Chapter 4 One Dimensional Kalman Filters</span><div class="bar"><i style="width:22%"></i></div><span class="foot-num">09 / 40</span></footer>
 </section>
 <section class="slide" data-label="10 Measure Twice" data-screen-label="10 Measure Twice">
-<header class="head"><span class="kicker">4.5.1 Understanding Gaussian Multiplication</span><span class="folio">10</span></header>
+<header class="head"><span class="kicker">Understanding Gaussian Multiplication</span><span class="folio">10</span></header>
 <h2 class="title">Measure Twice</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.972 37.763 10.963" role="img" aria-label="\mathcal{N}(10, 1)" fill="currentColor" style="width:4.569em;height:1.327em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -903,7 +903,7 @@ def update(prior, likelihood):
 <footer class="foot"><span class="foot-sec">Day 2 · Chapter 4 One Dimensional Kalman Filters</span><div class="bar"><i style="width:25%"></i></div><span class="foot-num">10 / 40</span></footer>
 </section>
 <section class="slide" data-label="11 Two Different Measurements" data-screen-label="11 Two Different Measurements">
-<header class="head"><span class="kicker">4.5.1 Understanding Gaussian Multiplication</span><span class="folio">11</span></header>
+<header class="head"><span class="kicker">Understanding Gaussian Multiplication</span><span class="folio">11</span></header>
 <h2 class="title">Two Different Measurements</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>두 사람이 탁자와 벽 사이 거리를 각각 10.2 m, 9.7 m 로 측정한 상황</li><li>두 측정을 똑같이 신뢰하면 곱의 평균은 9.95 m, 측정과 prior 의 결합도 같은 수학</li><li><strong>조건</strong>: z1 = <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.972 45.512 10.963" role="img" aria-label="\mathcal{N}(10.2, 1)" fill="currentColor" style="width:5.507em;height:1.327em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -982,7 +982,7 @@ def update(prior, likelihood):
 <footer class="foot"><span class="foot-sec">Day 2 · Chapter 4 One Dimensional Kalman Filters</span><div class="bar"><i style="width:28%"></i></div><span class="foot-num">11 / 40</span></footer>
 </section>
 <section class="slide" data-label="12 Accurate and Inaccurate" data-screen-label="12 Accurate and Inaccurate">
-<header class="head"><span class="kicker">4.5.1 Understanding Gaussian Multiplication</span><span class="folio">12</span></header>
+<header class="head"><span class="kicker">Understanding Gaussian Multiplication</span><span class="folio">12</span></header>
 <h2 class="title">Accurate and Inaccurate</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>부정확한 prior 와 정확한 측정, 정확도를 서로 바꾼 경우의 곱을 위아래로 비교</li><li>결과는 두 입력보다 높고 좁으며 분산이 작은 쪽에 가까움, 더 확신하는 값에 큰 가중치</li><li><strong>조건</strong>: 위: prior <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.972 48.279 10.963" role="img" aria-label="\mathcal{N}(8.5, 1.5)" fill="currentColor" style="width:5.842em;height:1.327em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -1067,7 +1067,7 @@ def plot_products(g1, g2):
 <footer class="foot"><span class="foot-sec">Day 2 · Chapter 4 One Dimensional Kalman Filters</span><div class="bar"><i style="width:30%"></i></div><span class="foot-num">12 / 40</span></footer>
 </section>
 <section class="slide" data-label="13 Interactive Example" data-screen-label="13 Interactive Example">
-<header class="head"><span class="kicker">4.5.2 Interactive Example</span><span class="folio">13</span></header>
+<header class="head"><span class="kicker">Interactive Example</span><span class="folio">13</span></header>
 <h2 class="title">Interactive Example</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>두 Gaussian 의 평균과 분산을 슬라이더로 바꾸면 곱을 다시 계산해 그림을 새로 그림</li><li>곱의 평균이 항상 두 평균 사이에 있고 분산이 작은 쪽으로 끌려가는지 관찰</li><li><strong>조건</strong>: m1 5 ~ 10, m2 10 ~ 15, v1, v2 0.1 ~ 2</li></ul><div style="display:grid;grid-template-columns:661px 1fr;gap:28px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxs denser"><span class="k">from</span> ipywidgets <span class="k">import</span> interact
@@ -1111,7 +1111,7 @@ def plot_products(g1, g2):
 <footer class="foot"><span class="foot-sec">Day 2 · Chapter 4 One Dimensional Kalman Filters</span><div class="bar"><i style="width:32%"></i></div><span class="foot-num">13 / 40</span></footer>
 </section>
 <section class="slide" data-label="14 Simulating the Dog" data-screen-label="14 Simulating the Dog">
-<header class="head"><span class="kicker">4.6 First Kalman Filter</span><span class="folio">14</span></header>
+<header class="head"><span class="kicker">First Kalman Filter</span><span class="folio">14</span></header>
 <h2 class="title">Simulating the Dog</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>필터를 시험하기 위해 복도를 걷는 개의 이동과 잡음 섞인 RFID 측정을 시뮬레이션</li><li>process_var 는 개 이동의 분산, sensor_var 는 측정 하나의 분산, 측정 10 개 생성</li><li><strong>조건</strong>: process_var 1, sensor_var 2, 초기 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -8.61 42.232 11.6" role="img" aria-label="\mathcal{N}(0, 20^2)" fill="currentColor" style="width:5.110em;height:1.404em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -1180,7 +1180,7 @@ def update(prior, likelihood):
 <footer class="foot"><span class="foot-sec">Day 2 · Chapter 4 One Dimensional Kalman Filters</span><div class="bar"><i style="width:35%"></i></div><span class="foot-num">14 / 40</span></footer>
 </section>
 <section class="slide" data-label="15 The Kalman Filter Loop" data-screen-label="15 The Kalman Filter Loop">
-<header class="head"><span class="kicker">4.6 First Kalman Filter</span><span class="folio">15</span></header>
+<header class="head"><span class="kicker">First Kalman Filter</span><span class="folio">15</span></header>
 <h2 class="title">The Kalman Filter Loop</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>측정마다 predict 로 prior, 측정으로 likelihood 를 만들고 곱으로 update 하는 첫 필터</li><li>첫 prior 분산 401 이 측정 후 1.99 로 급감, 센서 분산 2 보다 약간 작은 값</li><li>이후 분산은 1.0 으로 수렴, 최종 추정이 실제 위치에 가까움</li><li><strong>조건</strong>: 초기 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.972 42.744 10.963" role="img" aria-label="\mathcal{N}(0, 400)" fill="currentColor" style="width:5.172em;height:1.327em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -1283,7 +1283,7 @@ zs = [dog.move_and_sense() for _ in range(10)]
 <footer class="foot"><span class="foot-sec">Day 2 · Chapter 4 One Dimensional Kalman Filters</span><div class="bar"><i style="width:38%"></i></div><span class="foot-num">15 / 40</span></footer>
 </section>
 <section class="slide" data-label="16 Prediction, Measurement, Estimate" data-screen-label="16 Prediction, Measurement, Estimate">
-<header class="head"><span class="kicker">4.6 First Kalman Filter</span><span class="folio">16</span></header>
+<header class="head"><span class="kicker">First Kalman Filter</span><span class="folio">16</span></header>
 <h2 class="title">Prediction, Measurement, Estimate</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>슬라이더 단계마다 prediction(삼각형), 측정(원), 추정(선)을 차례로 표시</li><li>추정은 항상 prediction 과 측정 사이, 두 값 밖을 고르는 것은 의미가 없음</li><li><strong>조건</strong>: step 1 ~ 30, 측정 1 개당 3 단계 (prediction, 측정, 추정)</li></ul><div style="display:grid;grid-template-columns:779px 1fr;gap:28px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxxs tightest"><span class="k">from</span> ipywidgets <span class="k">import</span> interact, IntSlider
@@ -1340,7 +1340,7 @@ zs = [dog.move_and_sense() for _ in range(10)]
 <footer class="foot"><span class="foot-sec">Day 2 · Chapter 4 One Dimensional Kalman Filters</span><div class="bar"><i style="width:40%"></i></div><span class="foot-num">16 / 40</span></footer>
 </section>
 <section class="slide" data-label="17 Code Walkthrough" data-screen-label="17 Code Walkthrough">
-<header class="head"><span class="kicker">4.7 Code Walkthrough</span><span class="folio">17</span></header>
+<header class="head"><span class="kicker">Code Walkthrough</span><span class="folio">17</span></header>
 <h2 class="title">Code Walkthrough</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;min-height:0;"><div class="cell"><ul class="ul"><li><strong>process_var = 1</strong>: 모델 오차, 개는 언덕이나 다람쥐 때문에 예측대로 움직이지 않음</li><li><strong>sensor_var = 2</strong>: 측정 하나의 분산</li><li><strong>x = <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -8.61 42.232 11.6" role="img" aria-label="\mathcal{N}(0, 20^2)" fill="currentColor" style="width:5.110em;height:1.404em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -1390,7 +1390,7 @@ zs = [dog.move_and_sense() for _ in range(10)]
 <footer class="foot"><span class="foot-sec">Day 2 · Chapter 4 One Dimensional Kalman Filters</span><div class="bar"><i style="width:42%"></i></div><span class="foot-num">17 / 40</span></footer>
 </section>
 <section class="slide" data-label="18 Five Lines of Math" data-screen-label="18 Five Lines of Math">
-<header class="head"><span class="kicker">4.7 Code Walkthrough</span><span class="folio">18</span></header>
+<header class="head"><span class="kicker">Code Walkthrough</span><span class="folio">18</span></header>
 <h2 class="title">Five Lines of Math</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>함수 호출 없이 predict 3 줄, update 2 줄의 수식만으로 같은 필터를 다시 작성</li><li>대부분의 코드는 초기화, 저장, 그림이고 필터링 자체는 5 줄의 단순한 수식</li><li><strong>조건</strong>: 같은 측정 zs, 초기 위치 0, 분산 400, 속도 1</li></ul><div style="display:grid;grid-template-columns:833px 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxs denser">pos, var = <span class="no">0.</span>, <span class="no">20.</span>**<span class="no">2</span>
@@ -1443,7 +1443,7 @@ zs = [dog.move_and_sense() for _ in range(10)]
 <footer class="foot"><span class="foot-sec">Day 2 · Chapter 4 One Dimensional Kalman Filters</span><div class="bar"><i style="width:45%"></i></div><span class="foot-num">18 / 40</span></footer>
 </section>
 <section class="slide" data-label="19 More Data" data-screen-label="19 More Data">
-<header class="head"><span class="kicker">4.7 Code Walkthrough</span><span class="folio">19</span></header>
+<header class="head"><span class="kicker">Code Walkthrough</span><span class="folio">19</span></header>
 <h2 class="title">More Data</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>측정을 25 개로 늘리고 분산도 키워 필터 성능과 분산 변화를 그래프로 확인</li><li>분산은 몇 단계 만에 2.16 으로 수렴, 표준편차 1.47 m 로 센서의 2.12 m 보다 작음</li><li><strong>조건</strong>: process_var 2, sensor_var 4.5, 초기 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.972 42.744 10.963" role="img" aria-label="\mathcal{N}(0, 400)" fill="currentColor" style="width:5.172em;height:1.327em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -1505,7 +1505,7 @@ def update(prior, likelihood):
 <footer class="foot"><span class="foot-sec">Day 2 · Chapter 4 One Dimensional Kalman Filters</span><div class="bar"><i style="width:48%"></i></div><span class="foot-num">19 / 40</span></footer>
 </section>
 <section class="slide" data-label="20 Modify Variance Values" data-screen-label="20 Modify Variance Values">
-<header class="head"><span class="kicker">4.7.1 Exercise: Modify Variance Values</span><span class="folio">20</span></header>
+<header class="head"><span class="kicker">Exercise: Modify Variance Values</span><span class="folio">20</span></header>
 <h2 class="title">Modify Variance Values</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>process_var 와 sensor_var 를 바꿔 가며 수렴 분산이 어느 쪽에 더 좌우되는지 비교</li><li>측정값과 무관하게 분산만 계산, sensor_var = 2 쪽이 더 작은 값으로 수렴</li><li><strong>조건</strong>: (process_var, sensor_var) = (40, 2), (2, 40), 50 단계</li></ul><div style="display:grid;grid-template-columns:1004px 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxs denser"><span class="k">def</span> <span class="fn">converged_variance</span>(process_var, sensor_var, N=<span class="no">50</span>):
@@ -1541,7 +1541,7 @@ def update(prior, likelihood):
 <footer class="foot"><span class="foot-sec">Day 2 · Chapter 4 One Dimensional Kalman Filters</span><div class="bar"><i style="width:50%"></i></div><span class="foot-num">20 / 40</span></footer>
 </section>
 <section class="slide" data-label="21 Kalman Gain" data-screen-label="21 Kalman Gain">
-<header class="head"><span class="kicker">4.8 Kalman Gain</span><span class="folio">21</span></header>
+<header class="head"><span class="kicker">Kalman Gain</span><span class="folio">21</span></header>
 <h2 class="title">Kalman Gain</h2>
 <div class="rule"></div>
 <div class="body"><div class="formula" style="gap:16px 24px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -11.957 181.316 18.933" role="img" aria-label="\mu = \frac{\bar{\sigma}^2 \mu_z + \sigma_z^2 \bar{\mu}}{\bar{\sigma}^2 + \sigma_z^2} = \left( \frac{\bar{\sigma}^2}{\bar{\sigma}^2 + \sigma_z^2} \right) \mu_z + \left( \frac{\sigma_z^2}{\bar{\sigma}^2 + \sigma_z^2} \right) \bar{\mu}" fill="currentColor" style="width:21.939em;height:2.291em;vertical-align:-0.844em;display:inline-block;overflow:visible">
@@ -1738,7 +1738,7 @@ def update(prior, likelihood):
 <footer class="foot"><span class="foot-sec">Day 2 · Chapter 4 One Dimensional Kalman Filters</span><div class="bar"><i style="width:52%"></i></div><span class="foot-num">21 / 40</span></footer>
 </section>
 <section class="slide" data-label="22 Kalman Form" data-screen-label="22 Kalman Form">
-<header class="head"><span class="kicker">4.8 Kalman Gain</span><span class="folio">22</span></header>
+<header class="head"><span class="kicker">Kalman Gain</span><span class="folio">22</span></header>
 <h2 class="title">Kalman Form</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>update 를 residual y = z - x 와 Kalman gain K = P / (P + R) 로 다시 작성</li><li>prior 에 K y 를 더해 posterior 계산, Bayesian 곱과 수학적으로 동일한 결과</li><li><strong>조건</strong>: P 상태 분산, Q 공정 잡음, R 측정 잡음, prior <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.972 50.493 10.963" role="img" aria-label="\mathcal{N}(25, 0.53)" fill="currentColor" style="width:6.110em;height:1.327em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -1808,14 +1808,14 @@ gaussian.__repr__ = lambda s: '𝒩(μ={:.3f}, 𝜎²={:.3f})'.format(s[0], s[1]
 <footer class="foot"><span class="foot-sec">Day 2 · Chapter 4 One Dimensional Kalman Filters</span><div class="bar"><i style="width:55%"></i></div><span class="foot-num">22 / 40</span></footer>
 </section>
 <section class="slide" data-label="23 Full Description of the Algorithm" data-screen-label="23 Full Description of the Algorithm">
-<header class="head"><span class="kicker">4.9 Full Description of the Algorithm</span><span class="folio">23</span></header>
+<header class="head"><span class="kicker">Full Description of the Algorithm</span><span class="folio">23</span></header>
 <h2 class="title">Full Description of the Algorithm</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:24px;min-height:0;"><div class="cell"><div class="card tight"><h3 class="card-h sky">Initialization</h3><ul class="ul"><li>필터 상태 초기화</li><li>상태에 대한 믿음 초기화</li></ul></div></div><div class="cell"><div class="card tight"><h3 class="card-h coral">Predict</h3><ul class="ul"><li>시스템 거동으로 다음 시점 상태 예측</li><li>예측 불확실성을 반영해 믿음 조정</li></ul></div></div><div class="cell"><div class="card good tight"><h3 class="card-h leaf">Update</h3><ul class="ul"><li>측정과 그 정확도 획득</li><li>추정 상태와 측정의 residual 계산</li><li>측정과 예측 중 더 정확한 쪽으로 비율 계산</li><li>그 비율로 예측과 측정 사이에 상태 설정</li><li>측정 확실성에 따라 믿음 갱신</li></ul></div></div></div><div class="point"><b>핵심</b>: 이 필터들은 모두 같은 알고리즘, 수학적 세부만 다름, 수식이 무엇을 왜 계산하는지 이해</div></div>
 <footer class="foot"><span class="foot-sec">Day 2 · Chapter 4 One Dimensional Kalman Filters</span><div class="bar"><i style="width:57%"></i></div><span class="foot-num">23 / 40</span></footer>
 </section>
 <section class="slide" data-label="24 Univariate Kalman Filter Equations" data-screen-label="24 Univariate Kalman Filter Equations">
-<header class="head"><span class="kicker">4.9 Full Description of the Algorithm</span><span class="folio">24</span></header>
+<header class="head"><span class="kicker">Full Description of the Algorithm</span><span class="folio">24</span></header>
 <h2 class="title">Univariate Kalman Filter Equations</h2>
 <div class="rule"></div>
 <div class="body"><table class="tbl"><thead><tr><th style="width:16%"></th><th style="width:24%">Equation</th><th style="width:30%">Implementation</th><th>Kalman Form</th></tr></thead><tbody><tr><td><strong>Predict</strong></td><td><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.419 47.741 9.856" role="img" aria-label="\bar{x} = x + f_x" fill="currentColor" style="width:5.777em;height:1.193em;vertical-align:-0.295em;display:inline-block;overflow:visible">
@@ -2099,7 +2099,7 @@ gaussian.__repr__ = lambda s: '𝒩(μ={:.3f}, 𝜎²={:.3f})'.format(s[0], s[1]
 <footer class="foot"><span class="foot-sec">Day 2 · Chapter 4 One Dimensional Kalman Filters</span><div class="bar"><i style="width:60%"></i></div><span class="foot-num">24 / 40</span></footer>
 </section>
 <section class="slide" data-label="25 Uniform versus Gaussian" data-screen-label="25 Uniform versus Gaussian">
-<header class="head"><span class="kicker">4.10 Comparison with g-h and discrete Bayes Filters</span><span class="folio">25</span></header>
+<header class="head"><span class="kicker">Comparison with g-h and discrete Bayes Filters</span><span class="folio">25</span></header>
 <h2 class="title">Uniform versus Gaussian</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>g-h 필터의 오차 막대는 범위 안 모든 값이 같은 확률인 uniform 분포</li><li>같은 두 저울을 Gaussian 으로 그려 오차 막대와 함께 비교</li><li>대부분의 센서는 참값 근처를 더 자주 보고하므로 Gaussian 이 더 현실적</li><li><strong>조건</strong>: 저울 A <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -8.61 49.981 11.6" role="img" aria-label="\mathcal{N}(80, 1.5^2)" fill="currentColor" style="width:6.048em;height:1.404em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -2164,7 +2164,7 @@ plt.errorbar(<span class="no">85</span>, [<span class="no">0.015</span>], xerr=[
 <footer class="foot"><span class="foot-sec">Day 2 · Chapter 4 One Dimensional Kalman Filters</span><div class="bar"><i style="width:62%"></i></div><span class="foot-num">25 / 40</span></footer>
 </section>
 <section class="slide" data-label="26 Discrete Distribution" data-screen-label="26 Discrete Distribution">
-<header class="head"><span class="kicker">4.10 Comparison with g-h and discrete Bayes Filters</span><span class="folio">26</span></header>
+<header class="head"><span class="kicker">Comparison with g-h and discrete Bayes Filters</span><span class="folio">26</span></header>
 <h2 class="title">Discrete Distribution</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>이산 분포는 범위를 구간으로 나눠 확률을 할당, 합만 1 이면 임의의 값 가능</li><li>무작위 확률로 만든 막대를 같은 저울의 Gaussian, 오차 막대와 함께 표시</li><li>어떤 센서 오차도 표현 가능하지만 반복문 계산, 결과의 해석적 분석이 어려움</li><li><strong>조건</strong>: 저울 A <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -8.61 49.981 11.6" role="img" aria-label="\mathcal{N}(80, 1.5^2)" fill="currentColor" style="width:6.048em;height:1.404em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -2207,7 +2207,7 @@ plt.xlim(<span class="no">75</span>, <span class="no">85</span>);</pre></div><di
 <footer class="foot"><span class="foot-sec">Day 2 · Chapter 4 One Dimensional Kalman Filters</span><div class="bar"><i style="width:65%"></i></div><span class="foot-num">26 / 40</span></footer>
 </section>
 <section class="slide" data-label="27 Designing a Thermometer Filter" data-screen-label="27 Designing a Thermometer Filter">
-<header class="head"><span class="kicker">4.11 Introduction to Designing a Filter</span><span class="folio">27</span></header>
+<header class="head"><span class="kicker">Introduction to Designing a Filter</span><span class="folio">27</span></header>
 <h2 class="title">Designing a Thermometer Filter</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>온도를 전압으로 출력하는 온도계, white noise 표준편차 0.13 V 의 측정 생성</li><li>전압 변화를 감지할 센서가 없으므로 짧은 시간 동안 전압이 일정하다고 예측</li><li>process_var 가 0 이면 확신이 과해져 실제 변화를 무시하는 smug filter 가 됨</li><li><strong>조건</strong>: process_var = <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -8.61 23.181 9.11" role="img" aria-label="0.05^2" fill="currentColor" style="width:2.805em;height:1.102em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -2237,7 +2237,7 @@ plt.ylabel(<span class="s">'volts'</span>);</pre></div><div class="cell"><div cl
 <footer class="foot"><span class="foot-sec">Day 2 · Chapter 4 One Dimensional Kalman Filters</span><div class="bar"><i style="width:68%"></i></div><span class="foot-num">27 / 40</span></footer>
 </section>
 <section class="slide" data-label="28 Thermometer Filter" data-screen-label="28 Thermometer Filter">
-<header class="head"><span class="kicker">4.11 Introduction to Designing a Filter</span><span class="folio">28</span></header>
+<header class="head"><span class="kicker">Introduction to Designing a Filter</span><span class="folio">28</span></header>
 <h2 class="title">Thermometer Filter</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>초기값 25 V 를 큰 분산으로 두고 이동 0 의 predict, update 를 50 번 반복</li><li>큰 잡음에도 빠르게 실제 전압 근처로 수렴, 이후에는 prediction 을 더 신뢰</li><li><strong>조건</strong>: 초기 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.972 52.707 10.963" role="img" aria-label="\mathcal{N}(25, 1000)" fill="currentColor" style="width:6.378em;height:1.327em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -2336,7 +2336,7 @@ zs = [volt(actual_voltage, voltage_std) for i in range(N)]
 <footer class="foot"><span class="foot-sec">Day 2 · Chapter 4 One Dimensional Kalman Filters</span><div class="bar"><i style="width:70%"></i></div><span class="foot-num">28 / 40</span></footer>
 </section>
 <section class="slide" data-label="29 Sensor Specifications" data-screen-label="29 Sensor Specifications">
-<header class="head"><span class="kicker">4.11 Introduction to Designing a Filter</span><span class="folio">29</span></header>
+<header class="head"><span class="kicker">Introduction to Designing a Filter</span><span class="folio">29</span></header>
 <h2 class="title">Sensor Specifications</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;min-height:0;"><div class="cell"><div class="card"><h3 class="card-h sky">Spec sheet</h3><ul class="ul"><li>값은 보통 최대치, 최소 그 정도 성능이라는 보증</li><li>고가 장비는 개별 시험 결과 동봉, 저가 센서는 표본만 시험</li><li>범위가 최대치인지 3 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -4.789 7.05 5.289" role="img" aria-label="\sigma" fill="currentColor" style="width:0.853em;height:0.640em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -2364,7 +2364,7 @@ zs = [volt(actual_voltage, voltage_std) for i in range(N)]
 <footer class="foot"><span class="foot-sec">Day 2 · Chapter 4 One Dimensional Kalman Filters</span><div class="bar"><i style="width:72%"></i></div><span class="foot-num">29 / 40</span></footer>
 </section>
 <section class="slide" data-label="30 Extreme Amounts of Noise" data-screen-label="30 Extreme Amounts of Noise">
-<header class="head"><span class="kicker">4.12 Example: Extreme Amounts of Noise</span><span class="folio">30</span></header>
+<header class="head"><span class="kicker">Example: Extreme Amounts of Noise</span><span class="folio">30</span></header>
 <h2 class="title">Extreme Amounts of Noise</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>센서 표준편차를 300 m 로 키워 측정이 실제 위치를 덮을 정도의 잡음 주입</li><li>그래도 필터 출력은 거의 직선, process 오차가 작아 직선인 예측을 크게 신뢰</li><li><strong>조건</strong>: sensor_var <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -8.61 20.413 9.11" role="img" aria-label="300^2" fill="currentColor" style="width:2.470em;height:1.102em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -2430,7 +2430,7 @@ def update(prior, likelihood):
 <footer class="foot"><span class="foot-sec">Day 2 · Chapter 4 One Dimensional Kalman Filters</span><div class="bar"><i style="width:75%"></i></div><span class="foot-num">30 / 40</span></footer>
 </section>
 <section class="slide" data-label="31 Incorrect Process Variance" data-screen-label="31 Incorrect Process Variance">
-<header class="head"><span class="kicker">4.13 Example: Incorrect Process Variance</span><span class="folio">31</span></header>
+<header class="head"><span class="kicker">Example: Incorrect Process Variance</span><span class="folio">31</span></header>
 <h2 class="title">Incorrect Process Variance</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>개 속도가 매 단계 조금씩 증가하는데 process 분산은 0.001 로 매우 작게 설정</li><li>측정은 속도 변화를 분명히 보이지만 예측이 완벽하다고 들은 필터는 이를 무시</li><li><strong>조건</strong>: 속도 매 단계 0.04 증가, process_var 0.001, sensor_var 20, 100 회</li></ul><div style="display:grid;grid-template-columns:851px 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxxs tightest">sensor_var = <span class="no">20.</span>
@@ -2467,7 +2467,7 @@ def update(prior, likelihood):
 <footer class="foot"><span class="foot-sec">Day 2 · Chapter 4 One Dimensional Kalman Filters</span><div class="bar"><i style="width:78%"></i></div><span class="foot-num">31 / 40</span></footer>
 </section>
 <section class="slide" data-label="32 Bad Initial Estimate" data-screen-label="32 Bad Initial Estimate">
-<header class="head"><span class="kicker">4.14 Example: Bad Initial Estimate</span><span class="folio">32</span></header>
+<header class="head"><span class="kicker">Example: Bad Initial Estimate</span><span class="folio">32</span></header>
 <h2 class="title">Bad Initial Estimate</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>실제 시작은 0 m 인데 초기 위치를 1000 m 로 잘못 잡고 필터 실행</li><li>첫 단계에서 약 50 m 로 이동 후 5 ~ 10 번 뒤 수렴, 분산이 맞으면 초기값 영향은 작음</li><li><strong>조건</strong>: 초기 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.972 57.688 10.963" role="img" aria-label="\mathcal{N}(1000, 500)" fill="currentColor" style="width:6.980em;height:1.327em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -2534,7 +2534,7 @@ def update(prior, likelihood):
 <footer class="foot"><span class="foot-sec">Day 2 · Chapter 4 One Dimensional Kalman Filters</span><div class="bar"><i style="width:80%"></i></div><span class="foot-num">32 / 40</span></footer>
 </section>
 <section class="slide" data-label="33 Large Noise and Bad Initial Estimate" data-screen-label="33 Large Noise and Bad Initial Estimate">
-<header class="head"><span class="kicker">4.15 Example: Large Noise and Bad Initial Estimate</span><span class="folio">33</span></header>
+<header class="head"><span class="kicker">Example: Large Noise and Bad Initial Estimate</span><span class="folio">33</span></header>
 <h2 class="title">Large Noise and Bad Initial Estimate</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>센서 분산 30000 의 큰 잡음과 1000 m 의 잘못된 초기값을 동시에 적용</li><li>1000 번 갱신 중 수백 번을 반복해야 쓸 만한 추정, 잡음과 초기값이 모두 나쁘면 한계</li><li><strong>조건</strong>: sensor_var 30000, 초기 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.972 57.688 10.963" role="img" aria-label="\mathcal{N}(1000, 500)" fill="currentColor" style="width:6.980em;height:1.327em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -2592,7 +2592,7 @@ def update(prior, likelihood):
 <footer class="foot"><span class="foot-sec">Day 2 · Chapter 4 One Dimensional Kalman Filters</span><div class="bar"><i style="width:82%"></i></div><span class="foot-num">33 / 40</span></footer>
 </section>
 <section class="slide" data-label="34 First Measurement as Initial Value" data-screen-label="34 First Measurement as Initial Value">
-<header class="head"><span class="kicker">4.15 Example: Large Noise and Bad Initial Estimate</span><span class="folio">34</span></header>
+<header class="head"><span class="kicker">Example: Large Noise and Bad Initial Estimate</span><span class="folio">34</span></header>
 <h2 class="title">First Measurement as Initial Value</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>같은 조건에서 초기 위치만 첫 측정 zs[0] 으로 바꿔 필터 실행</li><li>간단한 변경으로 결과가 크게 개선, 실제 센서의 잡음은 이 예제보다 훨씬 작음</li><li><strong>조건</strong>: sensor_var 30000, 초기 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.972 58.02 10.963" role="img" aria-label="\mathcal{N}(zs[0], 500)" fill="currentColor" style="width:7.020em;height:1.327em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -2654,7 +2654,7 @@ def update(prior, likelihood):
 <footer class="foot"><span class="foot-sec">Day 2 · Chapter 4 One Dimensional Kalman Filters</span><div class="bar"><i style="width:85%"></i></div><span class="foot-num">34 / 40</span></footer>
 </section>
 <section class="slide" data-label="35 Interactive Plots" data-screen-label="35 Interactive Plots">
-<header class="head"><span class="kicker">4.16 Exercise: Interactive Plots</span><span class="folio">35</span></header>
+<header class="head"><span class="kicker">Exercise: Interactive Plots</span><span class="folio">35</span></header>
 <h2 class="title">Interactive Plots</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>시작 위치, 센서 잡음, 속도, process 잡음을 인자로 받아 필터를 실행하고 그리는 함수</li><li>seed(303) 로 매번 같은 난수를 써서 파라미터만 바꾼 결과를 서로 비교 가능</li><li><strong>조건</strong>: 20 단계, 초기 믿음 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.972 47.726 10.963" role="img" aria-label="\mathcal{N}(0, 1000)" fill="currentColor" style="width:5.775em;height:1.327em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -2713,7 +2713,7 @@ from numpy.random import seed
 <footer class="foot"><span class="foot-sec">Day 2 · Chapter 4 One Dimensional Kalman Filters</span><div class="bar"><i style="width:88%"></i></div><span class="foot-num">35 / 40</span></footer>
 </section>
 <section class="slide" data-label="36 Interactive Plots" data-screen-label="36 Interactive Plots">
-<header class="head"><span class="kicker">4.16 Exercise: Interactive Plots</span><span class="folio">36</span></header>
+<header class="head"><span class="kicker">Exercise: Interactive Plots</span><span class="folio">36</span></header>
 <h2 class="title">Interactive Plots</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>슬라이더로 시작 위치, 센서 잡음, 속도, process 잡음을 바꾸며 출력 변화 관찰</li><li>process 잡음은 개가 매 단계 경로를 벗어나는 정도로 개 위치에 더해짐</li><li><strong>조건</strong>: seed 고정, start_pos -10 ~ 10, sensor_noise 0 ~ 100, process_noise 0 ~ 40</li></ul><div style="display:grid;grid-template-columns:898px 1fr;gap:28px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxs denser"><span class="k">from</span> ipywidgets <span class="k">import</span> interact, FloatSlider
@@ -2758,7 +2758,7 @@ def plot_kalman_filter(start_pos, sensor_noise,
 <footer class="foot"><span class="foot-sec">Day 2 · Chapter 4 One Dimensional Kalman Filters</span><div class="bar"><i style="width:90%"></i></div><span class="foot-num">36 / 40</span></footer>
 </section>
 <section class="slide" data-label="37 Nonlinear Systems" data-screen-label="37 Nonlinear Systems">
-<header class="head"><span class="kicker">4.17 Exercise - Nonlinear Systems</span><span class="folio">37</span></header>
+<header class="head"><span class="kicker">Exercise - Nonlinear Systems</span><span class="folio">37</span></header>
 <h2 class="title">Nonlinear Systems</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>선형 식(prior 는 두 Gaussian 의 합, posterior 는 곱)의 필터를 sin 곡선 측정에 적용</li><li>필터 출력이 sin 파형을 얼마나 따라가는지, 초기값 100 에서 어떻게 움직이는지 관찰</li><li><strong>조건</strong>: 측정 2 sin(i/3) + 잡음, 모델은 속도 1 의 등속, 초기 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.972 52.707 10.963" role="img" aria-label="\mathcal{N}(100, 500)" fill="currentColor" style="width:6.378em;height:1.327em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -2815,14 +2815,14 @@ def update(prior, likelihood):
 <footer class="foot"><span class="foot-sec">Day 2 · Chapter 4 One Dimensional Kalman Filters</span><div class="bar"><i style="width:92%"></i></div><span class="foot-num">37 / 40</span></footer>
 </section>
 <section class="slide" data-label="38 Why It Fails" data-screen-label="38 Why It Fails">
-<header class="head"><span class="kicker">4.17.2 Discussion</span><span class="folio">38</span></header>
+<header class="head"><span class="kicker">Discussion</span><span class="folio">38</span></header>
 <h2 class="title">Why It Fails</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;min-height:0;"><div class="cell"><ul class="ul"><li><strong>결과</strong>: sin 파형과 거의 닮지 않은 출력, 적당한 잡음에도 나쁜 결과</li><li><strong>원인</strong>: 계속 가속하는 신호, 모델은 등속 가정, 필터는 수학적으로 항상 뒤처짐</li></ul></div><div class="cell"><ul class="ul"><li><strong>g-h 필터와 같은 구조</strong>: 예측과 측정 사이의 값을 고르는 구조의 한계</li><li><strong>필요</strong>: 비선형 시스템을 다루는 별도 기법 필요</li></ul></div></div><div class="point"><b>핵심</b>: 선형 시스템에서는 큰 잡음도 견디지만, 모델과 다른 비선형 거동에는 취약</div><figure class="fig plain"><img src="./imgs/predict_update.svg" alt="predict_update" style="width:1050px"></figure></div>
 <footer class="foot"><span class="foot-sec">Day 2 · Chapter 4 One Dimensional Kalman Filters</span><div class="bar"><i style="width:95%"></i></div><span class="foot-num">38 / 40</span></footer>
 </section>
 <section class="slide" data-label="39 Fixed Gain Filters" data-screen-label="39 Fixed Gain Filters">
-<header class="head"><span class="kicker">4.18 Fixed Gain Filters</span><span class="folio">39</span></header>
+<header class="head"><span class="kicker">Fixed Gain Filters</span><span class="folio">39</span></header>
 <h2 class="title">Fixed Gain Filters</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>저가 임베디드 프로세서는 부동소수점 회로가 없어 이 간단한 식도 부담</li><li>분산이 상수면 분산과 gain 이 상수로 수렴, 그 gain 을 미리 구해 코드에 고정</li><li><strong>조건</strong>: K = 0.13232, 측정 분산 4.5, process 분산 2, 측정 40 개</li></ul><div style="display:grid;grid-template-columns:719px 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxxs tightest">vel, dt = <span class="no">1.</span>, <span class="no">1.</span>
@@ -2845,7 +2845,7 @@ plt.legend(loc=<span class="no">4</span>);</pre></div><div class="cell"><div cla
 <footer class="foot"><span class="foot-sec">Day 2 · Chapter 4 One Dimensional Kalman Filters</span><div class="bar"><i style="width:98%"></i></div><span class="foot-num">39 / 40</span></footer>
 </section>
 <section class="slide" data-label="40 Summary" data-screen-label="40 Summary">
-<header class="head"><span class="kicker">4.20 Summary</span><span class="folio">40</span></header>
+<header class="head"><span class="kicker">Summary</span><span class="folio">40</span></header>
 <h2 class="title">Summary</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;min-height:0;"><div class="cell"><ul class="ul"><li><strong>흐름</strong>: g-h 필터 → discrete Bayes 필터 → 1 차원 Kalman filter, 같은 알고리즘과 추론</li><li><strong>표현</strong>: 믿음을 Gaussian 으로, 예측은 합, 갱신은 곱</li></ul></div><div class="cell"><ul class="ul"><li><strong>Kalman gain</strong>: prior 와 측정의 분산 비율로 residual 위의 위치 결정</li><li><strong>확장</strong>: 다차원 Kalman filter, 더 정교하지만 성능도 크게 향상</li></ul></div></div><div class="point"><b>결론</b>: 예측과 측정 사이의 어딘가를 고르는 하나의 기법, 필터마다 수학만 다름</div><figure class="fig plain"><img src="./imgs/predict_update.svg" alt="predict_update" style="width:1050px"></figure></div>

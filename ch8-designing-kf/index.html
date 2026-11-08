@@ -387,21 +387,21 @@ figure.fig { align-items: center; }
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:2%"></i></div><span class="foot-num">01 / 49</span></footer>
 </section>
 <section class="slide" data-label="02 From Textbook Problems to Real Problems" data-screen-label="02 From Textbook Problems to Real Problems">
-<header class="head"><span class="kicker">8.1 Introduction</span><span class="folio">02</span></header>
+<header class="head"><span class="kicker">Introduction</span><span class="folio">02</span></header>
 <h2 class="title">From Textbook Problems to Real Problems</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul"><li><strong>지금까지</strong>: 몇 줄의 코드로 쉽게 풀리는 교과서형 문제, 실제 문제는 이보다 훨씬 복잡</li><li><strong>이번 내용</strong>: 2D 로봇 추적에서 시작해 센서 추가, 제어 입력, 필터 성능 평가 방법까지 확장</li><li><strong>한계</strong>: 실제 세계는 비선형, Kalman filter 는 선형, 약한 비선형은 견디지만 항상 통하지는 않음</li></ul><div class="point"><b>핵심</b>: 실제 문제의 필터 설계와 성능 평가, 선형 필터가 통하는 경우와 실패하는 경우의 구분</div><figure class="fig plain"><img src="./imgs/intro.svg" alt="intro" style="width:100%"></figure></div>
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:4%"></i></div><span class="foot-num">02 / 49</span></footer>
 </section>
 <section class="slide" data-label="03 Robot in a 2D Field" data-screen-label="03 Robot in a 2D Field">
-<header class="head"><span class="kicker">8.2 Tracking a Robot</span><span class="folio">03</span></header>
+<header class="head"><span class="kicker">Tracking a Robot</span><span class="folio">03</span></header>
 <h2 class="title">Robot in a 2D Field</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul"><li><strong>상황</strong>: 들판이나 창고 같은 2D 공간에서 직선으로 이동하는 로봇 추적</li><li><strong>센서</strong>: 매 시각 t 마다 잡음 섞인 위치 (x, y) 를 cm 단위로 출력, 필터 상태는 m 단위</li><li><strong>설계 순서</strong>: 상태 변수, F, Q, B, H, R, 초기 조건을 차례로 정한 뒤 필터 구현</li></ul><div class="point"><b>핵심</b>: 1 차원 개 추적과 같은 구조, 측정과 상태가 2 차원으로 늘어난 문제</div><figure class="fig plain"><img src="./imgs/robot_field.svg" alt="robot_field" style="width:100%"></figure></div>
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:6%"></i></div><span class="foot-num">03 / 49</span></footer>
 </section>
 <section class="slide" data-label="04 Simulating the Position Sensor" data-screen-label="04 Simulating the Position Sensor">
-<header class="head"><span class="kicker">8.2 Tracking a Robot</span><span class="folio">04</span></header>
+<header class="head"><span class="kicker">Tracking a Robot</span><span class="folio">04</span></header>
 <h2 class="title">Simulating the Position Sensor</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>초기 위치, 속도, 잡음 표준편차로 센서를 만들고 read() 를 부를 때마다 한 단계 이동 후 측정 반환</li><li>측정 50 개가 기울기 1/2 의 직선 위에 퍼짐, 속도 (2, 1) 과 일치하고 시작점도 (6, 4) 근처</li><li>아직 교과서형 데이터, 실제 세계의 복잡한 거동은 이후 예제에서 차례로 추가</li><li><strong>조건</strong>: pos = (4, 3), vel = (2, 1), noise_std = 1, 측정 50 개</li></ul><div style="display:grid;grid-template-columns:829px 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxxs denser"><span class="k">class</span> <span class="fn">PosSensor</span>(object):
@@ -421,7 +421,7 @@ plots.plot_measurements(ps[:, <span class="no">0</span>], ps[:, <span class="no"
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:8%"></i></div><span class="foot-num">04 / 49</span></footer>
 </section>
 <section class="slide" data-label="05 Choose the State Variables" data-screen-label="05 Choose the State Variables">
-<header class="head"><span class="kicker">8.2.1 Choose the State Variables</span><span class="folio">05</span></header>
+<header class="head"><span class="kicker">Choose the State Variables</span><span class="folio">05</span></header>
 <h2 class="title">Choose the State Variables</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 900px;gap:40px;min-height:0;"><div class="cell"><div style="display:flex;flex-direction:column;gap:24px;min-width:0"><ul class="ul"><li><strong>관측 변수</strong>: 센서가 주는 x, y 두 값</li><li><strong>숨은 변수</strong>: 속도, 고정 주기 측정이면 연속 측정의 차이가 곧 속도</li><li><strong>순서</strong>: 위치와 속도를 이웃하게 두면 x 와 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.154 6.694 7.654" role="img" aria-label="\dot{x}" fill="currentColor" style="width:0.810em;height:0.926em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -461,10 +461,10 @@ plots.plot_measurements(ps[:, <span class="no">0</span>], ps[:, <span class="no"
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:10%"></i></div><span class="foot-num">05 / 49</span></footer>
 </section>
 <section class="slide" data-label="06 Design F and Q" data-screen-label="06 Design F and Q">
-<header class="head"><span class="kicker">8.2 Tracking a Robot</span><span class="folio">06</span></header>
+<header class="head"><span class="kicker">Tracking a Robot</span><span class="folio">06</span></header>
 <h2 class="title">Design F and Q</h2>
 <div class="rule"></div>
-<div class="body"><div style="display:grid;grid-template-columns:1.22fr 1fr;gap:32px;min-height:0;"><div class="cell"><div class="card"><h3 class="card-h sky">8.2.2 State transition F</h3><div style="display:flex;flex-direction:column;gap:20px;min-width:0"><div class="formula" style="gap:16px 40px;font-size:34px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -31.384 57.102 57.787" role="img" aria-label="\begin{aligned} x &amp;= x + \Delta t \, \dot{x} \\ \dot{x} &amp;= \dot{x} \\ y &amp;= y + \Delta t \, \dot{y} \\ \dot{y} &amp;= \dot{y} \end{aligned}" fill="currentColor" style="width:6.909em;height:6.992em;vertical-align:-3.195em;display:inline-block;overflow:visible">
+<div class="body"><div style="display:grid;grid-template-columns:1.22fr 1fr;gap:32px;min-height:0;"><div class="cell"><div class="card"><h3 class="card-h sky">State transition F</h3><div style="display:flex;flex-direction:column;gap:20px;min-width:0"><div class="formula" style="gap:16px 40px;font-size:34px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -31.384 57.102 57.787" role="img" aria-label="\begin{aligned} x &amp;= x + \Delta t \, \dot{x} \\ \dot{x} &amp;= \dot{x} \\ y &amp;= y + \Delta t \, \dot{y} \\ \dot{y} &amp;= \dot{y} \end{aligned}" fill="currentColor" style="width:6.909em;height:6.992em;vertical-align:-3.195em;display:inline-block;overflow:visible">
 <defs>
 <path id='tb32224b2721d-g1-1' d='M4.403-6.954C4.334-7.083 4.314-7.133 4.144-7.133S3.955-7.083 3.885-6.954L.518-.199C.468-.11 .468-.09 .468-.08C.468 0 .528 0 .687 0H7.601C7.761 0 7.821 0 7.821-.08C7.821-.09 7.821-.11 7.771-.199L4.403-6.954ZM3.826-6.137L6.506-.757H1.136L3.826-6.137Z'/>
 <path id='tb32224b2721d-g1-43' d='M4.075-2.291H6.854C6.994-2.291 7.183-2.291 7.183-2.491S6.994-2.69 6.854-2.69H4.075V-5.479C4.075-5.619 4.075-5.808 3.875-5.808S3.676-5.619 3.676-5.479V-2.69H.887C.747-2.69 .558-2.69 .558-2.491S.747-2.291 .887-2.291H3.676V.498C3.676 .638 3.676 .827 3.875 .827S4.075 .638 4.075 .498V-2.291Z'/>
@@ -576,7 +576,7 @@ plots.plot_measurements(ps[:, <span class="no">0</span>], ps[:, <span class="no"
 <use x='123.191' y='-2.491' xlink:href='#t07453a64bce3-g2-55'/>
 <use x='123.191' y='3.885' xlink:href='#t07453a64bce3-g2-53'/>
 </g>
-</svg></div><ul class="ul"><li>이전 상태에 F 를 곱해 다음 상태 계산</li><li>행과 열의 배치는 상태 변수 순서를 그대로 따름</li></ul></div></div></div><div class="cell"><div class="card"><h3 class="card-h sky">8.2.3 Process noise Q</h3><div style="display:flex;flex-direction:column;gap:20px;min-width:0"><div class="formula" style="gap:16px 32px;font-size:34px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -24.674 92.035 44.367" role="img" aria-label="q = \begin{bmatrix} \dfrac{\Delta t^4}{4} &amp; \dfrac{\Delta t^3}{2} \\ \dfrac{\Delta t^3}{2} &amp; \Delta t^2 \end{bmatrix} \sigma^2" fill="currentColor" style="width:11.136em;height:5.368em;vertical-align:-2.383em;display:inline-block;overflow:visible">
+</svg></div><ul class="ul"><li>이전 상태에 F 를 곱해 다음 상태 계산</li><li>행과 열의 배치는 상태 변수 순서를 그대로 따름</li></ul></div></div></div><div class="cell"><div class="card"><h3 class="card-h sky">Process noise Q</h3><div style="display:flex;flex-direction:column;gap:20px;min-width:0"><div class="formula" style="gap:16px 32px;font-size:34px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -24.674 92.035 44.367" role="img" aria-label="q = \begin{bmatrix} \dfrac{\Delta t^4}{4} &amp; \dfrac{\Delta t^3}{2} \\ \dfrac{\Delta t^3}{2} &amp; \Delta t^2 \end{bmatrix} \sigma^2" fill="currentColor" style="width:11.136em;height:5.368em;vertical-align:-2.383em;display:inline-block;overflow:visible">
 <defs>
 <path id='t5fa7e9c5e9e7-g2-50' d='M3.522-1.269H3.285C3.264-1.116 3.194-.704 3.103-.635C3.048-.593 2.511-.593 2.413-.593H1.13C1.862-1.241 2.106-1.437 2.525-1.764C3.041-2.176 3.522-2.608 3.522-3.271C3.522-4.115 2.783-4.631 1.89-4.631C1.025-4.631 .439-4.024 .439-3.382C.439-3.027 .739-2.992 .809-2.992C.976-2.992 1.179-3.11 1.179-3.361C1.179-3.487 1.13-3.731 .767-3.731C.983-4.226 1.458-4.38 1.785-4.38C2.483-4.38 2.845-3.836 2.845-3.271C2.845-2.664 2.413-2.183 2.19-1.932L.509-.272C.439-.209 .439-.195 .439 0H3.313L3.522-1.269Z'/>
 <path id='t5fa7e9c5e9e7-g2-51' d='M1.904-2.329C2.448-2.329 2.838-1.953 2.838-1.206C2.838-.342 2.336-.084 1.932-.084C1.653-.084 1.039-.16 .746-.572C1.074-.586 1.151-.816 1.151-.962C1.151-1.186 .983-1.346 .767-1.346C.572-1.346 .377-1.227 .377-.941C.377-.286 1.102 .139 1.946 .139C2.915 .139 3.585-.509 3.585-1.206C3.585-1.75 3.138-2.294 2.371-2.455C3.103-2.72 3.368-3.243 3.368-3.668C3.368-4.219 2.734-4.631 1.96-4.631S.593-4.254 .593-3.696C.593-3.459 .746-3.327 .955-3.327C1.172-3.327 1.311-3.487 1.311-3.682C1.311-3.884 1.172-4.031 .955-4.045C1.2-4.352 1.681-4.428 1.939-4.428C2.253-4.428 2.692-4.275 2.692-3.668C2.692-3.375 2.594-3.055 2.413-2.838C2.183-2.573 1.988-2.559 1.639-2.538C1.465-2.525 1.451-2.525 1.416-2.518C1.402-2.518 1.346-2.504 1.346-2.427C1.346-2.329 1.409-2.329 1.527-2.329H1.904Z'/>
@@ -648,10 +648,10 @@ plots.plot_measurements(ps[:, <span class="no">0</span>], ps[:, <span class="no"
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:12%"></i></div><span class="foot-num">06 / 49</span></footer>
 </section>
 <section class="slide" data-label="07 Design B, H, R, and Initial Conditions" data-screen-label="07 Design B, H, R, and Initial Conditions">
-<header class="head"><span class="kicker">8.2 Tracking a Robot</span><span class="folio">07</span></header>
+<header class="head"><span class="kicker">Tracking a Robot</span><span class="folio">07</span></header>
 <h2 class="title">Design B, H, R, and Initial Conditions</h2>
 <div class="rule"></div>
-<div class="body"><table class="tbl"><thead><tr><th style="width:16%"></th><th style="width:44%">Design</th><th>의미</th></tr></thead><tbody><tr><td><strong>8.2.4 B</strong></td><td><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.308 27.321 7.808" role="img" aria-label="B = 0" fill="currentColor" style="width:3.306em;height:0.945em;vertical-align:-0.060em;display:inline-block;overflow:visible">
+<div class="body"><table class="tbl"><thead><tr><th style="width:16%"></th><th style="width:44%">Design</th><th>의미</th></tr></thead><tbody><tr><td><strong>B</strong></td><td><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.308 27.321 7.808" role="img" aria-label="B = 0" fill="currentColor" style="width:3.306em;height:0.945em;vertical-align:-0.060em;display:inline-block;overflow:visible">
 <defs>
 <path id='t2e8ff4ab26f6-g1-48' d='M4.583-3.188C4.583-3.985 4.533-4.782 4.184-5.519C3.726-6.476 2.909-6.635 2.491-6.635C1.893-6.635 1.166-6.376 .757-5.45C.438-4.762 .389-3.985 .389-3.188C.389-2.441 .428-1.544 .837-.787C1.265 .02 1.993 .219 2.481 .219C3.019 .219 3.776 .01 4.214-.936C4.533-1.624 4.583-2.401 4.583-3.188ZM2.481 0C2.092 0 1.504-.249 1.325-1.205C1.215-1.803 1.215-2.72 1.215-3.308C1.215-3.945 1.215-4.603 1.295-5.141C1.484-6.326 2.232-6.416 2.481-6.416C2.809-6.416 3.467-6.237 3.656-5.25C3.756-4.692 3.756-3.935 3.756-3.308C3.756-2.56 3.756-1.883 3.646-1.245C3.497-.299 2.929 0 2.481 0Z'/>
 <path id='t2e8ff4ab26f6-g1-61' d='M6.844-3.258C6.994-3.258 7.183-3.258 7.183-3.457S6.994-3.656 6.854-3.656H.887C.747-3.656 .558-3.656 .558-3.457S.747-3.258 .897-3.258H6.844ZM6.854-1.325C6.994-1.325 7.183-1.325 7.183-1.524S6.994-1.724 6.844-1.724H.897C.747-1.724 .558-1.724 .558-1.524S.747-1.325 .887-1.325H6.854Z'/>
@@ -662,7 +662,7 @@ plots.plot_measurements(ps[:, <span class="no">0</span>], ps[:, <span class="no"
 <use x='10.824' y='0' xlink:href='#t2e8ff4ab26f6-g1-61'/>
 <use x='21.34' y='0' xlink:href='#t2e8ff4ab26f6-g1-48'/>
 </g>
-</svg></td><td>아직 제어 입력이 없음, 기본값 0 을 그대로 사용</td></tr><tr><td><strong>8.2.5 H</strong></td><td><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -14.946 103.629 24.911" role="img" aria-label="H = \begin{bmatrix} 100 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 100 &amp; 0 \end{bmatrix}" fill="currentColor" style="width:12.539em;height:3.014em;vertical-align:-1.206em;display:inline-block;overflow:visible">
+</svg></td><td>아직 제어 입력이 없음, 기본값 0 을 그대로 사용</td></tr><tr><td><strong>H</strong></td><td><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -14.946 103.629 24.911" role="img" aria-label="H = \begin{bmatrix} 100 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 100 &amp; 0 \end{bmatrix}" fill="currentColor" style="width:12.539em;height:3.014em;vertical-align:-1.206em;display:inline-block;overflow:visible">
 <defs>
 <path id='td27459ee8277-g2-20' d='M2.491 23.502H5.111V22.954H3.039V.149H5.111V-.399H2.491V23.502Z'/>
 <path id='td27459ee8277-g2-21' d='M2.212 22.954H.139V23.502H2.76V-.399H.139V.149H2.212V22.954Z'/>
@@ -689,7 +689,7 @@ plots.plot_measurements(ps[:, <span class="no">0</span>], ps[:, <span class="no"
 <use x='92.39' y='5.878' xlink:href='#td27459ee8277-g1-48'/>
 <use x='97.371' y='-14.047' xlink:href='#td27459ee8277-g2-21'/>
 </g>
-</svg></td><td>(2×1) = (2×4)(4×1) 로 크기 결정, 상태 m 를 측정 cm 로 변환</td></tr><tr><td><strong>8.2.6 R</strong></td><td><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -15.062 148.434 25.143" role="img" aria-label="R = \begin{bmatrix} \sigma_x^2 &amp; \sigma_y \sigma_x \\ \sigma_x \sigma_y &amp; \sigma_y^2 \end{bmatrix} = \begin{bmatrix} 100 &amp; 0 \\ 0 &amp; 100 \end{bmatrix}" fill="currentColor" style="width:17.961em;height:3.042em;vertical-align:-1.220em;display:inline-block;overflow:visible">
+</svg></td><td>(2×1) = (2×4)(4×1) 로 크기 결정, 상태 m 를 측정 cm 로 변환</td></tr><tr><td><strong>R</strong></td><td><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -15.062 148.434 25.143" role="img" aria-label="R = \begin{bmatrix} \sigma_x^2 &amp; \sigma_y \sigma_x \\ \sigma_x \sigma_y &amp; \sigma_y^2 \end{bmatrix} = \begin{bmatrix} 100 &amp; 0 \\ 0 &amp; 100 \end{bmatrix}" fill="currentColor" style="width:17.961em;height:3.042em;vertical-align:-1.220em;display:inline-block;overflow:visible">
 <defs>
 <path id='t552917e3dd9f-g1-120' d='M1.736-.739C1.667-.502 1.437-.126 1.081-.126C1.06-.126 .851-.126 .704-.223C.99-.314 1.011-.565 1.011-.607C1.011-.76 .893-.865 .732-.865C.537-.865 .335-.697 .335-.439C.335-.091 .725 .07 1.067 .07C1.388 .07 1.674-.133 1.848-.425C2.015-.056 2.399 .07 2.678 .07C3.48 .07 3.905-.802 3.905-.997C3.905-1.088 3.815-1.088 3.794-1.088C3.696-1.088 3.689-1.053 3.661-.969C3.515-.488 3.096-.126 2.706-.126C2.427-.126 2.28-.314 2.28-.579C2.28-.76 2.448-1.395 2.643-2.169C2.783-2.706 3.096-2.88 3.327-2.88C3.34-2.88 3.557-2.88 3.703-2.783C3.48-2.72 3.396-2.525 3.396-2.399C3.396-2.246 3.515-2.141 3.675-2.141S4.066-2.273 4.066-2.566C4.066-2.957 3.619-3.075 3.34-3.075C2.992-3.075 2.713-2.845 2.559-2.58C2.434-2.866 2.113-3.075 1.723-3.075C.941-3.075 .495-2.218 .495-2.008C.495-1.918 .593-1.918 .614-1.918C.704-1.918 .711-1.946 .746-2.036C.921-2.58 1.36-2.88 1.702-2.88C1.932-2.88 2.12-2.755 2.12-2.42C2.12-2.28 2.036-1.932 1.974-1.695L1.736-.739Z'/>
 <path id='t552917e3dd9f-g1-121' d='M3.877-2.629C3.905-2.727 3.905-2.741 3.905-2.783C3.905-2.922 3.794-3.006 3.675-3.006C3.599-3.006 3.466-2.971 3.389-2.838C3.368-2.797 3.313-2.573 3.278-2.434L3.131-1.855C3.089-1.688 2.873-.809 2.852-.732C2.845-.732 2.538-.126 1.995-.126C1.52-.126 1.52-.579 1.52-.704C1.52-1.081 1.681-1.52 1.89-2.057C1.974-2.28 2.008-2.364 2.008-2.483C2.008-2.817 1.723-3.075 1.346-3.075C.642-3.075 .328-2.127 .328-2.008C.328-1.918 .425-1.918 .446-1.918C.544-1.918 .551-1.953 .572-2.029C.746-2.608 1.046-2.88 1.325-2.88C1.444-2.88 1.499-2.803 1.499-2.636C1.499-2.476 1.437-2.322 1.402-2.232C1.067-1.381 .997-1.123 .997-.816C.997-.697 .997-.37 1.269-.146C1.485 .035 1.778 .07 1.967 .07C2.246 .07 2.497-.035 2.727-.244C2.636 .139 2.559 .432 2.267 .781C2.078 .997 1.799 1.227 1.43 1.227C1.381 1.227 1.053 1.227 .907 .997C1.283 .955 1.283 .621 1.283 .614C1.283 .391 1.081 .349 1.011 .349C.837 .349 .607 .488 .607 .809C.607 1.165 .941 1.423 1.437 1.423C2.141 1.423 2.999 .879 3.215 .007L3.877-2.629Z'/>
@@ -740,7 +740,7 @@ plots.plot_measurements(ps[:, <span class="no">0</span>], ps[:, <span class="no"
 <g id='tf17a6772e585-page1'>
 <use x='0' y='0' xlink:href='#tf17a6772e585-g0-27'/>
 </g>
-</svg> = 10 cm</td></tr><tr><td><strong>8.2.7 x, P</strong></td><td><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -11.271 135.299 15.258" role="img" aria-label="\mathbf{x} = \begin{bmatrix} 0 &amp; 0 &amp; 0 &amp; 0 \end{bmatrix}^T, \ P = 500 I" fill="currentColor" style="width:16.371em;height:1.846em;vertical-align:-0.482em;display:inline-block;overflow:visible">
+</svg> = 10 cm</td></tr><tr><td><strong>x, P</strong></td><td><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -11.271 135.299 15.258" role="img" aria-label="\mathbf{x} = \begin{bmatrix} 0 &amp; 0 &amp; 0 &amp; 0 \end{bmatrix}^T, \ P = 500 I" fill="currentColor" style="width:16.371em;height:1.846em;vertical-align:-0.482em;display:inline-block;overflow:visible">
 <defs>
 <path id='taee3e24e8ff4-g1-59' d='M2.022-.01C2.022-.667 1.773-1.056 1.385-1.056C1.056-1.056 .857-.807 .857-.528C.857-.259 1.056 0 1.385 0C1.504 0 1.634-.04 1.733-.13C1.763-.149 1.773-.159 1.783-.159S1.803-.149 1.803-.01C1.803 .727 1.455 1.325 1.126 1.654C1.016 1.763 1.016 1.783 1.016 1.813C1.016 1.883 1.066 1.923 1.116 1.923C1.225 1.923 2.022 1.156 2.022-.01Z'/>
 <path id='taee3e24e8ff4-g1-73' d='M3.726-6.037C3.816-6.396 3.846-6.496 4.633-6.496C4.872-6.496 4.951-6.496 4.951-6.685C4.951-6.804 4.842-6.804 4.802-6.804C4.513-6.804 3.776-6.775 3.487-6.775C3.188-6.775 2.461-6.804 2.162-6.804C2.092-6.804 1.963-6.804 1.963-6.605C1.963-6.496 2.052-6.496 2.242-6.496C2.66-6.496 2.929-6.496 2.929-6.306C2.929-6.257 2.929-6.237 2.909-6.147L1.564-.777C1.474-.408 1.445-.309 .658-.309C.428-.309 .339-.309 .339-.11C.339 0 .458 0 .488 0C.777 0 1.504-.03 1.793-.03C2.092-.03 2.829 0 3.128 0C3.208 0 3.328 0 3.328-.189C3.328-.309 3.248-.309 3.029-.309C2.849-.309 2.8-.309 2.6-.329C2.391-.349 2.351-.389 2.351-.498C2.351-.578 2.371-.658 2.391-.727L3.726-6.037Z'/>
@@ -775,7 +775,7 @@ plots.plot_measurements(ps[:, <span class="no">0</span>], ps[:, <span class="no"
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:14%"></i></div><span class="foot-num">07 / 49</span></footer>
 </section>
 <section class="slide" data-label="08 Implement the Filter" data-screen-label="08 Implement the Filter">
-<header class="head"><span class="kicker">8.2.8 Implement the Filter</span><span class="folio">08</span></header>
+<header class="head"><span class="kicker">Implement the Filter</span><span class="folio">08</span></header>
 <h2 class="title">Implement the Filter</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>설계한 행렬을 tracker1() 로 묶고 직선으로 이동하는 로봇의 cm 측정 zs 30 개를 batch_filter 로 처리</li><li>필터 출력(파란 선)이 잡음 섞인 측정 위를 매끄럽게 따라감, 측정은 cm 이므로 100 으로 나눠 m 로 표시</li><li><strong>조건</strong>: zs: PosSensor((0, 0), (60, 30), noise_std=10) 의 측정, R_std = 10 cm, Q_std = 0.04 m, dt = 1 s</li></ul><div style="display:grid;grid-template-columns:949px 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxxs tightest"><span class="k">def</span> <span class="fn">tracker1</span>():
@@ -804,7 +804,7 @@ zs = np.array([sensor.read() for _ in range(30)])
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:16%"></i></div><span class="foot-num">08 / 49</span></footer>
 </section>
 <section class="slide" data-label="09 Covariance Ellipses" data-screen-label="09 Covariance Ellipses">
-<header class="head"><span class="kicker">8.2.8 Implement the Filter</span><span class="folio">09</span></header>
+<header class="head"><span class="kicker">Implement the Filter</span><span class="folio">09</span></header>
 <h2 class="title">Covariance Ellipses</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>각 단계의 x, y 공분산으로 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -6.92 12.032 7.42" role="img" aria-label="3\sigma" fill="currentColor" style="width:1.456em;height:0.898em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -874,7 +874,7 @@ mu, cov, _, _ = robot_tracker.batch_filter(zs)
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:18%"></i></div><span class="foot-num">09 / 49</span></footer>
 </section>
 <section class="slide" data-label="10 Filter Order" data-screen-label="10 Filter Order">
-<header class="head"><span class="kicker">8.3 Filter Order</span><span class="folio">10</span></header>
+<header class="head"><span class="kicker">Filter Order</span><span class="folio">10</span></header>
 <h2 class="title">Filter Order</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul"><li><strong>차수</strong>: 시스템을 정확히 모델링하는 데 필요한 미분의 개수, 다항식의 차수와 같음</li><li><strong>0, 1, 2 차</strong>: 변하지 않는 시스템(예: 건물 높이), constant velocity 모델, constant acceleration 모델</li></ul><div class="formula" style="gap:16px 96px;font-size:32px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -6.92 42.67 7.42" role="img" aria-label="x = 312.5" fill="currentColor" style="width:5.163em;height:0.898em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -974,7 +974,7 @@ mu, cov, _, _ = robot_tracker.batch_filter(zs)
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:20%"></i></div><span class="foot-num">10 / 49</span></footer>
 </section>
 <section class="slide" data-label="11 Constant Velocity Object" data-screen-label="11 Constant Velocity Object">
-<header class="head"><span class="kicker">8.3 Filter Order</span><span class="folio">11</span></header>
+<header class="head"><span class="kicker">Filter Order</span><span class="folio">11</span></header>
 <h2 class="title">Constant Velocity Object</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>매 단계 속도에 작은 잡음을 더하는 등속 물체와 표준편차 1 m 의 위치 센서를 시뮬레이션</li><li>궤적(검은 점선)이 완전한 직선이 아님, 길을 걷는 사람이나 바람에 흔들리는 항공기에 해당하는 등속 시스템</li><li><strong>조건</strong>: x0 = 0, vel = 1 m/s, 속도 잡음 0.06, 측정 잡음 1 m, 50 단계, seed 124</li></ul><div style="display:grid;grid-template-columns:877px 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxxs tightest"><span class="k">class</span> <span class="fn">ConstantVelocityObject</span>(object):
@@ -1000,10 +1000,10 @@ plt.legend(loc=<span class="s">'best'</span>);</pre></div><div class="cell"><div
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:22%"></i></div><span class="foot-num">11 / 49</span></footer>
 </section>
 <section class="slide" data-label="12 Zero, First, and Second Order Kalman Filters" data-screen-label="12 Zero, First, and Second Order Kalman Filters">
-<header class="head"><span class="kicker">8.3 Filter Order</span><span class="folio">12</span></header>
+<header class="head"><span class="kicker">Filter Order</span><span class="folio">12</span></header>
 <h2 class="title">Zero, First, and Second Order Kalman Filters</h2>
 <div class="rule"></div>
-<div class="body"><div style="display:grid;grid-template-columns:0.8fr 1fr 1.25fr;gap:28px;min-height:0;"><div class="cell"><div class="card tight"><h3 class="card-h sky">8.3.1 Zero order</h3><div class="formula" style="flex-direction:column;align-items:flex-start;gap:18px;font-size:32px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -8.968 34.326 12.955" role="img" aria-label="\mathbf{x} = \begin{bmatrix} x \end{bmatrix}" fill="currentColor" style="width:4.153em;height:1.568em;vertical-align:-0.482em;display:inline-block;overflow:visible">
+<div class="body"><div style="display:grid;grid-template-columns:0.8fr 1fr 1.25fr;gap:28px;min-height:0;"><div class="cell"><div class="card tight"><h3 class="card-h sky">Zero order</h3><div class="formula" style="flex-direction:column;align-items:flex-start;gap:18px;font-size:32px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -8.968 34.326 12.955" role="img" aria-label="\mathbf{x} = \begin{bmatrix} x \end{bmatrix}" fill="currentColor" style="width:4.153em;height:1.568em;vertical-align:-0.482em;display:inline-block;overflow:visible">
 <defs>
 <path id='te9ddb9827a2e-g1-120' d='M3.328-3.009C3.387-3.268 3.616-4.184 4.314-4.184C4.364-4.184 4.603-4.184 4.812-4.055C4.533-4.005 4.334-3.756 4.334-3.517C4.334-3.357 4.443-3.168 4.712-3.168C4.932-3.168 5.25-3.347 5.25-3.746C5.25-4.264 4.663-4.403 4.324-4.403C3.746-4.403 3.397-3.875 3.278-3.646C3.029-4.304 2.491-4.403 2.202-4.403C1.166-4.403 .598-3.118 .598-2.869C.598-2.77 .697-2.77 .717-2.77C.797-2.77 .827-2.79 .847-2.879C1.186-3.935 1.843-4.184 2.182-4.184C2.371-4.184 2.72-4.095 2.72-3.517C2.72-3.208 2.55-2.54 2.182-1.146C2.022-.528 1.674-.11 1.235-.11C1.176-.11 .946-.11 .737-.239C.986-.289 1.205-.498 1.205-.777C1.205-1.046 .986-1.126 .837-1.126C.538-1.126 .289-.867 .289-.548C.289-.09 .787 .11 1.225 .11C1.883 .11 2.242-.588 2.271-.648C2.391-.279 2.75 .11 3.347 .11C4.374 .11 4.941-1.176 4.941-1.425C4.941-1.524 4.852-1.524 4.822-1.524C4.732-1.524 4.712-1.484 4.692-1.415C4.364-.349 3.686-.11 3.367-.11C2.979-.11 2.819-.428 2.819-.767C2.819-.986 2.879-1.205 2.989-1.644L3.328-3.009Z'/>
 <path id='te9ddb9827a2e-g3-2' d='M2.012 11.547H3.925V11.148H2.411V0H3.925V-.399H2.012V11.547Z'/>
@@ -1048,7 +1048,7 @@ plt.legend(loc=<span class="s">'best'</span>);</pre></div><div class="cell"><div
 <use x='26.525' y='-.1' xlink:href='#t0b225afbca5d-g1-49'/>
 <use x='31.507' y='-8.07' xlink:href='#t0b225afbca5d-g2-3'/>
 </g>
-</svg></div><ul class="ul"><li>위치만 추적, 다음 위치 = 현재 위치</li></ul></div></div><div class="cell"><div class="card tight"><h3 class="card-h sky">8.3.2 First order</h3><div class="formula" style="flex-direction:column;align-items:flex-start;gap:18px;font-size:32px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -14.946 36.54 24.911" role="img" aria-label="\mathbf{x} = \begin{bmatrix} x \\ \dot{x} \end{bmatrix}" fill="currentColor" style="width:4.421em;height:3.014em;vertical-align:-1.206em;display:inline-block;overflow:visible">
+</svg></div><ul class="ul"><li>위치만 추적, 다음 위치 = 현재 위치</li></ul></div></div><div class="cell"><div class="card tight"><h3 class="card-h sky">First order</h3><div class="formula" style="flex-direction:column;align-items:flex-start;gap:18px;font-size:32px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -14.946 36.54 24.911" role="img" aria-label="\mathbf{x} = \begin{bmatrix} x \\ \dot{x} \end{bmatrix}" fill="currentColor" style="width:4.421em;height:3.014em;vertical-align:-1.206em;display:inline-block;overflow:visible">
 <defs>
 <path id='tae50a2e51490-g1-120' d='M3.328-3.009C3.387-3.268 3.616-4.184 4.314-4.184C4.364-4.184 4.603-4.184 4.812-4.055C4.533-4.005 4.334-3.756 4.334-3.517C4.334-3.357 4.443-3.168 4.712-3.168C4.932-3.168 5.25-3.347 5.25-3.746C5.25-4.264 4.663-4.403 4.324-4.403C3.746-4.403 3.397-3.875 3.278-3.646C3.029-4.304 2.491-4.403 2.202-4.403C1.166-4.403 .598-3.118 .598-2.869C.598-2.77 .697-2.77 .717-2.77C.797-2.77 .827-2.79 .847-2.879C1.186-3.935 1.843-4.184 2.182-4.184C2.371-4.184 2.72-4.095 2.72-3.517C2.72-3.208 2.55-2.54 2.182-1.146C2.022-.528 1.674-.11 1.235-.11C1.176-.11 .946-.11 .737-.239C.986-.289 1.205-.498 1.205-.777C1.205-1.046 .986-1.126 .837-1.126C.538-1.126 .289-.867 .289-.548C.289-.09 .787 .11 1.225 .11C1.883 .11 2.242-.588 2.271-.648C2.391-.279 2.75 .11 3.347 .11C4.374 .11 4.941-1.176 4.941-1.425C4.941-1.524 4.852-1.524 4.822-1.524C4.732-1.524 4.712-1.484 4.692-1.415C4.364-.349 3.686-.11 3.367-.11C2.979-.11 2.819-.428 2.819-.767C2.819-.986 2.879-1.205 2.989-1.644L3.328-3.009Z'/>
 <path id='tae50a2e51490-g3-20' d='M2.491 23.502H5.111V22.954H3.039V.149H5.111V-.399H2.491V23.502Z'/>
@@ -1105,7 +1105,7 @@ plt.legend(loc=<span class="s">'best'</span>);</pre></div><div class="cell"><div
 <use x='41.469' y='-.1' xlink:href='#t05b97e9297ab-g1-48'/>
 <use x='46.451' y='-8.07' xlink:href='#t05b97e9297ab-g2-3'/>
 </g>
-</svg></div><ul class="ul"><li>위치와 속도, 등속 모델</li></ul></div></div><div class="cell"><div class="card tight"><h3 class="card-h sky">8.3.3 Second order</h3><div class="formula" style="flex-direction:column;align-items:flex-start;gap:18px;font-size:32px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -20.924 39.308 36.866" role="img" aria-label="\mathbf{x} = \begin{bmatrix} x \\ \dot{x} \\ \ddot{x} \end{bmatrix}" fill="currentColor" style="width:4.756em;height:4.461em;vertical-align:-1.929em;display:inline-block;overflow:visible">
+</svg></div><ul class="ul"><li>위치와 속도, 등속 모델</li></ul></div></div><div class="cell"><div class="card tight"><h3 class="card-h sky">Second order</h3><div class="formula" style="flex-direction:column;align-items:flex-start;gap:18px;font-size:32px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -20.924 39.308 36.866" role="img" aria-label="\mathbf{x} = \begin{bmatrix} x \\ \dot{x} \\ \ddot{x} \end{bmatrix}" fill="currentColor" style="width:4.756em;height:4.461em;vertical-align:-1.929em;display:inline-block;overflow:visible">
 <defs>
 <path id='ta86c6f3ceb5b-g1-120' d='M3.328-3.009C3.387-3.268 3.616-4.184 4.314-4.184C4.364-4.184 4.603-4.184 4.812-4.055C4.533-4.005 4.334-3.756 4.334-3.517C4.334-3.357 4.443-3.168 4.712-3.168C4.932-3.168 5.25-3.347 5.25-3.746C5.25-4.264 4.663-4.403 4.324-4.403C3.746-4.403 3.397-3.875 3.278-3.646C3.029-4.304 2.491-4.403 2.202-4.403C1.166-4.403 .598-3.118 .598-2.869C.598-2.77 .697-2.77 .717-2.77C.797-2.77 .827-2.79 .847-2.879C1.186-3.935 1.843-4.184 2.182-4.184C2.371-4.184 2.72-4.095 2.72-3.517C2.72-3.208 2.55-2.54 2.182-1.146C2.022-.528 1.674-.11 1.235-.11C1.176-.11 .946-.11 .737-.239C.986-.289 1.205-.498 1.205-.777C1.205-1.046 .986-1.126 .837-1.126C.538-1.126 .289-.867 .289-.548C.289-.09 .787 .11 1.225 .11C1.883 .11 2.242-.588 2.271-.648C2.391-.279 2.75 .11 3.347 .11C4.374 .11 4.941-1.176 4.941-1.425C4.941-1.524 4.852-1.524 4.822-1.524C4.732-1.524 4.712-1.484 4.692-1.415C4.364-.349 3.686-.11 3.367-.11C2.979-.11 2.819-.428 2.819-.767C2.819-.986 2.879-1.205 2.989-1.644L3.328-3.009Z'/>
 <path id='ta86c6f3ceb5b-g3-50' d='M3.248 17.534H3.935V.299H6.565V-.389H3.248V17.534Z'/>
@@ -1192,7 +1192,7 @@ plt.legend(loc=<span class="s">'best'</span>);</pre></div><div class="cell"><div
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:24%"></i></div><span class="foot-num">12 / 49</span></footer>
 </section>
 <section class="slide" data-label="13 First Order Filter" data-screen-label="13 First Order Filter">
-<header class="head"><span class="kicker">8.4 Evaluating Filter Order</span><span class="folio">13</span></header>
+<header class="head"><span class="kicker">Evaluating Filter Order</span><span class="folio">13</span></header>
 <h2 class="title">First Order Filter</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>잔차 = 실제 상태 - 추정을 P 대각의 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -4.789 7.05 5.289" role="img" aria-label="\sigma" fill="currentColor" style="width:0.853em;height:0.640em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -1271,7 +1271,7 @@ plot_residuals(xs[:, <span class="no">1</span>], data1, <span class="no">1</span
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:27%"></i></div><span class="foot-num">13 / 49</span></footer>
 </section>
 <section class="slide" data-label="14 Zero Order Filter" data-screen-label="14 Zero Order Filter">
-<header class="head"><span class="kicker">8.4 Evaluating Filter Order</span><span class="folio">14</span></header>
+<header class="head"><span class="kicker">Evaluating Filter Order</span><span class="folio">14</span></header>
 <h2 class="title">Zero Order Filter</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>같은 데이터에 위치만 추적하는 0 차 필터 적용, 매 예측이 위치 변화가 없다고 가정해 추정이 실제 위치를 계속 뒤따라감</li><li>잔차가 몇 초 만에 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -6.92 19.78 8.251" role="img" aria-label="\pm 3\sigma" fill="currentColor" style="width:2.393em;height:0.998em;vertical-align:-0.161em;display:inline-block;overflow:visible">
@@ -1312,7 +1312,7 @@ data1 = filter_data(FirstOrderKF(R, Q, dt=1), zs)
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:29%"></i></div><span class="foot-num">14 / 49</span></footer>
 </section>
 <section class="slide" data-label="15 Second Order Filter" data-screen-label="15 Second Order Filter">
-<header class="head"><span class="kicker">8.4 Evaluating Filter Order</span><span class="folio">15</span></header>
+<header class="head"><span class="kicker">Evaluating Filter Order</span><span class="folio">15</span></header>
 <h2 class="title">Second Order Filter</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>같은 데이터에 가속도까지 추적하는 2 차 필터 적용, 잔차를 1 차 필터(점선)와 비교, 노란 띠는 2 차 필터의 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -6.92 19.78 8.251" role="img" aria-label="\pm 1\sigma" fill="currentColor" style="width:2.393em;height:0.998em;vertical-align:-0.161em;display:inline-block;overflow:visible">
@@ -1347,7 +1347,7 @@ data1 = filter_data(FirstOrderKF(R, Q, dt=1), zs)
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:31%"></i></div><span class="foot-num">15 / 49</span></footer>
 </section>
 <section class="slide" data-label="16 Second Order Filter with Q = 0" data-screen-label="16 Second Order Filter with Q = 0">
-<header class="head"><span class="kicker">8.4 Evaluating Filter Order</span><span class="folio">16</span></header>
+<header class="head"><span class="kicker">Evaluating Filter Order</span><span class="folio">16</span></header>
 <h2 class="title">Second Order Filter with Q = 0</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>2 차 필터가 속도 변화를 모델링하므로 process noise 를 0 으로 둔 경우를 500 단계로 확인</li><li>처음엔 실제 궤적에 수렴하는 듯 보이지만 100 번째 갱신 전후로 이론 성능을 크게 벗어나 발산</li><li>Q = 0 은 모델이 완벽하다는 뜻, 측정이 무시되어 불완전한 실제 거동에 적응하지 못함</li><li><strong>조건</strong>: SecondOrderKF(R, 0), R = 1, 시뮬레이션 Q = 0.03, 500 단계, seed 25944</li></ul><div style="display:grid;grid-template-columns:732px 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxxs denser">np.random.seed(<span class="no">25944</span>)
@@ -1367,14 +1367,14 @@ data1 = filter_data(FirstOrderKF(R, Q, dt=1), zs)
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:33%"></i></div><span class="foot-num">16 / 49</span></footer>
 </section>
 <section class="slide" data-label="17 Matching the Order of the System" data-screen-label="17 Matching the Order of the System">
-<header class="head"><span class="kicker">8.4 Evaluating Filter Order</span><span class="folio">17</span></header>
+<header class="head"><span class="kicker">Evaluating Filter Order</span><span class="folio">17</span></header>
 <h2 class="title">Matching the Order of the System</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul"><li><strong>데이터 맞춤</strong>: 두 점을 지나는 직선은 유일하고 최적, 2 차 곡선은 무수히 많아 최적이 아니고 발산 가능</li><li><strong>필터 차수</strong>: 물리 시스템보다 높은 차수의 필터도 같은 문제, 시스템 차수에 맞출 것</li><li><strong>예</strong>: 냉동고 온도계는 0 차, 직진 차량은 1 차, 회전, 가감속하는 차량은 2 차가 유리</li></ul><div class="point"><b>핵심</b>: 낮은 차수 필터도 process noise 를 키우고 샘플 주기를 짧게 하면 높은 차수 거동 추적 가능</div><figure class="fig plain"><img src="./imgs/two_points.svg" alt="two_points" style="width:100%"></figure></div>
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:35%"></i></div><span class="foot-num">17 / 49</span></footer>
 </section>
 <section class="slide" data-label="18 Accelerating Object" data-screen-label="18 Accelerating Object">
-<header class="head"><span class="kicker">8.4 Evaluating Filter Order</span><span class="folio">18</span></header>
+<header class="head"><span class="kicker">Evaluating Filter Order</span><span class="folio">18</span></header>
 <h2 class="title">Accelerating Object</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>매 단계 가속도에 잡음을 더하는 ConstantAccelerationObject 로 등가속 시스템을 만들고 2 차 필터로 추적</li><li>시스템과 차수가 맞는 필터, 위치 잔차가 이론 한계 안에 머묾</li><li><strong>조건</strong>: R = 6, Q = 0.02, 초기 vel = 1, acc = 0.1, 80 단계, seed 124, 위: 필터 출력, 아래: 위치 잔차</li></ul><div style="display:grid;grid-template-columns:744px 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxxs denser">R, Q = <span class="no">6.</span>, <span class="no">0.02</span>
@@ -1390,7 +1390,7 @@ plot_residuals(xs[:, <span class="no">0</span>], data2, <span class="no">0</span
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:37%"></i></div><span class="foot-num">18 / 49</span></footer>
 </section>
 <section class="slide" data-label="19 Lower Order Filter with More Process Noise" data-screen-label="19 Lower Order Filter with More Process Noise">
-<header class="head"><span class="kicker">8.4 Evaluating Filter Order</span><span class="folio">19</span></header>
+<header class="head"><span class="kicker">Evaluating Filter Order</span><span class="folio">19</span></header>
 <h2 class="title">Lower Order Filter with More Process Noise</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>같은 등가속 데이터를 Q 를 키운 1 차 필터로 추적, 가속도를 process noise 로 취급</li><li>Q × 10 (왼쪽)은 준최적이지만 발산하지 않음, Q × 10000 (오른쪽)은 측정을 지나치게 신뢰해 잡음을 그대로 따라감</li><li>추가할 Q 의 크기는 정확한 답이 없음, 대표 데이터로 실험해 결정</li><li><strong>조건</strong>: R = 6, Q = 0.02, 같은 측정 80 개, 그래프는 위치 잔차와 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -6.92 19.78 8.251" role="img" aria-label="\pm 1\sigma" fill="currentColor" style="width:2.393em;height:0.998em;vertical-align:-0.161em;display:inline-block;overflow:visible">
@@ -1416,7 +1416,7 @@ xs, zs = simulate_acc_system(R=R, Q=Q, count=80)
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:39%"></i></div><span class="foot-num">19 / 49</span></footer>
 </section>
 <section class="slide" data-label="20 State Variable Design" data-screen-label="20 State Variable Design">
-<header class="head"><span class="kicker">8.5 Exercise: State Variable Design</span><span class="folio">20</span></header>
+<header class="head"><span class="kicker">Exercise: State Variable Design</span><span class="folio">20</span></header>
 <h2 class="title">State Variable Design</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul"><li><strong>과제</strong>: 2D 로봇의 상태를 [x y <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.154 6.694 7.654" role="img" aria-label="\dot{x}" fill="currentColor" style="width:0.810em;height:0.926em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -1559,7 +1559,7 @@ xs, zs = simulate_acc_system(R=R, Q=Q, count=80)
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:41%"></i></div><span class="foot-num">20 / 49</span></footer>
 </section>
 <section class="slide" data-label="21 State Variable Design" data-screen-label="21 State Variable Design">
-<header class="head"><span class="kicker">8.5.1 Solution</span><span class="folio">21</span></header>
+<header class="head"><span class="kicker">Solution</span><span class="folio">21</span></header>
 <h2 class="title">State Variable Design</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>바꾼 순서에 맞춰 F, H, Q 를 다시 배치, Q 는 1 차원 q 의 항을 해당 위치로 복사</li><li>필터 출력(파란 선)이 측정을 따라 직선 궤적을 추정, 행렬 배치만 달라지고 결과는 동일</li><li><strong>조건</strong>: zs: PosSensor((0, 0), (60, 15), noise_std=10) 의 cm 측정 30 개, R_std = 10 cm, Q_std = 0.04 m, dt = 1 s</li></ul><div style="display:grid;grid-template-columns:949px 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxxs tightest">tracker = KalmanFilter(dim_x=<span class="no">4</span>, dim_z=<span class="no">2</span>)
@@ -1588,7 +1588,7 @@ zs = np.array([sensor.read() for _ in range(N)])
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:43%"></i></div><span class="foot-num">21 / 49</span></footer>
 </section>
 <section class="slide" data-label="22 A Bad Measurement" data-screen-label="22 A Bad Measurement">
-<header class="head"><span class="kicker">8.6 Detecting and Rejecting Bad Measurement</span><span class="folio">22</span></header>
+<header class="head"><span class="kicker">Detecting and Rejecting Bad Measurement</span><span class="folio">22</span></header>
 <h2 class="title">A Bad Measurement</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>약 200 km/h 로 101 번 추적한 항공기 필터 kf 에 현재 위치의 두 배인 측정으로 update</li><li>추정이 3.4 km 이동, prior 와 측정의 거리는 7.1 km, Kalman filter 자체에는 나쁜 측정을 거르는 기능이 없음</li><li>1, 2, <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -6.92 12.032 7.42" role="img" aria-label="3\sigma" fill="currentColor" style="width:1.456em;height:0.898em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -1670,7 +1670,7 @@ for i in range(101):
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:45%"></i></div><span class="foot-num">22 / 49</span></footer>
 </section>
 <section class="slide" data-label="23 Rectangular Gate" data-screen-label="23 Rectangular Gate">
-<header class="head"><span class="kicker">8.6 Detecting and Rejecting Bad Measurement</span><span class="folio">23</span></header>
+<header class="head"><span class="kicker">Detecting and Rejecting Bad Measurement</span><span class="folio">23</span></header>
 <h2 class="title">Rectangular Gate</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>gate: 측정이 좋은지 나쁜지 판정하는 식, 실제 측정은 순수 Gaussian 이 아니므로 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -6.92 12.032 7.42" role="img" aria-label="3\sigma" fill="currentColor" style="width:1.456em;height:0.898em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -1789,7 +1789,7 @@ x, P = kf.x[0:2], kf.P[0:2, 0:2]
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:47%"></i></div><span class="foot-num">23 / 49</span></footer>
 </section>
 <section class="slide" data-label="24 Mahalanobis Distance" data-screen-label="24 Mahalanobis Distance">
-<header class="head"><span class="kicker">8.6 Detecting and Rejecting Bad Measurement</span><span class="folio">24</span></header>
+<header class="head"><span class="kicker">Detecting and Rejecting Bad Measurement</span><span class="folio">24</span></header>
 <h2 class="title">Mahalanobis Distance</h2>
 <div class="rule"></div>
 <div class="body"><div class="formula" style="gap:16px 64px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -9.901 127.667 13.354" role="img" aria-label="D_m = \sqrt{(\mathbf{x} - \mu)^T S^{-1} (\mathbf{x} - \mu)}" fill="currentColor" style="width:15.448em;height:1.616em;vertical-align:-0.418em;display:inline-block;overflow:visible">
@@ -1955,14 +1955,14 @@ x, P = kf.x[0:2], kf.P[0:2, 0:2]
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:49%"></i></div><span class="foot-num">24 / 49</span></footer>
 </section>
 <section class="slide" data-label="25 Gate Shapes" data-screen-label="25 Gate Shapes">
-<header class="head"><span class="kicker">8.6.1 Gating and Data Association Strategies</span><span class="folio">25</span></header>
+<header class="head"><span class="kicker">Gating and Data Association Strategies</span><span class="folio">25</span></header>
 <h2 class="title">Gate Shapes</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul"><li><strong>Rectangular</strong>: 계산이 가장 싸지만 타원 밖 모서리 영역도 통과, 5 차원에서 나쁜 측정 통과 확률이 약 2 배</li><li><strong>Ellipsoidal</strong>: Mahalanobis 거리로 판정, 고차원에서 계산 비용 증가</li><li><strong>Maneuver</strong>: 현재 속도와 기동 능력으로 이동 가능한 영역만 허용, 전투기는 원뿔, 차량은 부채꼴, 배는 좁은 부채꼴</li><li><strong>Two gates</strong>: 큰 사각형 gate 로 명백한 오류를 먼저 버리고 통과한 측정만 Mahalanobis 거리 계산</li></ul><figure class="fig plain"><img src="./imgs/gates.svg" alt="gates" style="width:100%"></figure></div>
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:51%"></i></div><span class="foot-num">25 / 49</span></footer>
 </section>
 <section class="slide" data-label="26 Data Association" data-screen-label="26 Data Association">
-<header class="head"><span class="kicker">8.6.1 Gating and Data Association Strategies</span><span class="folio">26</span></header>
+<header class="head"><span class="kicker">Gating and Data Association Strategies</span><span class="folio">26</span></header>
 <h2 class="title">Data Association</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul"><li><strong>문제</strong>: 레이더 sweep 마다 여러 신호, 어느 측정이 어느 항공기 track 인지 결정</li><li><strong>조합 폭발</strong>: 측정 5 개, 다음 sweep 6 개면 30 개 조합에 새 track 6 개, 몇 sweep 만에 수십억 개 후보</li><li><strong>가지치기</strong>: Z 자 track, 10000 km/h 를 요구하는 track 은 확률이 매우 낮음, 이런 후보를 적극 제거</li><li><strong>단일 물체</strong>: gate 를 통과하지 못한 측정은 버리고 update 생략, predict 를 연속 호출해도 무방</li><li><strong>gate 크기</strong>: 이론은 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -6.92 12.032 7.42" role="img" aria-label="3\sigma" fill="currentColor" style="width:1.456em;height:0.898em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -2000,7 +2000,7 @@ x, P = kf.x[0:2], kf.P[0:2, 0:2]
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:53%"></i></div><span class="foot-num">26 / 49</span></footer>
 </section>
 <section class="slide" data-label="27 Evaluating Filter Performance" data-screen-label="27 Evaluating Filter Performance">
-<header class="head"><span class="kicker">8.7.1 Normalized Estimated Error Squared (NEES)</span><span class="folio">27</span></header>
+<header class="head"><span class="kicker">Normalized Estimated Error Squared (NEES)</span><span class="folio">27</span></header>
 <h2 class="title">Evaluating Filter Performance</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 780px;gap:40px;min-height:0;"><div class="cell"><div style="display:flex;flex-direction:column;gap:28px;min-width:0"><ul class="ul"><li><strong>실제 설계</strong>: 센서와 모델이 불완전, 시험 데이터로 행렬 조정</li><li><strong>최적 필터</strong>: 추정 오차의 평균이 0, 오차의 공분산이 P 와 일치</li><li><strong>NEES</strong>: 참값을 아는 시뮬레이션에서 오차를 P 로 정규화한 제곱</li><li><strong>판정</strong>: <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -8.61 11.703 11.047" role="img" aria-label="\chi^2" fill="currentColor" style="width:1.416em;height:1.337em;vertical-align:-0.295em;display:inline-block;overflow:visible">
@@ -2081,7 +2081,7 @@ x, P = kf.x[0:2], kf.P[0:2, 0:2]
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:55%"></i></div><span class="foot-num">27 / 49</span></footer>
 </section>
 <section class="slide" data-label="28 NEES" data-screen-label="28 NEES">
-<header class="head"><span class="kicker">8.7.1 Normalized Estimated Error Squared (NEES)</span><span class="folio">28</span></header>
+<header class="head"><span class="kicker">Normalized Estimated Error Squared (NEES)</span><span class="folio">28</span></header>
 <h2 class="title">NEES</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>등가속 시스템을 2 차 필터로 추적한 결과의 단계별 NEES 와 그 평균(점선)을 계산</li><li>평균 NEES 가 상태 차원 3 보다 작아 통과, 실행 중에도 계산 가능하지만 참값을 아는 시뮬레이션에서만 사용 가능</li><li><strong>조건</strong>: R = 6, Q = 0.02, 80 단계, dim_x = 3</li></ul><div style="display:grid;grid-template-columns:672px 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxxs denser"><span class="k">def</span> <span class="fn">NEES</span>(xs, est_xs, Ps):
@@ -2105,7 +2105,7 @@ passed
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:57%"></i></div><span class="foot-num">28 / 49</span></footer>
 </section>
 <section class="slide" data-label="29 Likelihood Function" data-screen-label="29 Likelihood Function">
-<header class="head"><span class="kicker">8.7.2 Likelihood Function</span><span class="folio">29</span></header>
+<header class="head"><span class="kicker">Likelihood Function</span><span class="folio">29</span></header>
 <h2 class="title">Likelihood Function</h2>
 <div class="rule"></div>
 <div class="body"><div class="formula" style="gap:16px 64px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.308 52.895 9.745" role="img" aria-label="\mathbf{y} = \mathbf{z} - H\bar{\mathbf{x}}" fill="currentColor" style="width:6.400em;height:1.179em;vertical-align:-0.295em;display:inline-block;overflow:visible">
@@ -2210,7 +2210,7 @@ plots.set_labels(y=<span class="s">'log-likelihood'</span>);</pre></div><div cla
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:59%"></i></div><span class="foot-num">29 / 49</span></footer>
 </section>
 <section class="slide" data-label="30 Control Inputs" data-screen-label="30 Control Inputs">
-<header class="head"><span class="kicker">8.8 Control Inputs</span><span class="folio">30</span></header>
+<header class="head"><span class="kicker">Control Inputs</span><span class="folio">30</span></header>
 <h2 class="title">Control Inputs</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;min-height:0;"><div class="cell"><ul class="ul"><li><strong>아이디어</strong>: 물체가 이전처럼 계속 움직인다고 가정하는 대신 알고 있는 제어 입력으로 다음 상태 예측</li><li><strong>u, B</strong>: u 는 제어 입력 벡터, B 는 제어 입력을 상태 변화로 바꾸는 행렬</li><li><strong>예</strong>: 상태 [x <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.154 6.694 7.654" role="img" aria-label="\dot{x}" fill="currentColor" style="width:0.810em;height:0.926em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -2329,7 +2329,7 @@ plots.set_labels(y=<span class="s">'log-likelihood'</span>);</pre></div><div cla
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:61%"></i></div><span class="foot-num">30 / 49</span></footer>
 </section>
 <section class="slide" data-label="31 Commanded Velocity" data-screen-label="31 Commanded Velocity">
-<header class="head"><span class="kicker">8.8 Control Inputs</span><span class="folio">31</span></header>
+<header class="head"><span class="kicker">Control Inputs</span><span class="folio">31</span></header>
 <h2 class="title">Commanded Velocity</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>명령 속도 1 m/s 를 제어 입력으로 predict 에 넣고 잡음 큰 위치 측정으로 update</li><li>측정 잡음이 커도 필터 출력이 제어 입력을 따라 매끄러운 직선, 제어 입력 외의 설계는 평소와 같음</li><li><strong>조건</strong>: u = 1 m/s, dt = 1 s, R = 3, Q 분산 0.1, P = 10 I, 측정 99 개</li></ul><div style="display:grid;grid-template-columns:696px 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxxs tightest">dt, R = <span class="no">1.</span>, <span class="no">3.</span>
@@ -2354,7 +2354,7 @@ plt.legend(loc=<span class="no">4</span>);</pre></div><div class="cell"><div cla
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:63%"></i></div><span class="foot-num">31 / 49</span></footer>
 </section>
 <section class="slide" data-label="32 Sensor Fusion" data-screen-label="32 Sensor Fusion">
-<header class="head"><span class="kicker">8.9 Sensor Fusion</span><span class="folio">32</span></header>
+<header class="head"><span class="kicker">Sensor Fusion</span><span class="folio">32</span></header>
 <h2 class="title">Sensor Fusion</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul"><li><strong>상황</strong>: 레일 위 열차, 바퀴 회전수로 거리를 재는 wheel 센서와 위치를 보고하는 position 센서</li><li><strong>원칙</strong>: 부정확한 센서의 정보도 버리지 않음, 항공기는 GPS, INS, Doppler radar 등을 융합</li><li><strong>설계</strong>: 두 측정을 z 로 묶고 H 로 상태를 각 측정으로 변환, 바퀴 1 회전 = 2 m 면 첫 행이 0.5</li></ul><div class="formula" style="gap:16px 72px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -14.946 98.978 24.911" role="img" aria-label="\begin{bmatrix} z_{wheel} \\ z_{ps} \end{bmatrix} = \begin{bmatrix} 1 &amp; 0 \\ 1 &amp; 0 \end{bmatrix} \begin{bmatrix} x \\ \dot{x} \end{bmatrix}" fill="currentColor" style="width:11.976em;height:3.014em;vertical-align:-1.206em;display:inline-block;overflow:visible">
@@ -2473,7 +2473,7 @@ plt.legend(loc=<span class="no">4</span>);</pre></div><div class="cell"><div cla
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:65%"></i></div><span class="foot-num">32 / 49</span></footer>
 </section>
 <section class="slide" data-label="33 Wheel and Position Sensor" data-screen-label="33 Wheel and Position Sensor">
-<header class="head"><span class="kicker">8.9 Sensor Fusion</span><span class="folio">33</span></header>
+<header class="head"><span class="kicker">Sensor Fusion</span><span class="folio">33</span></header>
 <h2 class="title">Wheel and Position Sensor</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>wheel 센서(<svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -4.789 7.05 5.289" role="img" aria-label="\sigma" fill="currentColor" style="width:0.853em;height:0.640em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -2512,7 +2512,7 @@ plt.legend(loc=<span class="no">4</span>);</pre></div><div class="cell"><div cla
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:67%"></i></div><span class="foot-num">33 / 49</span></footer>
 </section>
 <section class="slide" data-label="34 Two Radar Stations" data-screen-label="34 Two Radar Stations">
-<header class="head"><span class="kicker">8.9 Sensor Fusion</span><span class="folio">34</span></header>
+<header class="head"><span class="kicker">Sensor Fusion</span><span class="folio">34</span></header>
 <h2 class="title">Two Radar Stations</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 760px;gap:40px;min-height:0;"><div class="cell"><ul class="ul"><li><strong>상황</strong>: (100, 100) m 의 표적을 (50, 50), (150, 50) 의 두 레이더가 거리와 방위로 측정</li><li><strong>초기</strong>: x, y 불확실성이 같아 원 모양(노랑)</li><li><strong>1 번 레이더</strong>: 방위 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -4.789 7.05 5.289" role="img" aria-label="\sigma" fill="currentColor" style="width:0.853em;height:0.640em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -2533,7 +2533,7 @@ plt.legend(loc=<span class="no">4</span>);</pre></div><div class="cell"><div cla
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:69%"></i></div><span class="foot-num">34 / 49</span></footer>
 </section>
 <section class="slide" data-label="35 Can you Filter GPS outputs?" data-screen-label="35 Can you Filter GPS outputs?">
-<header class="head"><span class="kicker">8.9.1 Exercise: Can you Filter GPS outputs?</span><span class="folio">35</span></header>
+<header class="head"><span class="kicker">Exercise: Can you Filter GPS outputs?</span><span class="folio">35</span></header>
 <h2 class="title">Can you Filter GPS outputs?</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>상용 GPS 출력은 내부 Kalman filter 의 추정, 그 출력을 다시 필터의 측정으로 넣으면 좋아지는지 확인</li><li>그래프는 실제 궤적 대비 오차, 반복할수록 매끄러워지지만 궤적에서 벗어나고 지연이 생김</li><li>필터 출력은 시간 상관이라 Markov 가정 위반, 최적 해를 다시 필터링해 더 최적이 될 수 없음</li><li><strong>조건</strong>: R = 5, Q = 0.02, 30 단계, seed 124, 이전 필터의 위치 추정을 다음 필터의 측정으로 사용</li></ul><div style="display:grid;grid-template-columns:841px 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxxs tightest">np.random.seed(<span class="no">124</span>)
@@ -2555,7 +2555,7 @@ plt.ylabel(<span class="s">'error from track (m)'</span>); plt.legend(loc=<span 
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:71%"></i></div><span class="foot-num">35 / 49</span></footer>
 </section>
 <section class="slide" data-label="36 Prove that the Position Sensor Improves the Filter" data-screen-label="36 Prove that the Position Sensor Improves the Filter">
-<header class="head"><span class="kicker">8.9.2 Exercise: Prove that the position sensor improves the filter</span><span class="folio">36</span></header>
+<header class="head"><span class="kicker">Exercise: Prove that the position sensor improves the filter</span><span class="folio">36</span></header>
 <h2 class="title">Prove that the Position Sensor Improves the Filter</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>같은 융합 필터를 fusion_test(wheel_sigma, ps_sigma) 로 묶고 position 센서 잡음을 1e40 으로 키워 사실상 무시</li><li>참값 대비 오차의 표준편차가 융합한 경우 더 작음, 부정확한 센서도 정보를 더함</li><li><strong>조건</strong>: wheel <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -4.789 7.05 5.289" role="img" aria-label="\sigma" fill="currentColor" style="width:0.853em;height:0.640em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -2583,7 +2583,7 @@ plt.legend(loc=<span class="no">4</span>);</pre></div><div class="cell"><div cla
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:73%"></i></div><span class="foot-num">36 / 49</span></footer>
 </section>
 <section class="slide" data-label="37 Nonstationary Processes" data-screen-label="37 Nonstationary Processes">
-<header class="head"><span class="kicker">8.10 Nonstationary Processes</span><span class="folio">37</span></header>
+<header class="head"><span class="kicker">Nonstationary Processes</span><span class="folio">37</span></header>
 <h2 class="title">Nonstationary Processes</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>데이터 주기가 불규칙하면 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.308 12.9 7.808" role="img" aria-label="\Delta t" fill="currentColor" style="width:1.561em;height:0.945em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -2636,7 +2636,7 @@ plt.xlabel(<span class="s">'time (s)'</span>); plt.legend();</pre></div><div cla
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:76%"></i></div><span class="foot-num">37 / 49</span></footer>
 </section>
 <section class="slide" data-label="38 Different Data Rates" data-screen-label="38 Different Data Rates">
-<header class="head"><span class="kicker">8.10.1 Sensor fusion: Different Data Rates</span><span class="folio">38</span></header>
+<header class="head"><span class="kicker">Sensor fusion: Different Data Rates</span><span class="folio">38</span></header>
 <h2 class="title">Different Data Rates</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul"><li><strong>상황</strong>: position 센서 3 Hz, wheel 센서 7 Hz, 시각에 약간의 jitter, wheel 은 위치 대신 속도 측정</li><li><strong>처리</strong>: 어느 센서든 데이터가 오면 지난 update 이후 경과 시간 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.308 12.9 7.808" role="img" aria-label="\Delta t" fill="currentColor" style="width:1.561em;height:0.945em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -2717,7 +2717,7 @@ plt.xlabel(<span class="s">'time (s)'</span>); plt.legend();</pre></div><div cla
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:78%"></i></div><span class="foot-num">38 / 49</span></footer>
 </section>
 <section class="slide" data-label="39 Fusing Sensors at Different Rates" data-screen-label="39 Fusing Sensors at Different Rates">
-<header class="head"><span class="kicker">8.10.1 Sensor fusion: Different Data Rates</span><span class="folio">39</span></header>
+<header class="head"><span class="kicker">Sensor fusion: Different Data Rates</span><span class="folio">39</span></header>
 <h2 class="title">Fusing Sensors at Different Rates</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>두 센서 데이터를 시각 순서로 꺼내 센서 종류에 따라 H, R 을 바꾸고 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.308 12.9 7.808" role="img" aria-label="\Delta t" fill="currentColor" style="width:1.561em;height:0.945em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -2770,7 +2770,7 @@ zs_ps, zs_wheel = np.array(pos_data), np.array(vel_data)
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:80%"></i></div><span class="foot-num">39 / 49</span></footer>
 </section>
 <section class="slide" data-label="40 Ball in a Vacuum" data-screen-label="40 Ball in a Vacuum">
-<header class="head"><span class="kicker">8.11 Tracking a Ball</span><span class="folio">40</span></header>
+<header class="head"><span class="kicker">Tracking a Ball</span><span class="folio">40</span></header>
 <h2 class="title">Ball in a Vacuum</h2>
 <div class="rule"></div>
 <div class="body"><div class="formula" style="gap:16px 64px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -8.61 92.763 12.545" role="img" aria-label="y = -\frac{g}{2}t^2 + v_{y0}t + y_0" fill="currentColor" style="width:11.224em;height:1.518em;vertical-align:-0.476em;display:inline-block;overflow:visible">
@@ -2877,10 +2877,10 @@ test_ball_vacuum([<span class="no">1</span>, <span class="no">1</span>]) <span c
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:82%"></i></div><span class="foot-num">40 / 49</span></footer>
 </section>
 <section class="slide" data-label="41 State Variables and State Transition" data-screen-label="41 State Variables and State Transition">
-<header class="head"><span class="kicker">8.11 Tracking a Ball</span><span class="folio">41</span></header>
+<header class="head"><span class="kicker">Tracking a Ball</span><span class="folio">41</span></header>
 <h2 class="title">State Variables and State Transition</h2>
 <div class="rule"></div>
-<div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;min-height:0;"><div class="cell"><ul class="ul"><li><strong>8.11.1 Euler</strong>: 매 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.308 12.9 7.808" role="img" aria-label="\Delta t" fill="currentColor" style="width:1.561em;height:0.945em;vertical-align:-0.060em;display:inline-block;overflow:visible">
+<div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;min-height:0;"><div class="cell"><ul class="ul"><li><strong>Euler</strong>: 매 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.308 12.9 7.808" role="img" aria-label="\Delta t" fill="currentColor" style="width:1.561em;height:0.945em;vertical-align:-0.060em;display:inline-block;overflow:visible">
 <defs>
 <path id='t8c585d4999c8-g0-116' d='M2.052-3.985H2.989C3.188-3.985 3.288-3.985 3.288-4.184C3.288-4.294 3.188-4.294 3.009-4.294H2.132C2.491-5.709 2.54-5.908 2.54-5.968C2.54-6.137 2.421-6.237 2.252-6.237C2.222-6.237 1.943-6.227 1.853-5.878L1.465-4.294H.528C.329-4.294 .229-4.294 .229-4.105C.229-3.985 .309-3.985 .508-3.985H1.385C.667-1.156 .628-.986 .628-.807C.628-.269 1.006 .11 1.544 .11C2.56 .11 3.128-1.345 3.128-1.425C3.128-1.524 3.049-1.524 3.009-1.524C2.919-1.524 2.909-1.494 2.859-1.385C2.431-.349 1.903-.11 1.564-.11C1.355-.11 1.255-.239 1.255-.568C1.255-.807 1.275-.877 1.315-1.046L2.052-3.985Z'/>
 <path id='t8c585d4999c8-g1-1' d='M4.403-6.954C4.334-7.083 4.314-7.133 4.144-7.133S3.955-7.083 3.885-6.954L.518-.199C.468-.11 .468-.09 .468-.08C.468 0 .528 0 .687 0H7.601C7.761 0 7.821 0 7.821-.08C7.821-.09 7.821-.11 7.771-.199L4.403-6.954ZM3.826-6.137L6.506-.757H1.136L3.826-6.137Z'/>
@@ -2889,7 +2889,7 @@ test_ball_vacuum([<span class="no">1</span>, <span class="no">1</span>]) <span c
 <use x='0' y='0' xlink:href='#t8c585d4999c8-g1-1'/>
 <use x='8.302' y='0' xlink:href='#t8c585d4999c8-g0-116'/>
 </g>
-</svg> 동안 속도가 일정하다고 가정, 매 단계 측정이 있어 충분히 정확</li><li><strong>상태</strong>: x 는 등속, y 는 중력으로 가속, 상수인 중력은 제어 입력으로 처리</li><li><strong>8.11.2 F</strong>: g 를 포함하지 않는 등속 F, 중력은 Bu 로 반영</li><li><strong>Runge-Kutta</strong>: predict 를 직접 작성, P 는 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -9.715 28.809 10.215" role="img" aria-label="\mathbf{FPF}^\mathsf{T}" fill="currentColor" style="width:3.486em;height:1.236em;vertical-align:-0.060em;display:inline-block;overflow:visible">
+</svg> 동안 속도가 일정하다고 가정, 매 단계 측정이 있어 충분히 정확</li><li><strong>상태</strong>: x 는 등속, y 는 중력으로 가속, 상수인 중력은 제어 입력으로 처리</li><li><strong>F</strong>: g 를 포함하지 않는 등속 F, 중력은 Bu 로 반영</li><li><strong>Runge-Kutta</strong>: predict 를 직접 작성, P 는 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -9.715 28.809 10.215" role="img" aria-label="\mathbf{FPF}^\mathsf{T}" fill="currentColor" style="width:3.486em;height:1.236em;vertical-align:-0.060em;display:inline-block;overflow:visible">
 <defs>
 <path id='t0c3cbd9a9b76-g0-84' d='M2.88-4.31H3.536C3.619-4.31 3.703-4.303 3.787-4.303H4.791V-4.791H.265V-4.303H1.269C1.353-4.303 1.437-4.31 1.52-4.31H2.176V0H2.88V-4.31Z'/>
 <path id='t0c3cbd9a9b76-g1-70' d='M6.416-6.775H.389V-6.306H1.465V-.468H.389V0C.767-.03 1.773-.03 2.212-.03C2.7-.03 3.786-.03 4.224 0V-.468H2.879V-3.158H3.377C4.334-3.158 4.423-2.73 4.423-1.993H4.892V-4.792H4.423C4.423-4.055 4.344-3.626 3.377-3.626H2.879V-6.306H4.274C5.878-6.306 6.107-5.539 6.257-4.374H6.725L6.416-6.775Z'/>
@@ -3054,7 +3054,7 @@ test_ball_vacuum([<span class="no">1</span>, <span class="no">1</span>]) <span c
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:84%"></i></div><span class="foot-num">41 / 49</span></footer>
 </section>
 <section class="slide" data-label="42 Control Input: Gravity" data-screen-label="42 Control Input: Gravity">
-<header class="head"><span class="kicker">8.11.3 Design the Control Input Function</span><span class="folio">42</span></header>
+<header class="head"><span class="kicker">Design the Control Input Function</span><span class="folio">42</span></header>
 <h2 class="title">Control Input: Gravity</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul"><li><strong>목표</strong>: <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -11.271 112.873 15.258" role="img" aria-label="B\mathbf{u} = \begin{bmatrix} 0 &amp; 0 &amp; 0 &amp; -g\Delta t \end{bmatrix}^T" fill="currentColor" style="width:13.658em;height:1.846em;vertical-align:-0.482em;display:inline-block;overflow:visible">
@@ -3260,10 +3260,10 @@ test_ball_vacuum([<span class="no">1</span>, <span class="no">1</span>]) <span c
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:86%"></i></div><span class="foot-num">42 / 49</span></footer>
 </section>
 <section class="slide" data-label="43 Design H, R, Q, and Initial Conditions" data-screen-label="43 Design H, R, Q, and Initial Conditions">
-<header class="head"><span class="kicker">8.11 Tracking a Ball</span><span class="folio">43</span></header>
+<header class="head"><span class="kicker">Tracking a Ball</span><span class="folio">43</span></header>
 <h2 class="title">Design H, R, Q, and Initial Conditions</h2>
 <div class="rule"></div>
-<div class="body"><table class="tbl"><thead><tr><th style="width:18%"></th><th style="width:44%">Design</th><th>의미</th></tr></thead><tbody><tr><td><strong>8.11.4 H</strong></td><td><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -14.946 83.704 24.911" role="img" aria-label="H = \begin{bmatrix} 1 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 1 &amp; 0 \end{bmatrix}" fill="currentColor" style="width:10.128em;height:3.014em;vertical-align:-1.206em;display:inline-block;overflow:visible">
+<div class="body"><table class="tbl"><thead><tr><th style="width:18%"></th><th style="width:44%">Design</th><th>의미</th></tr></thead><tbody><tr><td><strong>H</strong></td><td><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -14.946 83.704 24.911" role="img" aria-label="H = \begin{bmatrix} 1 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 1 &amp; 0 \end{bmatrix}" fill="currentColor" style="width:10.128em;height:3.014em;vertical-align:-1.206em;display:inline-block;overflow:visible">
 <defs>
 <path id='tcaf99a61afad-g2-20' d='M2.491 23.502H5.111V22.954H3.039V.149H5.111V-.399H2.491V23.502Z'/>
 <path id='tcaf99a61afad-g2-21' d='M2.212 22.954H.139V23.502H2.76V-.399H.139V.149H2.212V22.954Z'/>
@@ -3286,7 +3286,7 @@ test_ball_vacuum([<span class="no">1</span>, <span class="no">1</span>]) <span c
 <use x='72.464' y='5.878' xlink:href='#tcaf99a61afad-g1-48'/>
 <use x='77.446' y='-14.047' xlink:href='#tcaf99a61afad-g2-21'/>
 </g>
-</svg></td><td>센서는 공의 위치 (x, y) 만 측정, 속도와 가속도는 측정 불가</td></tr><tr><td><strong>8.11.5 R</strong></td><td><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -14.946 67.864 24.911" role="img" aria-label="R = \begin{bmatrix} 0.5 &amp; 0 \\ 0 &amp; 0.5 \end{bmatrix}" fill="currentColor" style="width:8.212em;height:3.014em;vertical-align:-1.206em;display:inline-block;overflow:visible">
+</svg></td><td>센서는 공의 위치 (x, y) 만 측정, 속도와 가속도는 측정 불가</td></tr><tr><td><strong>R</strong></td><td><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -14.946 67.864 24.911" role="img" aria-label="R = \begin{bmatrix} 0.5 &amp; 0 \\ 0 &amp; 0.5 \end{bmatrix}" fill="currentColor" style="width:8.212em;height:3.014em;vertical-align:-1.206em;display:inline-block;overflow:visible">
 <defs>
 <path id='tfe82f77b1675-g2-20' d='M2.491 23.502H5.111V22.954H3.039V.149H5.111V-.399H2.491V23.502Z'/>
 <path id='tfe82f77b1675-g2-21' d='M2.212 22.954H.139V23.502H2.76V-.399H.139V.149H2.212V22.954Z'/>
@@ -3319,7 +3319,7 @@ test_ball_vacuum([<span class="no">1</span>, <span class="no">1</span>]) <span c
 <use x='0' y='0' xlink:href='#t120059f757e5-g0-109'/>
 <use x='8.302' y='-3.615' xlink:href='#t120059f757e5-g1-50'/>
 </g>
-</svg></td></tr><tr><td><strong>8.11.6 Q</strong></td><td><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.308 41.808 10.132" role="img" aria-label="Q = 0_{4 \times 4}" fill="currentColor" style="width:5.059em;height:1.226em;vertical-align:-0.342em;display:inline-block;overflow:visible">
+</svg></td></tr><tr><td><strong>Q</strong></td><td><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.308 41.808 10.132" role="img" aria-label="Q = 0_{4 \times 4}" fill="currentColor" style="width:5.059em;height:1.226em;vertical-align:-0.342em;display:inline-block;overflow:visible">
 <defs>
 <path id='ta3cdf98cbd8b-g0-2' d='M4.882-3.271C4.958-3.347 4.979-3.389 4.979-3.438C4.979-3.55 4.889-3.612 4.812-3.612C4.742-3.612 4.721-3.592 4.638-3.508L3.11-1.988L1.576-3.515C1.506-3.585 1.478-3.612 1.416-3.612C1.318-3.612 1.241-3.536 1.241-3.438C1.241-3.375 1.262-3.354 1.346-3.271L2.866-1.75L1.346-.23C1.248-.133 1.241-.098 1.241-.056C1.241 .042 1.318 .119 1.416 .119C1.478 .119 1.499 .098 1.576 .021L3.11-1.506L4.7 .084C4.735 .105 4.77 .119 4.812 .119C4.889 .119 4.979 .056 4.979-.056C4.979-.112 4.965-.126 4.944-.146C4.931-.174 3.578-1.527 3.354-1.743L4.882-3.271Z'/>
 <path id='ta3cdf98cbd8b-g3-52' d='M3.689-1.144V-1.395H2.915V-4.505C2.915-4.652 2.915-4.7 2.762-4.7C2.678-4.7 2.65-4.7 2.58-4.603L.272-1.395V-1.144H2.322V-.572C2.322-.335 2.322-.251 1.757-.251H1.569V0C1.918-.014 2.364-.028 2.615-.028C2.873-.028 3.32-.014 3.668 0V-.251H3.48C2.915-.251 2.915-.335 2.915-.572V-1.144H3.689ZM2.371-3.947V-1.395H.53L2.371-3.947Z'/>
@@ -3335,7 +3335,7 @@ test_ball_vacuum([<span class="no">1</span>, <span class="no">1</span>]) <span c
 <use x='30.112' y='1.494' xlink:href='#ta3cdf98cbd8b-g0-2'/>
 <use x='36.339' y='1.494' xlink:href='#ta3cdf98cbd8b-g3-52'/>
 </g>
-</svg></td><td>진공을 가정하므로 process noise 없음</td></tr><tr><td><strong>8.11.7 x</strong></td><td><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -11.271 131.435 15.258" role="img" aria-label="\mathbf{x} = \begin{bmatrix} x &amp; v\cos\omega &amp; y &amp; v\sin\omega \end{bmatrix}^T" fill="currentColor" style="width:15.904em;height:1.846em;vertical-align:-0.482em;display:inline-block;overflow:visible">
+</svg></td><td>진공을 가정하므로 process noise 없음</td></tr><tr><td><strong>x</strong></td><td><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -11.271 131.435 15.258" role="img" aria-label="\mathbf{x} = \begin{bmatrix} x &amp; v\cos\omega &amp; y &amp; v\sin\omega \end{bmatrix}^T" fill="currentColor" style="width:15.904em;height:1.846em;vertical-align:-0.482em;display:inline-block;overflow:visible">
 <defs>
 <path id='te7dc7a4d7c35-g2-84' d='M3.389-4.219C3.438-4.421 3.452-4.442 3.605-4.456C3.64-4.463 3.884-4.463 4.024-4.463C4.449-4.463 4.631-4.463 4.805-4.407C5.119-4.31 5.133-4.108 5.133-3.857C5.133-3.745 5.133-3.654 5.084-3.292L5.07-3.215C5.07-3.145 5.119-3.11 5.189-3.11C5.293-3.11 5.307-3.173 5.321-3.285L5.509-4.617C5.509-4.714 5.426-4.714 5.3-4.714H1.011C.837-4.714 .823-4.714 .774-4.568L.335-3.333C.328-3.306 .3-3.243 .3-3.208C.3-3.18 .314-3.11 .418-3.11C.509-3.11 .523-3.145 .565-3.278C.969-4.394 1.2-4.463 2.26-4.463H2.552C2.762-4.463 2.769-4.456 2.769-4.394C2.769-4.387 2.769-4.352 2.741-4.247L1.82-.579C1.757-.321 1.736-.251 1.004-.251C.753-.251 .69-.251 .69-.098C.69-.077 .704 0 .809 0C1.004 0 1.213-.021 1.409-.021S1.813-.028 2.008-.028S2.441-.028 2.636-.021C2.824-.014 3.034 0 3.222 0C3.278 0 3.382 0 3.382-.153C3.382-.251 3.313-.251 3.096-.251C2.964-.251 2.824-.258 2.692-.265C2.455-.286 2.441-.314 2.441-.398C2.441-.446 2.441-.46 2.469-.558L3.389-4.219Z'/>
 <path id='te7dc7a4d7c35-g1-33' d='M6.027-3.706C6.027-4.154 5.848-4.403 5.629-4.403C5.37-4.403 5.101-4.164 5.101-3.935C5.101-3.836 5.151-3.726 5.25-3.636C5.42-3.487 5.599-3.218 5.599-2.8C5.599-2.401 5.41-1.833 5.101-1.375C4.802-.946 4.433-.608 3.965-.608C3.397-.608 3.088-.966 2.999-1.504C3.108-1.763 3.337-2.401 3.337-2.68C3.337-2.8 3.288-2.899 3.158-2.899C3.078-2.899 2.969-2.879 2.889-2.73C2.78-2.531 2.66-1.883 2.66-1.524C2.331-1.056 1.933-.608 1.305-.608C.648-.608 .438-1.196 .438-1.753C.438-2.999 1.455-4.045 1.455-4.174C1.455-4.284 1.375-4.364 1.265-4.364C1.136-4.364 1.066-4.234 1.006-4.144C.498-3.407 .12-2.222 .12-1.315C.12-.628 .349 .11 1.166 .11C1.873 .11 2.341-.389 2.7-.936C2.79-.359 3.178 .11 3.796 .11C4.573 .11 5.051-.498 5.41-1.245C5.649-1.733 6.027-3.088 6.027-3.706Z'/>
@@ -3382,7 +3382,7 @@ test_ball_vacuum([<span class="no">1</span>, <span class="no">1</span>]) <span c
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:88%"></i></div><span class="foot-num">43 / 49</span></footer>
 </section>
 <section class="slide" data-label="44 Tracking a Ball in a Vacuum" data-screen-label="44 Tracking a Ball in a Vacuum">
-<header class="head"><span class="kicker">8.11 Tracking a Ball</span><span class="folio">44</span></header>
+<header class="head"><span class="kicker">Tracking a Ball</span><span class="folio">44</span></header>
 <h2 class="title">Tracking a Ball in a Vacuum</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>ball_kf 로 만든 필터에 시뮬레이터 측정을 넣고 매 단계 update 후 중력 u = -9.8 로 predict, 출력이 포물선을 정확히 추적</li><li>process noise 가 없는 사소한 예, 진공 궤적은 정밀하게 예측 가능해 최소제곱 곡선 맞춤과 같은 결과</li><li><strong>조건</strong>: (0, 1) m 에서 80 m/s, 35°, dt = 0.1 s, 측정 잡음 0.2 m, R = 0.5, Q = 0</li></ul><div style="display:grid;grid-template-columns:973px 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxxs tightest">dt = <span class="no">1.</span>/<span class="no">10</span>
@@ -3405,7 +3405,7 @@ plt.legend([p2, p1], [<span class="s">'Kalman filter'</span>, <span class="s">'M
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:90%"></i></div><span class="foot-num">44 / 49</span></footer>
 </section>
 <section class="slide" data-label="45 Implementing Air Drag" data-screen-label="45 Implementing Air Drag">
-<header class="head"><span class="kicker">8.12.1 Implementing Air Drag</span><span class="folio">45</span></header>
+<header class="head"><span class="kicker">Implementing Air Drag</span><span class="folio">45</span></header>
 <h2 class="title">Implementing Air Drag</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 780px;gap:40px;min-height:0;"><div class="cell"><div style="display:flex;flex-direction:column;gap:24px;min-width:0"><ul class="ul"><li><strong>상황</strong>: 공기 중의 공은 바람, 항력, 회전의 영향, 카메라 blob detection 으로 위치 측정, 2D 로 단순화</li><li><strong>항력</strong>: 속도의 제곱에 비례하고 속도 반대 방향, 질량으로 나눠 가속도</li><li><strong>B2/m</strong>: 풍동 실험 기반의 근사식, 35 m/s 부근에서 급변, SI 단위</li><li><strong>목적</strong>: 진공 모델과 다른 실제적 거동으로 필터를 시험</li></ul><div class="formula" style="gap:16px 48px"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -8.61 67.138 11.96" role="img" aria-label="F_{drag} = -B_2 v^2" fill="currentColor" style="width:8.124em;height:1.447em;vertical-align:-0.405em;display:inline-block;overflow:visible">
@@ -3541,7 +3541,7 @@ plt.legend([p2, p1], [<span class="s">'Kalman filter'</span>, <span class="s">'M
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:92%"></i></div><span class="foot-num">45 / 49</span></footer>
 </section>
 <section class="slide" data-label="46 Air Drag and Wind" data-screen-label="46 Air Drag and Wind">
-<header class="head"><span class="kicker">8.12.1 Implementing Air Drag</span><span class="folio">46</span></header>
+<header class="head"><span class="kicker">Implementing Air Drag</span><span class="folio">46</span></header>
 <h2 class="title">Air Drag and Wind</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>Euler 방법으로 항력과 바람을 포함한 공의 궤적을 단계별로 계산(항력이 비선형이라 해석해 없음), 무풍과 4.5 m/s 뒷바람 비교</li><li>진공에서 약 230 m 날아갈 공이 공기 중에서는 약 120 m, 홈런 타구로 현실적인 거리</li><li><strong>조건</strong>: 초기 속도 49.2 m/s (홈런 타구 속도), 35°, (0, 1) m, dt = 0.1 s, drag_force(v) = v B2/m</li></ul><div style="display:grid;grid-template-columns:889px 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxxs tightest">v, dt, theta = <span class="no">49.2</span>, <span class="no">.1</span>, radians(<span class="no">35</span>)   <span class="c"># m/s, s, rad</span>
@@ -3567,7 +3567,7 @@ plt.legend(scatterpoints=<span class="no">1</span>);</pre></div><div class="cell
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:94%"></i></div><span class="foot-num">46 / 49</span></footer>
 </section>
 <section class="slide" data-label="47 Tracking a Ball in Air" data-screen-label="47 Tracking a Ball in Air">
-<header class="head"><span class="kicker">8.12 Tracking a Ball in Air</span><span class="folio">47</span></header>
+<header class="head"><span class="kicker">Tracking a Ball in Air</span><span class="folio">47</span></header>
 <h2 class="title">Tracking a Ball in Air</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>항력이 있는 공(BaseballPath)을 진공 모델의 필터(Q = 0)로 추적, 처음엔 측정을 잘 따르지만 점점 발산</li><li>항력에 의한 감속을 모델이 몰라 공보다 계속 앞서 나감, 가속이 이어지는 한 선형 모델은 따라잡을 수 없음</li><li><strong>조건</strong>: (0, 1) m 에서 50 m/s, 35°, dt = 0.1 s, 측정 잡음 0.3 m, Q = 0, R = 1 과 10 은 측정 잡음의 영향을 보이기 위한 값</li></ul><div style="display:grid;grid-template-columns:973px 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxxs tightest">x, y, theta, v0, dt = <span class="no">0</span>, <span class="no">1.</span>, <span class="no">35.</span>, <span class="no">50.</span>, <span class="no">1</span>/<span class="no">10.</span>
@@ -3592,7 +3592,7 @@ plt.legend([p1, p2, p3], [<span class="s">'Measurements'</span>, <span class="s"
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:96%"></i></div><span class="foot-num">47 / 49</span></footer>
 </section>
 <section class="slide" data-label="48 Air Force as Process Noise" data-screen-label="48 Air Force as Process Noise">
-<header class="head"><span class="kicker">8.12 Tracking a Ball in Air</span><span class="folio">48</span></header>
+<header class="head"><span class="kicker">Tracking a Ball in Air</span><span class="folio">48</span></header>
 <h2 class="title">Air Force as Process Noise</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>공기가 공에 가하는 힘을 process noise 로 간주하는 공학적 해법, Q = 0.01 과 Q = 0.1 로 같은 추적 반복</li><li>Q = 0.1 은 약간의 lag 만 남고 측정을 잘 따라감, 다만 이 힘은 Gaussian 이 아니고 계산 가능한 힘이라 최적 해법은 아님</li><li><strong>조건</strong>: R = 1, 측정 잡음 0.3 m, 왼쪽: Q = 0.01, 오른쪽: Q = 0.1</li></ul><div style="display:grid;grid-template-columns:889px 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxxs tightest"><span class="k">def</span> <span class="fn">plot_ball_with_q</span>(q, r=<span class="no">1.</span>, noise=<span class="no">0.3</span>):
@@ -3617,7 +3617,7 @@ plt.subplot(<span class="no">122</span>); plot_ball_with_q(<span class="no">0.1<
 <footer class="foot"><span class="foot-sec">Day 4 · Chapter 8 Designing Kalman Filters</span><div class="bar"><i style="width:98%"></i></div><span class="foot-num">48 / 49</span></footer>
 </section>
 <section class="slide" data-label="49 Noisy Measurements" data-screen-label="49 Noisy Measurements">
-<header class="head"><span class="kicker">8.12 Tracking a Ball in Air</span><span class="folio">49</span></header>
+<header class="head"><span class="kicker">Tracking a Ball in Air</span><span class="folio">49</span></header>
 <h2 class="title">Noisy Measurements</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>같은 방법을 측정 잡음 3 m 의 데이터에 적용, 출력이 매우 나쁨, 측정 비중이 커진 필터가 잡음을 그대로 따라감</li><li>Q, R 을 이론값보다 키워 약한 비선형을 가릴 수는 있지만 준최적, 시험 데이터에만 맞춘 필터는 실제 데이터에서 실패 가능</li><li><strong>조건</strong>: R = 3, 측정 잡음 3 m, 왼쪽: Q = 0.01, 오른쪽: Q = 0.1</li></ul><div style="display:grid;grid-template-columns:619px 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxs denser">plt.subplot(<span class="no">121</span>)
