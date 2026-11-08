@@ -132,22 +132,22 @@ figure.fig { align-items: center; }
 <header class="head"><span class="kicker">Chapter 3 Probabilities, Gaussians, and Bayes Theorem</span><span class="folio">01</span></header>
 <h2 class="title">Contents</h2>
 <div class="rule"></div>
-<div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;min-height:0;"><div class="cell"><ul class="ul contents"><li>Introduction</li><li>Mean, Variance, and Standard Deviations</li><li>Probability Distribution</li><li>Expected Value of a Random Variable</li><li>Gaussians</li><li>Gaussian Distributions</li><li>The Variance and Belief</li><li>The 68-95-99.7 Rule</li></ul></div><div class="cell"><ul class="ul contents"><li>Interactive Gaussians</li><li>Computational Properties of Gaussians</li><li>Putting it all Together</li><li>Limitations of Using Gaussians to Model the World</li><li>Product of Gaussians</li><li>Sum of Gaussians</li><li>Summary and Key Points</li></ul></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:3%"></i></div><span class="foot-num">01 / 32</span></footer>
+<div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;min-height:0;"><div class="cell"><ul class="ul contents"><li>Introduction</li><li>Mean, Variance, and Standard Deviations</li><li>Probability Distribution</li><li>Expected Value of a Random Variable</li><li>Gaussians</li><li>Gaussian Distributions</li><li>The Variance and Belief</li></ul></div><div class="cell"><ul class="ul contents"><li>The 68-95-99.7 Rule</li><li>Interactive Gaussians</li><li>Computational Properties of Gaussians</li><li>Putting it all Together</li><li>Product of Gaussians</li><li>Sum of Gaussians</li><li>Summary and Key Points</li></ul></div></div></div>
+<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:4%"></i></div><span class="foot-num">01 / 28</span></footer>
 </section>
 <section class="slide" data-label="02 Unimodal and Continuous" data-screen-label="02 Unimodal and Continuous">
 <header class="head"><span class="kicker">3.1 Introduction</span><span class="folio">02</span></header>
 <h2 class="title">Unimodal and Continuous</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;min-height:0;"><div class="cell"><ul class="ul"><li><strong>이산 표현의 한계</strong>: 여러 위치에 동시에 확률, 이산 칸, 큰 계산량</li></ul></div><div class="cell"><ul class="ul"><li><strong>원하는 표현</strong>: 하나의 값(unimodal), 실수 연속값(continuous), 계산이 쉬운 형태</li></ul></div></div><div class="point"><b>핵심</b>: 항공기는 "여기 아니면 저기" 가 아닌 하나의 위치로 표현해야 함, Gaussian 이 세 조건을 모두 만족</div><div style="display:grid;grid-template-columns:repeat(2, 1fr);gap:32px;min-height:0;"><div class="cell"><figure class="fig plain"><img src="./imgs/multimodal.svg" alt="multimodal" style="width:100%"></figure></div><div class="cell"><figure class="fig plain"><img src="./imgs/unimodal.svg" alt="unimodal" style="width:100%"></figure></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:6%"></i></div><span class="foot-num">02 / 32</span></footer>
+<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:7%"></i></div><span class="foot-num">02 / 28</span></footer>
 </section>
 <section class="slide" data-label="03 Random Variables" data-screen-label="03 Random Variables">
 <header class="head"><span class="kicker">3.2 Mean, Variance, and Standard Deviations</span><span class="folio">03</span></header>
 <h2 class="title">Random Variables</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;min-height:0;"><div class="cell"><div class="card"><h3 class="card-h sky">Discrete random variable</h3><ul class="ul"><li><strong>주사위</strong>: 1 ~ 6, 각 1/6</li><li><strong>동전</strong>: {H, T}</li><li><strong>표본 공간</strong>: 가능한 값의 집합, 유한하거나 셀 수 있음</li></ul></div></div><div class="cell"><div class="card soft"><h3 class="card-h sky">Continuous random variable</h3><ul class="ul"><li><strong>키</strong>: 두 생물학적 한계 사이의 모든 실수</li><li><strong>측정과 구분</strong>: 0.1 m 단위로 측정해도 키 자체는 연속</li></ul></div></div></div><div class="point"><b>random</b>: 비결정적이라는 뜻이 아니라 결과를 계산할 정보가 부족하다는 뜻, 확률 변수는 대문자 X, Y</div></div>
-<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:9%"></i></div><span class="foot-num">03 / 32</span></footer>
+<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:11%"></i></div><span class="foot-num">03 / 28</span></footer>
 </section>
 <section class="slide" data-label="04 Probability Distribution" data-screen-label="04 Probability Distribution">
 <header class="head"><span class="kicker">3.3 Probability Distribution</span><span class="folio">04</span></header>
@@ -240,7 +240,7 @@ belief = belief / np.<span class="fn">sum</span>(belief)
 plots.bar_plot(belief, ylim=(<span class="no">0</span>, <span class="no">.6</span>))
 <span class="fn">print</span>(<span class="s">'sum = '</span>, np.<span class="fn">sum</span>(belief))</pre></div><div class="cell"><div class="run-slot" data-key="496640ae1b44"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text">sum =  1.0
 </span><img src="./imgs/run/496640ae1b44_0.png" alt="result"></div></div></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:12%"></i></div><span class="foot-num">04 / 32</span></footer>
+<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:14%"></i></div><span class="foot-num">04 / 28</span></footer>
 </section>
 <section class="slide" data-label="05 Mean, Median, and Mode" data-screen-label="05 Mean, Median, and Mode">
 <header class="head"><span class="kicker">3.3.1 The Mean, Median, and Mode of a Random Variable</span><span class="folio">05</span></header>
@@ -325,7 +325,7 @@ plt.plot(x, <span class="s">'o'</span>, ms=<span class="no">12</span>)
 plt.axhline(np.mean(x), ls=<span class="s">'--'</span>, color=<span class="s">'k'</span>, label=<span class="s">'mean'</span>)
 plt.legend()</pre></div><div class="cell"><div class="run-slot" data-key="03f7650485ed"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text">1.8 1.8 1.8
 </span><img src="./imgs/run/03f7650485ed_0.png" alt="result"></div></div></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:16%"></i></div><span class="foot-num">05 / 32</span></footer>
+<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:18%"></i></div><span class="foot-num">05 / 28</span></footer>
 </section>
 <section class="slide" data-label="06 Expected Value" data-screen-label="06 Expected Value">
 <header class="head"><span class="kicker">3.4 Expected Value of a Random Variable</span><span class="folio">06</span></header>
@@ -463,7 +463,7 @@ running = np.cumsum(samples) / np.arange(<span class="no">1</span>, N + <span cl
 plt.plot(running)
 plt.axhline(<span class="no">1.5</span>, ls=<span class="s">'--'</span>, color=<span class="s">'k'</span>)</pre></div><div class="cell"><div class="run-slot" data-key="81674e5be7d2"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text">expected value ~ 1.5
 </span><img src="./imgs/run/81674e5be7d2_0.png" alt="result"></div></div></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:19%"></i></div><span class="foot-num">06 / 32</span></footer>
+<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:21%"></i></div><span class="foot-num">06 / 28</span></footer>
 </section>
 <section class="slide" data-label="07 Expected Value of Die and Uniform" data-screen-label="07 Expected Value of Die and Uniform">
 <header class="head"><span class="kicker">3.4.1 Exercise</span><span class="folio">07</span></header>
@@ -578,7 +578,7 @@ plt.subplot(<span class="no">121</span>); plt.hist(die, bins=np.arange(<span cla
 plt.subplot(<span class="no">122</span>); plt.hist(u, bins=<span class="no">20</span>, color=<span class="s">'C2'</span>);</pre></div><div class="cell"><div class="run-slot" data-key="918fa80c0feb"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text">die mean      3.444
 uniform mean  9.91911979115591
 </span><img src="./imgs/run/918fa80c0feb_0.png" alt="result"></div></div></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:22%"></i></div><span class="foot-num">07 / 32</span></footer>
+<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:25%"></i></div><span class="foot-num">07 / 28</span></footer>
 </section>
 <section class="slide" data-label="08 Variance" data-screen-label="08 Variance">
 <header class="head"><span class="kicker">3.4.5 Variance of a Random Variable</span><span class="folio">08</span></header>
@@ -712,7 +712,7 @@ Z = [<span class="no">1.8</span>, <span class="no">1.8</span>, <span class="no">
 plt.xticks([<span class="no">0</span>, <span class="no">1</span>, <span class="no">2</span>], [<span class="s">'X'</span>, <span class="s">'Y'</span>, <span class="s">'Z'</span>]);</pre></div><div class="cell"><div class="run-slot" data-key="40704fe343a0"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text">1.8 1.8 1.8
 0.02 meters squared
 </span><img src="./imgs/run/40704fe343a0_0.png" alt="result"></div></div></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:25%"></i></div><span class="foot-num">08 / 32</span></footer>
+<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:29%"></i></div><span class="foot-num">08 / 28</span></footer>
 </section>
 <section class="slide" data-label="09 Standard Deviation" data-screen-label="09 Standard Deviation">
 <header class="head"><span class="kicker">3.4.5 Variance of a Random Variable</span><span class="folio">09</span></header>
@@ -821,14 +821,14 @@ inside = (data &gt; mean-std) &amp; (data &lt; mean+std)
 std = 0.144
 67.0
 </span><img src="./imgs/run/f9889bae586a_0.png" alt="result"></div></div></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:28%"></i></div><span class="foot-num">09 / 32</span></footer>
+<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:32%"></i></div><span class="foot-num">09 / 28</span></footer>
 </section>
 <section class="slide" data-label="10 Why the Square" data-screen-label="10 Why the Square">
 <header class="head"><span class="kicker">3.4.6 Why the Square of the Differences</span><span class="folio">10</span></header>
 <h2 class="title">Why the Square</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li><strong>편차의 합</strong>: 항상 0 이라 부호를 없애야 퍼짐을 잴 수 있음, 방법은 절댓값 또는 제곱</li><li><strong>제곱의 장점</strong>: 큰 편차를 더 크게 반영, 절댓값으로는 같은 X 와 Y 를 분산 9 와 12.25 로 구분</li><li><strong>제곱의 대가</strong>: 이상값 하나에 분산이 크게 흔들림, 100 하나가 분산의 93% 를 차지해 2.03 에서 621.45 로 증가</li></ul><div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;min-height:0;"><div class="cell"><div style="display:flex;flex-direction:column;gap:10px;min-width:0"><h3 class="card-h sky">Absolute Value vs Square</h3><p class="note" style="font-size:22px"><code>X = [3, -3, 3, -3]&nbsp;&nbsp;&nbsp;Y = [6, -2, -3, 1]</code></p><table class="tbl tight"><thead><tr><th style="width:26%"></th><th style="width:37%">X</th><th style="width:37%">Y</th></tr></thead><tbody><tr><td>평균</td><td>0</td><td>0.5</td></tr><tr><td>편차</td><td>[3, -3, 3, -3]</td><td>[5.5, -2.5, -3.5, 0.5]</td></tr><tr><td>편차의 합</td><td>0</td><td>0</td></tr><tr><td>절댓값 평균</td><td><strong>3</strong></td><td><strong>3</strong> (구분 불가)</td></tr><tr><td>분산 (제곱 평균)</td><td><strong>9</strong></td><td><strong>12.25</strong> (더 큼)</td></tr><tr><td>표준편차</td><td>3</td><td>3.5 (책의 "variance 3.5")</td></tr></tbody></table></div></div><div class="cell"><div style="display:flex;flex-direction:column;gap:10px;min-width:0"><h3 class="card-h sky">Effect of One Outlier</h3><p class="note" style="font-size:22px"><code>Z = [1, -1, 1, -2, -1, 2, 1, 2, -1, 1, -1, 2, 1, -2, 100]</code></p><table class="tbl tight"><thead><tr><th style="width:26%"></th><th style="width:37%">Z[:-1] (100 제외)</th><th style="width:37%">Z (100 포함)</th></tr></thead><tbody><tr><td>평균</td><td>0.21</td><td>6.87</td></tr><tr><td>분산</td><td><strong>2.03</strong></td><td><strong>621.45</strong></td></tr><tr><td>표준편차</td><td>1.42</td><td>24.93</td></tr><tr><td>절댓값 평균</td><td>1.33</td><td>12.42</td></tr><tr><td>중앙값</td><td>1</td><td>1</td></tr><tr><td>100 의 비중</td><td>-</td><td>분산 93%, 절댓값 50%</td></tr></tbody></table></div></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:31%"></i></div><span class="foot-num">10 / 32</span></footer>
+<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:36%"></i></div><span class="foot-num">10 / 28</span></footer>
 </section>
 <section class="slide" data-label="11 Gaussians" data-screen-label="11 Gaussians">
 <header class="head"><span class="kicker">3.5 Gaussians</span><span class="folio">11</span></header>
@@ -854,7 +854,7 @@ std = 0.144
 </svg>)</li></ul><div style="display:grid;grid-template-columns:1.06fr 0.94fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxs denser"><span class="k">from</span> filterpy.stats <span class="k">import</span> plot_gaussian_pdf
 plot_gaussian_pdf(mean=<span class="no">1.8</span>, variance=<span class="no">0.1414</span>**<span class="no">2</span>,
                   xlabel=<span class="s">'Student Height'</span>, ylabel=<span class="s">'pdf'</span>);</pre></div><div class="cell"><div class="run-slot" data-key="21e1c1e27994"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text"></span><img src="./imgs/run/21e1c1e27994_0.png" alt="result"></div></div></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:34%"></i></div><span class="foot-num">11 / 32</span></footer>
+<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:39%"></i></div><span class="foot-num">11 / 28</span></footer>
 </section>
 <section class="slide" data-label="12 The Gaussian Equation" data-screen-label="12 The Gaussian Equation">
 <header class="head"><span class="kicker">3.7 Gaussian Distributions</span><span class="folio">12</span></header>
@@ -1040,7 +1040,7 @@ plot_gaussian_pdf(mean=<span class="no">1.8</span>, variance=<span class="no">0.
 </g>
 </svg></div><div style="display:grid;grid-template-columns:0.8fr 1.2fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxs denser">x = np.arange(-<span class="no">3</span>, <span class="no">3</span>, <span class="no">.01</span>)
 plt.plot(x, np.exp(-x**<span class="no">2</span>));</pre></div><div class="cell"><div class="run-slot" data-key="48fba7bdec5d"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text"></span><img src="./imgs/run/48fba7bdec5d_0.png" alt="result"></div></div></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:38%"></i></div><span class="foot-num">12 / 32</span></footer>
+<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:43%"></i></div><span class="foot-num">12 / 28</span></footer>
 </section>
 <section class="slide" data-label="13 Interactive Gaussians" data-screen-label="13 Interactive Gaussians">
 <header class="head"><span class="kicker">3.10 Interactive Gaussians</span><span class="folio">13</span></header>
@@ -1079,7 +1079,7 @@ plt.plot(x, np.exp(-x**<span class="no">2</span>));</pre></div><div class="cell"
 
 interact(plt_g, mu=FloatSlider(value=<span class="no">5</span>, <span class="fn">min</span>=<span class="no">3</span>, <span class="fn">max</span>=<span class="no">7</span>),
          variance=FloatSlider(value = <span class="no">.03</span>, <span class="fn">min</span>=<span class="no">.01</span>, <span class="fn">max</span>=<span class="no">1.</span>));</pre></div><div class="cell"><div style="display:flex;flex-direction:column;gap:12px;min-width:0"><div data-sliders=""><label class="slider-row"><span class="slider-name">mu</span><input type="range" data-var="mu" min="3" max="7" step="0.1" value="5"><span class="slider-val">5</span></label><label class="slider-row"><span class="slider-name">variance</span><input type="range" data-var="variance" min="0.01" max="1" step="0.1" value="0.03"><span class="slider-val">0.03</span></label></div><div class="run-slot" data-key="5f875147546e"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text"></span><img src="./imgs/run/5f875147546e_0.png" alt="result"></div></div></div></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:41%"></i></div><span class="foot-num">13 / 32</span></footer>
+<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:46%"></i></div><span class="foot-num">13 / 28</span></footer>
 </section>
 <section class="slide" data-label="14 Thermometer Reading" data-screen-label="14 Thermometer Reading">
 <header class="head"><span class="kicker">3.7 Gaussian Distributions</span><span class="folio">14</span></header>
@@ -1105,7 +1105,7 @@ interact(plt_g, mu=FloatSlider(value=<span class="no">5</span>, <span class="fn"
 </g>
 </svg>: 평균 22 도, 분산 4, 표준편차 2 도, 평균선 표시</li></ul><div style="display:grid;grid-template-columns:0.8fr 1.2fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxs denser">plot_gaussian_pdf(<span class="no">22</span>, <span class="no">4</span>, mean_line=<span class="k">True</span>,
                   xlabel=<span class="s">'$^{\circ}C$'</span>);</pre></div><div class="cell"><div class="run-slot" data-key="fc2bdb6fccaf"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text"></span><img src="./imgs/run/fc2bdb6fccaf_0.png" alt="result"></div></div></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:44%"></i></div><span class="foot-num">14 / 32</span></footer>
+<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:50%"></i></div><span class="foot-num">14 / 28</span></footer>
 </section>
 <section class="slide" data-label="15 Probability Density" data-screen-label="15 Probability Density">
 <header class="head"><span class="kicker">3.7 Gaussian Distributions</span><span class="folio">15</span></header>
@@ -1221,7 +1221,7 @@ interact(plt_g, mu=FloatSlider(value=<span class="no">5</span>, <span class="fn"
       norm_cdf((<span class="no">23.5</span>, <span class="no">24.5</span>), <span class="no">22</span>,<span class="no">4</span>)*<span class="no">100</span>))</pre></div><div class="cell"><div class="run-slot" data-key="5eb92db569ea"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text">Cumulative probability of range 21.5 to 22.5 is 19.74%
 Cumulative probability of range 23.5 to 24.5 is 12.10%
 </span></div></div></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:47%"></i></div><span class="foot-num">15 / 32</span></footer>
+<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:54%"></i></div><span class="foot-num">15 / 28</span></footer>
 </section>
 <section class="slide" data-label="16 Variance and Belief" data-screen-label="16 Variance and Belief">
 <header class="head"><span class="kicker">3.8 The Variance and Belief</span><span class="folio">16</span></header>
@@ -1308,7 +1308,7 @@ plt.legend();</pre></div><div class="cell"><div class="run-slot" data-key="13c65
 <use x='16.013' y='-3.615' xlink:href='#t21936e5605c8-g2-50'/>
 </g>
 </svg>, 분산이 작을수록 측정이 정밀하고 믿음이 강함</div></div>
-<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:50%"></i></div><span class="foot-num">16 / 32</span></footer>
+<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:57%"></i></div><span class="foot-num">16 / 28</span></footer>
 </section>
 <section class="slide" data-label="17 The 68-95-99.7 Rule" data-screen-label="17 The 68-95-99.7 Rule">
 <header class="head"><span class="kicker">3.9 The 68-95-99.7 Rule</span><span class="folio">17</span></header>
@@ -1369,7 +1369,7 @@ plt.legend();</pre></div><div class="cell"><div class="run-slot" data-key="13c65
 <use x='36.533' y='-3.615' xlink:href='#tc421b4e59edb-g2-50'/>
 </g>
 </svg> 로 단위 노출</li></ul></div></div><div style="display:grid;grid-template-columns:0.5fr 1.5fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxs denser">display_stddev_plot()</pre></div><div class="cell"><div class="run-slot" data-key="3167d7aaad5a"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text"></span><img src="./imgs/run/3167d7aaad5a_0.png" alt="result"></div></div></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:53%"></i></div><span class="foot-num">17 / 32</span></footer>
+<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:61%"></i></div><span class="foot-num">17 / 28</span></footer>
 </section>
 <section class="slide" data-label="18 Sum of Two Gaussians" data-screen-label="18 Sum of Two Gaussians">
 <header class="head"><span class="kicker">3.11 Computational Properties of Gaussians</span><span class="folio">18</span></header>
@@ -1421,7 +1421,7 @@ mu = <span class="no">0.8</span> + <span class="no">1.3</span>   <span class="c"
 var = <span class="no">.1</span> + <span class="no">.2</span>    <span class="c"># variances add</span>
 g = gaussian(x, mean=mu, var=var)
 plt.plot(x, g, ls=<span class="s">'-.'</span>);</pre></div><div class="cell"><div class="run-slot" data-key="aa5e025919b7"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text"></span><img src="./imgs/run/aa5e025919b7_0.png" alt="result"></div></div></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:56%"></i></div><span class="foot-num">18 / 32</span></footer>
+<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:64%"></i></div><span class="foot-num">18 / 28</span></footer>
 </section>
 <section class="slide" data-label="19 Product of Two Gaussians" data-screen-label="19 Product of Two Gaussians">
 <header class="head"><span class="kicker">3.11 Computational Properties of Gaussians</span><span class="folio">19</span></header>
@@ -1558,7 +1558,7 @@ plt.plot(x, g1, x, g2)
 g = g1 * g2 <span class="c"># element-wise multiplication</span>
 g = g / <span class="fn">sum</span>(g) <span class="c"># normalize</span>
 plt.plot(x, g, ls=<span class="s">'-.'</span>);</pre></div><div class="cell"><div class="run-slot" data-key="04f2d337e5a0"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text"></span><img src="./imgs/run/04f2d337e5a0_0.png" alt="result"></div></div></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:59%"></i></div><span class="foot-num">19 / 32</span></footer>
+<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:68%"></i></div><span class="foot-num">19 / 28</span></footer>
 </section>
 <section class="slide" data-label="20 Nonlinear Functions" data-screen-label="20 Nonlinear Functions">
 <header class="head"><span class="kicker">3.11 Computational Properties of Gaussians</span><span class="folio">20</span></header>
@@ -1576,7 +1576,7 @@ plt.plot(x, g, ls=<span class="s">'-.'</span>);</pre></div><div class="cell"><di
 </svg> 구간, 간격 0.01</li></ul><div style="display:grid;grid-template-columns:0.76fr 1.24fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxs denser">x = np.arange(<span class="no">0</span>, <span class="no">4</span>*np.pi, <span class="no">0.01</span>)
 plt.plot(np.sin(<span class="no">1.2</span>*x))
 plt.plot(np.sin(<span class="no">1.2</span>*x) * np.sin(<span class="no">2</span>*x));</pre></div><div class="cell"><div class="run-slot" data-key="d108fd1abca7"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text"></span><img src="./imgs/run/d108fd1abca7_0.png" alt="result"></div></div></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:62%"></i></div><span class="foot-num">20 / 32</span></footer>
+<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:71%"></i></div><span class="foot-num">20 / 28</span></footer>
 </section>
 <section class="slide" data-label="21 Discrete Update Revisited" data-screen-label="21 Discrete Update Revisited">
 <header class="head"><span class="kicker">3.12 Putting it all Together</span><span class="folio">21</span></header>
@@ -1592,7 +1592,7 @@ prior =      normalize(np.array([<span class="no">4</span>, <span class="no">2</
 likelihood = normalize(np.array([<span class="no">3</span>, <span class="no">4</span>, <span class="no">1</span>, <span class="no">4</span>, <span class="no">2</span>, <span class="no">38</span>, <span class="no">20</span>, <span class="no">18</span>, <span class="no">1</span>, <span class="no">16</span>]))
 posterior = update(likelihood, prior)
 plots.bar_plot(posterior, ylim=(<span class="no">0</span>, <span class="no">.6</span>))</pre></div><div class="cell"><div class="run-slot" data-key="813ee2813b7a"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text"></span><img src="./imgs/run/813ee2813b7a_0.png" alt="result"></div></div></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:66%"></i></div><span class="foot-num">21 / 32</span></footer>
+<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:75%"></i></div><span class="foot-num">21 / 28</span></footer>
 </section>
 <section class="slide" data-label="22 A Gaussian Instead of an Array" data-screen-label="22 A Gaussian Instead of an Array">
 <header class="head"><span class="kicker">3.12 Putting it all Together</span><span class="folio">22</span></header>
@@ -1653,7 +1653,7 @@ prior =      normalize(np.array([4, 2, 0, 7, 2, 12, 35, 20, 3, 2]))
 likelihood = normalize(np.array([3, 4, 1, 4, 2, 38, 20, 18, 1, 16]))
 posterior = update(likelihood, prior)
 </script>
-<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:69%"></i></div><span class="foot-num">22 / 32</span></footer>
+<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:79%"></i></div><span class="foot-num">22 / 28</span></footer>
 </section>
 <section class="slide" data-label="23 Bayes&#x27; Theorem" data-screen-label="23 Bayes&#x27; Theorem">
 <header class="head"><span class="kicker">3.12.1 Bayes Theorem</span><span class="folio">23</span></header>
@@ -1745,7 +1745,7 @@ posterior = update(likelihood, prior)
 <use x='75.641' y='3.436' xlink:href='#t2dcc95f69139-g6-41'/>
 </g>
 </svg></div><table class="tbl"><thead><tr><th style="width:24%">항</th><th style="width:20%">이름</th><th>코드에서</th></tr></thead><tbody><tr><td><strong>p(x_i)</strong></td><td>prior</td><td>측정 반영 전 믿음 <code>prior</code></td></tr><tr><td><strong>p(z | x_i)</strong></td><td>likelihood</td><td>각 위치에서 그 측정이 나올 확률 <code>likelihood</code></td></tr><tr><td><strong>p(z)</strong></td><td>evidence</td><td>위치와 무관한 측정 확률, <code>sum(belief)</code> 로 정규화</td></tr><tr><td><strong>p(x_i | z)</strong></td><td>posterior</td><td>측정 반영 후 믿음, <code>update()</code> 의 결과</td></tr></tbody></table><div class="point"><b>핵심</b>: update() 는 Bayes 정리 그 자체, 조건부 확률 P(A | B) 는 B 가 일어났을 때 A 의 확률</div></div>
-<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:72%"></i></div><span class="foot-num">23 / 32</span></footer>
+<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:82%"></i></div><span class="foot-num">23 / 28</span></footer>
 </section>
 <section class="slide" data-label="24 Why Bayes Helps" data-screen-label="24 Why Bayes Helps">
 <header class="head"><span class="kicker">3.12.1 Bayes Theorem</span><span class="folio">24</span></header>
@@ -1840,7 +1840,7 @@ posterior = update(likelihood, prior)
 <use x='108.017' y='0' xlink:href='#t0de581374839-g3-41'/>
 </g>
 </svg></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;min-height:0;"><div class="cell"><div class="card"><h3 class="card-h sky">적분 분모</h3><ul class="ul"><li>해석적으로 풀기 어려운 경우가 대부분</li><li>실제로는 정규화를 위한 합, 합으로 생각하면 쉬워짐</li></ul></div></div><div class="cell"><div class="card good"><h3 class="card-h leaf">역방향 계산</h3><ul class="ul"><li>p(x | z) 는 직접 구하기 어려움</li><li>p(z | x), 그 위치에서 그 측정이 나올 확률은 구하기 쉬움</li></ul></div></div></div><div class="point"><b>예</b>: 센서 값으로 비 올 확률 대신, 비가 올 때 그 센서 값이 나올 확률을 계산</div><div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:32px;min-height:0;"><div class="cell"><figure class="fig plain"><img src="./imgs/bayes_prior.svg" alt="bayes_prior" style="width:100%"></figure></div><div class="cell"><figure class="fig plain"><img src="./imgs/bayes_like.svg" alt="bayes_like" style="width:100%"></figure></div><div class="cell"><figure class="fig plain"><img src="./imgs/bayes_post.svg" alt="bayes_post" style="width:100%"></figure></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:75%"></i></div><span class="foot-num">24 / 32</span></footer>
+<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:86%"></i></div><span class="foot-num">24 / 28</span></footer>
 </section>
 <section class="slide" data-label="25 Total Probability Theorem" data-screen-label="25 Total Probability Theorem">
 <header class="head"><span class="kicker">3.12.2 Total Probability Theorem</span><span class="folio">25</span></header>
@@ -1893,103 +1893,10 @@ posterior = update(likelihood, prior)
     <span class="k">for</span> k <span class="k">in</span> <span class="fn">range</span> (kN):
         index = (i + (width-k) - offset) % N
         result[i] += prob_dist[index] * kernel[k]</pre></div>
-<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:78%"></i></div><span class="foot-num">25 / 32</span></footer>
+<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:89%"></i></div><span class="foot-num">25 / 28</span></footer>
 </section>
-<section class="slide" data-label="26 Limitations of Gaussians" data-screen-label="26 Limitations of Gaussians">
-<header class="head"><span class="kicker">3.14 Limitations of Using Gaussians to Model the World</span><span class="folio">26</span></header>
-<h2 class="title">Limitations of Gaussians</h2>
-<div class="rule"></div>
-<div class="body"><ul class="ul brief"><li>시험 점수를 평균 90, 분산 30 인 Gaussian 으로 모델링하고 10 ~ 100 점 구간을 그림</li><li>100 점 위쪽에도 확률이 남아 0 ~ 100 안의 넓이가 1 이 되지 못함</li><li>중심 극한 정리는 특정 조건에서만 성립, 실제 분포는 꼬리가 두꺼운 경우가 많음</li><li><strong>조건</strong>: 점수 범위 0 ~ 100, 평균 90, 분산 30</li></ul><div style="display:grid;grid-template-columns:0.76fr 1.24fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxs denser">xs = np.arange(<span class="no">10</span>, <span class="no">100</span>, <span class="no">0.05</span>)
-ys = [gaussian(x, <span class="no">90</span>, <span class="no">30</span>) <span class="k">for</span> x <span class="k">in</span> xs]
-plt.plot(xs, ys, label=<span class="s">'var=0.2'</span>)
-plt.xlim(<span class="no">0</span>, <span class="no">120</span>);
-plt.ylim(-<span class="no">0.02</span>, <span class="no">0.09</span>);</pre></div><div class="cell"><div class="run-slot" data-key="45de166aefc3"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text"></span><img src="./imgs/run/45de166aefc3_0.png" alt="result"></div></div></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:81%"></i></div><span class="foot-num">26 / 32</span></footer>
-</section>
-<section class="slide" data-label="27 Gaussian Sensor Noise" data-screen-label="27 Gaussian Sensor Noise">
-<header class="head"><span class="kicker">3.14 Limitations of Using Gaussians to Model the World</span><span class="folio">27</span></header>
-<h2 class="title">Gaussian Sensor Noise</h2>
-<div class="rule"></div>
-<div class="body"><ul class="ul brief"><li>일정한 신호 10 에 표준편차 2 인 white noise 가 더해지는 센서를 randn() 으로 모의</li><li>측정값은 10 을 중심으로 분포, 68% 는 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -6.92 28.12 8.251" role="img" aria-label="10 \pm 2" fill="currentColor" style="width:3.403em;height:0.998em;vertical-align:-0.161em;display:inline-block;overflow:visible">
-<defs>
-<path id='t97c39dfc7c07-g0-6' d='M4.075-3.118H6.844C7.014-3.118 7.193-3.118 7.193-3.318S7.014-3.517 6.844-3.517H4.075V-6.267C4.075-6.426 4.075-6.635 3.875-6.635S3.676-6.456 3.676-6.296V-3.517H.897C.727-3.517 .548-3.517 .548-3.318S.727-3.118 .897-3.118H3.676V-.399H.897C.727-.399 .548-.399 .548-.199S.727 0 .897 0H6.844C7.014 0 7.193 0 7.193-.199S7.014-.399 6.844-.399H4.075V-3.118Z'/>
-<path id='t97c39dfc7c07-g1-48' d='M4.583-3.188C4.583-3.985 4.533-4.782 4.184-5.519C3.726-6.476 2.909-6.635 2.491-6.635C1.893-6.635 1.166-6.376 .757-5.45C.438-4.762 .389-3.985 .389-3.188C.389-2.441 .428-1.544 .837-.787C1.265 .02 1.993 .219 2.481 .219C3.019 .219 3.776 .01 4.214-.936C4.533-1.624 4.583-2.401 4.583-3.188ZM2.481 0C2.092 0 1.504-.249 1.325-1.205C1.215-1.803 1.215-2.72 1.215-3.308C1.215-3.945 1.215-4.603 1.295-5.141C1.484-6.326 2.232-6.416 2.481-6.416C2.809-6.416 3.467-6.237 3.656-5.25C3.756-4.692 3.756-3.935 3.756-3.308C3.756-2.56 3.756-1.883 3.646-1.245C3.497-.299 2.929 0 2.481 0Z'/>
-<path id='t97c39dfc7c07-g1-49' d='M2.929-6.376C2.929-6.615 2.929-6.635 2.7-6.635C2.082-5.998 1.205-5.998 .887-5.998V-5.689C1.086-5.689 1.674-5.689 2.192-5.948V-.787C2.192-.428 2.162-.309 1.265-.309H.946V0C1.295-.03 2.162-.03 2.56-.03S3.826-.03 4.174 0V-.309H3.856C2.959-.309 2.929-.418 2.929-.787V-6.376Z'/>
-<path id='t97c39dfc7c07-g1-50' d='M1.265-.767L2.321-1.793C3.875-3.168 4.473-3.706 4.473-4.702C4.473-5.838 3.577-6.635 2.361-6.635C1.235-6.635 .498-5.719 .498-4.832C.498-4.274 .996-4.274 1.026-4.274C1.196-4.274 1.544-4.394 1.544-4.802C1.544-5.061 1.365-5.32 1.016-5.32C.936-5.32 .917-5.32 .887-5.31C1.116-5.958 1.654-6.326 2.232-6.326C3.138-6.326 3.567-5.519 3.567-4.702C3.567-3.905 3.068-3.118 2.521-2.501L.608-.369C.498-.259 .498-.239 .498 0H4.194L4.473-1.733H4.224C4.174-1.435 4.105-.996 4.005-.847C3.935-.767 3.278-.767 3.059-.767H1.265Z'/>
-</defs>
-<g id='t97c39dfc7c07-page1'>
-<use x='0' y='0' xlink:href='#t97c39dfc7c07-g1-49'/>
-<use x='4.981' y='0' xlink:href='#t97c39dfc7c07-g1-48'/>
-<use x='12.177' y='0' xlink:href='#t97c39dfc7c07-g0-6'/>
-<use x='22.139' y='0' xlink:href='#t97c39dfc7c07-g1-50'/>
-</g>
-</svg>, 99% 는 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -6.92 28.12 8.251" role="img" aria-label="10 \pm 6" fill="currentColor" style="width:3.403em;height:0.998em;vertical-align:-0.161em;display:inline-block;overflow:visible">
-<defs>
-<path id='td7ebf7c5d6e9-g0-6' d='M4.075-3.118H6.844C7.014-3.118 7.193-3.118 7.193-3.318S7.014-3.517 6.844-3.517H4.075V-6.267C4.075-6.426 4.075-6.635 3.875-6.635S3.676-6.456 3.676-6.296V-3.517H.897C.727-3.517 .548-3.517 .548-3.318S.727-3.118 .897-3.118H3.676V-.399H.897C.727-.399 .548-.399 .548-.199S.727 0 .897 0H6.844C7.014 0 7.193 0 7.193-.199S7.014-.399 6.844-.399H4.075V-3.118Z'/>
-<path id='td7ebf7c5d6e9-g1-48' d='M4.583-3.188C4.583-3.985 4.533-4.782 4.184-5.519C3.726-6.476 2.909-6.635 2.491-6.635C1.893-6.635 1.166-6.376 .757-5.45C.438-4.762 .389-3.985 .389-3.188C.389-2.441 .428-1.544 .837-.787C1.265 .02 1.993 .219 2.481 .219C3.019 .219 3.776 .01 4.214-.936C4.533-1.624 4.583-2.401 4.583-3.188ZM2.481 0C2.092 0 1.504-.249 1.325-1.205C1.215-1.803 1.215-2.72 1.215-3.308C1.215-3.945 1.215-4.603 1.295-5.141C1.484-6.326 2.232-6.416 2.481-6.416C2.809-6.416 3.467-6.237 3.656-5.25C3.756-4.692 3.756-3.935 3.756-3.308C3.756-2.56 3.756-1.883 3.646-1.245C3.497-.299 2.929 0 2.481 0Z'/>
-<path id='td7ebf7c5d6e9-g1-49' d='M2.929-6.376C2.929-6.615 2.929-6.635 2.7-6.635C2.082-5.998 1.205-5.998 .887-5.998V-5.689C1.086-5.689 1.674-5.689 2.192-5.948V-.787C2.192-.428 2.162-.309 1.265-.309H.946V0C1.295-.03 2.162-.03 2.56-.03S3.826-.03 4.174 0V-.309H3.856C2.959-.309 2.929-.418 2.929-.787V-6.376Z'/>
-<path id='td7ebf7c5d6e9-g1-54' d='M1.315-3.268V-3.507C1.315-6.027 2.55-6.386 3.059-6.386C3.298-6.386 3.716-6.326 3.935-5.988C3.786-5.988 3.387-5.988 3.387-5.539C3.387-5.23 3.626-5.081 3.846-5.081C4.005-5.081 4.304-5.171 4.304-5.559C4.304-6.157 3.866-6.635 3.039-6.635C1.763-6.635 .418-5.35 .418-3.148C.418-.488 1.574 .219 2.501 .219C3.606 .219 4.553-.717 4.553-2.032C4.553-3.298 3.666-4.254 2.56-4.254C1.883-4.254 1.514-3.746 1.315-3.268ZM2.501-.06C1.873-.06 1.574-.658 1.514-.807C1.335-1.275 1.335-2.072 1.335-2.252C1.335-3.029 1.654-4.025 2.55-4.025C2.71-4.025 3.168-4.025 3.477-3.407C3.656-3.039 3.656-2.531 3.656-2.042C3.656-1.564 3.656-1.066 3.487-.707C3.188-.11 2.73-.06 2.501-.06Z'/>
-</defs>
-<g id='td7ebf7c5d6e9-page1'>
-<use x='0' y='0' xlink:href='#td7ebf7c5d6e9-g1-49'/>
-<use x='4.981' y='0' xlink:href='#td7ebf7c5d6e9-g1-48'/>
-<use x='12.177' y='0' xlink:href='#td7ebf7c5d6e9-g0-6'/>
-<use x='22.139' y='0' xlink:href='#td7ebf7c5d6e9-g1-54'/>
-</g>
-</svg> 안</li><li>실제 센서 오차는 Gaussian 이 아닌 경우가 많음, Kalman filter 수학은 이상화된 모델</li><li><strong>조건</strong>: 신호 10, 잡음 표준편차 2, 측정 5000 회</li></ul><div style="display:grid;grid-template-columns:0.86fr 1.14fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxs denser"><span class="k">from</span> numpy.random <span class="k">import</span> randn
-<span class="k">def</span> <span class="fn">sense</span>():
-    <span class="k">return</span> <span class="no">10</span> + randn()*<span class="no">2</span>
-zs = [sense() <span class="k">for</span> i <span class="k">in</span> <span class="fn">range</span>(<span class="no">5000</span>)]
-plt.plot(zs, lw=<span class="no">1</span>);</pre></div><div class="cell"><div class="run-slot" data-key="b16043a59fb7"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text"></span><img src="./imgs/run/b16043a59fb7_0.png" alt="result"></div></div></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:84%"></i></div><span class="foot-num">27 / 32</span></footer>
-</section>
-<section class="slide" data-label="28 Student&#x27;s t Noise" data-screen-label="28 Student&#x27;s t Noise">
-<header class="head"><span class="kicker">3.14 Limitations of Using Gaussians to Model the World</span><span class="folio">28</span></header>
-<h2 class="title">Student&#x27;s t Noise</h2>
-<div class="rule"></div>
-<div class="body"><ul class="ul brief"><li>같은 센서의 잡음을 자유도 7 인 Student t 분포에서 뽑아 5000 회 측정</li><li>정규분포와 비슷하지만 3 표준편차(7 ~ 13)를 훨씬 넘는 이상값이 자주 발생</li><li>실제 센서의 정확한 모델은 아니지만 현실적인 잡음으로 필터를 시험할 때 유용</li><li><strong>조건</strong>: 신호 10, 배율 2, 자유도 df = 7, 측정 5000 회</li></ul><div style="display:grid;grid-template-columns:0.86fr 1.14fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxs denser"><span class="k">import</span> random, math
-<span class="k">def</span> <span class="fn">rand_student_t</span>(df, mu=<span class="no">0</span>, std=<span class="no">1</span>):
-    x = random.gauss(<span class="no">0</span>, std)
-    y = <span class="no">2.0</span>*random.gammavariate(<span class="no">0.5</span>*df, <span class="no">2.0</span>)
-    <span class="k">return</span> x / (math.sqrt(y / df)) + mu
-<span class="k">def</span> <span class="fn">sense_t</span>():
-    <span class="k">return</span> <span class="no">10</span> + rand_student_t(<span class="no">7</span>)*<span class="no">2</span>
-zs = [sense_t() <span class="k">for</span> i <span class="k">in</span> <span class="fn">range</span>(<span class="no">5000</span>)]
-plt.plot(zs, lw=<span class="no">1</span>);</pre></div><div class="cell"><div class="run-slot" data-key="004f81deb1b2"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text"></span><img src="./imgs/run/004f81deb1b2_0.png" alt="result"></div></div></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:88%"></i></div><span class="foot-num">28 / 32</span></footer>
-</section>
-<section class="slide" data-label="29 Skew and Kurtosis" data-screen-label="29 Skew and Kurtosis">
-<header class="head"><span class="kicker">3.14 Limitations of Using Gaussians to Model the World</span><span class="folio">29</span></header>
-<h2 class="title">Skew and Kurtosis</h2>
-<div class="rule"></div>
-<div class="body"><ul class="ul brief"><li>정규분포 표본 10 개와 300,000 개의 통계를 scipy.stats.describe 로 비교</li><li>작은 표본은 평균, 분산이 이론값 0, 1 과 다르고 skew, kurtosis 도 0 에서 크게 벗어남</li><li>skew 는 평균 기준 비대칭 정도, kurtosis 는 꼬리 두께, 큰 표본은 모두 0 에 가까움</li><li><strong>조건</strong>: 표준 정규분포 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.972 32.782 10.963" role="img" aria-label="\mathcal{N}(0, 1)" fill="currentColor" style="width:3.967em;height:1.327em;vertical-align:-0.362em;display:inline-block;overflow:visible">
-<defs>
-<path id='ta34bc4d11902-g1-59' d='M2.022-.01C2.022-.667 1.773-1.056 1.385-1.056C1.056-1.056 .857-.807 .857-.528C.857-.259 1.056 0 1.385 0C1.504 0 1.634-.04 1.733-.13C1.763-.149 1.773-.159 1.783-.159S1.803-.149 1.803-.01C1.803 .727 1.455 1.325 1.126 1.654C1.016 1.763 1.016 1.783 1.016 1.813C1.016 1.883 1.066 1.923 1.116 1.923C1.225 1.923 2.022 1.156 2.022-.01Z'/>
-<path id='ta34bc4d11902-g2-40' d='M3.298 2.391C3.298 2.361 3.298 2.341 3.128 2.172C1.883 .917 1.564-.966 1.564-2.491C1.564-4.224 1.943-5.958 3.168-7.203C3.298-7.323 3.298-7.342 3.298-7.372C3.298-7.442 3.258-7.472 3.198-7.472C3.098-7.472 2.202-6.795 1.614-5.529C1.106-4.433 .986-3.328 .986-2.491C.986-1.714 1.096-.508 1.644 .618C2.242 1.843 3.098 2.491 3.198 2.491C3.258 2.491 3.298 2.461 3.298 2.391Z'/>
-<path id='ta34bc4d11902-g2-41' d='M2.879-2.491C2.879-3.268 2.77-4.473 2.222-5.599C1.624-6.824 .767-7.472 .667-7.472C.608-7.472 .568-7.432 .568-7.372C.568-7.342 .568-7.323 .757-7.143C1.733-6.157 2.301-4.573 2.301-2.491C2.301-.787 1.933 .966 .697 2.222C.568 2.341 .568 2.361 .568 2.391C.568 2.451 .608 2.491 .667 2.491C.767 2.491 1.664 1.813 2.252 .548C2.76-.548 2.879-1.654 2.879-2.491Z'/>
-<path id='ta34bc4d11902-g2-48' d='M4.583-3.188C4.583-3.985 4.533-4.782 4.184-5.519C3.726-6.476 2.909-6.635 2.491-6.635C1.893-6.635 1.166-6.376 .757-5.45C.438-4.762 .389-3.985 .389-3.188C.389-2.441 .428-1.544 .837-.787C1.265 .02 1.993 .219 2.481 .219C3.019 .219 3.776 .01 4.214-.936C4.533-1.624 4.583-2.401 4.583-3.188ZM2.481 0C2.092 0 1.504-.249 1.325-1.205C1.215-1.803 1.215-2.72 1.215-3.308C1.215-3.945 1.215-4.603 1.295-5.141C1.484-6.326 2.232-6.416 2.481-6.416C2.809-6.416 3.467-6.237 3.656-5.25C3.756-4.692 3.756-3.935 3.756-3.308C3.756-2.56 3.756-1.883 3.646-1.245C3.497-.299 2.929 0 2.481 0Z'/>
-<path id='ta34bc4d11902-g2-49' d='M2.929-6.376C2.929-6.615 2.929-6.635 2.7-6.635C2.082-5.998 1.205-5.998 .887-5.998V-5.689C1.086-5.689 1.674-5.689 2.192-5.948V-.787C2.192-.428 2.162-.309 1.265-.309H.946V0C1.295-.03 2.162-.03 2.56-.03S3.826-.03 4.174 0V-.309H3.856C2.959-.309 2.929-.418 2.929-.787V-6.376Z'/>
-<path id='ta34bc4d11902-g0-78' d='M3.049-5.719C3.228-5.2 3.447-4.453 3.895-3.228C4.523-1.534 4.802-.917 5.41 .03C5.549 .239 5.559 .249 5.649 .249C5.788 .249 5.998 .13 6.107 .05C6.247-.08 6.257-.09 6.366-.578C6.964-3.198 7.721-5.928 7.92-6.386C7.93-6.406 8.13-6.785 9.355-6.804C9.554-6.814 9.743-7.342 9.743-7.562C9.743-7.721 9.684-7.721 9.544-7.721C8.548-7.721 8.1-7.303 7.98-7.173C7.701-6.814 7.462-6.087 7.004-4.423C6.655-3.148 6.336-1.853 6.027-.568C5.479-1.395 5.171-2.182 4.692-3.467C4.164-4.882 3.846-5.918 3.577-6.814C3.517-7.014 3.507-7.024 3.417-7.024C3.397-7.024 3.198-7.024 2.909-6.785C2.809-6.695 2.8-6.605 2.79-6.496C2.511-3.846 1.574-1.225 1.305-.747C1.225-.598 1.106-.418 .907-.418C.807-.418 .418-.468 .159-.707C.11-.747 .09-.747 .08-.747C-.08-.747-.289-.249-.289-.01C-.289 .299 .319 .498 .598 .498C1.235 .498 1.743-.907 1.903-1.365C2.55-3.168 2.859-4.653 3.049-5.719Z'/>
-</defs>
-<g id='ta34bc4d11902-page1'>
-<use x='0' y='0' xlink:href='#ta34bc4d11902-g0-78'/>
-<use x='9.642' y='0' xlink:href='#ta34bc4d11902-g2-40'/>
-<use x='13.517' y='0' xlink:href='#ta34bc4d11902-g2-48'/>
-<use x='18.498' y='0' xlink:href='#ta34bc4d11902-g1-59'/>
-<use x='22.926' y='0' xlink:href='#ta34bc4d11902-g2-49'/>
-<use x='27.907' y='0' xlink:href='#ta34bc4d11902-g2-41'/>
-</g>
-</svg>, 표본 수 10 과 300,000</li></ul><div style="display:grid;grid-template-columns:1.2fr 0.8fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xs"><span class="k">import</span> scipy.stats
-<span class="fn">print</span>(scipy.stats.describe(np.random.randn(<span class="no">10</span>)))
-<span class="fn">print</span>()
-<span class="fn">print</span>(scipy.stats.describe(np.random.randn(<span class="no">300000</span>)))</pre></div><div class="cell"><div class="run-slot" data-key="51d178d0a076"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text">DescribeResult(nobs=10, minmax=(-1.7547243063454208, 1.690525703800356), mean=0.07406091535945156, variance=0.9205510622838874, skewness=-0.22151012624778627, kurtosis=-0.1540730087546116)
-
-DescribeResult(nobs=300000, minmax=(-4.913331616326192, 5.258404775706517), mean=2.6127117900199673e-06, variance=0.9969858653085762, skewness=-0.0019396399916404938, kurtosis=0.010500330708442807)
-</span></div></div></div></div><div class="point"><b>예</b>: 우주 임무에서는 이론상 3 표준편차 대신 실험으로 5 ~ 6 표준편차를 써야 했던 사례</div></div>
-<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:91%"></i></div><span class="foot-num">29 / 32</span></footer>
-</section>
-<section class="slide" data-label="30 Product of Gaussians" data-screen-label="30 Product of Gaussians">
-<header class="head"><span class="kicker">3.15 Product of Gaussians (Optional)</span><span class="folio">30</span></header>
+<section class="slide" data-label="26 Product of Gaussians" data-screen-label="26 Product of Gaussians">
+<header class="head"><span class="kicker">3.15 Product of Gaussians (Optional)</span><span class="folio">26</span></header>
 <h2 class="title">Product of Gaussians</h2>
 <div class="rule"></div>
 <div class="body"><div class="formula"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -11.957 236.515 18.933" role="img" aria-label="p(x \mid z) \propto p(z \mid x)\, p(x) \propto \exp\left[ -\frac{(z - x)^2}{2\sigma_z^2} \right] \exp\left[ -\frac{(x - \bar{\mu})^2}{2\bar{\sigma}^2} \right]" fill="currentColor" style="width:28.618em;height:2.291em;vertical-align:-0.844em;display:inline-block;overflow:visible">
@@ -2247,10 +2154,10 @@ DescribeResult(nobs=300000, minmax=(-4.913331616326192, 5.258404775706517), mean
 <use x='73.325' y='5.428' xlink:href='#tb319f55a045b-g2-122'/>
 </g>
 </svg></div><div class="point"><b>유도</b>: 상수 항을 버리고 x 에 대해 완전제곱으로 정리, 정규화는 Bayes 의 p(z) 가 담당</div></div>
-<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:94%"></i></div><span class="foot-num">30 / 32</span></footer>
+<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:93%"></i></div><span class="foot-num">26 / 28</span></footer>
 </section>
-<section class="slide" data-label="31 Sum of Gaussians" data-screen-label="31 Sum of Gaussians">
-<header class="head"><span class="kicker">3.16 Sum of Gaussians (Optional)</span><span class="folio">31</span></header>
+<section class="slide" data-label="27 Sum of Gaussians" data-screen-label="27 Sum of Gaussians">
+<header class="head"><span class="kicker">3.16 Sum of Gaussians (Optional)</span><span class="folio">27</span></header>
 <h2 class="title">Sum of Gaussians</h2>
 <div class="rule"></div>
 <div class="body"><div class="formula"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -9.065 128.149 13.938" role="img" aria-label="p(x) = \int_{-\infty}^{\infty} f_p(x - z) f_z(z)\, dz" fill="currentColor" style="width:15.506em;height:1.686em;vertical-align:-0.590em;display:inline-block;overflow:visible">
@@ -2418,10 +2325,10 @@ DescribeResult(nobs=300000, minmax=(-4.913331616326192, 5.258404775706517), mean
 <use x='52.381' y='2.463' xlink:href='#ta9018f93f83c-g1-112'/>
 </g>
 </svg></div><div class="point"><b>유도</b>: 두 확률 변수의 합의 밀도는 합성곱, 적분 안의 정규분포 넓이가 1 이 되어 정리</div><figure class="fig plain"><img src="./imgs/product_sum.svg" alt="product_sum" style="width:1100px"></figure></div>
-<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:97%"></i></div><span class="foot-num">31 / 32</span></footer>
+<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:96%"></i></div><span class="foot-num">27 / 28</span></footer>
 </section>
-<section class="slide" data-label="32 Summary" data-screen-label="32 Summary">
-<header class="head"><span class="kicker">3.17 Summary and Key Points</span><span class="folio">32</span></header>
+<section class="slide" data-label="28 Summary" data-screen-label="28 Summary">
+<header class="head"><span class="kicker">3.17 Summary and Key Points</span><span class="folio">28</span></header>
 <h2 class="title">Summary</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;min-height:0;"><div class="cell"><ul class="ul"><li><strong>Gaussian</strong>: 연속 확률 분포, 평균 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -4.789 7.003 7.227" role="img" aria-label="\mu" fill="currentColor" style="width:0.847em;height:0.874em;vertical-align:-0.295em;display:inline-block;overflow:visible">
@@ -2464,7 +2371,7 @@ DescribeResult(nobs=300000, minmax=(-4.913331616326192, 5.258404775706517), mean
 <use x='0' y='0' xlink:href='#tf17a6772e585-g0-27'/>
 </g>
 </svg></strong>: 분산의 제곱근, 데이터와 같은 단위</li><li><strong>한계</strong>: 자연의 많은 현상이 정규분포에 가깝지만 수학이 완벽하지는 않음</li><li><strong>Bayes</strong>: p(x | z) 는 어렵고 p(z | x) 는 쉬움, Bayes 로 앞의 것을 계산</li></ul></div></div><div class="point"><b>결론</b>: Gaussian 과 Bayes 정리의 결합이 필터 구성의 기반</div></div>
-<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:100%"></i></div><span class="foot-num">32 / 32</span></footer>
+<footer class="foot"><span class="foot-sec">Day 2 · Chapter 3 Probabilities, Gaussians, and Bayes' Theorem</span><div class="bar"><i style="width:100%"></i></div><span class="foot-num">28 / 28</span></footer>
 </section>
 </deck-stage>
 </body></html>
