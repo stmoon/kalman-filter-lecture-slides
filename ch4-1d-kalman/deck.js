@@ -125,6 +125,10 @@
     '.run-slot > .run-panel.inline img { flex: 1 1 0; min-height: 0; width: 100%; max-height: 100%; object-fit: contain; margin: 0; }',
     '.run-panel img { display: block; max-width: 100%; margin: 14px auto 0;',
     '  background: #ffffff; border-radius: 12px; }',
+    '.anim-bar { display: flex; align-items: center; gap: 14px; flex: none; margin-top: 8px; }',
+    '.anim-bar button { font: 700 20px var(--font-body), sans-serif; color: #1d4ed8; background: #ffffff;',
+    '  border: 2px solid #93c5fd; border-radius: 999px; padding: 4px 18px; cursor: pointer; }',
+    '.anim-bar input { flex: 1; accent-color: #2563eb; }',
     '.run-close {',
     '  position: absolute; top: 10px; right: 16px;',
     '  background: transparent; border: 0; color: #475569; font-size: 30px;',
@@ -226,7 +230,7 @@
 
   // A re-run replaces the previous result; without this the figures pile up.
   function clear(panel) {
-    [].forEach.call(panel.querySelectorAll('img'), function (img) { img.remove(); });
+    [].forEach.call(panel.querySelectorAll('img, .anim-bar'), function (el) { el.remove(); });
     var t = panel.querySelector('.run-text');
     if (t) t.textContent = '';
   }
@@ -378,15 +382,19 @@
         slotBox = slotBox && slotBox.parentNode.classList.contains('run-slot') ? slotBox.parentNode : null;
         py.globals.set('_fig_json', JSON.stringify(slotBox ? figInches(slotBox) : null));
         py.runPython('import builtins, json; builtins._deck_figsize = json.loads(_fig_json)');
+        // animate() in a cell renders its frames into _deck_frames instead of one figure
+        py.runPython('import builtins; builtins._deck_anim = True; builtins._deck_frames = None');
         return py.runPythonAsync('_run_cell(_src, _setup)');
       }).then(function () {
         var spec = JSON.parse(py.runPython('import builtins, json; json.dumps(builtins._deck_interact)'));
         if (spec) sliders(pre, slide, spec);
-        return py.runPython('_figures()').toJs();
+        var anim = JSON.parse(py.runPython('import builtins, json; json.dumps([builtins._deck_frames, getattr(builtins, "_deck_frame_ms", 150)])'));
+        return anim[0] ? { frames: anim[0], ms: anim[1] } : py.runPython('_figures()').toJs();
       });
     }).then(function (figs) {
       var p = out.querySelector('.run-panel');
-      if (p && !p.querySelector('.run-text').textContent && !figs.length) write(out, '(출력 없음)');
+      if (figs.frames) { flipbook(p, figs.frames, figs.ms); figs = []; }
+      if (p && !p.querySelector('.run-text').textContent && !figs.length && !p.querySelector('img')) write(out, '(출력 없음)');
       figs.forEach(function (b64) {
         var img = document.createElement('img');
         img.src = 'data:image/png;base64,' + b64;
@@ -399,6 +407,36 @@
       btn.textContent = '실행';
       if (pre._again) { pre._again = false; run(pre); }
     });
+  }
+
+  /* --- animation: play the frames of animate() in a loop ---------------- */
+
+  function flipbook(p, frames, ms) {
+    var img = document.createElement('img');
+    var bar = document.createElement('div');
+    bar.className = 'anim-bar';
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    var rng = document.createElement('input');
+    rng.type = 'range'; rng.min = 0; rng.max = frames.length - 1; rng.value = 0;
+    bar.appendChild(btn); bar.appendChild(rng);
+    p.appendChild(img); p.appendChild(bar);
+    var k = 0, timer = null;
+    function show(i) { k = i; rng.value = i; img.src = 'data:image/png;base64,' + frames[i]; }
+    function stop() { clearInterval(timer); timer = null; btn.textContent = '재생'; }
+    function play() {
+      if (k === frames.length - 1) show(0);  // replay from the start
+      btn.textContent = '정지';
+      timer = setInterval(function () {
+        if (!img.isConnected) return stop();  // the panel was cleared by a new run
+        show(k + 1);
+        if (k === frames.length - 1) stop();  // play once, stop at the end
+      }, ms || 150);
+    }
+    btn.addEventListener('click', function () { if (timer) stop(); else play(); });
+    rng.addEventListener('input', function () { stop(); show(+rng.value); });
+    show(0);
+    play();
   }
 
   /* --- interact() sliders ----------------------------------------------- */

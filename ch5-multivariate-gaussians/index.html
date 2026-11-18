@@ -153,15 +153,15 @@ figure.fig { align-items: center; }
 <header class="head"><span class="kicker">Chapter 5 Multivariate Gaussians</span><span class="folio">01</span></header>
 <h2 class="title">Contents</h2>
 <div class="rule"></div>
-<div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;min-height:0;"><div class="cell"><ul class="ul contents"><li>Introduction</li><li>Multivariate Normal Distributions</li><li>Correlation and Covariance</li><li>Multivariate Normal Distribution Equation</li><li>Using Correlations to Improve Estimates</li></ul></div><div class="cell"><ul class="ul contents"><li>Multiplying Multidimensional Gaussians</li><li>Hidden Variables</li><li>Higher Dimensions</li><li>Summary</li></ul></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:2%"></i></div><span class="foot-num">01 / 40</span></footer>
+<div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;min-height:0;"><div class="cell"><ul class="ul contents"><li>Introduction</li><li>Multivariate Normal Distributions</li><li>Correlation and Covariance</li><li>Multivariate Normal Distribution Equation</li></ul></div><div class="cell"><ul class="ul contents"><li>Using Correlations to Improve Estimates</li><li>Multiplying Multidimensional Gaussians</li><li>Hidden Variables</li><li>Summary</li></ul></div></div></div>
+<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:3%"></i></div><span class="foot-num">01 / 36</span></footer>
 </section>
 <section class="slide" data-label="02 Introduction" data-screen-label="02 Introduction">
 <header class="head"><span class="kicker">Introduction</span><span class="folio">02</span></header>
 <h2 class="title">Introduction</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;min-height:0;"><div class="cell"><ul class="ul"><li><strong>1 차원 필터의 한계</strong>: 변수 하나만 표현, 들판을 걷는 개의 위치와 속도 같은 다차원 데이터 표현 불가</li><li><strong>관계</strong>: 위치와 속도는 서로 관련된 값, 정보는 절대 버리지 않는 것이 원칙</li></ul></div><div class="cell"><ul class="ul"><li><strong>목표</strong>: 변수 사이의 관계를 확률로 기술하는 방법</li><li><strong>효과</strong>: 이 관계를 이용해 필터 성능을 크게 향상</li></ul></div></div><div class="point"><b>핵심</b>: 위치와 속도처럼 서로 연관된 변수의 관계를 Gaussian 하나로 함께 표현</div><figure class="fig plain"><img src="./imgs/intro.svg" alt="intro" style="width:1600px"></figure></div>
-<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:5%"></i></div><span class="foot-num">02 / 40</span></footer>
+<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:6%"></i></div><span class="foot-num">02 / 36</span></footer>
 </section>
 <section class="slide" data-label="03 Multivariate Normal Distributions" data-screen-label="03 Multivariate Normal Distributions">
 <header class="head"><span class="kicker">Multivariate Normal Distributions</span><span class="folio">03</span></header>
@@ -265,14 +265,14 @@ figure.fig { align-items: center; }
 <use x='39.024' y='-14.047' xlink:href='#t0e09d9b96cbb-g3-21'/>
 </g>
 </svg></div><ul class="ul"><li><strong>분산만으로는 불완전</strong>: 분산 10, 4 가 같아도 오른쪽처럼 모양이 다름</li><li><strong>covariance 필요</strong>: 키와 몸무게처럼 변수 사이의 상관 정도 표현</li></ul></div></div><div class="cell"><figure class="fig plain"><img src="./imgs/var_only.svg" alt="var_only" style="width:100%"></figure></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:8%"></i></div><span class="foot-num">03 / 40</span></footer>
+<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:8%"></i></div><span class="foot-num">03 / 36</span></footer>
 </section>
 <section class="slide" data-label="04 Correlation and Covariance" data-screen-label="04 Correlation and Covariance">
 <header class="head"><span class="kicker">Correlation and Covariance</span><span class="folio">04</span></header>
 <h2 class="title">Correlation and Covariance</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;min-height:0;"><div class="cell"><ul class="ul"><li><strong>covariance</strong>: 두 변수가 함께 변하는 정도, correlated variances 의 줄임</li><li><strong>양의 상관</strong>: 키가 클수록 몸무게도 큼</li></ul></div><div class="cell"><ul class="ul"><li><strong>음의 상관</strong>: 바깥 기온이 내려가면 난방비가 올라감</li><li><strong>무상관, 독립</strong>: 차 가격과 개의 꼬리 흔드는 횟수</li></ul></div></div><div class="point"><b>핵심</b>: 상관은 예측을 가능하게 함, 키가 훨씬 크면 몸무게도 더 나갈 것으로 예측 가능</div><figure class="fig plain"><img src="./imgs/corr_kinds.svg" alt="corr_kinds" style="width:1600px"></figure></div>
-<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:10%"></i></div><span class="foot-num">04 / 40</span></footer>
+<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:11%"></i></div><span class="foot-num">04 / 36</span></footer>
 </section>
 <section class="slide" data-label="05 Height and Weight" data-screen-label="05 Height and Weight">
 <header class="head"><span class="kicker">Correlation and Covariance</span><span class="folio">05</span></header>
@@ -285,7 +285,7 @@ weight = [<span class="no">43.1</span>, <span class="no">54.4</span>, <span clas
 
 plots.plot_correlated_data(height, weight,
                            <span class="s">'Height (cm)'</span>, <span class="s">'Weight (kg)'</span>, <span class="k">False</span>)</pre></div><div class="cell"><div class="run-slot" data-key="b41868af9857"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text"></span><img src="./imgs/run/b41868af9857_0.png" alt="result"></div></div></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:12%"></i></div><span class="foot-num">05 / 40</span></footer>
+<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:14%"></i></div><span class="foot-num">05 / 36</span></footer>
 </section>
 <section class="slide" data-label="06 Covariance" data-screen-label="06 Covariance">
 <header class="head"><span class="kicker">Correlation and Covariance</span><span class="folio">06</span></header>
@@ -445,7 +445,7 @@ plots.plot_correlated_data(height, weight,
 <use x='128.712' y='-8.07' xlink:href='#t5bbd87513342-g5-3'/>
 </g>
 </svg></div><ul class="ul"><li><strong>기댓값</strong>: 각 데이터가 같은 확률 1/N 이라 가정한 이산 평균</li><li><strong>분산과 비교</strong>: COV(X, X) 를 계산하면 VAR(X), 분산은 자기 자신과의 공분산</li><li><strong>부호</strong>: 두 편차의 곱이 대부분 양수면 양의 공분산, 대부분 음수면 음의 공분산</li></ul></div></div><div class="cell"><figure class="fig plain"><img src="./imgs/cov_sign.svg" alt="cov_sign" style="width:100%"></figure></div></div><div class="point"><b>핵심</b>: 분산은 한 변수가 스스로 퍼진 정도, 공분산은 두 변수가 서로에 대해 함께 변하는 정도</div></div>
-<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:15%"></i></div><span class="foot-num">06 / 40</span></footer>
+<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:17%"></i></div><span class="foot-num">06 / 36</span></footer>
 </section>
 <section class="slide" data-label="07 Covariance Matrix" data-screen-label="07 Covariance Matrix">
 <header class="head"><span class="kicker">Correlation and Covariance</span><span class="folio">07</span></header>
@@ -642,7 +642,7 @@ plots.plot_correlated_data(height, weight,
 <use x='61.16' y='-14.047' xlink:href='#t7bf47a0a7522-g2-21'/>
 </g>
 </svg></div></div><div class="cell"><figure class="fig plain"><img src="./imgs/cm3.svg" alt="cm3" style="width:100%"></figure></div></div><ul class="ul"><li>분산에 견줄 만큼 큰 음의 공분산</li></ul></div></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:18%"></i></div><span class="foot-num">07 / 40</span></footer>
+<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:19%"></i></div><span class="foot-num">07 / 36</span></footer>
 </section>
 <section class="slide" data-label="08 Example: Heights and Weights" data-screen-label="08 Example: Heights and Weights">
 <header class="head"><span class="kicker">Correlation and Covariance</span><span class="folio">08</span></header>
@@ -789,7 +789,7 @@ H = [<span class="no">1.8</span>, <span class="no">2.0</span>, <span class="no">
 [[  0.02    2.182]
  [  2.182 261.788]]
 </span></div></div></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:20%"></i></div><span class="foot-num">08 / 40</span></footer>
+<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:22%"></i></div><span class="foot-num">08 / 36</span></footer>
 </section>
 <section class="slide" data-label="09 Perfect and Negative Correlation" data-screen-label="09 Perfect and Negative Correlation">
 <header class="head"><span class="kicker">Correlation and Covariance</span><span class="folio">09</span></header>
@@ -818,7 +818,7 @@ plots.plot_correlated_data(X, Y, equal=<span class="k">False</span>)
 [[ 6.956 -3.084]
  [-3.084  1.387]]
 </span><img src="./imgs/run/eb77835792c6_0.png" alt="result"></div></div></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:22%"></i></div><span class="foot-num">09 / 40</span></footer>
+<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:25%"></i></div><span class="foot-num">09 / 36</span></footer>
 </section>
 <section class="slide" data-label="10 Noise Added to a Line" data-screen-label="10 Noise Added to a Line">
 <header class="head"><span class="kicker">Correlation and Covariance</span><span class="folio">10</span></header>
@@ -831,7 +831,7 @@ plots.plot_correlated_data(X, Y, equal=<span class="k">False</span>)
 <span class="fn">print</span>(np.cov(X, Y))</pre></div><div class="cell"><div class="run-slot" data-key="30e985471c4f"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text">[[10.895  2.971]
  [ 2.971  2.296]]
 </span><img src="./imgs/run/30e985471c4f_0.png" alt="result"></div></div></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:25%"></i></div><span class="foot-num">10 / 40</span></footer>
+<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:28%"></i></div><span class="foot-num">10 / 36</span></footer>
 </section>
 <section class="slide" data-label="11 Completely Random Data" data-screen-label="11 Completely Random Data">
 <header class="head"><span class="kicker">Correlation and Covariance</span><span class="folio">11</span></header>
@@ -843,7 +843,7 @@ plots.plot_correlated_data(X, Y, equal=<span class="k">False</span>)
 <span class="fn">print</span>(np.cov(X, Y))</pre></div><div class="cell"><div class="run-slot" data-key="7ef16f7d648e"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text">[[ 0.927 -0.026]
  [-0.026  1.028]]
 </span><img src="./imgs/run/7ef16f7d648e_0.png" alt="result"></div></div></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:28%"></i></div><span class="foot-num">11 / 40</span></footer>
+<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:31%"></i></div><span class="foot-num">11 / 36</span></footer>
 </section>
 <section class="slide" data-label="12 Multivariate Normal Distribution Equation" data-screen-label="12 Multivariate Normal Distribution Equation">
 <header class="head"><span class="kicker">Multivariate Normal Distribution Equation</span><span class="folio">12</span></header>
@@ -1092,7 +1092,7 @@ plots.plot_correlated_data(X, Y, equal=<span class="k">False</span>)
 <use x='44.115' y='0' xlink:href='#tc0bcc69c630d-g0-106'/>
 </g>
 </svg></td><td>행렬식으로 전체 부피가 1 이 되도록</td></tr></tbody></table><div class="point"><b>핵심</b>: 다변량 식은 단변량 식의 스칼라를 벡터와 행렬로 바꾼 것, 계산은 라이브러리 함수로 처리</div></div>
-<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:30%"></i></div><span class="foot-num">12 / 40</span></footer>
+<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:33%"></i></div><span class="foot-num">12 / 36</span></footer>
 </section>
 <section class="slide" data-label="13 3D Plot of a Multivariate Gaussian" data-screen-label="13 3D Plot of a Multivariate Gaussian">
 <header class="head"><span class="kicker">Multivariate Normal Distribution Equation</span><span class="folio">13</span></header>
@@ -1128,7 +1128,7 @@ cov = [[<span class="no">10.</span>, <span class="no">0.</span>],
        [<span class="no">0.</span>, <span class="no">4.</span>]]
 
 plots.plot_3d_covariance(mean, cov)</pre></div><div class="cell"><div class="run-slot" data-key="1d67e5e55223"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text"></span><img src="./imgs/run/1d67e5e55223_0.png" alt="result"></div></div></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:32%"></i></div><span class="foot-num">13 / 40</span></footer>
+<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:36%"></i></div><span class="foot-num">13 / 36</span></footer>
 </section>
 <section class="slide" data-label="14 Computing the Density" data-screen-label="14 Computing the Density">
 <header class="head"><span class="kicker">Multivariate Normal Distribution Equation</span><span class="folio">14</span></header>
@@ -1164,7 +1164,7 @@ plot_covariance_ellipse(mu, P, std=[<span class="no">1</span>, <span class="no">
 plt.scatter(*x, s=<span class="no">120</span>, color=<span class="s">'C3'</span>, zorder=<span class="no">3</span>);</pre></div><div class="cell"><div class="run-slot" data-key="36f9641db622"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text">0.0315
 0.0315
 </span><img src="./imgs/run/36f9641db622_0.png" alt="result"></div></div></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:35%"></i></div><span class="foot-num">14 / 40</span></footer>
+<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:39%"></i></div><span class="foot-num">14 / 36</span></footer>
 </section>
 <section class="slide" data-label="15 Joint and Marginal Probability" data-screen-label="15 Joint and Marginal Probability">
 <header class="head"><span class="kicker">Multivariate Normal Distribution Equation</span><span class="folio">15</span></header>
@@ -1182,7 +1182,7 @@ P = [[<span class="no">8.</span>, <span class="no">0.</span>],
      [<span class="no">0.</span>, <span class="no">3.</span>]]
 
 plots.plot_3d_sampled_covariance(mu, P)</pre></div><div class="cell"><div class="run-slot" data-key="6f393a3ff7fe"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text"></span><img src="./imgs/run/6f393a3ff7fe_0.png" alt="result"></div></div></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:38%"></i></div><span class="foot-num">15 / 40</span></footer>
+<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:42%"></i></div><span class="foot-num">15 / 36</span></footer>
 </section>
 <section class="slide" data-label="16 Error Ellipses" data-screen-label="16 Error Ellipses">
 <header class="head"><span class="kicker">Multivariate Normal Distribution Equation</span><span class="folio">16</span></header>
@@ -1198,7 +1198,7 @@ plots.plot_3d_sampled_covariance(mu, P)</pre></div><div class="cell"><div class=
 <use x='4.981' y='0' xlink:href='#t44a895cd1a98-g0-27'/>
 </g>
 </svg> 단면</li></ul></div><div class="cell"><ul class="ul"><li><strong>이름</strong>: 단면은 항상 타원, error ellipse, confidence ellipse</li><li><strong>해석</strong>: 크기는 믿음의 오차, 모양은 x, y 오차의 기하 관계</li></ul></div></div><figure class="fig plain"><img src="./imgs/three_cov.svg" alt="three_cov" style="width:1600px"></figure><div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:40px;min-height:0;"><div class="cell"><ul class="ul"><li><strong>원</strong>: x, y 오차가 같은 정도로 가능</li></ul></div><div class="cell"><ul class="ul"><li><strong>세로 타원</strong>: y 가 x 보다 더 불확실</li></ul></div><div class="cell"><ul class="ul"><li><strong>기운 타원</strong>: 비대각 성분이 0 이 아님, 상관</li></ul></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:40%"></i></div><span class="foot-num">16 / 40</span></footer>
+<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:44%"></i></div><span class="foot-num">16 / 36</span></footer>
 </section>
 <section class="slide" data-label="17 Plotting Standard Deviations" data-screen-label="17 Plotting Standard Deviations">
 <header class="head"><span class="kicker">Multivariate Normal Distribution Equation</span><span class="folio">17</span></header>
@@ -1256,7 +1256,7 @@ P = [[<span class="no">2</span>, <span class="no">0</span>], [<span class="no">0
 plot_covariance_ellipse((<span class="no">2</span>, <span class="no">7</span>), P, fc=<span class="s">'g'</span>, alpha=<span class="no">0.2</span>,
                         std=[<span class="no">1</span>, <span class="no">2</span>, <span class="no">3</span>],
                         title=<span class="s">'|2 0|\n|0 6|'</span>)</pre></div><div class="cell"><div class="run-slot" data-key="67e8b912155a"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text"></span><img src="./imgs/run/67e8b912155a_0.png" alt="result"></div></div></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:42%"></i></div><span class="foot-num">17 / 40</span></footer>
+<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:47%"></i></div><span class="foot-num">17 / 36</span></footer>
 </section>
 <section class="slide" data-label="18 Probability Density Shading" data-screen-label="18 Probability Density Shading">
 <header class="head"><span class="kicker">Multivariate Normal Distribution Equation</span><span class="folio">18</span></header>
@@ -1264,7 +1264,7 @@ plot_covariance_ellipse((<span class="no">2</span>, <span class="no">7</span>), 
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>공분산 [[2, 1.2], [1.2, 1.3]] 의 확률 밀도를 회색 농도로 표시, 진할수록 밀도가 높음</li><li>중심에서 바깥으로 연속적으로 옅어짐, 타원 경계는 특정 밀도의 등고선일 뿐임</li><li><strong>조건</strong>: cov = [[2, 1.2], [1.2, 1.3]], 평균 (0, 0), 범위 -3 ~ 3</li></ul><div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxs denser">plots.plot_cov_ellipse_colormap(
     cov=[[<span class="no">2</span>, <span class="no">1.2</span>], [<span class="no">1.2</span>, <span class="no">1.3</span>]]);</pre></div><div class="cell"><div class="run-slot" data-key="4f9b1fc283e5"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text"></span><img src="./imgs/run/4f9b1fc283e5_0.png" alt="result"></div></div></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:45%"></i></div><span class="foot-num">18 / 40</span></footer>
+<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:50%"></i></div><span class="foot-num">18 / 36</span></footer>
 </section>
 <section class="slide" data-label="19 Height and Weight Ellipse" data-screen-label="19 Height and Weight Ellipse">
 <header class="head"><span class="kicker">Multivariate Normal Distribution Equation</span><span class="folio">19</span></header>
@@ -1292,9 +1292,9 @@ plt.xlabel(<span class="s">'Height (cm)'</span>); plt.ylabel(<span class="s">'We
 plot_covariance_ellipse((np.mean(height), np.mean(weight)),
                         cov_hw, fc=<span class="s">'g'</span>, alpha=<span class="no">0.2</span>,
                         axis_equal=<span class="k">False</span>, std=<span class="no">2</span>)</pre></div><div class="cell"><div class="run-slot" data-key="a950adb6b81d"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text">[[119.697 156.624]
- [156.624 224.962]]
+ [156.624 224.963]]
 </span><img src="./imgs/run/a950adb6b81d_0.png" alt="result"></div></div></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:48%"></i></div><span class="foot-num">19 / 40</span></footer>
+<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:53%"></i></div><span class="foot-num">19 / 36</span></footer>
 </section>
 <section class="slide" data-label="20 Engine Temperature vs Lifespan" data-screen-label="20 Engine Temperature vs Lifespan">
 <header class="head"><span class="kicker">Multivariate Normal Distribution Equation</span><span class="folio">20</span></header>
@@ -1318,7 +1318,7 @@ plot_covariance_ellipse((np.mean(max_temp), np.mean(lifespan)),
                         axis_equal=<span class="k">False</span>, std=<span class="no">2</span>)
 plt.title(<span class="s">'Engine Temperature vs Lifespan'</span>)
 plt.xlabel(<span class="s">'Temperature (C)'</span>); plt.ylabel(<span class="s">'Years'</span>);</pre></div><div class="cell"><div class="run-slot" data-key="c9ab7f616bf3"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text"></span><img src="./imgs/run/c9ab7f616bf3_0.png" alt="result"></div></div></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:50%"></i></div><span class="foot-num">20 / 40</span></footer>
+<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:56%"></i></div><span class="foot-num">20 / 36</span></footer>
 </section>
 <section class="slide" data-label="21 Interactive Covariance" data-screen-label="21 Interactive Covariance">
 <header class="head"><span class="kicker">Multivariate Normal Distribution Equation</span><span class="folio">21</span></header>
@@ -1338,77 +1338,10 @@ interact(plot_covariance,
          var_x=FloatSlider(<span class="no">5</span>, <span class="fn">min</span>=<span class="no">0</span>, <span class="fn">max</span>=<span class="no">20</span>),
          var_y=FloatSlider(<span class="no">5</span>, <span class="fn">min</span>=<span class="no">0</span>, <span class="fn">max</span>=<span class="no">20</span>),
          cov_xy=FloatSlider(<span class="no">1.5</span>, <span class="fn">min</span>=<span class="no">0</span>, <span class="fn">max</span>=<span class="no">50</span>, step=<span class="no">.2</span>));</pre></div><div class="cell"><div style="display:flex;flex-direction:column;gap:12px;min-width:0"><div data-sliders=""><label class="slider-row"><span class="slider-name">var_x</span><input type="range" data-var="var_x" min="0" max="20" step="0.1" value="5"><span class="slider-val">5</span></label><label class="slider-row"><span class="slider-name">var_y</span><input type="range" data-var="var_y" min="0" max="20" step="0.1" value="5"><span class="slider-val">5</span></label><label class="slider-row"><span class="slider-name">cov_xy</span><input type="range" data-var="cov_xy" min="0" max="50" step="0.2" value="1.5"><span class="slider-val">1.5</span></label></div><div class="run-slot" data-key="ea58a017b640"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text"></span><img src="./imgs/run/ea58a017b640_0.png" alt="result"></div></div></div></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:52%"></i></div><span class="foot-num">21 / 40</span></footer>
+<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:58%"></i></div><span class="foot-num">21 / 36</span></footer>
 </section>
-<section class="slide" data-label="22 Pearson&#x27;s Correlation Coefficient" data-screen-label="22 Pearson&#x27;s Correlation Coefficient">
+<section class="slide" data-label="22 Correlation and Ellipse Shape" data-screen-label="22 Correlation and Ellipse Shape">
 <header class="head"><span class="kicker">Pearson&#x27;s Correlation Coefficient</span><span class="folio">22</span></header>
-<h2 class="title">Pearson&#x27;s Correlation Coefficient</h2>
-<div class="rule"></div>
-<div class="body"><ul class="ul brief"><li>키와 몸무게, 엔진 온도와 수명의 Pearson 상관계수를 scipy.stats.pearsonr 로 계산해 제목에 표시</li><li>키와 몸무게는 0.954 로 강한 양의 상관, 온도와 수명은 -0.918 로 강한 음의 상관</li><li>공분산은 단위가 있지만 (예: <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -8.61 13.772 9.11" role="img" aria-label="\mathrm{m}^2" fill="currentColor" style="width:1.666em;height:1.102em;vertical-align:-0.060em;display:inline-block;overflow:visible">
-<defs>
-<path id='t120059f757e5-g1-50' d='M3.522-1.269H3.285C3.264-1.116 3.194-.704 3.103-.635C3.048-.593 2.511-.593 2.413-.593H1.13C1.862-1.241 2.106-1.437 2.525-1.764C3.041-2.176 3.522-2.608 3.522-3.271C3.522-4.115 2.783-4.631 1.89-4.631C1.025-4.631 .439-4.024 .439-3.382C.439-3.027 .739-2.992 .809-2.992C.976-2.992 1.179-3.11 1.179-3.361C1.179-3.487 1.13-3.731 .767-3.731C.983-4.226 1.458-4.38 1.785-4.38C2.483-4.38 2.845-3.836 2.845-3.271C2.845-2.664 2.413-2.183 2.19-1.932L.509-.272C.439-.209 .439-.195 .439 0H3.313L3.522-1.269Z'/>
-<path id='t120059f757e5-g0-109' d='M1.096-3.427V-.757C1.096-.309 .986-.309 .319-.309V0C.667-.01 1.176-.03 1.445-.03C1.704-.03 2.222-.01 2.56 0V-.309C1.893-.309 1.783-.309 1.783-.757V-2.59C1.783-3.626 2.491-4.184 3.128-4.184C3.756-4.184 3.866-3.646 3.866-3.078V-.757C3.866-.309 3.756-.309 3.088-.309V0C3.437-.01 3.945-.03 4.214-.03C4.473-.03 4.991-.01 5.33 0V-.309C4.663-.309 4.553-.309 4.553-.757V-2.59C4.553-3.626 5.26-4.184 5.898-4.184C6.526-4.184 6.635-3.646 6.635-3.078V-.757C6.635-.309 6.526-.309 5.858-.309V0C6.207-.01 6.715-.03 6.984-.03C7.243-.03 7.761-.01 8.1 0V-.309C7.582-.309 7.333-.309 7.323-.608V-2.511C7.323-3.367 7.323-3.676 7.014-4.035C6.874-4.204 6.545-4.403 5.968-4.403C5.131-4.403 4.692-3.806 4.523-3.427C4.384-4.294 3.646-4.403 3.198-4.403C2.471-4.403 2.002-3.975 1.724-3.357V-4.403L.319-4.294V-3.985C1.016-3.985 1.096-3.915 1.096-3.427Z'/>
-</defs>
-<g id='t120059f757e5-page1'>
-<use x='0' y='0' xlink:href='#t120059f757e5-g0-109'/>
-<use x='8.302' y='-3.615' xlink:href='#t120059f757e5-g1-50'/>
-</g>
-</svg>) 상관계수는 단위 없는 -1 ~ 1 의 비율</li><li><strong>조건</strong>: 육상부 10 명 (cm, kg), 엔진 데이터 6 개, <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -7.972 115.052 11.322" role="img" aria-label="\rho_{xy} = COV(X, Y) / (\sigma_x \sigma_y)" fill="currentColor" style="width:13.921em;height:1.370em;vertical-align:-0.405em;display:inline-block;overflow:visible">
-<defs>
-<path id='ta8a166be829e-g2-40' d='M3.298 2.391C3.298 2.361 3.298 2.341 3.128 2.172C1.883 .917 1.564-.966 1.564-2.491C1.564-4.224 1.943-5.958 3.168-7.203C3.298-7.323 3.298-7.342 3.298-7.372C3.298-7.442 3.258-7.472 3.198-7.472C3.098-7.472 2.202-6.795 1.614-5.529C1.106-4.433 .986-3.328 .986-2.491C.986-1.714 1.096-.508 1.644 .618C2.242 1.843 3.098 2.491 3.198 2.491C3.258 2.491 3.298 2.461 3.298 2.391Z'/>
-<path id='ta8a166be829e-g2-41' d='M2.879-2.491C2.879-3.268 2.77-4.473 2.222-5.599C1.624-6.824 .767-7.472 .667-7.472C.608-7.472 .568-7.432 .568-7.372C.568-7.342 .568-7.323 .757-7.143C1.733-6.157 2.301-4.573 2.301-2.491C2.301-.787 1.933 .966 .697 2.222C.568 2.341 .568 2.361 .568 2.391C.568 2.451 .608 2.491 .667 2.491C.767 2.491 1.664 1.813 2.252 .548C2.76-.548 2.879-1.654 2.879-2.491Z'/>
-<path id='ta8a166be829e-g2-61' d='M6.844-3.258C6.994-3.258 7.183-3.258 7.183-3.457S6.994-3.656 6.854-3.656H.887C.747-3.656 .558-3.656 .558-3.457S.747-3.258 .897-3.258H6.844ZM6.854-1.325C6.994-1.325 7.183-1.325 7.183-1.524S6.994-1.724 6.844-1.724H.897C.747-1.724 .558-1.724 .558-1.524S.747-1.325 .887-1.325H6.854Z'/>
-<path id='ta8a166be829e-g1-120' d='M1.736-.739C1.667-.502 1.437-.126 1.081-.126C1.06-.126 .851-.126 .704-.223C.99-.314 1.011-.565 1.011-.607C1.011-.76 .893-.865 .732-.865C.537-.865 .335-.697 .335-.439C.335-.091 .725 .07 1.067 .07C1.388 .07 1.674-.133 1.848-.425C2.015-.056 2.399 .07 2.678 .07C3.48 .07 3.905-.802 3.905-.997C3.905-1.088 3.815-1.088 3.794-1.088C3.696-1.088 3.689-1.053 3.661-.969C3.515-.488 3.096-.126 2.706-.126C2.427-.126 2.28-.314 2.28-.579C2.28-.76 2.448-1.395 2.643-2.169C2.783-2.706 3.096-2.88 3.327-2.88C3.34-2.88 3.557-2.88 3.703-2.783C3.48-2.72 3.396-2.525 3.396-2.399C3.396-2.246 3.515-2.141 3.675-2.141S4.066-2.273 4.066-2.566C4.066-2.957 3.619-3.075 3.34-3.075C2.992-3.075 2.713-2.845 2.559-2.58C2.434-2.866 2.113-3.075 1.723-3.075C.941-3.075 .495-2.218 .495-2.008C.495-1.918 .593-1.918 .614-1.918C.704-1.918 .711-1.946 .746-2.036C.921-2.58 1.36-2.88 1.702-2.88C1.932-2.88 2.12-2.755 2.12-2.42C2.12-2.28 2.036-1.932 1.974-1.695L1.736-.739Z'/>
-<path id='ta8a166be829e-g1-121' d='M3.877-2.629C3.905-2.727 3.905-2.741 3.905-2.783C3.905-2.922 3.794-3.006 3.675-3.006C3.599-3.006 3.466-2.971 3.389-2.838C3.368-2.797 3.313-2.573 3.278-2.434L3.131-1.855C3.089-1.688 2.873-.809 2.852-.732C2.845-.732 2.538-.126 1.995-.126C1.52-.126 1.52-.579 1.52-.704C1.52-1.081 1.681-1.52 1.89-2.057C1.974-2.28 2.008-2.364 2.008-2.483C2.008-2.817 1.723-3.075 1.346-3.075C.642-3.075 .328-2.127 .328-2.008C.328-1.918 .425-1.918 .446-1.918C.544-1.918 .551-1.953 .572-2.029C.746-2.608 1.046-2.88 1.325-2.88C1.444-2.88 1.499-2.803 1.499-2.636C1.499-2.476 1.437-2.322 1.402-2.232C1.067-1.381 .997-1.123 .997-.816C.997-.697 .997-.37 1.269-.146C1.485 .035 1.778 .07 1.967 .07C2.246 .07 2.497-.035 2.727-.244C2.636 .139 2.559 .432 2.267 .781C2.078 .997 1.799 1.227 1.43 1.227C1.381 1.227 1.053 1.227 .907 .997C1.283 .955 1.283 .621 1.283 .614C1.283 .391 1.081 .349 1.011 .349C.837 .349 .607 .488 .607 .809C.607 1.165 .941 1.423 1.437 1.423C2.141 1.423 2.999 .879 3.215 .007L3.877-2.629Z'/>
-<path id='ta8a166be829e-g0-26' d='M.329 1.724C.299 1.843 .299 1.863 .299 1.883C.299 2.032 .408 2.152 .578 2.152C.787 2.152 .907 1.973 .927 1.943C.976 1.853 1.295 .518 1.564-.558C1.763-.159 2.082 .11 2.55 .11C3.716 .11 5.001-1.295 5.001-2.78C5.001-3.836 4.344-4.403 3.616-4.403C2.65-4.403 1.604-3.407 1.305-2.192L.329 1.724ZM2.54-.11C1.843-.11 1.684-.907 1.684-.996C1.684-1.036 1.733-1.235 1.763-1.365C2.042-2.481 2.142-2.839 2.361-3.238C2.79-3.965 3.288-4.184 3.597-4.184C3.965-4.184 4.284-3.895 4.284-3.208C4.284-2.66 3.995-1.544 3.726-1.056C3.397-.428 2.919-.11 2.54-.11Z'/>
-<path id='ta8a166be829e-g0-27' d='M5.161-3.716C5.29-3.716 5.649-3.716 5.649-4.055C5.649-4.294 5.44-4.294 5.26-4.294H2.989C1.484-4.294 .379-2.65 .379-1.465C.379-.588 .966 .11 1.873 .11C3.049 .11 4.374-1.096 4.374-2.63C4.374-2.8 4.374-3.278 4.065-3.716H5.161ZM1.883-.11C1.395-.11 .996-.468 .996-1.186C.996-1.484 1.116-2.301 1.465-2.889C1.883-3.577 2.481-3.716 2.819-3.716C3.656-3.716 3.736-3.059 3.736-2.75C3.736-2.281 3.537-1.465 3.198-.956C2.809-.369 2.271-.11 1.883-.11Z'/>
-<path id='ta8a166be829e-g0-59' d='M2.022-.01C2.022-.667 1.773-1.056 1.385-1.056C1.056-1.056 .857-.807 .857-.528C.857-.259 1.056 0 1.385 0C1.504 0 1.634-.04 1.733-.13C1.763-.149 1.773-.159 1.783-.159S1.803-.149 1.803-.01C1.803 .727 1.455 1.325 1.126 1.654C1.016 1.763 1.016 1.783 1.016 1.813C1.016 1.883 1.066 1.923 1.116 1.923C1.225 1.923 2.022 1.156 2.022-.01Z'/>
-<path id='ta8a166be829e-g0-61' d='M4.374-7.093C4.423-7.223 4.423-7.263 4.423-7.273C4.423-7.382 4.334-7.472 4.224-7.472C4.154-7.472 4.085-7.442 4.055-7.382L.598 2.112C.548 2.242 .548 2.281 .548 2.291C.548 2.401 .638 2.491 .747 2.491C.877 2.491 .907 2.421 .966 2.252L4.374-7.093Z'/>
-<path id='ta8a166be829e-g0-67' d='M7.572-6.924C7.572-6.954 7.552-7.024 7.462-7.024C7.432-7.024 7.422-7.014 7.313-6.904L6.615-6.137C6.526-6.276 6.067-7.024 4.961-7.024C2.74-7.024 .498-4.822 .498-2.511C.498-.867 1.674 .219 3.198 .219C4.065 .219 4.822-.179 5.35-.638C6.276-1.455 6.446-2.361 6.446-2.391C6.446-2.491 6.346-2.491 6.326-2.491C6.267-2.491 6.217-2.471 6.197-2.391C6.107-2.102 5.878-1.395 5.191-.817C4.503-.259 3.875-.09 3.357-.09C2.461-.09 1.405-.608 1.405-2.162C1.405-2.73 1.614-4.344 2.61-5.509C3.218-6.217 4.154-6.715 5.041-6.715C6.057-6.715 6.645-5.948 6.645-4.792C6.645-4.394 6.615-4.384 6.615-4.284S6.725-4.184 6.765-4.184C6.894-4.184 6.894-4.204 6.944-4.384L7.572-6.924Z'/>
-<path id='ta8a166be829e-g0-79' d='M7.372-4.344C7.372-5.948 6.316-7.024 4.832-7.024C2.68-7.024 .488-4.762 .488-2.441C.488-.787 1.604 .219 3.039 .219C5.151 .219 7.372-1.963 7.372-4.344ZM3.098-.04C2.112-.04 1.415-.847 1.415-2.162C1.415-2.6 1.554-4.055 2.321-5.22C3.009-6.257 3.985-6.775 4.772-6.775C5.589-6.775 6.486-6.217 6.486-4.732C6.486-4.015 6.217-2.461 5.23-1.235C4.752-.628 3.935-.04 3.098-.04Z'/>
-<path id='ta8a166be829e-g0-86' d='M6.257-5.669C6.745-6.446 7.163-6.476 7.532-6.496C7.651-6.506 7.661-6.675 7.661-6.685C7.661-6.765 7.611-6.804 7.532-6.804C7.273-6.804 6.984-6.775 6.715-6.775C6.386-6.775 6.047-6.804 5.729-6.804C5.669-6.804 5.539-6.804 5.539-6.615C5.539-6.506 5.629-6.496 5.699-6.496C5.968-6.476 6.157-6.376 6.157-6.167C6.157-6.017 6.007-5.798 6.007-5.788L2.949-.927L2.271-6.197C2.271-6.366 2.501-6.496 2.959-6.496C3.098-6.496 3.208-6.496 3.208-6.695C3.208-6.785 3.128-6.804 3.068-6.804C2.67-6.804 2.242-6.775 1.833-6.775C1.654-6.775 1.465-6.785 1.285-6.785S.917-6.804 .747-6.804C.677-6.804 .558-6.804 .558-6.615C.558-6.496 .648-6.496 .807-6.496C1.365-6.496 1.375-6.406 1.405-6.157L2.192-.01C2.222 .189 2.262 .219 2.391 .219C2.55 .219 2.59 .169 2.67 .04L6.257-5.669Z'/>
-<path id='ta8a166be829e-g0-88' d='M4.832-4.095L3.995-6.077C3.965-6.157 3.945-6.197 3.945-6.207C3.945-6.267 4.115-6.456 4.533-6.496C4.633-6.506 4.732-6.516 4.732-6.685C4.732-6.804 4.613-6.804 4.583-6.804C4.174-6.804 3.746-6.775 3.328-6.775C3.078-6.775 2.461-6.804 2.212-6.804C2.152-6.804 2.032-6.804 2.032-6.605C2.032-6.496 2.132-6.496 2.262-6.496C2.859-6.496 2.919-6.396 3.009-6.177L4.184-3.397L2.082-1.136L1.953-1.026C1.465-.498 .996-.339 .488-.309C.359-.299 .269-.299 .269-.11C.269-.1 .269 0 .399 0C.697 0 1.026-.03 1.335-.03C1.704-.03 2.092 0 2.451 0C2.511 0 2.63 0 2.63-.199C2.63-.299 2.531-.309 2.511-.309C2.421-.319 2.112-.339 2.112-.618C2.112-.777 2.262-.936 2.381-1.066L3.397-2.142L4.294-3.118L5.3-.737C5.34-.628 5.35-.618 5.35-.598C5.35-.518 5.161-.349 4.772-.309C4.663-.299 4.573-.289 4.573-.12C4.573 0 4.682 0 4.722 0C5.001 0 5.699-.03 5.978-.03C6.227-.03 6.834 0 7.083 0C7.153 0 7.273 0 7.273-.189C7.273-.309 7.173-.309 7.093-.309C6.426-.319 6.406-.349 6.237-.747C5.848-1.674 5.181-3.228 4.951-3.826C5.629-4.523 6.675-5.709 6.994-5.988C7.283-6.227 7.661-6.466 8.259-6.496C8.389-6.506 8.478-6.506 8.478-6.695C8.478-6.705 8.478-6.804 8.349-6.804C8.05-6.804 7.721-6.775 7.412-6.775C7.044-6.775 6.665-6.804 6.306-6.804C6.247-6.804 6.117-6.804 6.117-6.605C6.117-6.535 6.167-6.506 6.237-6.496C6.326-6.486 6.635-6.466 6.635-6.187C6.635-6.047 6.526-5.918 6.446-5.828L4.832-4.095Z'/>
-<path id='ta8a166be829e-g0-89' d='M5.948-5.669L6.087-5.808C6.386-6.107 6.715-6.446 7.392-6.496C7.502-6.506 7.592-6.506 7.592-6.685C7.592-6.765 7.542-6.804 7.462-6.804C7.203-6.804 6.914-6.775 6.645-6.775C6.316-6.775 5.968-6.804 5.649-6.804C5.589-6.804 5.46-6.804 5.46-6.615C5.46-6.506 5.559-6.496 5.609-6.496C5.679-6.496 5.968-6.476 5.968-6.267C5.968-6.097 5.738-5.838 5.699-5.788L3.387-3.128L2.291-6.087C2.232-6.227 2.232-6.247 2.232-6.257C2.232-6.496 2.72-6.496 2.819-6.496C2.959-6.496 3.059-6.496 3.059-6.695C3.059-6.804 2.939-6.804 2.909-6.804C2.63-6.804 1.933-6.775 1.654-6.775C1.405-6.775 .787-6.804 .538-6.804C.478-6.804 .349-6.804 .349-6.605C.349-6.496 .448-6.496 .578-6.496C1.176-6.496 1.215-6.406 1.305-6.157L2.531-2.879C2.54-2.849 2.57-2.74 2.57-2.71S2.172-1.076 2.122-.897C1.993-.349 1.983-.319 1.186-.309C.996-.309 .917-.309 .917-.11C.917 0 1.036 0 1.056 0C1.335 0 2.032-.03 2.311-.03S3.308 0 3.587 0C3.656 0 3.776 0 3.776-.199C3.776-.309 3.686-.309 3.497-.309C3.477-.309 3.288-.309 3.118-.329C2.909-.349 2.849-.369 2.849-.488C2.849-.558 2.939-.907 2.989-1.116L3.337-2.521C3.387-2.71 3.397-2.74 3.477-2.829L5.948-5.669Z'/>
-</defs>
-<g id='ta8a166be829e-page1'>
-<use x='0' y='0' xlink:href='#ta8a166be829e-g0-26'/>
-<use x='5.151' y='1.494' xlink:href='#ta8a166be829e-g1-120'/>
-<use x='9.669' y='1.494' xlink:href='#ta8a166be829e-g1-121'/>
-<use x='17.225' y='0' xlink:href='#ta8a166be829e-g2-61'/>
-<use x='27.741' y='0' xlink:href='#ta8a166be829e-g0-67'/>
-<use x='35.574' y='0' xlink:href='#ta8a166be829e-g0-79'/>
-<use x='43.45' y='0' xlink:href='#ta8a166be829e-g0-86'/>
-<use x='51.475' y='0' xlink:href='#ta8a166be829e-g2-40'/>
-<use x='55.35' y='0' xlink:href='#ta8a166be829e-g0-88'/>
-<use x='63.832' y='0' xlink:href='#ta8a166be829e-g0-59'/>
-<use x='68.26' y='0' xlink:href='#ta8a166be829e-g0-89'/>
-<use x='76.257' y='0' xlink:href='#ta8a166be829e-g2-41'/>
-<use x='80.132' y='0' xlink:href='#ta8a166be829e-g0-61'/>
-<use x='85.113' y='0' xlink:href='#ta8a166be829e-g2-40'/>
-<use x='88.988' y='0' xlink:href='#ta8a166be829e-g0-27'/>
-<use x='94.68' y='1.494' xlink:href='#ta8a166be829e-g1-120'/>
-<use x='99.696' y='0' xlink:href='#ta8a166be829e-g0-27'/>
-<use x='105.389' y='1.494' xlink:href='#ta8a166be829e-g1-121'/>
-<use x='110.178' y='0' xlink:href='#ta8a166be829e-g2-41'/>
-</g>
-</svg>, 범위 -1 ~ 1</li></ul><div style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxxs tightest">height = [<span class="no">152.4</span>, <span class="no">157.5</span>, <span class="no">160.0</span>, <span class="no">165.1</span>, <span class="no">165.4</span>,
-          <span class="no">172.7</span>, <span class="no">175.3</span>, <span class="no">177.8</span>, <span class="no">182.9</span>, <span class="no">188.0</span>]  <span class="c"># cm</span>
-weight = [<span class="no">43.1</span>, <span class="no">54.4</span>, <span class="no">57.6</span>, <span class="no">54.0</span>, <span class="no">68.5</span>,
-          <span class="no">64.9</span>, <span class="no">78.5</span>, <span class="no">77.6</span>, <span class="no">81.6</span>, <span class="no">95.3</span>]  <span class="c"># kg</span>
-max_temp = [<span class="no">200</span>, <span class="no">250</span>, <span class="no">300</span>, <span class="no">400</span>, <span class="no">450</span>, <span class="no">500</span>]
-lifespan = [<span class="no">10</span>, <span class="no">9.7</span>, <span class="no">5</span>, <span class="no">5.4</span>, <span class="no">4.3</span>, <span class="no">0.3</span>]
-<span class="k">from</span> scipy.stats <span class="k">import</span> pearsonr
-
-r1 = pearsonr(height, weight)[<span class="no">0</span>]
-r2 = pearsonr(max_temp, lifespan)[<span class="no">0</span>]
-plt.subplot(<span class="no">121</span>); plt.scatter(height, weight)
-plt.title(<span class="s">'rho = {:.3f}'</span>.format(r1))
-plt.subplot(<span class="no">122</span>); plt.scatter(max_temp, lifespan, color=<span class="s">'C3'</span>)
-plt.title(<span class="s">'rho = {:.3f}'</span>.format(r2));</pre></div><div class="cell"><div class="run-slot" data-key="a7b2335bf5c8"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text"></span><img src="./imgs/run/a7b2335bf5c8_0.png" alt="result"></div></div></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:55%"></i></div><span class="foot-num">22 / 40</span></footer>
-</section>
-<section class="slide" data-label="23 Correlation and Ellipse Shape" data-screen-label="23 Correlation and Ellipse Shape">
-<header class="head"><span class="kicker">Pearson&#x27;s Correlation Coefficient</span><span class="folio">23</span></header>
 <h2 class="title">Correlation and Ellipse Shape</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>두 분산을 2 로 고정하고 상관계수 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -4.789 6.151 7.227" role="img" aria-label="\rho" fill="currentColor" style="width:0.744em;height:0.874em;vertical-align:-0.295em;display:inline-block;overflow:visible">
@@ -1471,10 +1404,10 @@ plt.title(<span class="s">'rho = {:.3f}'</span>.format(r2));</pre></div><div cla
 
 interact(plot_rho,
          rho=FloatSlider(<span class="no">0.6</span>, <span class="fn">min</span>=-<span class="no">0.95</span>, <span class="fn">max</span>=<span class="no">0.95</span>, step=<span class="no">0.05</span>));</pre></div><div class="cell"><div style="display:flex;flex-direction:column;gap:12px;min-width:0"><div data-sliders=""><label class="slider-row"><span class="slider-name">rho</span><input type="range" data-var="rho" min="-0.95" max="0.95" step="0.05" value="0.6"><span class="slider-val">0.6</span></label></div><div class="run-slot" data-key="9e168046f857"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text"></span><img src="./imgs/run/9e168046f857_0.png" alt="result"></div></div></div></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:57%"></i></div><span class="foot-num">23 / 40</span></footer>
+<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:61%"></i></div><span class="foot-num">22 / 36</span></footer>
 </section>
-<section class="slide" data-label="24 Strongly Correlated Position" data-screen-label="24 Strongly Correlated Position">
-<header class="head"><span class="kicker">Using Correlations to Improve Estimates</span><span class="folio">24</span></header>
+<section class="slide" data-label="23 Strongly Correlated Position" data-screen-label="23 Strongly Correlated Position">
+<header class="head"><span class="kicker">Using Correlations to Improve Estimates</span><span class="folio">23</span></header>
 <h2 class="title">Strongly Correlated Position</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>개가 (5, 10) 에 있다고 믿고 x, y 표준편차는 각각 2 m 이지만 강하게 상관된 경우의 공분산 타원</li><li><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -6.92 12.032 7.42" role="img" aria-label="1\sigma" fill="currentColor" style="width:1.456em;height:0.898em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -1509,26 +1442,10 @@ interact(plot_rho,
 plot_covariance_ellipse((<span class="no">5</span>, <span class="no">10</span>), P, ec=<span class="s">'k'</span>, std=[<span class="no">1</span>, <span class="no">2</span>, <span class="no">3</span>])
 plt.xlabel(<span class="s">'X'</span>)
 plt.ylabel(<span class="s">'Y'</span>);</pre></div><div class="cell"><div class="run-slot" data-key="0dee1571ace9"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text"></span><img src="./imgs/run/0dee1571ace9_0.png" alt="result"></div></div></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:60%"></i></div><span class="foot-num">24 / 40</span></footer>
+<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:64%"></i></div><span class="foot-num">23 / 36</span></footer>
 </section>
-<section class="slide" data-label="25 Knowing x = 7.5" data-screen-label="25 Knowing x = 7.5">
-<header class="head"><span class="kicker">Using Correlations to Improve Estimates</span><span class="folio">25</span></header>
-<h2 class="title">Knowing x = 7.5</h2>
-<div class="rule"></div>
-<div class="body"><div style="display:grid;grid-template-columns:1fr 840px;gap:48px;min-height:0;"><div class="cell"><div style="display:flex;flex-direction:column;gap:24px;min-width:0"><ul class="ul"><li><strong>질문</strong>: x = 7.5 임을 알게 되면 y 는 어디일까</li><li><strong>추론</strong>: 위치는 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -6.92 12.032 7.42" role="img" aria-label="3\sigma" fill="currentColor" style="width:1.456em;height:0.898em;vertical-align:-0.060em;display:inline-block;overflow:visible">
-<defs>
-<path id='t44a895cd1a98-g0-27' d='M5.161-3.716C5.29-3.716 5.649-3.716 5.649-4.055C5.649-4.294 5.44-4.294 5.26-4.294H2.989C1.484-4.294 .379-2.65 .379-1.465C.379-.588 .966 .11 1.873 .11C3.049 .11 4.374-1.096 4.374-2.63C4.374-2.8 4.374-3.278 4.065-3.716H5.161ZM1.883-.11C1.395-.11 .996-.468 .996-1.186C.996-1.484 1.116-2.301 1.465-2.889C1.883-3.577 2.481-3.716 2.819-3.716C3.656-3.716 3.736-3.059 3.736-2.75C3.736-2.281 3.537-1.465 3.198-.956C2.809-.369 2.271-.11 1.883-.11Z'/>
-<path id='t44a895cd1a98-g1-51' d='M2.889-3.507C3.706-3.776 4.284-4.473 4.284-5.26C4.284-6.077 3.407-6.635 2.451-6.635C1.445-6.635 .687-6.037 .687-5.28C.687-4.951 .907-4.762 1.196-4.762C1.504-4.762 1.704-4.981 1.704-5.27C1.704-5.768 1.235-5.768 1.086-5.768C1.395-6.257 2.052-6.386 2.411-6.386C2.819-6.386 3.367-6.167 3.367-5.27C3.367-5.151 3.347-4.573 3.088-4.134C2.79-3.656 2.451-3.626 2.202-3.616C2.122-3.606 1.883-3.587 1.813-3.587C1.733-3.577 1.664-3.567 1.664-3.467C1.664-3.357 1.733-3.357 1.903-3.357H2.341C3.158-3.357 3.527-2.68 3.527-1.704C3.527-.349 2.839-.06 2.401-.06C1.973-.06 1.225-.229 .877-.817C1.225-.767 1.534-.986 1.534-1.365C1.534-1.724 1.265-1.923 .976-1.923C.737-1.923 .418-1.783 .418-1.345C.418-.438 1.345 .219 2.431 .219C3.646 .219 4.553-.687 4.553-1.704C4.553-2.521 3.925-3.298 2.889-3.507Z'/>
-</defs>
-<g id='t44a895cd1a98-page1'>
-<use x='0' y='0' xlink:href='#t44a895cd1a98-g1-51'/>
-<use x='4.981' y='0' xlink:href='#t44a895cd1a98-g0-27'/>
-</g>
-</svg> 타원 안에 있을 가능성이 매우 높음, x 와 y 가 상관되어 있으므로 y 범위가 좁혀짐</li><li><strong>결과</strong>: y 는 12 근처일 가능성이 높고 y = -10 은 거의 불가능</li><li><strong>파란 원</strong>: y 의 가능한 범위를 나타낸 개념도, 수학적으로 정확한 모양은 아님</li></ul></div></div><div class="cell"><figure class="fig plain"><img src="./imgs/corr_infer.svg" alt="corr_infer" style="width:100%"></figure></div></div><div class="point"><b>핵심</b>: 상관이 있으면 한 변수의 정보로 다른 변수를 좁은 범위로 추정</div></div>
-<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:62%"></i></div><span class="foot-num">25 / 40</span></footer>
-</section>
-<section class="slide" data-label="26 Correlation and Independence" data-screen-label="26 Correlation and Independence">
-<header class="head"><span class="kicker">Using Correlations to Improve Estimates</span><span class="folio">26</span></header>
+<section class="slide" data-label="24 Correlation and Independence" data-screen-label="24 Correlation and Independence">
+<header class="head"><span class="kicker">Using Correlations to Improve Estimates</span><span class="folio">24</span></header>
 <h2 class="title">Correlation and Independence</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 820px;gap:48px;min-height:0;"><div class="cell"><div style="display:flex;flex-direction:column;gap:24px;min-width:0"><ul class="ul"><li><strong>독립</strong>: 각 변수가 따로 변할 수 있음, 들판에서는 동서, 남북, 그 조합으로 자유롭게 이동</li><li><strong>독립이면 무상관</strong>: 독립 변수는 항상 상관이 없음</li><li><strong>무상관이어도 종속 가능</strong>: y = <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -8.61 11.163 9.11" role="img" aria-label="x^2" fill="currentColor" style="width:1.351em;height:1.102em;vertical-align:-0.060em;display:inline-block;overflow:visible">
@@ -1541,10 +1458,10 @@ plt.ylabel(<span class="s">'Y'</span>);</pre></div><div class="cell"><div class=
 <use x='5.694' y='-3.615' xlink:href='#tf7c631cc22e1-g1-50'/>
 </g>
 </svg> 는 y 가 x 에 의해 결정되지만 선형 상관은 0</li><li><strong>이유</strong>: 상관은 선형 관계만 측정하는 값</li></ul></div></div><div class="cell"><figure class="fig plain"><img src="./imgs/indep.svg" alt="indep" style="width:100%"></figure></div></div><div class="point"><b>핵심</b>: 독립 → 무상관은 성립, 무상관 → 독립은 일반적으로 성립하지 않음</div></div>
-<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:65%"></i></div><span class="foot-num">26 / 40</span></footer>
+<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:67%"></i></div><span class="foot-num">24 / 36</span></footer>
 </section>
-<section class="slide" data-label="27 Multiplying Multidimensional Gaussians" data-screen-label="27 Multiplying Multidimensional Gaussians">
-<header class="head"><span class="kicker">Multiplying Multidimensional Gaussians</span><span class="folio">27</span></header>
+<section class="slide" data-label="25 Multiplying Multidimensional Gaussians" data-screen-label="25 Multiplying Multidimensional Gaussians">
+<header class="head"><span class="kicker">Multiplying Multidimensional Gaussians</span><span class="folio">25</span></header>
 <h2 class="title">Multiplying Multidimensional Gaussians</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 820px;gap:48px;min-height:0;"><div class="cell"><div style="display:flex;flex-direction:column;gap:24px;min-width:0"><ul class="ul"><li><strong>1 차원</strong>: 두 정보를 곱하면 분산이 더 작은 Gaussian, 더 확신</li><li><strong>다차원</strong>: 공분산 행렬 Σ 로 같은 계산, Bayes 정리로 유도</li></ul><div class="formula"><svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -8.61 184.638 11.6" role="img" aria-label="\mu = \Sigma_2 (\Sigma_1 + \Sigma_2)^{-1} \mu_1 + \Sigma_1 (\Sigma_1 + \Sigma_2)^{-1} \mu_2" fill="currentColor" style="width:22.341em;height:1.404em;vertical-align:-0.362em;display:inline-block;overflow:visible">
@@ -1749,17 +1666,17 @@ plt.ylabel(<span class="s">'Y'</span>);</pre></div><div class="cell"><div class=
 <use x='38.923' y='0' xlink:href='#t8a41962f1f81-g1-73'/>
 </g>
 </svg>), 역행렬을 나눗셈처럼 쓰면 단변량 식과 같은 형태</div></div>
-<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:68%"></i></div><span class="foot-num">27 / 40</span></footer>
+<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:69%"></i></div><span class="foot-num">25 / 36</span></footer>
 </section>
-<section class="slide" data-label="28 Tracking an Aircraft with Radar" data-screen-label="28 Tracking an Aircraft with Radar">
-<header class="head"><span class="kicker">Multiplying Multidimensional Gaussians</span><span class="folio">28</span></header>
+<section class="slide" data-label="26 Tracking an Aircraft with Radar" data-screen-label="26 Tracking an Aircraft with Radar">
+<header class="head"><span class="kicker">Multiplying Multidimensional Gaussians</span><span class="folio">26</span></header>
 <h2 class="title">Tracking an Aircraft with Radar</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 860px;gap:40px;min-height:0;"><div class="cell"><div style="display:flex;flex-direction:column;gap:24px;min-width:0"><ul class="ul"><li><strong>상황</strong>: 두 레이더로 항공기 추적, 고도는 무시하고 2 차원으로 표현</li><li><strong>레이더 측정</strong>: 목표까지의 거리(range)와 방위(bearing)</li><li><strong>prior</strong>: 항공기 위치를 잘 모르는 상태, 노란 원 모양의 큰 공분산</li><li><strong>측정 오차</strong>: bearing 은 정확, range 는 부정확 → 레이더를 향한 길고 가는 타원</li><li><strong>posterior</strong>: prior 와 측정(evidence)을 곱해 얻는 평균과 공분산</li></ul></div></div><div class="cell"><figure class="fig plain"><img src="./imgs/radar.svg" alt="radar" style="width:100%"></figure></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:70%"></i></div><span class="foot-num">28 / 40</span></footer>
+<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:72%"></i></div><span class="foot-num">26 / 36</span></footer>
 </section>
-<section class="slide" data-label="29 Prior and First Radar" data-screen-label="29 Prior and First Radar">
-<header class="head"><span class="kicker">Multiplying Multidimensional Gaussians</span><span class="folio">29</span></header>
+<section class="slide" data-label="27 Prior and First Radar" data-screen-label="27 Prior and First Radar">
+<header class="head"><span class="kicker">Multiplying Multidimensional Gaussians</span><span class="folio">27</span></header>
 <h2 class="title">Prior and First Radar</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>노란 prior 에 왼쪽 아래 레이더의 측정(초록)을 곱해 posterior(파랑)를 계산</li><li>posterior 는 측정과 같은 모양과 위치를 유지하면서 더 작아짐, 정보가 늘어 불확실성 감소</li><li>공분산 모양은 항공기와 레이더의 물리적 배치를 그대로 반영</li><li><strong>조건</strong>: prior P0 = [[6, 0], [0, 6]], 레이더 1 P1 = [[2, 1.9], [1.9, 2]], 평균 모두 (10, 10)</li></ul><div style="display:grid;grid-template-columns:1.2fr 0.8fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxxs denser"><span class="k">from</span> filterpy.stats <span class="k">import</span> multivariate_multiply
@@ -1771,10 +1688,10 @@ P2 = multivariate_multiply((<span class="no">10</span>, <span class="no">10</spa
 plot_covariance_ellipse((<span class="no">10</span>, <span class="no">10</span>), P0, ec=<span class="s">'k'</span>, fc=<span class="s">'y'</span>, alpha=<span class="no">0.2</span>)
 plot_covariance_ellipse((<span class="no">10</span>, <span class="no">10</span>), P1, ec=<span class="s">'k'</span>, fc=<span class="s">'g'</span>, alpha=<span class="no">0.9</span>)
 plot_covariance_ellipse((<span class="no">10</span>, <span class="no">10</span>), P2, ec=<span class="s">'k'</span>, fc=<span class="s">'b'</span>)</pre></div><div class="cell"><div class="run-slot" data-key="1d6b1528f758"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text"></span><img src="./imgs/run/1d6b1528f758_0.png" alt="result"></div></div></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:72%"></i></div><span class="foot-num">29 / 40</span></footer>
+<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:75%"></i></div><span class="foot-num">27 / 36</span></footer>
 </section>
-<section class="slide" data-label="30 Second Radar" data-screen-label="30 Second Radar">
-<header class="head"><span class="kicker">Multiplying Multidimensional Gaussians</span><span class="folio">30</span></header>
+<section class="slide" data-label="28 Second Radar" data-screen-label="28 Second Radar">
+<header class="head"><span class="kicker">Multiplying Multidimensional Gaussians</span><span class="folio">28</span></header>
 <h2 class="title">Second Radar</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>직전 posterior 를 새 prior(노랑)로, 오른쪽 아래 두 번째 레이더의 측정(초록)과 곱함</li><li>항공기가 있을 수 있는 곳은 두 타원이 겹치는 곳뿐, 곱한 결과(파랑)가 매우 작은 Gaussian</li><li>삼각측량 코드를 따로 작성하지 않아도 Gaussian 곱의 결과로 자연스럽게 삼각측량</li><li><strong>조건</strong>: prior P2, 레이더 2 P3 = [[2, -1.9], [-1.9, 2.2]], 평균 (10, 10)</li></ul><div style="display:grid;grid-template-columns:1.2fr 0.8fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxxs denser">P3 = [[<span class="no">2</span>, -<span class="no">1.9</span>], [-<span class="no">1.9</span>, <span class="no">2.2</span>]]
@@ -1787,43 +1704,10 @@ plot_covariance_ellipse((<span class="no">10</span>, <span class="no">10</span>)
 P1 = [[2, 1.9], [1.9, 2]]
 P2 = multivariate_multiply((10, 10), P0, (10, 10), P1)[1]
 </script>
-<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:75%"></i></div><span class="foot-num">30 / 40</span></footer>
+<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:78%"></i></div><span class="foot-num">28 / 36</span></footer>
 </section>
-<section class="slide" data-label="31 Triangulation" data-screen-label="31 Triangulation">
-<header class="head"><span class="kicker">Multiplying Multidimensional Gaussians</span><span class="folio">31</span></header>
-<h2 class="title">Triangulation</h2>
-<div class="rule"></div>
-<div class="body"><div style="display:grid;grid-template-columns:1fr 840px;gap:48px;min-height:0;"><div class="cell"><div style="display:flex;flex-direction:column;gap:24px;min-width:0"><ul class="ul"><li><strong>1 차원 비교</strong>: 저울 A <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -6.92 28.12 8.251" role="img" aria-label="80 \pm 4" fill="currentColor" style="width:3.403em;height:0.998em;vertical-align:-0.161em;display:inline-block;overflow:visible">
-<defs>
-<path id='tc309c25c6db8-g0-6' d='M4.075-3.118H6.844C7.014-3.118 7.193-3.118 7.193-3.318S7.014-3.517 6.844-3.517H4.075V-6.267C4.075-6.426 4.075-6.635 3.875-6.635S3.676-6.456 3.676-6.296V-3.517H.897C.727-3.517 .548-3.517 .548-3.318S.727-3.118 .897-3.118H3.676V-.399H.897C.727-.399 .548-.399 .548-.199S.727 0 .897 0H6.844C7.014 0 7.193 0 7.193-.199S7.014-.399 6.844-.399H4.075V-3.118Z'/>
-<path id='tc309c25c6db8-g1-48' d='M4.583-3.188C4.583-3.985 4.533-4.782 4.184-5.519C3.726-6.476 2.909-6.635 2.491-6.635C1.893-6.635 1.166-6.376 .757-5.45C.438-4.762 .389-3.985 .389-3.188C.389-2.441 .428-1.544 .837-.787C1.265 .02 1.993 .219 2.481 .219C3.019 .219 3.776 .01 4.214-.936C4.533-1.624 4.583-2.401 4.583-3.188ZM2.481 0C2.092 0 1.504-.249 1.325-1.205C1.215-1.803 1.215-2.72 1.215-3.308C1.215-3.945 1.215-4.603 1.295-5.141C1.484-6.326 2.232-6.416 2.481-6.416C2.809-6.416 3.467-6.237 3.656-5.25C3.756-4.692 3.756-3.935 3.756-3.308C3.756-2.56 3.756-1.883 3.646-1.245C3.497-.299 2.929 0 2.481 0Z'/>
-<path id='tc309c25c6db8-g1-52' d='M2.929-1.644V-.777C2.929-.418 2.909-.309 2.172-.309H1.963V0C2.371-.03 2.889-.03 3.308-.03S4.254-.03 4.663 0V-.309H4.453C3.716-.309 3.696-.418 3.696-.777V-1.644H4.692V-1.953H3.696V-6.486C3.696-6.685 3.696-6.745 3.537-6.745C3.447-6.745 3.417-6.745 3.337-6.625L.279-1.953V-1.644H2.929ZM2.989-1.953H.558L2.989-5.669V-1.953Z'/>
-<path id='tc309c25c6db8-g1-56' d='M1.624-4.553C1.166-4.852 1.126-5.191 1.126-5.36C1.126-5.968 1.773-6.386 2.481-6.386C3.208-6.386 3.846-5.868 3.846-5.151C3.846-4.583 3.457-4.105 2.859-3.756L1.624-4.553ZM3.078-3.606C3.796-3.975 4.284-4.493 4.284-5.151C4.284-6.067 3.397-6.635 2.491-6.635C1.494-6.635 .687-5.898 .687-4.971C.687-4.792 .707-4.344 1.126-3.875C1.235-3.756 1.604-3.507 1.853-3.337C1.275-3.049 .418-2.491 .418-1.504C.418-.448 1.435 .219 2.481 .219C3.606 .219 4.553-.608 4.553-1.674C4.553-2.032 4.443-2.481 4.065-2.899C3.875-3.108 3.716-3.208 3.078-3.606ZM2.082-3.188L3.308-2.411C3.587-2.222 4.055-1.923 4.055-1.315C4.055-.578 3.308-.06 2.491-.06C1.634-.06 .917-.677 .917-1.504C.917-2.082 1.235-2.72 2.082-3.188Z'/>
-</defs>
-<g id='tc309c25c6db8-page1'>
-<use x='0' y='0' xlink:href='#tc309c25c6db8-g1-56'/>
-<use x='4.981' y='0' xlink:href='#tc309c25c6db8-g1-48'/>
-<use x='12.177' y='0' xlink:href='#tc309c25c6db8-g0-6'/>
-<use x='22.139' y='0' xlink:href='#tc309c25c6db8-g1-52'/>
-</g>
-</svg> kg, 저울 B <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -6.92 28.12 8.251" role="img" aria-label="85 \pm 4" fill="currentColor" style="width:3.403em;height:0.998em;vertical-align:-0.161em;display:inline-block;overflow:visible">
-<defs>
-<path id='t03923596fc4f-g0-6' d='M4.075-3.118H6.844C7.014-3.118 7.193-3.118 7.193-3.318S7.014-3.517 6.844-3.517H4.075V-6.267C4.075-6.426 4.075-6.635 3.875-6.635S3.676-6.456 3.676-6.296V-3.517H.897C.727-3.517 .548-3.517 .548-3.318S.727-3.118 .897-3.118H3.676V-.399H.897C.727-.399 .548-.399 .548-.199S.727 0 .897 0H6.844C7.014 0 7.193 0 7.193-.199S7.014-.399 6.844-.399H4.075V-3.118Z'/>
-<path id='t03923596fc4f-g1-52' d='M2.929-1.644V-.777C2.929-.418 2.909-.309 2.172-.309H1.963V0C2.371-.03 2.889-.03 3.308-.03S4.254-.03 4.663 0V-.309H4.453C3.716-.309 3.696-.418 3.696-.777V-1.644H4.692V-1.953H3.696V-6.486C3.696-6.685 3.696-6.745 3.537-6.745C3.447-6.745 3.417-6.745 3.337-6.625L.279-1.953V-1.644H2.929ZM2.989-1.953H.558L2.989-5.669V-1.953Z'/>
-<path id='t03923596fc4f-g1-53' d='M4.473-2.002C4.473-3.188 3.656-4.184 2.58-4.184C2.102-4.184 1.674-4.025 1.315-3.676V-5.619C1.514-5.559 1.843-5.489 2.162-5.489C3.387-5.489 4.085-6.396 4.085-6.526C4.085-6.585 4.055-6.635 3.985-6.635C3.975-6.635 3.955-6.635 3.905-6.605C3.706-6.516 3.218-6.316 2.55-6.316C2.152-6.316 1.694-6.386 1.225-6.595C1.146-6.625 1.126-6.625 1.106-6.625C1.006-6.625 1.006-6.545 1.006-6.386V-3.437C1.006-3.258 1.006-3.178 1.146-3.178C1.215-3.178 1.235-3.208 1.275-3.268C1.385-3.427 1.753-3.965 2.56-3.965C3.078-3.965 3.328-3.507 3.407-3.328C3.567-2.959 3.587-2.57 3.587-2.072C3.587-1.724 3.587-1.126 3.347-.707C3.108-.319 2.74-.06 2.281-.06C1.554-.06 .986-.588 .817-1.176C.847-1.166 .877-1.156 .986-1.156C1.315-1.156 1.484-1.405 1.484-1.644S1.315-2.132 .986-2.132C.847-2.132 .498-2.062 .498-1.604C.498-.747 1.186 .219 2.301 .219C3.457 .219 4.473-.737 4.473-2.002Z'/>
-<path id='t03923596fc4f-g1-56' d='M1.624-4.553C1.166-4.852 1.126-5.191 1.126-5.36C1.126-5.968 1.773-6.386 2.481-6.386C3.208-6.386 3.846-5.868 3.846-5.151C3.846-4.583 3.457-4.105 2.859-3.756L1.624-4.553ZM3.078-3.606C3.796-3.975 4.284-4.493 4.284-5.151C4.284-6.067 3.397-6.635 2.491-6.635C1.494-6.635 .687-5.898 .687-4.971C.687-4.792 .707-4.344 1.126-3.875C1.235-3.756 1.604-3.507 1.853-3.337C1.275-3.049 .418-2.491 .418-1.504C.418-.448 1.435 .219 2.481 .219C3.606 .219 4.553-.608 4.553-1.674C4.553-2.032 4.443-2.481 4.065-2.899C3.875-3.108 3.716-3.208 3.078-3.606ZM2.082-3.188L3.308-2.411C3.587-2.222 4.055-1.923 4.055-1.315C4.055-.578 3.308-.06 2.491-.06C1.634-.06 .917-.677 .917-1.504C.917-2.082 1.235-2.72 2.082-3.188Z'/>
-</defs>
-<g id='t03923596fc4f-page1'>
-<use x='0' y='0' xlink:href='#t03923596fc4f-g1-56'/>
-<use x='4.981' y='0' xlink:href='#t03923596fc4f-g1-53'/>
-<use x='12.177' y='0' xlink:href='#t03923596fc4f-g0-6'/>
-<use x='22.139' y='0' xlink:href='#t03923596fc4f-g1-52'/>
-</g>
-</svg> kg 의 오차 막대</li><li><strong>겹치는 구간</strong>: 추정은 두 오차 막대가 겹치는 81 ~ 84 kg 안에 있어야 함</li><li><strong>2 차원</strong>: 두 타원이 겹치는 영역, 곱한 Gaussian 이 그 교집합</li><li><strong>기하</strong>: 결과 모양은 문제의 기하, 즉 센서 배치를 반영</li></ul></div></div><div class="cell"><figure class="fig plain"><img src="./imgs/errorbars.svg" alt="errorbars" style="width:100%"></figure></div></div><div class="point"><b>핵심</b>: Gaussian 곱이 곧 삼각측량, 서로 다른 방향의 정보가 만나면 정확한 추정</div></div>
-<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:78%"></i></div><span class="foot-num">31 / 40</span></footer>
-</section>
-<section class="slide" data-label="32 Radar Directly to the Left" data-screen-label="32 Radar Directly to the Left">
-<header class="head"><span class="kicker">Multiplying Multidimensional Gaussians</span><span class="folio">32</span></header>
+<section class="slide" data-label="29 Radar Directly to the Left" data-screen-label="29 Radar Directly to the Left">
+<header class="head"><span class="kicker">Multiplying Multidimensional Gaussians</span><span class="folio">29</span></header>
 <h2 class="title">Radar Directly to the Left</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>첫 레이더가 항공기 바로 왼쪽에 있는 배치, 측정 오차는 x 방향으로 긴 수평 타원</li><li>왼쪽 그림은 prior 와 첫 측정의 곱, 오른쪽 그림은 같은 위치의 두 번째 레이더 측정을 다시 곱한 결과</li><li>두 레이더가 항공기 기준으로 직교하지 않아 삼각측량이 최적이 아님, 앞 배치보다 덜 정확</li><li><strong>조건</strong>: P0 = [[6, 0], [0, 6]], 레이더 1 P1 = [[2, 0], [0, 0.2]], 레이더 2 P3 = [[2, -1.9], [-1.9, 2.2]]</li></ul><div style="display:grid;grid-template-columns:1.05fr 0.95fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxxs tightest">P0 = [[<span class="no">6</span>, <span class="no">0</span>], [<span class="no">0</span>, <span class="no">6</span>]]
@@ -1840,10 +1724,10 @@ plt.subplot(<span class="no">122</span>)
 plot_covariance_ellipse((<span class="no">10</span>, <span class="no">10</span>), P2, ec=<span class="s">'k'</span>, fc=<span class="s">'y'</span>, alpha=<span class="no">0.2</span>)
 plot_covariance_ellipse((<span class="no">10</span>, <span class="no">10</span>), P3, ec=<span class="s">'k'</span>, fc=<span class="s">'g'</span>, alpha=<span class="no">0.6</span>)
 plot_covariance_ellipse((<span class="no">10</span>, <span class="no">10</span>), P4, ec=<span class="s">'k'</span>, fc=<span class="s">'b'</span>)</pre></div><div class="cell"><div class="run-slot" data-key="49d4d70b6938"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text"></span><img src="./imgs/run/49d4d70b6938_0.png" alt="result"></div></div></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:80%"></i></div><span class="foot-num">32 / 40</span></footer>
+<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:81%"></i></div><span class="foot-num">29 / 36</span></footer>
 </section>
-<section class="slide" data-label="33 Same Radar Twice" data-screen-label="33 Same Radar Twice">
-<header class="head"><span class="kicker">Multiplying Multidimensional Gaussians</span><span class="folio">33</span></header>
+<section class="slide" data-label="30 Same Radar Twice" data-screen-label="30 Same Radar Twice">
+<header class="head"><span class="kicker">Multiplying Multidimensional Gaussians</span><span class="folio">30</span></header>
 <h2 class="title">Same Radar Twice</h2>
 <div class="rule"></div>
 <div class="body"><ul class="ul brief"><li>같은 레이더로 짧은 시간 간격을 두고 두 번 측정한 상황</li><li>두 공분산 타원이 거의 겹치므로 곱한 결과(파랑)도 크게 줄지 않아 오차가 여전히 큼</li><li>같은 방향의 정보만 반복되면 삼각측량 효과가 없음</li><li><strong>조건</strong>: 두 측정의 공분산 모두 P2, 평균 (10, 10) 과 (10.1, 9.97)</li></ul><div style="display:grid;grid-template-columns:1.2fr 0.8fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxxs denser">P5 = multivariate_multiply((<span class="no">10</span>, <span class="no">10</span>), P2, (<span class="no">10.1</span>, <span class="no">9.97</span>), P2)
@@ -1856,82 +1740,49 @@ plt.xlim(<span class="no">6</span>, <span class="no">14</span>);</pre></div><div
 P1 = [[2, 0], [0, .2]]
 P2 = multivariate_multiply((10, 10), P0, (10, 10), P1)[1]
 </script>
-<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:82%"></i></div><span class="foot-num">33 / 40</span></footer>
+<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:83%"></i></div><span class="foot-num">30 / 36</span></footer>
 </section>
-<section class="slide" data-label="34 Predicting the Next Position" data-screen-label="34 Predicting the Next Position">
-<header class="head"><span class="kicker">Hidden Variables</span><span class="folio">34</span></header>
+<section class="slide" data-label="31 Predicting the Next Position" data-screen-label="31 Predicting the Next Position">
+<header class="head"><span class="kicker">Hidden Variables</span><span class="folio">31</span></header>
 <h2 class="title">Predicting the Next Position</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 820px;gap:48px;min-height:0;"><div class="cell"><div style="display:flex;flex-direction:column;gap:24px;min-width:0"><ul class="ul"><li><strong>데이터</strong>: t = 1, 2, 3 초의 항공기 x, y 좌표</li><li><strong>직관</strong>: 직선 비행 중이고 항공기는 갑자기 방향을 바꿀 수 없음 → t=4 에 (4, 4)</li><li><strong>추론 근거</strong>: 일정한 속도, 매 단계 x, y 로 1 씩 이동한다고 추론</li><li><strong>g-h 필터와 같은 원리</strong>: 체중과 체중 증가율을 함께 추적한 것처럼 위치와 속도를 함께 추적</li><li><strong>범위</strong>: 4 차원 그림은 그릴 수 없으므로 x 축의 위치와 속도만 표시, 수학은 고차원으로 일반화</li></ul></div></div><div class="cell"><figure class="fig plain"><img src="./imgs/pos_pred.svg" alt="pos_pred" style="width:100%"></figure></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:85%"></i></div><span class="foot-num">34 / 40</span></footer>
+<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:86%"></i></div><span class="foot-num">31 / 36</span></footer>
 </section>
-<section class="slide" data-label="35 Position and Velocity" data-screen-label="35 Position and Velocity">
-<header class="head"><span class="kicker">Hidden Variables</span><span class="folio">35</span></header>
+<section class="slide" data-label="32 Position and Velocity" data-screen-label="32 Position and Velocity">
+<header class="head"><span class="kicker">Hidden Variables</span><span class="folio">32</span></header>
 <h2 class="title">Position and Velocity</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;min-height:0;"><div class="cell"><ul class="ul"><li><strong>t = 1 의 믿음</strong>: 위치 x = 0 은 꽤 확실, 속도는 전혀 모름 → 좁고 높은 타원</li></ul></div><div class="cell"><ul class="ul"><li><strong>위치와 속도의 상관</strong>: 속도 5 m/s 면 1 초 뒤 위치 5 m, -10 m/s 면 -10 m → 대각선 타원(빨강)</li></ul></div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:56px;min-height:0;"><div class="cell"><figure class="fig plain"><img src="./imgs/hid1.svg" alt="hid1" style="width:100%"></figure></div><div class="cell"><figure class="fig plain"><img src="./imgs/hid2.svg" alt="hid2" style="width:100%"></figure></div></div><div class="point"><b>핵심</b>: 이 시점에서는 속도를 모르므로 속도 공분산만으로는 새 위치를 예측할 수 없음</div></div>
-<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:88%"></i></div><span class="foot-num">35 / 40</span></footer>
+<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:89%"></i></div><span class="foot-num">32 / 36</span></footer>
 </section>
-<section class="slide" data-label="36 Measurement and Posterior" data-screen-label="36 Measurement and Posterior">
-<header class="head"><span class="kicker">Hidden Variables</span><span class="folio">36</span></header>
+<section class="slide" data-label="33 Measurement and Posterior" data-screen-label="33 Measurement and Posterior">
+<header class="head"><span class="kicker">Hidden Variables</span><span class="folio">33</span></header>
 <h2 class="title">Measurement and Posterior</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;min-height:0;"><div class="cell"><ul class="ul"><li><strong>1 초 뒤 측정</strong>: 위치 x = 5, 속도는 모름 → 세로 타원</li><li><strong>합리적 추정</strong>: 속도 공분산(빨강)과 측정의 교차 지점</li></ul></div><div class="cell"><ul class="ul"><li><strong>곱한 결과(초록)</strong>: 교차 지점, 약간 기울어 위치와 속도 상관</li><li><strong>크기</strong>: 훨씬 작음, x 폭도 측정보다 좁아 위치도 확실</li></ul></div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:56px;min-height:0;"><div class="cell"><figure class="fig plain"><img src="./imgs/hid3.svg" alt="hid3" style="width:100%"></figure></div><div class="cell"><figure class="fig plain"><img src="./imgs/hid4.svg" alt="hid4" style="width:100%"></figure></div></div><div class="point"><b>핵심</b>: 서로 다르지만 상관된 두 정보를 곱하면 각각만 쓸 때보다 훨씬 정확한 추정</div></div>
-<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:90%"></i></div><span class="foot-num">36 / 40</span></footer>
+<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:92%"></i></div><span class="foot-num">33 / 36</span></footer>
 </section>
-<section class="slide" data-label="37 Observed, Hidden, Unobserved" data-screen-label="37 Observed, Hidden, Unobserved">
-<header class="head"><span class="kicker">Hidden Variables</span><span class="folio">37</span></header>
+<section class="slide" data-label="34 Observed, Hidden, Unobserved" data-screen-label="34 Observed, Hidden, Unobserved">
+<header class="head"><span class="kicker">Hidden Variables</span><span class="folio">34</span></header>
 <h2 class="title">Observed, Hidden, Unobserved</h2>
 <div class="rule"></div>
 <div class="body"><figure class="fig plain"><img src="./imgs/hidden.svg" alt="hidden" style="width:1696px"></figure><div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:24px;min-height:0;"><div class="cell"><div class="card soft tight"><h3 class="card-h sky">Observed variable</h3><ul class="ul"><li>레이더가 직접 측정하는 위치</li><li>측정마다 정보 직접 획득</li></ul></div></div><div class="cell"><div class="card good tight"><h3 class="card-h leaf">Hidden variable</h3><ul class="ul"><li>측정하는 센서가 없는 속도</li><li>위치와의 상관으로 매우 정확하게 추론</li></ul></div></div><div class="cell"><div class="card tight"><h3 class="card-h coral">Unobserved variable</h3><ul class="ul"><li>색, 조종사 이름, 엔진 RPM 등</li><li>측정도 상관도 없음, 상태에 넣으면 무의미한 추정</li></ul></div></div></div><div class="point"><b>핵심</b>: 두 측정 사이의 거리와 시간으로 속도를 대략 얻고, Bayes 정리로 몇 번의 관측 만에 정확한 추정</div></div>
-<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:92%"></i></div><span class="foot-num">37 / 40</span></footer>
+<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:94%"></i></div><span class="foot-num">34 / 36</span></footer>
 </section>
-<section class="slide" data-label="38 Why Correlation Helps" data-screen-label="38 Why Correlation Helps">
-<header class="head"><span class="kicker">Hidden Variables</span><span class="folio">38</span></header>
+<section class="slide" data-label="35 Why Correlation Helps" data-screen-label="35 Why Correlation Helps">
+<header class="head"><span class="kicker">Hidden Variables</span><span class="folio">35</span></header>
 <h2 class="title">Why Correlation Helps</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 820px;gap:40px;min-height:0;"><div class="cell"><div style="display:flex;flex-direction:column;gap:24px;min-width:0"><div class="card warn tight"><h3 class="card-h coral">Unrelated velocity</h3><ul class="ul"><li>다른 항공기의 속도를 위치 그래프에 겹치는 경우</li><li>두 정보가 무관하므로 결합해도 추가 정보 없음</li></ul></div><div class="card good tight"><h3 class="card-h leaf">Correlated velocity</h3><ul class="ul"><li>이 항공기의 속도는 진행 방향과 빠르기를 알려 줌</li><li>속도가 바뀌면 위치도 예측 가능한 방식으로 바뀜</li><li>속도 변화와 맞지 않는 위치 측정은 참일 가능성이 매우 낮음</li></ul></div></div></div><div class="cell"><figure class="fig plain"><img src="./imgs/hid4.svg" alt="hid4" style="width:100%"></figure></div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;min-height:0;"><div class="cell"><ul class="ul"><li><strong>한 번 갱신</strong>: 위치만 보면 속도를 포함한 효과가 작아 보임</li></ul></div><div class="cell"><ul class="ul"><li><strong>여러 번 갱신</strong>: 교차할 때마다 x 방향으로 좁아짐, 추정 분산 감소</li></ul></div></div><div class="point"><b>핵심</b>: 위치와 속도의 상관을 이용하는 것이 다변량 Kalman filter 의 핵심 원리</div></div>
-<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:95%"></i></div><span class="foot-num">38 / 40</span></footer>
+<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:97%"></i></div><span class="foot-num">35 / 36</span></footer>
 </section>
-<section class="slide" data-label="39 Higher Dimensions" data-screen-label="39 Higher Dimensions">
-<header class="head"><span class="kicker">Higher Dimensions</span><span class="folio">39</span></header>
-<h2 class="title">Higher Dimensions</h2>
-<div class="rule"></div>
-<div class="body"><ul class="ul brief"><li>2 차원 Gaussian 은 오차 타원, 3 차원 Gaussian 은 3D 오차 타원체(ellipsoid)로 표현</li><li>주어진 공분산의 표본 1000 개를 <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -6.92 12.032 7.42" role="img" aria-label="3\sigma" fill="currentColor" style="width:1.456em;height:0.898em;vertical-align:-0.060em;display:inline-block;overflow:visible">
-<defs>
-<path id='t44a895cd1a98-g0-27' d='M5.161-3.716C5.29-3.716 5.649-3.716 5.649-4.055C5.649-4.294 5.44-4.294 5.26-4.294H2.989C1.484-4.294 .379-2.65 .379-1.465C.379-.588 .966 .11 1.873 .11C3.049 .11 4.374-1.096 4.374-2.63C4.374-2.8 4.374-3.278 4.065-3.716H5.161ZM1.883-.11C1.395-.11 .996-.468 .996-1.186C.996-1.484 1.116-2.301 1.465-2.889C1.883-3.577 2.481-3.716 2.819-3.716C3.656-3.716 3.736-3.059 3.736-2.75C3.736-2.281 3.537-1.465 3.198-.956C2.809-.369 2.271-.11 1.883-.11Z'/>
-<path id='t44a895cd1a98-g1-51' d='M2.889-3.507C3.706-3.776 4.284-4.473 4.284-5.26C4.284-6.077 3.407-6.635 2.451-6.635C1.445-6.635 .687-6.037 .687-5.28C.687-4.951 .907-4.762 1.196-4.762C1.504-4.762 1.704-4.981 1.704-5.27C1.704-5.768 1.235-5.768 1.086-5.768C1.395-6.257 2.052-6.386 2.411-6.386C2.819-6.386 3.367-6.167 3.367-5.27C3.367-5.151 3.347-4.573 3.088-4.134C2.79-3.656 2.451-3.626 2.202-3.616C2.122-3.606 1.883-3.587 1.813-3.587C1.733-3.577 1.664-3.567 1.664-3.467C1.664-3.357 1.733-3.357 1.903-3.357H2.341C3.158-3.357 3.527-2.68 3.527-1.704C3.527-.349 2.839-.06 2.401-.06C1.973-.06 1.225-.229 .877-.817C1.225-.767 1.534-.986 1.534-1.365C1.534-1.724 1.265-1.923 .976-1.923C.737-1.923 .418-1.783 .418-1.345C.418-.438 1.345 .219 2.431 .219C3.646 .219 4.553-.687 4.553-1.704C4.553-2.521 3.925-3.298 2.889-3.507Z'/>
-</defs>
-<g id='t44a895cd1a98-page1'>
-<use x='0' y='0' xlink:href='#t44a895cd1a98-g1-51'/>
-<use x='4.981' y='0' xlink:href='#t44a895cd1a98-g0-27'/>
-</g>
-</svg> 타원체와 함께 그리면 대부분의 점이 타원체 안에 위치</li><li>9 차원도 개념은 같음, 분포의 표준편차 오차를 9 차원 타원체로 기술, 일기 예보는 수천 차원</li><li><strong>조건</strong>: <svg class="tex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -4.789 7.003 7.227" role="img" aria-label="\mu" fill="currentColor" style="width:0.847em;height:0.874em;vertical-align:-0.295em;display:inline-block;overflow:visible">
-<defs>
-<path id='tfbdade9675ae-g0-22' d='M2.301-3.497C2.351-3.706 2.451-4.085 2.451-4.134C2.451-4.304 2.331-4.403 2.162-4.403C2.132-4.403 1.853-4.394 1.763-4.045L.329 1.724C.299 1.843 .299 1.863 .299 1.883C.299 2.032 .408 2.152 .578 2.152C.787 2.152 .907 1.973 .927 1.943C.966 1.853 1.096 1.335 1.474-.199C1.793 .07 2.242 .11 2.441 .11C3.138 .11 3.527-.339 3.766-.618C3.856-.169 4.224 .11 4.663 .11C5.011 .11 5.24-.12 5.4-.438C5.569-.797 5.699-1.405 5.699-1.425C5.699-1.524 5.609-1.524 5.579-1.524C5.479-1.524 5.469-1.484 5.44-1.345C5.27-.697 5.091-.11 4.682-.11C4.413-.11 4.384-.369 4.384-.568C4.384-.787 4.503-1.255 4.583-1.604L4.862-2.68C4.892-2.829 4.991-3.208 5.031-3.357C5.081-3.587 5.181-3.965 5.181-4.025C5.181-4.204 5.041-4.294 4.892-4.294C4.842-4.294 4.583-4.284 4.503-3.945L4.035-2.082C3.915-1.584 3.806-1.166 3.776-1.066C3.766-1.016 3.288-.11 2.481-.11C1.983-.11 1.743-.438 1.743-.976C1.743-1.265 1.813-1.544 1.883-1.823L2.301-3.497Z'/>
-</defs>
-<g id='tfbdade9675ae-page1'>
-<use x='0' y='0' xlink:href='#tfbdade9675ae-g0-22'/>
-</g>
-</svg> = [0.3, 5, 10], 공분산 C (분산 1, 4, 16.1), 표본 1000 개, std = 3</li></ul><div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;min-height:0;flex:1 1 0;min-height:0;grid-template-rows:minmax(0,1fr)"><div class="cell"><pre data-run="" class="code xxxs denser"><span class="k">from</span> filterpy.stats <span class="k">import</span> plot_3d_covariance
-
-mu = [<span class="no">0.3</span>, <span class="no">5.</span>, <span class="no">10.</span>]
-C = np.array([[<span class="no">1.0</span>, <span class="no">.03</span>, <span class="no">.2</span>],
-              [<span class="no">.03</span>, <span class="no">4.0</span>, <span class="no">.0</span>],
-              [<span class="no">.2</span>, <span class="no">.0</span>, <span class="no">16.1</span>]])
-sample = np.random.multivariate_normal(mu, C, size=<span class="no">1000</span>)
-
-ax = plot_3d_covariance(mu, C, alpha=<span class="no">.4</span>, std=<span class="no">3</span>,
-                        limit_xyz=<span class="k">True</span>)
-ax.scatter(sample[:, <span class="no">0</span>], sample[:, <span class="no">1</span>], zs=sample[:, <span class="no">2</span>],);</pre></div><div class="cell"><div class="run-slot" data-key="94ca45f87585"><div data-run-out="" class="run-panel inline has-output"><button class="run-close" type="button" title="지우기">×</button><span class="run-text"></span><img src="./imgs/run/94ca45f87585_0.png" alt="result"></div></div></div></div></div>
-<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:98%"></i></div><span class="foot-num">39 / 40</span></footer>
-</section>
-<section class="slide" data-label="40 Summary" data-screen-label="40 Summary">
-<header class="head"><span class="kicker">Summary</span><span class="folio">40</span></header>
+<section class="slide" data-label="36 Summary" data-screen-label="36 Summary">
+<header class="head"><span class="kicker">Summary</span><span class="folio">36</span></header>
 <h2 class="title">Summary</h2>
 <div class="rule"></div>
 <div class="body"><div style="display:grid;grid-template-columns:1fr 820px;gap:48px;min-height:0;"><div class="cell"><div style="display:flex;flex-direction:column;gap:24px;min-width:0"><ul class="ul"><li><strong>표현</strong>: 여러 변수의 믿음을 평균 벡터와 공분산 행렬의 다변량 Gaussian 으로</li><li><strong>공분산</strong>: 대각은 분산, 비대각은 공분산, 기운 타원은 상관</li><li><strong>곱</strong>: prior 와 likelihood 를 곱하면 더 정확한 posterior, 센서 기하가 반영된 삼각측량</li><li><strong>hidden variable</strong>: 측정하지 않는 속도를 위치와의 상관으로 추론</li><li><strong>적용 범위</strong>: 기하와 무관한 변수도 가능, 집 면적과 가격, 주가, 젖소의 우유 생산량</li></ul></div></div><div class="cell"><figure class="fig plain"><img src="./imgs/summary.svg" alt="summary" style="width:100%"></figure></div></div><div class="point"><b>결론</b>: 불확실성을 상관을 가진 다차원 Gaussian 으로 표현하면 곱으로 훨씬 정확한 결과</div></div>
-<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:100%"></i></div><span class="foot-num">40 / 40</span></footer>
+<footer class="foot"><span class="foot-sec">Day 3 · Chapter 5 Multivariate Gaussians</span><div class="bar"><i style="width:100%"></i></div><span class="foot-num">36 / 36</span></footer>
 </section>
 </deck-stage>
 </body></html>

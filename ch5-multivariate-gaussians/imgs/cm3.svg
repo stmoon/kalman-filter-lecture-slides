@@ -6,11 +6,11 @@
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-10-16T17:11:15.797881</dc:date>
+    <dc:date>2026-11-18T22:57:25.642676</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
-      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
      </cc:Agent>
     </dc:creator>
    </cc:Work>
@@ -48,18 +48,18 @@ C 261.997557 180.641832 277.433859 184.011365 280.310896 179.356223
 C 283.187932 174.70108 273.270805 162.401333 252.743646 145.165857 
 C 232.216488 127.930381 202.755249 107.166378 170.848427 87.446877 
 z
-" clip-path="url(#p8d94ebf898)" style="fill: #dc2626; opacity: 0.3; stroke: #dc2626; stroke-width: 2; stroke-linejoin: miter"/>
+" clip-path="url(#pa597cf5424)" style="fill: #dc2626; opacity: 0.3; stroke: #dc2626; stroke-width: 2; stroke-linejoin: miter"/>
    </g>
    <g id="PathCollection_1">
     <defs>
-     <path id="m37a0ae9ec2" d="M -4.5 0 
+     <path id="mf95bbaf7cd" d="M -4.5 0 
 L 4.5 0 
 M 0 4.5 
 L 0 -4.5 
 " style="stroke: #dc2626; stroke-width: 2.5"/>
     </defs>
-    <g clip-path="url(#p8d94ebf898)">
-     <use xlink:href="#m37a0ae9ec2" x="160" y="105" style="fill: #dc2626; stroke: #dc2626; stroke-width: 2.5"/>
+    <g clip-path="url(#pa597cf5424)">
+     <use xlink:href="#mf95bbaf7cd" x="160" y="105" style="fill: #dc2626; stroke: #dc2626; stroke-width: 2.5"/>
     </g>
    </g>
    <g id="matplotlib.axis_1"/>
@@ -87,7 +87,7 @@ L 312.8 9.5
   </g>
  </g>
  <defs>
-  <clipPath id="p8d94ebf898">
+  <clipPath id="pa597cf5424">
    <rect x="7.2" y="9.5" width="305.6" height="191"/>
   </clipPath>
  </defs>
